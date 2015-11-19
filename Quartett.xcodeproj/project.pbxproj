@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */; };
+		58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDE1BFE2A47005C8F1E /* ViewController.swift */; };
+		58C49BE21BFE2A47005C8F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE01BFE2A47005C8F1E /* Main.storyboard */; };
+		58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BE31BFE2A47005C8F1E /* Quartett.xcdatamodeld */; };
+		58C49BE71BFE2A47005C8F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE61BFE2A47005C8F1E /* Assets.xcassets */; };
+		58C49BEA1BFE2A47005C8F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE81BFE2A47005C8F1E /* LaunchScreen.storyboard */; };
+		58C49BF51BFE2A47005C8F1E /* QuartettTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BF41BFE2A47005C8F1E /* QuartettTests.swift */; };
+		58C49C001BFE2A47005C8F1E /* QuartettUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BFF1BFE2A47005C8F1E /* QuartettUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58C49BF11BFE2A47005C8F1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58C49BD11BFE2A46005C8F1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58C49BD81BFE2A47005C8F1E;
+			remoteInfo = Quartett;
+		};
+		58C49BFC1BFE2A47005C8F1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58C49BD11BFE2A46005C8F1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58C49BD81BFE2A47005C8F1E;
+			remoteInfo = Quartett;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		58C49BD91BFE2A47005C8F1E /* Quartett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quartett.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		58C49BDE1BFE2A47005C8F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		58C49BE11BFE2A47005C8F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		58C49BE41BFE2A47005C8F1E /* Quartett.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quartett.xcdatamodel; sourceTree = "<group>"; };
+		58C49BE61BFE2A47005C8F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58C49BE91BFE2A47005C8F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		58C49BEB1BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuartettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C49BF41BFE2A47005C8F1E /* QuartettTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuartettTests.swift; sourceTree = "<group>"; };
+		58C49BF61BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuartettUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C49BFF1BFE2A47005C8F1E /* QuartettUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuartettUITests.swift; sourceTree = "<group>"; };
+		58C49C011BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58C49BD61BFE2A47005C8F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BED1BFE2A47005C8F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BF81BFE2A47005C8F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		58C49BD01BFE2A46005C8F1E = {
+			isa = PBXGroup;
+			children = (
+				58C49BDB1BFE2A47005C8F1E /* Quartett */,
+				58C49BF31BFE2A47005C8F1E /* QuartettTests */,
+				58C49BFE1BFE2A47005C8F1E /* QuartettUITests */,
+				58C49BDA1BFE2A47005C8F1E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58C49BDA1BFE2A47005C8F1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58C49BD91BFE2A47005C8F1E /* Quartett.app */,
+				58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */,
+				58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58C49BDB1BFE2A47005C8F1E /* Quartett */ = {
+			isa = PBXGroup;
+			children = (
+				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
+				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
+				58C49BE01BFE2A47005C8F1E /* Main.storyboard */,
+				58C49BE61BFE2A47005C8F1E /* Assets.xcassets */,
+				58C49BE81BFE2A47005C8F1E /* LaunchScreen.storyboard */,
+				58C49BEB1BFE2A47005C8F1E /* Info.plist */,
+				58C49BE31BFE2A47005C8F1E /* Quartett.xcdatamodeld */,
+			);
+			path = Quartett;
+			sourceTree = "<group>";
+		};
+		58C49BF31BFE2A47005C8F1E /* QuartettTests */ = {
+			isa = PBXGroup;
+			children = (
+				58C49BF41BFE2A47005C8F1E /* QuartettTests.swift */,
+				58C49BF61BFE2A47005C8F1E /* Info.plist */,
+			);
+			path = QuartettTests;
+			sourceTree = "<group>";
+		};
+		58C49BFE1BFE2A47005C8F1E /* QuartettUITests */ = {
+			isa = PBXGroup;
+			children = (
+				58C49BFF1BFE2A47005C8F1E /* QuartettUITests.swift */,
+				58C49C011BFE2A47005C8F1E /* Info.plist */,
+			);
+			path = QuartettUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58C49BD81BFE2A47005C8F1E /* Quartett */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58C49C041BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "Quartett" */;
+			buildPhases = (
+				58C49BD51BFE2A47005C8F1E /* Sources */,
+				58C49BD61BFE2A47005C8F1E /* Frameworks */,
+				58C49BD71BFE2A47005C8F1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Quartett;
+			productName = Quartett;
+			productReference = 58C49BD91BFE2A47005C8F1E /* Quartett.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58C49BEF1BFE2A47005C8F1E /* QuartettTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58C49C071BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettTests" */;
+			buildPhases = (
+				58C49BEC1BFE2A47005C8F1E /* Sources */,
+				58C49BED1BFE2A47005C8F1E /* Frameworks */,
+				58C49BEE1BFE2A47005C8F1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58C49BF21BFE2A47005C8F1E /* PBXTargetDependency */,
+			);
+			name = QuartettTests;
+			productName = QuartettTests;
+			productReference = 58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		58C49BFA1BFE2A47005C8F1E /* QuartettUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58C49C0A1BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettUITests" */;
+			buildPhases = (
+				58C49BF71BFE2A47005C8F1E /* Sources */,
+				58C49BF81BFE2A47005C8F1E /* Frameworks */,
+				58C49BF91BFE2A47005C8F1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58C49BFD1BFE2A47005C8F1E /* PBXTargetDependency */,
+			);
+			name = QuartettUITests;
+			productName = QuartettUITests;
+			productReference = 58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58C49BD11BFE2A46005C8F1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Moritz Martin";
+				TargetAttributes = {
+					58C49BD81BFE2A47005C8F1E = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					58C49BEF1BFE2A47005C8F1E = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 58C49BD81BFE2A47005C8F1E;
+					};
+					58C49BFA1BFE2A47005C8F1E = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 58C49BD81BFE2A47005C8F1E;
+					};
+				};
+			};
+			buildConfigurationList = 58C49BD41BFE2A46005C8F1E /* Build configuration list for PBXProject "Quartett" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58C49BD01BFE2A46005C8F1E;
+			productRefGroup = 58C49BDA1BFE2A47005C8F1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58C49BD81BFE2A47005C8F1E /* Quartett */,
+				58C49BEF1BFE2A47005C8F1E /* QuartettTests */,
+				58C49BFA1BFE2A47005C8F1E /* QuartettUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58C49BD71BFE2A47005C8F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58C49BEA1BFE2A47005C8F1E /* LaunchScreen.storyboard in Resources */,
+				58C49BE71BFE2A47005C8F1E /* Assets.xcassets in Resources */,
+				58C49BE21BFE2A47005C8F1E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BEE1BFE2A47005C8F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BF91BFE2A47005C8F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58C49BD51BFE2A47005C8F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */,
+				58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */,
+				58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BEC1BFE2A47005C8F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58C49BF51BFE2A47005C8F1E /* QuartettTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58C49BF71BFE2A47005C8F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58C49C001BFE2A47005C8F1E /* QuartettUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58C49BF21BFE2A47005C8F1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58C49BD81BFE2A47005C8F1E /* Quartett */;
+			targetProxy = 58C49BF11BFE2A47005C8F1E /* PBXContainerItemProxy */;
+		};
+		58C49BFD1BFE2A47005C8F1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58C49BD81BFE2A47005C8F1E /* Quartett */;
+			targetProxy = 58C49BFC1BFE2A47005C8F1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		58C49BE01BFE2A47005C8F1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58C49BE11BFE2A47005C8F1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		58C49BE81BFE2A47005C8F1E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58C49BE91BFE2A47005C8F1E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		58C49C021BFE2A47005C8F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		58C49C031BFE2A47005C8F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58C49C051BFE2A47005C8F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Quartett/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		58C49C061BFE2A47005C8F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Quartett/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		58C49C081BFE2A47005C8F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuartettTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quartett.app/Quartett";
+			};
+			name = Debug;
+		};
+		58C49C091BFE2A47005C8F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuartettTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quartett.app/Quartett";
+			};
+			name = Release;
+		};
+		58C49C0B1BFE2A47005C8F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QuartettUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Quartett;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		58C49C0C1BFE2A47005C8F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QuartettUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Quartett;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58C49BD41BFE2A46005C8F1E /* Build configuration list for PBXProject "Quartett" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58C49C021BFE2A47005C8F1E /* Debug */,
+				58C49C031BFE2A47005C8F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58C49C041BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "Quartett" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58C49C051BFE2A47005C8F1E /* Debug */,
+				58C49C061BFE2A47005C8F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		58C49C071BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58C49C081BFE2A47005C8F1E /* Debug */,
+				58C49C091BFE2A47005C8F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		58C49C0A1BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58C49C0B1BFE2A47005C8F1E /* Debug */,
+				58C49C0C1BFE2A47005C8F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58C49BE31BFE2A47005C8F1E /* Quartett.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58C49BE41BFE2A47005C8F1E /* Quartett.xcdatamodel */,
+			);
+			currentVersion = 58C49BE41BFE2A47005C8F1E /* Quartett.xcdatamodel */;
+			path = Quartett.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 58C49BD11BFE2A46005C8F1E /* Project object */;
+}
