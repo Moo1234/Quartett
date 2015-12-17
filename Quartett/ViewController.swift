@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-    //y
+    //aaaa
     var people = [NSManagedObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
