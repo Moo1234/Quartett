@@ -10,16 +10,12 @@ import UIKit
 import CoreData
 
 class RankingController: UIViewController, UITableViewDataSource {
-    
-    @IBOutlet weak var Label1: UITableView!
-    @IBOutlet weak var label2: UITableView!
-    @IBOutlet weak var label3: UITableView!
+
     @IBOutlet weak var tableView: UITableView!
     var timeRanking = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Bla")
         title = "Zeit Rangliste"
         tableView.registerClass(UITableViewCell.self,
             forCellReuseIdentifier: "Cell")
@@ -29,6 +25,7 @@ class RankingController: UIViewController, UITableViewDataSource {
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(timeRanking.count)
         return timeRanking.count
     }
     
@@ -57,7 +54,6 @@ class RankingController: UIViewController, UITableViewDataSource {
         
         //2
         let fetchRequest = NSFetchRequest(entityName: "Ranking")
-        
         //3
         do {
             let results =

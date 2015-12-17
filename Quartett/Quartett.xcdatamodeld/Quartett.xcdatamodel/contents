@@ -37,10 +37,10 @@
         <attribute name="scoreTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cardset" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Attribute" positionX="162" positionY="-96" width="128" height="103"/>
         <element name="Cards" positionX="-254" positionY="-99" width="128" height="118"/>
-        <element name="Attribute" positionX="162" positionY="-96" width="128" height="105"/>
+        <element name="Cardset" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="Game" positionX="-162" positionY="153" width="128" height="210"/>
-        <element name="Ranking" positionX="124" positionY="144" width="128" height="90"/>
+        <element name="Ranking" positionX="124" positionY="144" width="128" height="88"/>
     </elements>
 </model>
