@@ -13,8 +13,6 @@ class GameSettingsViewController: UIViewController {
     @IBOutlet weak var playerOneName: UITextField!
     @IBOutlet weak var playerTwoName: UITextField!
     
-
-    
   
 
     override func viewDidLoad() {
