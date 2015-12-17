@@ -13,12 +13,19 @@ class GameSettingsViewController: UIViewController {
     @IBOutlet weak var playerOneName: UITextField!
     @IBOutlet weak var playerTwoName: UITextField!
     
+    @IBOutlet weak var cpuSettingsOutlet: UISegmentedControl!
+    @IBOutlet weak var cpuLabel: UILabel!
+    @IBAction func cpuSettings(sender: AnyObject) {
+    }
   
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         playerTwoName.hidden = true
+        cpuLabel.hidden = false
+        cpuSettingsOutlet.hidden = false
+        
         // Do any additional setup after loading the view.
     }
 
@@ -34,8 +41,12 @@ class GameSettingsViewController: UIViewController {
       
         if(playerTwoName.hidden == true){
             playerTwoName.hidden = false
+            cpuLabel.hidden = true
+            cpuSettingsOutlet.hidden = true
         }else{
             playerTwoName.hidden = true
+            cpuLabel.hidden = false
+            cpuSettingsOutlet.hidden = false
         }
         
     }

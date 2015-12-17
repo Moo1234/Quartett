@@ -6,6 +6,35 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="bpC-Gv-GIE">
+            <objects>
+                <tableViewController id="bfp-RV-TD6" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7RF-sF-Bl2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EMS-Cb-ZW7">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EMS-Cb-ZW7" id="olF-ja-w1N">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bfp-RV-TD6" id="bA4-D0-mYJ"/>
+                            <outlet property="delegate" destination="bfp-RV-TD6" id="8TF-gx-xAG"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZv-w4-09X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="1186"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -32,6 +61,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
                                 <rect key="frame" x="175" y="458" width="64" height="30"/>
                                 <state key="normal" title="Rangliste"/>
+                                <connections>
+                                    <segue destination="bfp-RV-TD6" kind="show" id="NzU-bn-E6k"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -48,6 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="325" y="242"/>
         </scene>
         <!--Game Settings View Controller-->
         <scene sceneID="zox-9i-jje">
@@ -99,8 +132,67 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-wm-G4I">
+                                <rect key="frame" x="171" y="168" width="217" height="29"/>
+                                <segments>
+                                    <segment title="Leicht"/>
+                                    <segment title="Mittel"/>
+                                    <segment title="Schwer"/>
+                                </segments>
+                                <connections>
+                                    <action selector="cpuSettings:" destination="oDE-RZ-ugo" eventType="valueChanged" id="qEe-Sa-Gvr"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CPU:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-NN-6fX">
+                                <rect key="frame" x="20" y="172" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kartenset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Tc-I86">
+                                <rect key="frame" x="20" y="251" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-Kk-wyb">
+                                <rect key="frame" x="253" y="218" width="141" height="114"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Bdw-hr-dz0" appends="YES" id="lQU-zB-bxp"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl Runden:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-hQ-4hj">
+                                <rect key="frame" x="17" y="375" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tgx-7v-cH2">
+                                <rect key="frame" x="171" y="368" width="217" height="29"/>
+                                <segments>
+                                    <segment title="20"/>
+                                    <segment title="40"/>
+                                    <segment title="∞"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zeit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-j9-pCR">
+                                <rect key="frame" x="17" y="442" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kdt-xA-E6Y">
+                                <rect key="frame" x="171" y="439" width="217" height="29"/>
+                                <segments>
+                                    <segment title="10"/>
+                                    <segment title="20"/>
+                                    <segment title="∞"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="JGN-cj-E6U" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="148" id="2Br-v8-GTi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JGN-cj-E6U" secondAttribute="trailing" id="2ms-m3-eRW"/>
@@ -110,7 +202,9 @@
                             <constraint firstItem="CXK-hp-e7e" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="51" id="Dwi-tF-VJ0"/>
                             <constraint firstItem="noo-hN-qNc" firstAttribute="centerX" secondItem="3GF-Zd-AxR" secondAttribute="centerX" id="Ifo-rj-LJa"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Kh5-cr-RHs" secondAttribute="leading" id="PEj-Xh-MQS"/>
+                            <constraint firstItem="v4r-wm-G4I" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="148" id="PP8-yH-9tW"/>
                             <constraint firstItem="noo-hN-qNc" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-20" id="RPZ-tG-ab4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v4r-wm-G4I" secondAttribute="trailing" constant="6" id="ZJ9-3n-Ih0"/>
                             <constraint firstItem="Kh5-cr-RHs" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="102" id="cvu-Fc-pzK"/>
                             <constraint firstItem="Yh8-VY-3ym" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="54" id="ec8-al-Z7M"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yh8-VY-3ym" secondAttribute="leading" id="usu-gA-c5C"/>
@@ -121,13 +215,19 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="cpuLabel" destination="ish-NN-6fX" id="lBb-3Q-jdc"/>
+                        <outlet property="cpuSettingsOutlet" destination="v4r-wm-G4I" id="PMf-q0-UN7"/>
                         <outlet property="playerOneName" destination="Kh5-cr-RHs" id="NMJ-La-glt"/>
                         <outlet property="playerTwoName" destination="JGN-cj-E6U" id="lkO-M6-gyT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Bdw-hr-dz0"/>
             </objects>
             <point key="canvasLocation" x="930" y="242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ImageIcon" width="164" height="134"/>
+    </resources>
 </document>
