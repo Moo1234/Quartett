@@ -94,21 +94,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
-                                <rect key="frame" x="251" y="71" width="137" height="29"/>
-                                <segments>
-                                    <segment title="1 Spieler"/>
-                                    <segment title="2 Spieler"/>
-                                </segments>
-                                <connections>
-                                    <action selector="oneOrTwoPlayer:" destination="oDE-RZ-ugo" eventType="valueChanged" id="Qhp-Lc-rlg"/>
-                                </connections>
-                            </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 2..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-cj-E6U">
-                                <rect key="frame" x="20" y="168" width="374" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noo-hN-qNc">
                                 <rect key="frame" x="0.0" y="14" width="414" height="44"/>
                                 <items>
@@ -121,94 +106,122 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 1...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kh5-cr-RHs">
-                                <rect key="frame" x="20" y="122" width="374" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Spieler Anzahl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
-                                <rect key="frame" x="20" y="74" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-wm-G4I">
-                                <rect key="frame" x="171" y="168" width="217" height="29"/>
-                                <segments>
-                                    <segment title="Leicht"/>
-                                    <segment title="Mittel"/>
-                                    <segment title="Schwer"/>
-                                </segments>
-                                <connections>
-                                    <action selector="cpuSettings:" destination="oDE-RZ-ugo" eventType="valueChanged" id="qEe-Sa-Gvr"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CPU:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-NN-6fX">
-                                <rect key="frame" x="20" y="172" width="136" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kartenset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Tc-I86">
-                                <rect key="frame" x="20" y="251" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-Kk-wyb">
-                                <rect key="frame" x="253" y="218" width="141" height="114"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Bdw-hr-dz0" appends="YES" id="lQU-zB-bxp"/>
-                                </connections>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl Runden:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-hQ-4hj">
-                                <rect key="frame" x="17" y="375" width="120" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tgx-7v-cH2">
-                                <rect key="frame" x="171" y="368" width="217" height="29"/>
-                                <segments>
-                                    <segment title="20"/>
-                                    <segment title="40"/>
-                                    <segment title="∞"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zeit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-j9-pCR">
-                                <rect key="frame" x="17" y="442" width="35" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kdt-xA-E6Y">
-                                <rect key="frame" x="171" y="439" width="217" height="29"/>
-                                <segments>
-                                    <segment title="10"/>
-                                    <segment title="20"/>
-                                    <segment title="∞"/>
-                                </segments>
-                            </segmentedControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLu-Ka-5ey">
+                                <rect key="frame" x="0.0" y="58" width="414" height="634"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler Anzahl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
+                                        <rect key="frame" x="8" y="11" width="114" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
+                                        <rect key="frame" x="157" y="8" width="249" height="29"/>
+                                        <segments>
+                                            <segment title="1 Spieler"/>
+                                            <segment title="2 Spieler"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="oneOrTwoPlayer:" destination="oDE-RZ-ugo" eventType="valueChanged" id="Qhp-Lc-rlg"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 1...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kh5-cr-RHs">
+                                        <rect key="frame" x="14" y="60" width="374" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 2..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-cj-E6U">
+                                        <rect key="frame" x="14" y="110" width="374" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CPU:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-NN-6fX">
+                                        <rect key="frame" x="14" y="115" width="108" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-wm-G4I">
+                                        <rect key="frame" x="133" y="112" width="273" height="29"/>
+                                        <segments>
+                                            <segment title="Leicht"/>
+                                            <segment title="Mittel"/>
+                                            <segment title="Schwer"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="cpuSettings:" destination="oDE-RZ-ugo" eventType="valueChanged" id="qEe-Sa-Gvr"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kartenset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Tc-I86">
+                                        <rect key="frame" x="14" y="224" width="84" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-Kk-wyb">
+                                        <rect key="frame" x="265" y="178" width="141" height="114"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Bdw-hr-dz0" appends="YES" id="lQU-zB-bxp"/>
+                                        </connections>
+                                    </imageView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tgx-7v-cH2">
+                                        <rect key="frame" x="189" y="329" width="217" height="29"/>
+                                        <segments>
+                                            <segment title="20"/>
+                                            <segment title="40"/>
+                                            <segment title="∞"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zeit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-j9-pCR">
+                                        <rect key="frame" x="14" y="413" width="35" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kdt-xA-E6Y">
+                                        <rect key="frame" x="189" y="410" width="217" height="29"/>
+                                        <segments>
+                                            <segment title="10"/>
+                                            <segment title="20"/>
+                                            <segment title="∞"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3X-rb-GqD">
+                                        <rect key="frame" x="157" y="498" width="89" height="78"/>
+                                        <state key="normal" title="Spiel Starten"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl Runden:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-hQ-4hj">
+                                        <rect key="frame" x="14" y="332" width="120" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tgx-7v-cH2" firstAttribute="top" secondItem="OL7-Kk-wyb" secondAttribute="bottom" constant="16" id="1sP-lL-c6s"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="JGN-cj-E6U" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="148" id="2Br-v8-GTi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JGN-cj-E6U" secondAttribute="trailing" id="2ms-m3-eRW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CXK-hp-e7e" secondAttribute="trailing" constant="6" id="4Ub-TL-L5U"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="JGN-cj-E6U" secondAttribute="leading" id="BEY-IT-6Te"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Kh5-cr-RHs" secondAttribute="trailing" id="Cub-jd-uqD"/>
-                            <constraint firstItem="CXK-hp-e7e" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="51" id="Dwi-tF-VJ0"/>
-                            <constraint firstItem="noo-hN-qNc" firstAttribute="centerX" secondItem="3GF-Zd-AxR" secondAttribute="centerX" id="Ifo-rj-LJa"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Kh5-cr-RHs" secondAttribute="leading" id="PEj-Xh-MQS"/>
-                            <constraint firstItem="v4r-wm-G4I" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="148" id="PP8-yH-9tW"/>
-                            <constraint firstItem="noo-hN-qNc" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-20" id="RPZ-tG-ab4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v4r-wm-G4I" secondAttribute="trailing" constant="6" id="ZJ9-3n-Ih0"/>
-                            <constraint firstItem="Kh5-cr-RHs" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="102" id="cvu-Fc-pzK"/>
-                            <constraint firstItem="Yh8-VY-3ym" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="54" id="ec8-al-Z7M"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Yh8-VY-3ym" secondAttribute="leading" id="usu-gA-c5C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Yh8-VY-3ym" secondAttribute="trailing" constant="174" id="vpH-r9-QbB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kdt-xA-E6Y" secondAttribute="trailing" constant="-12" id="0Io-Hh-ypv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JGN-cj-E6U" secondAttribute="trailing" constant="6" id="8b1-BE-E36"/>
+                            <constraint firstItem="Kdt-xA-E6Y" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="169" id="Evn-6B-NbY"/>
+                            <constraint firstItem="noo-hN-qNc" firstAttribute="centerX" secondItem="3GF-Zd-AxR" secondAttribute="centerX" id="FIc-K9-nEu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tgx-7v-cH2" secondAttribute="trailing" constant="-12" id="JEp-ZI-TDB"/>
+                            <constraint firstItem="tgx-7v-cH2" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="169" id="P9z-I6-44J"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v4r-wm-G4I" secondAttribute="trailing" constant="-12" id="UlH-0o-t0s"/>
+                            <constraint firstItem="v4r-wm-G4I" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="113" id="YMo-dU-ZbA"/>
+                            <constraint firstItem="JGN-cj-E6U" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-6" id="YX7-1p-ew5"/>
+                            <constraint firstItem="Kh5-cr-RHs" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-6" id="anw-fE-YwA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CXK-hp-e7e" secondAttribute="trailing" constant="-12" id="ffS-gP-HKc"/>
+                            <constraint firstItem="CXK-hp-e7e" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="137" id="fhx-za-eR6"/>
+                            <constraint firstItem="noo-hN-qNc" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-20" id="qVF-Hj-Ta5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OL7-Kk-wyb" secondAttribute="trailing" constant="-12" id="qvw-0f-9yp"/>
+                            <constraint firstItem="f3X-rb-GqD" firstAttribute="centerX" secondItem="3GF-Zd-AxR" secondAttribute="centerX" id="vMi-iV-2Bb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kh5-cr-RHs" secondAttribute="trailing" constant="6" id="vv5-ut-r28"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -219,6 +232,7 @@
                         <outlet property="cpuSettingsOutlet" destination="v4r-wm-G4I" id="PMf-q0-UN7"/>
                         <outlet property="playerOneName" destination="Kh5-cr-RHs" id="NMJ-La-glt"/>
                         <outlet property="playerTwoName" destination="JGN-cj-E6U" id="lkO-M6-gyT"/>
+                        <outlet property="scrollView" destination="dLu-Ka-5ey" id="xZe-od-r0I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
