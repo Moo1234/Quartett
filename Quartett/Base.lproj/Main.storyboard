@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -60,7 +61,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
                                 <rect key="frame" x="251" y="71" width="137" height="29"/>
                                 <segments>
                                     <segment title="1 Spieler"/>
@@ -70,23 +71,12 @@
                                     <action selector="oneOrTwoPlayer:" destination="oDE-RZ-ugo" eventType="valueChanged" id="Qhp-Lc-rlg"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler Anzahl auswählen:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
-                                <rect key="frame" x="20" y="74" width="200" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 1...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kh5-cr-RHs">
-                                <rect key="frame" x="20" y="122" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 2..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-cj-E6U">
+                                <rect key="frame" x="20" y="168" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 2..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-cj-E6U">
-                                <rect key="frame" x="20" y="168" width="200" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noo-hN-qNc">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noo-hN-qNc">
                                 <rect key="frame" x="0.0" y="14" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Spieleinstellungen" id="QXZ-Pc-pkh">
@@ -98,8 +88,34 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 1...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kh5-cr-RHs">
+                                <rect key="frame" x="20" y="122" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Spieler Anzahl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
+                                <rect key="frame" x="20" y="74" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JGN-cj-E6U" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="148" id="2Br-v8-GTi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JGN-cj-E6U" secondAttribute="trailing" id="2ms-m3-eRW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CXK-hp-e7e" secondAttribute="trailing" constant="6" id="4Ub-TL-L5U"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="JGN-cj-E6U" secondAttribute="leading" id="BEY-IT-6Te"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kh5-cr-RHs" secondAttribute="trailing" id="Cub-jd-uqD"/>
+                            <constraint firstItem="CXK-hp-e7e" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="51" id="Dwi-tF-VJ0"/>
+                            <constraint firstItem="noo-hN-qNc" firstAttribute="centerX" secondItem="3GF-Zd-AxR" secondAttribute="centerX" id="Ifo-rj-LJa"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Kh5-cr-RHs" secondAttribute="leading" id="PEj-Xh-MQS"/>
+                            <constraint firstItem="noo-hN-qNc" firstAttribute="leading" secondItem="3GF-Zd-AxR" secondAttribute="leadingMargin" constant="-20" id="RPZ-tG-ab4"/>
+                            <constraint firstItem="Kh5-cr-RHs" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="102" id="cvu-Fc-pzK"/>
+                            <constraint firstItem="Yh8-VY-3ym" firstAttribute="top" secondItem="xqR-aS-J2J" secondAttribute="bottom" constant="54" id="ec8-al-Z7M"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Yh8-VY-3ym" secondAttribute="leading" id="usu-gA-c5C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yh8-VY-3ym" secondAttribute="trailing" constant="174" id="vpH-r9-QbB"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
