@@ -11,12 +11,15 @@ import CoreData
 
 class RankingController: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var Label1: UITableView!
+    @IBOutlet weak var label2: UITableView!
+    @IBOutlet weak var label3: UITableView!
     @IBOutlet weak var tableView: UITableView!
     var timeRanking = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Bla")
         title = "Zeit Rangliste"
         tableView.registerClass(UITableViewCell.self,
             forCellReuseIdentifier: "Cell")
@@ -34,42 +37,13 @@ class RankingController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
         
         let person = timeRanking[indexPath.row]
-        print(person.valueForKey("player"))
+        print("Test" , person.valueForKey("player"))
         cell!.textLabel!.text = person.valueForKey("player") as? String
 //        let path = person.valueForKey("image") as? String
 //        var image : UIImage = UIImage(named: path!)!
 //        cell!.imageView!.image = image
         
         return cell!
-    }
-    
-    
-    func saveName(name: String, path: String) {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        //2
-        let entity =  NSEntityDescription.entityForName("Ranking",
-            inManagedObjectContext:managedContext)
-        
-        let person = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext: managedContext)
-        
-        //3
-        person.setValue(name, forKey: "player")
-        person.setValue(path, forKey: "scoreTime")
-        
-        //4
-        do {
-            try managedContext.save()
-            //5
-            timeRanking.append(person)
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
