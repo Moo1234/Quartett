@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */; };
 		58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */; };
 		58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDE1BFE2A47005C8F1E /* ViewController.swift */; };
 		58C49BE21BFE2A47005C8F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE01BFE2A47005C8F1E /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsViewController.swift; sourceTree = "<group>"; };
 		58C49BD91BFE2A47005C8F1E /* Quartett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quartett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58C49BDE1BFE2A47005C8F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		58C49BDB1BFE2A47005C8F1E /* Quartett */ = {
 			isa = PBXGroup;
 			children = (
+				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
 				58C49BE01BFE2A47005C8F1E /* Main.storyboard */,
@@ -196,6 +199,7 @@
 				TargetAttributes = {
 					58C49BD81BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = D24AGHC9PF;
 					};
 					58C49BEF1BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -261,6 +265,7 @@
 			files = (
 				58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */,
 				58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */,
+				5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */,
 				58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +406,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Quartett/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +420,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Quartett/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -486,6 +497,7 @@
 				58C49C061BFE2A47005C8F1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58C49C071BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +506,7 @@
 				58C49C091BFE2A47005C8F1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58C49C0A1BFE2A47005C8F1E /* Build configuration list for PBXNativeTarget "QuartettUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +515,7 @@
 				58C49C0C1BFE2A47005C8F1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

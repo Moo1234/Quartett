@@ -17,25 +17,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-D7-7ey">
-                                <rect key="frame" x="178" y="188" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-D7-7ey">
+                                <rect key="frame" x="139" y="255" width="136" height="30"/>
+                                <state key="normal" title="Neues Spiel Starten"/>
+                                <connections>
+                                    <segue destination="oDE-RZ-ugo" kind="show" id="yC0-Vk-LX7"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2i-fB-fdT">
-                                <rect key="frame" x="184" y="255" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2i-fB-fdT">
+                                <rect key="frame" x="183" y="353" width="49" height="30"/>
+                                <state key="normal" title="Galerie"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
-                                <rect key="frame" x="193" y="310" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
+                                <rect key="frame" x="175" y="458" width="64" height="30"/>
+                                <state key="normal" title="Rangliste"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="07R-m4-Jdf"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="leading" secondItem="Jig-QB-zFE" secondAttribute="trailing" constant="-56" id="CUc-7K-Rqh"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="68" id="CXs-AQ-XaA"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nWT-Cf-6L1"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="leading" secondItem="Ru9-D7-7ey" secondAttribute="trailing" constant="-92" id="uQj-Vf-TBy"/>
+                            <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="75" id="zoa-zg-TfI"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Game Settings View Controller-->
+        <scene sceneID="zox-9i-jje">
+            <objects>
+                <viewController id="oDE-RZ-ugo" customClass="GameSettingsViewController" customModule="Quartett" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xqR-aS-J2J"/>
+                        <viewControllerLayoutGuide type="bottom" id="ztO-2c-URY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3GF-Zd-AxR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
+                                <rect key="frame" x="251" y="71" width="137" height="29"/>
+                                <segments>
+                                    <segment title="1 Spieler"/>
+                                    <segment title="2 Spieler"/>
+                                </segments>
+                                <connections>
+                                    <action selector="oneOrTwoPlayer:" destination="oDE-RZ-ugo" eventType="valueChanged" id="Qhp-Lc-rlg"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler Anzahl auswählen:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
+                                <rect key="frame" x="20" y="74" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 1..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kh5-cr-RHs">
+                                <rect key="frame" x="20" y="122" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Spieler 2..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-cj-E6U">
+                                <rect key="frame" x="20" y="168" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noo-hN-qNc">
+                                <rect key="frame" x="0.0" y="14" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Spieleinstellungen" id="QXZ-Pc-pkh">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ROa-VU-rcG">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="XXD-Nw-i3s"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="playerOneName" destination="Kh5-cr-RHs" id="NMJ-La-glt"/>
+                        <outlet property="playerTwoName" destination="JGN-cj-E6U" id="lkO-M6-gyT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930" y="242"/>
         </scene>
     </scenes>
 </document>
