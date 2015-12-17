@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0A91C230503003F0D20 /* RankingController.swift */; };
 		5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */; };
 		58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */; };
 		58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDE1BFE2A47005C8F1E /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CB8B0A91C230503003F0D20 /* RankingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingController.swift; sourceTree = "<group>"; };
 		5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsViewController.swift; sourceTree = "<group>"; };
 		58C49BD91BFE2A47005C8F1E /* Quartett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quartett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
+				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
 				58C49BE01BFE2A47005C8F1E /* Main.storyboard */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */,
+				3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */,
 				58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */,
 				5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */,
 				58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */,
