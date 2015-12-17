@@ -10,6 +10,7 @@ import UIKit
 
 class GameSettingsViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playerOneName: UITextField!
     @IBOutlet weak var playerTwoName: UITextField!
     
@@ -18,10 +19,16 @@ class GameSettingsViewController: UIViewController {
     @IBAction func cpuSettings(sender: AnyObject) {
     }
   
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let modelName = UIDevice.currentDevice().modelName
+        if modelName == "iPhone 4" || modelName == "iPhone 4s" {
+            scrollView.contentSize.height = 800;
+        }else if modelName == "iPhone 5" || modelName == "iPhone 5s" {
+            scrollView.contentSize.height = 700
+        }
         playerTwoName.hidden = true
         cpuLabel.hidden = false
         cpuSettingsOutlet.hidden = false
