@@ -106,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
+				5882F3B51C23145E006F0BF6 /* UIDevice.swift */,
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
@@ -204,7 +205,7 @@
 				TargetAttributes = {
 					58C49BD81BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = D24AGHC9PF;
+						DevelopmentTeam = 42N696HKU5;
 					};
 					58C49BEF1BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;

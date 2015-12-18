@@ -21,7 +21,13 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiL-EZ-Ts2">
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="HIt-5A-uij"/>
+                                    <navigationItem title="Title" id="HIt-5A-uij">
+                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="PVa-FA-nnO">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="9qM-4e-QLO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7TT-Fj-HFs">
@@ -262,4 +268,7 @@
     <resources>
         <image name="ImageIcon" width="164" height="134"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XXD-Nw-i3s"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var people = [NSManagedObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        saveName("Hans", rounds: 15, time: 20.0)
+//        save("Hans", rounds: 15, time: 20.0)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
 
     
-    func saveName(player: String, rounds: Int, time: Double) {
+    func save(player: String, rounds: Int, time: Double) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
