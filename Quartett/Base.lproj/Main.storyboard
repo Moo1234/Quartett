@@ -106,6 +106,41 @@
             </objects>
             <point key="canvasLocation" x="325" y="242"/>
         </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="hnh-cC-Rx8">
+            <objects>
+                <collectionViewController storyboardIdentifier="CardSetGalery" id="nHR-SZ-mWh" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2h1-PK-6G2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cQn-hg-TnY">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aPH-Ya-mf3">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="nHR-SZ-mWh" id="eTt-BE-0s3"/>
+                            <outlet property="delegate" destination="nHR-SZ-mWh" id="wXy-zA-5wd"/>
+                        </connections>
+                    </collectionView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8g3-Lr-IYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1532" y="-634"/>
+        </scene>
         <!--Game Settings View Controller-->
         <scene sceneID="zox-9i-jje">
             <objects>
@@ -122,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="14" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Spieleinstellungen" id="QXZ-Pc-pkh">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ROa-VU-rcG">
+                                        <barButtonItem key="leftBarButtonItem" title="Abbrechen" id="ROa-VU-rcG">
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="XXD-Nw-i3s"/>
                                             </connections>
@@ -136,7 +171,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler Anzahl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh8-VY-3ym">
                                         <rect key="frame" x="8" y="11" width="114" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-hp-e7e">
@@ -162,7 +197,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CPU:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-NN-6fX">
                                         <rect key="frame" x="14" y="115" width="108" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-wm-G4I">
@@ -179,14 +214,14 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kartenset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Tc-I86">
                                         <rect key="frame" x="14" y="224" width="84" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-Kk-wyb">
                                         <rect key="frame" x="265" y="178" width="141" height="114"/>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Bdw-hr-dz0" appends="YES" id="lQU-zB-bxp"/>
+                                            <outletCollection property="gestureRecognizers" destination="H2d-PF-aH4" appends="YES" id="cDc-yE-kMg"/>
                                         </connections>
                                     </imageView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tgx-7v-cH2">
@@ -196,11 +231,14 @@
                                             <segment title="40"/>
                                             <segment title="∞"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="setNumberOfRounds:" destination="oDE-RZ-ugo" eventType="valueChanged" id="7oL-fQ-4U5"/>
+                                        </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zeit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-j9-pCR">
                                         <rect key="frame" x="14" y="413" width="35" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kdt-xA-E6Y">
@@ -210,6 +248,9 @@
                                             <segment title="20"/>
                                             <segment title="∞"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="setTime:" destination="oDE-RZ-ugo" eventType="valueChanged" id="mRX-Ky-DEP"/>
+                                        </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3X-rb-GqD">
                                         <rect key="frame" x="157" y="498" width="89" height="78"/>
@@ -218,7 +259,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl Runden:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-hQ-4hj">
                                         <rect key="frame" x="14" y="332" width="120" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -257,10 +298,16 @@
                         <outlet property="playerOneName" destination="Kh5-cr-RHs" id="NMJ-La-glt"/>
                         <outlet property="playerTwoName" destination="JGN-cj-E6U" id="lkO-M6-gyT"/>
                         <outlet property="scrollView" destination="dLu-Ka-5ey" id="xZe-od-r0I"/>
+                        <outlet property="setNumberOfRoundsOutlet" destination="tgx-7v-cH2" id="yif-ty-Ydk"/>
+                        <outlet property="setTimeOutlet" destination="Kdt-xA-E6Y" id="ozK-Rk-toV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Bdw-hr-dz0"/>
+                <tapGestureRecognizer id="H2d-PF-aH4">
+                    <connections>
+                        <segue destination="nHR-SZ-mWh" kind="show" id="fj1-lk-EIs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="930" y="242"/>
         </scene>

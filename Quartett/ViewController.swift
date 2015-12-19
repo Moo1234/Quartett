@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var people = [NSManagedObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        save("Hans", rounds: 15, time: 20.0)
+        //save("Hans", rounds: 15, time: 20.0)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
