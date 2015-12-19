@@ -255,6 +255,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3X-rb-GqD">
                                         <rect key="frame" x="157" y="498" width="89" height="78"/>
                                         <state key="normal" title="Spiel Starten"/>
+                                        <connections>
+                                            <action selector="createNewGame:" destination="oDE-RZ-ugo" eventType="touchUpInside" id="XMr-KI-20s"/>
+                                            <segue destination="iTw-JK-eau" kind="show" id="NGp-wx-xkl"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl Runden:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-hQ-4hj">
                                         <rect key="frame" x="14" y="332" width="120" height="21"/>
@@ -310,6 +314,33 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="930" y="242"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qq8-Ij-hMq">
+            <objects>
+                <viewController id="iTw-JK-eau" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HEf-pV-6yu"/>
+                        <viewControllerLayoutGuide type="bottom" id="zGO-Jb-hSO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GSN-Yi-bNH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spiel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqp-C5-wWY">
+                                <rect key="frame" x="205" y="230" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vh-5I-xex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1624" y="455"/>
         </scene>
     </scenes>
     <resources>

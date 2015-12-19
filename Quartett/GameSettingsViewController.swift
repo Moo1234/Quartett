@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
+
 
 class GameSettingsViewController: UIViewController, UITextFieldDelegate {
 
+    //GUI-elements
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playerOneName: UITextField!
     @IBOutlet weak var playerTwoName: UITextField!
@@ -19,12 +22,12 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cpuLabel: UILabel!
     @IBOutlet weak var setTimeOutlet: UISegmentedControl!
     
-    
+    //Vars
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
-    var cpuDifficulty = -1
-    var numberRounds = 0
-    var gameTime: NSTimeInterval = 0.0
+    var cpuDifficulty = 1
+    var numberLaps = 20
+    var gameTime: NSTimeInterval = 600.0
     
     
     
@@ -40,7 +43,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         case 2:
             cpuDifficulty = 3
         default:
-            cpuDifficulty = -1
             break
         }
     }
@@ -52,11 +54,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         switch setNumberOfRoundsOutlet.selectedSegmentIndex{
             
         case 0:
-            numberRounds = 20
+            numberLaps = 20
         case 1:
-            numberRounds = 40
+            numberLaps = 40
         case 2:
-            numberRounds = 1000
+            numberLaps = 1000
         default:
             break
         }
@@ -110,7 +112,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     //Hide Keyboard after typing
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if playerTwoName.tag == 0{
+        if textField.tag == 0{
             playerOneNameVar = textField.text!
         }else{
             playerTwoNameVar = textField.text!
@@ -119,7 +121,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-
+    
+    
+    //hide or show textfield player2
     @IBAction func oneOrTwoPlayer(sender: AnyObject) {
       
         if(playerTwoName.hidden == true){
@@ -134,6 +138,61 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    //Starts and creates Game (Button: Spiel Starten)
+    @IBAction func createNewGame(sender: AnyObject) {
+        
+        let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        if playerTwoName.hidden == false{
+            
+            cpuDifficulty = -1
+        }else{
+            playerTwoNameVar = "SinglePlayerGame"
+        }
+        
+        let random = Int(arc4random_uniform(2) + 1)
+        var whoStarts = true
+        
+        
+        if random == 1{
+            whoStarts = true
+        }else{
+            whoStarts = false
+        }
+        
+        
+        var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
+        
+        /* Sollte eigentlich neues Objekt "Spiel" erstellen, geht aber nicht und ich weiß noch nicht warum :D 
+         
+        //set Values
+        //cardSet: 
+        newGame.setValue(2, forKey: "cardset")
+        newGame.setValue(cpuDifficulty, forKey: "difficulty")
+        newGame.setValue(numberLaps, forKey: "laps")
+        //Max Laps?? : 
+        newGame.setValue(100, forKey: "maxLaps")
+        // Max Time?? : 
+        newGame.setValue(100.0, forKey: "maxTime")
+        newGame.setValue(playerOneNameVar, forKey: "player1")
+        //player one cards: 
+        newGame.setValue("JO", forKey: "player1Cards")
+        newGame.setValue(playerTwoNameVar, forKey: "player")
+        // player two cards: 
+        newGame.setValue("Jo2", forKey: "player2Cards")
+        newGame.setValue(gameTime, forKey: "Time")
+        newGame.setValue(whoStarts, forKey: "turn")
+        
+        context.save(nil)
+
+        */
+        
+        print("CPU: " ,cpuDifficulty, "\n laps: ", numberLaps, "\n p1:", playerOneNameVar, "\n p2" , playerTwoNameVar, "\n time:", gameTime)
+        
+        
+    }
     /*
     // MARK: - Navigation
 
