@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // DB functions
-        print("Reset Data")
+        print("----------------- Reset Data -----------------")
         deleteObjectsFromEntity("Ranking") // delete all Rankings
         // Save entries in Rankings
         saveRanking("Hans", rounds: 15, time: 20.0)
