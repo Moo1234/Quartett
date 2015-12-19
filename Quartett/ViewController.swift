@@ -10,12 +10,14 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-    //aaaa
-    var people = [NSManagedObject]()
+    var rankings = [NSManagedObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //save("Hans", rounds: 15, time: 20.0)
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        // DB functions
+        // deleteIncidents("Ranking") // delete all Rankings
+        // save("Hans", rounds: 15, time: 20.0) // Save entry in Rankings
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,31 +27,34 @@ class ViewController: UIViewController {
 
     
     func save(player: String, rounds: Int, time: Double) {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
-        //2
-        let entity =  NSEntityDescription.entityForName("Ranking",
-            inManagedObjectContext:managedContext)
-        
-        let person = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext: managedContext)
-        
-        //3
+        let entity =  NSEntityDescription.entityForName("Ranking", inManagedObjectContext:managedContext)
+        let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+
         person.setValue(player, forKey: "player")
         person.setValue(rounds, forKey: "scoreRounds")
-        person.setValue(time, forKey: "scoreTime")
-        
-        //4
+
         do {
             try managedContext.save()
-            //5
-            people.append(person)
+            rankings.append(person)
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+ 
+    func deleteIncidents(entity: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
 

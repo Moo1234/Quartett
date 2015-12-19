@@ -16,45 +16,43 @@ class RankingController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Zeit Rangliste"
-        tableView.registerClass(UITableViewCell.self,
-            forCellReuseIdentifier: "Cell")
+        //title = "Zeit Rangliste"
+       // tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(timeRanking.count)
         return timeRanking.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("RankingTableViewCell", forIndexPath: indexPath) as! RankingTableViewCell
+        let ranking = timeRanking[indexPath.row]
+        cell.nameLabel.text = ranking.valueForKey("player") as? String
+        cell.scoreLabel.text =  String((ranking.valueForKey("scoreRounds") as? Int)!)
+        cell.rankingLabel.text = String(indexPath.row + 1) + "."
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
         
-        let person = timeRanking[indexPath.row]
-        print("Test" , person.valueForKey("player"))
-        cell!.textLabel!.text = person.valueForKey("player") as? String
 //        let path = person.valueForKey("image") as? String
 //        var image : UIImage = UIImage(named: path!)!
 //        cell!.imageView!.image = image
         
-        return cell!
+        return cell
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
-        //2
         let fetchRequest = NSFetchRequest(entityName: "Ranking")
-        //3
+        
+        // sort less rounds as best
+        let sortDescriptor = NSSortDescriptor(key: "scoreRounds", ascending: true)
+        let sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
