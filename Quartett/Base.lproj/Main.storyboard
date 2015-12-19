@@ -24,7 +24,12 @@
                                     <navigationItem title="Runden Rangliste" id="HIt-5A-uij">
                                         <barButtonItem key="leftBarButtonItem" title="Zurück" id="PVa-FA-nnO">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="9qM-4e-QLO"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="xl4-c8-XJd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Zurücksetzen" id="TxX-qi-d4W">
+                                            <connections>
+                                                <action selector="resetRanking:" destination="J8t-rY-j3h" id="WCQ-MG-Q7Z"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -47,14 +52,14 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e95-id-p1g">
-                                                    <rect key="frame" x="314" y="11" width="52" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-qN-NhB">
+                                                    <rect key="frame" x="161" y="11" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-qN-NhB">
-                                                    <rect key="frame" x="161" y="11" width="52" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e95-id-p1g">
+                                                    <rect key="frame" x="314" y="11" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -78,14 +83,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Runden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiJ-sU-8dk">
-                                <rect key="frame" x="178" y="69" width="59" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-9E-lDa">
+                                <rect key="frame" x="329" y="70" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spieler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-9E-lDa">
-                                <rect key="frame" x="329" y="70" width="53" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Runden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiJ-sU-8dk">
+                                <rect key="frame" x="178" y="69" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,6 +100,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="navigationBarTitle" destination="HIt-5A-uij" id="3WJ-Fo-hdx"/>
+                        <outlet property="scoreTypeLabel" destination="LiJ-sU-8dk" id="XzQ-se-jXK"/>
                         <outlet property="tableView" destination="7TT-Fj-HFs" id="65b-y1-h9C"/>
                     </connections>
                 </viewController>
@@ -125,9 +132,9 @@
                                 <rect key="frame" x="183" y="353" width="49" height="30"/>
                                 <state key="normal" title="Galerie"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
-                                <rect key="frame" x="175" y="458" width="64" height="30"/>
-                                <state key="normal" title="Rangliste"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
+                                <rect key="frame" x="171" y="458" width="72" height="30"/>
+                                <state key="normal" title="Ranglisten"/>
                                 <connections>
                                     <segue destination="J8t-rY-j3h" kind="show" id="c19-ko-Gax"/>
                                 </connections>
@@ -143,6 +150,7 @@
                             <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="75" id="zoa-zg-TfI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="KZ7-3E-R1F"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -390,6 +398,6 @@
         <image name="ImageIcon" width="164" height="134"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9qM-4e-QLO"/>
+        <segue reference="xl4-c8-XJd"/>
     </inferredMetricsTieBreakers>
 </document>

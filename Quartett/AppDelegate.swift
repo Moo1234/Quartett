@@ -17,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // DB functions
+        print("Reset Data")
+        deleteObjectsFromEntity("Ranking") // delete all Rankings
+        // Save entries in Rankings
+        saveRanking("Hans", rounds: 15, time: 20.0)
+        saveRanking("Peter", rounds: 10, time: 30.0)
+        saveRanking("Willem", rounds: 5, time: 10.0)
+        saveRanking("Jörg", rounds: 35, time: 100.0)
         return true
     }
 
@@ -104,6 +114,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
             }
+        }
+    }
+    
+    
+    
+    func saveRanking(player: String, rounds: Int, time: Double) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Ranking", inManagedObjectContext:managedContext)
+        let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        person.setValue(player, forKey: "player")
+        person.setValue(rounds, forKey: "scoreRounds")
+        person.setValue(time, forKey: "scoreTime")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteObjectsFromEntity(entity: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
 

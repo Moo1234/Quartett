@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0A91C230503003F0D20 /* RankingController.swift */; };
 		3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */; };
+		3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8B0B11C25EC91003F0D20 /* Main.storyboard */; };
 		5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */; };
 		5882F3B61C23145E006F0BF6 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B51C23145E006F0BF6 /* UIDevice.swift */; };
 		58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */; };
 		58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDE1BFE2A47005C8F1E /* ViewController.swift */; };
-		58C49BE21BFE2A47005C8F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE01BFE2A47005C8F1E /* Main.storyboard */; };
 		58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BE31BFE2A47005C8F1E /* Quartett.xcdatamodeld */; };
 		58C49BE71BFE2A47005C8F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE61BFE2A47005C8F1E /* Assets.xcassets */; };
 		58C49BEA1BFE2A47005C8F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C49BE81BFE2A47005C8F1E /* LaunchScreen.storyboard */; };
@@ -41,12 +41,12 @@
 /* Begin PBXFileReference section */
 		3CB8B0A91C230503003F0D20 /* RankingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingController.swift; sourceTree = "<group>"; };
 		3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
+		3CB8B0B21C25EC91003F0D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsViewController.swift; sourceTree = "<group>"; };
 		5882F3B51C23145E006F0BF6 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		58C49BD91BFE2A47005C8F1E /* Quartett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quartett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58C49BDE1BFE2A47005C8F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		58C49BE11BFE2A47005C8F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58C49BE41BFE2A47005C8F1E /* Quartett.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quartett.xcdatamodel; sourceTree = "<group>"; };
 		58C49BE61BFE2A47005C8F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58C49BE91BFE2A47005C8F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,9 +111,9 @@
 				5882F3B51C23145E006F0BF6 /* UIDevice.swift */,
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
+				3CB8B0B11C25EC91003F0D20 /* Main.storyboard */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
-				58C49BE01BFE2A47005C8F1E /* Main.storyboard */,
 				58C49BE61BFE2A47005C8F1E /* Assets.xcassets */,
 				58C49BE81BFE2A47005C8F1E /* LaunchScreen.storyboard */,
 				58C49BEB1BFE2A47005C8F1E /* Info.plist */,
@@ -245,9 +245,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */,
 				58C49BEA1BFE2A47005C8F1E /* LaunchScreen.storyboard in Resources */,
 				58C49BE71BFE2A47005C8F1E /* Assets.xcassets in Resources */,
-				58C49BE21BFE2A47005C8F1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,10 +314,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		58C49BE01BFE2A47005C8F1E /* Main.storyboard */ = {
+		3CB8B0B11C25EC91003F0D20 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				58C49BE11BFE2A47005C8F1E /* Base */,
+				3CB8B0B21C25EC91003F0D20 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
