@@ -6,7 +6,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Cards" syncable="YES">
+    <entity name="Card" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +14,7 @@
         <attribute name="values" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Cardset" syncable="YES">
+        <attribute name="attributes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cards" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,8 +39,8 @@
     </entity>
     <elements>
         <element name="Attribute" positionX="162" positionY="-96" width="128" height="103"/>
-        <element name="Cards" positionX="-254" positionY="-99" width="128" height="118"/>
-        <element name="Cardset" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Card" positionX="-254" positionY="-99" width="128" height="120"/>
+        <element name="Cardset" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Game" positionX="-162" positionY="153" width="128" height="210"/>
         <element name="Ranking" positionX="124" positionY="144" width="128" height="88"/>
     </elements>

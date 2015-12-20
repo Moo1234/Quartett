@@ -21,12 +21,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // DB functions
         print("----------------- Reset Data -----------------")
-        deleteObjectsFromEntity("Ranking") // delete all Rankings
-        // Save entries in Rankings
+        // delete all Data
+        deleteObjectsFromEntity("Ranking")
+        deleteObjectsFromEntity("Card")
+        deleteObjectsFromEntity("Cardset")
+        deleteObjectsFromEntity("Attribute")
+
         saveRanking("Hans", rounds: 15, time: 20.0)
         saveRanking("Peter", rounds: 10, time: 30.0)
         saveRanking("Willem", rounds: 5, time: 10.0)
         saveRanking("Jörg", rounds: 35, time: 100.0)
+
+        saveCard(0, name: "Robben", info: "info0", image: "pic0", values: "90,88,60,42,97,31")
+        saveCard(1, name: "Ribery", info: "info1", image: "pic1", values: "11,12,13,14,15,16")
+        saveCard(2, name: "Boateng", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
+        saveCard(3, name: "Alaba", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
+        saveCard(4, name: "Lewandowski", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
+
+        saveCardset(0, name: "Fußballer", cards: "0,1,2,3,4", attributes: "0,1,2,3,4,5")
+        
+        saveAttribute(0, name: "PAC", icon: "icon0", condition: true)
+        saveAttribute(1, name: "DRI", icon: "icon1", condition: true)
+        saveAttribute(2, name: "SHO", icon: "icon2", condition: true)
+        saveAttribute(3, name: "DEF", icon: "icon3", condition: true)
+        saveAttribute(4, name: "PAS", icon: "icon4", condition: true)
+        saveAttribute(5, name: "PHY", icon: "icon5", condition: true)
+        
         return true
     }
 
@@ -123,11 +143,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Ranking", inManagedObjectContext:managedContext)
-        let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let newRanking = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
-        person.setValue(player, forKey: "player")
-        person.setValue(rounds, forKey: "scoreRounds")
-        person.setValue(time, forKey: "scoreTime")
+        newRanking.setValue(player, forKey: "player")
+        newRanking.setValue(rounds, forKey: "scoreRounds")
+        newRanking.setValue(time, forKey: "scoreTime")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveCard(id: Int, name: String, info: String, image: String, values: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Card", inManagedObjectContext:managedContext)
+        let newCard = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        newCard.setValue(id, forKey: "id")
+        newCard.setValue(name, forKey: "name")
+        newCard.setValue(info, forKey: "info")
+        newCard.setValue(image, forKey: "image")
+        newCard.setValue(values, forKey: "values")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveCardset(id: Int, name: String, cards: String, attributes: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Cardset", inManagedObjectContext:managedContext)
+        let newCardset = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        newCardset.setValue(id, forKey: "id")
+        newCardset.setValue(name, forKey: "name")
+        newCardset.setValue(cards, forKey: "cards")
+        newCardset.setValue(attributes, forKey: "attributes")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveAttribute(id: Int, name: String, icon: String, condition: Bool) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Attribute", inManagedObjectContext:managedContext)
+        let attribute = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        attribute.setValue(id, forKey: "id")
+        attribute.setValue(name, forKey: "name")
+        attribute.setValue(icon, forKey: "icon")
+        attribute.setValue(condition, forKey: "condition")
         
         do {
             try managedContext.save()
