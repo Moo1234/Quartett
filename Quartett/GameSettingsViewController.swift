@@ -11,7 +11,7 @@ import CoreData
 
 
 class GameSettingsViewController: UIViewController, UITextFieldDelegate {
-
+    
     //GUI-elements
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playerOneName: UITextField!
@@ -22,6 +22,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cpuLabel: UILabel!
     @IBOutlet weak var setTimeOutlet: UISegmentedControl!
     
+    @IBAction func openSetGalery(sender: AnyObject) {
+    }
     //Vars
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
@@ -46,7 +48,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             break
         }
     }
-  
+    
     
     // Segment Contol: Rounds
     @IBAction func setNumberOfRounds(sender: AnyObject) {
@@ -64,7 +66,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-
+    
     // Segment Control: Time
     @IBAction func setTime(sender: AnyObject) {
         
@@ -78,7 +80,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             gameTime = 1000000.0
         default:
             break
-        
+            
         }
         
     }
@@ -90,7 +92,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         playerOneName.tag = 0
         playerTwoName.delegate = self
         playerTwoName.tag = 1
-
+        
         let modelName = UIDevice.currentDevice().modelName
         if modelName == "iPhone 4" || modelName == "iPhone 4s" {
             scrollView.contentSize.height = 800;
@@ -103,7 +105,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -125,7 +127,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     //hide or show textfield player2
     @IBAction func oneOrTwoPlayer(sender: AnyObject) {
-      
+        
         if(playerTwoName.hidden == true){
             playerTwoName.hidden = false
             cpuLabel.hidden = true
@@ -165,42 +167,57 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
-        /* Sollte eigentlich neues Objekt "Spiel" erstellen, geht aber nicht und ich weiß noch nicht warum :D 
-         
+        
         //set Values
-        //cardSet: 
+        //cardSet:
         newGame.setValue(2, forKey: "cardset")
         newGame.setValue(cpuDifficulty, forKey: "difficulty")
         newGame.setValue(numberLaps, forKey: "laps")
-        //Max Laps?? : 
+        //Max Laps?? :
         newGame.setValue(100, forKey: "maxLaps")
-        // Max Time?? : 
+        // Max Time?? :
         newGame.setValue(100.0, forKey: "maxTime")
         newGame.setValue(playerOneNameVar, forKey: "player1")
-        //player one cards: 
+        //player one cards:
         newGame.setValue("JO", forKey: "player1Cards")
-        newGame.setValue(playerTwoNameVar, forKey: "player")
-        // player two cards: 
+        newGame.setValue(playerTwoNameVar, forKey: "player2")
+        // player two cards:
         newGame.setValue("Jo2", forKey: "player2Cards")
-        newGame.setValue(gameTime, forKey: "Time")
+        newGame.setValue(gameTime, forKey: "time")
         newGame.setValue(whoStarts, forKey: "turn")
         
-        context.save(nil)
-
+        
+        do {
+            try context.save()
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        
+        /*
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Game")
+        do {
+        let results =
+        try managedContext.executeFetchRequest(fetchRequest)
+        var bla = results as! [NSManagedObject]
+        let bla2 = bla[0]
+        print(bla2.valueForKey("player1"))
+        } catch let error as NSError {
+        print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
         */
-        
-        print("CPU: " ,cpuDifficulty, "\n laps: ", numberLaps, "\n p1:", playerOneNameVar, "\n p2" , playerTwoNameVar, "\n time:", gameTime)
-        
-        
     }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
