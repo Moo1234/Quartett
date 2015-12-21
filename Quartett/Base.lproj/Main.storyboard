@@ -386,14 +386,24 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wW-MBE">
                                                     <rect key="frame" x="0.0" y="25" width="250" height="250"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDF-mq-9RO" customClass="CheckBox" customModule="Quartett" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="275" width="250" height="25"/>
-                                                    <state key="normal" title="Auswahlbutton"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCI-24-TqY">
+                                                    <rect key="frame" x="39" y="271" width="211" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yV1-0Z-LCh">
+                                                    <rect key="frame" x="0.0" y="271" width="31" height="29"/>
+                                                    <state key="normal" title="Button" image="uncheckedButton"/>
+                                                    <connections>
+                                                        <action selector="checkButtonPressed:" destination="rNC-lR-Jjv" eventType="touchUpInside" id="lhf-gk-fsM"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="checkButton" destination="yV1-0Z-LCh" id="bKi-lc-ONB"/>
                                             <outlet property="galeryImage" destination="Sl5-wW-MBE" id="VOs-fa-rA6"/>
                                             <outlet property="galeryTitle" destination="mXC-Cj-Yh6" id="wus-Jv-ldf"/>
                                         </connections>
@@ -451,6 +461,7 @@
     </scenes>
     <resources>
         <image name="ImageIcon" width="164" height="134"/>
+        <image name="uncheckedButton" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XXD-Nw-i3s"/>

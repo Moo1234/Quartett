@@ -9,14 +9,12 @@
 import UIKit
 import CoreData
 
-class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource {
+class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     
     var cardsetArray = [NSManagedObject]()
-    
-    let imagestest = [UIImage(named: "rib"), UIImage(named: "rob"), UIImage(named: "rib")]
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
