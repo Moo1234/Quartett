@@ -344,16 +344,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-Gp-tTh">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-Gp-tTh">
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Verfügbare Kartensets" id="buJ-RM-Taa">
-                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="aDJ-Id-SiU"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="aDJ-Id-SiU">
+                                            <connections>
+                                                <segue destination="oDE-RZ-ugo" kind="show" id="rtz-4X-a1e"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WAV-Wv-4Hj">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WAV-Wv-4Hj">
                                 <rect key="frame" x="0.0" y="59" width="407" height="677"/>
+                                <color key="backgroundColor" red="0.99929887819999996" green="0.99929887819999996" blue="0.99929887819999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="F9t-mE-xcy">
                                     <size key="itemSize" width="250" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -368,15 +373,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wW-MBE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXC-Cj-Yh6">
-                                                    <rect key="frame" x="8" y="8" width="234" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.99929887820512819" green="0.99929887820512819" blue="0.99929887820512819" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXC-Cj-Yh6">
+                                                    <rect key="frame" x="1" y="0.0" width="250" height="25"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Ai7-5D-Bcd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.99929887819999996" green="0.99929887819999996" blue="0.99929887819999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-wW-MBE">
+                                                    <rect key="frame" x="0.0" y="25" width="250" height="250"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDF-mq-9RO" customClass="CheckBox" customModule="Quartett" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="275" width="250" height="25"/>
+                                                    <state key="normal" title="Auswahlbutton"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -393,6 +406,11 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4iB-Gp-tTh" firstAttribute="leading" secondItem="mlH-73-2R0" secondAttribute="leadingMargin" constant="-20" id="HPz-p8-Qoz"/>
+                            <constraint firstItem="4iB-Gp-tTh" firstAttribute="centerX" secondItem="mlH-73-2R0" secondAttribute="centerX" id="rzv-ZZ-PcM"/>
+                            <constraint firstItem="WAV-Wv-4Hj" firstAttribute="centerX" secondItem="mlH-73-2R0" secondAttribute="centerX" id="uKc-5f-nUa"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -436,5 +454,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XXD-Nw-i3s"/>
+        <segue reference="rtz-4X-a1e"/>
     </inferredMetricsTieBreakers>
 </document>

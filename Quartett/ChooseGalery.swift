@@ -17,9 +17,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
     
     let imagestest = [UIImage(named: "rib"), UIImage(named: "rob"), UIImage(named: "rib")]
     
-   
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,17 +55,17 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return self.imagestest.count
+        return self.cardsetArray.count
         
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ChooseGaleryCollectionViewCell
+        let cardset = cardsetArray[indexPath.row]
         
-        cell.galeryImage?.image = self.imagestest[indexPath.row]
-        
-        cell.galeryTitle?.text = "YO"
+        cell.galeryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
+        cell.galeryTitle?.text = cardset.valueForKey("name") as? String
         
         return cell
     }

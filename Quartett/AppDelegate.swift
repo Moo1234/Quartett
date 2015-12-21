@@ -32,22 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveRanking("Willem", rounds: 5, time: 10.0)
         saveRanking("Jörg", rounds: 35, time: 100.0)
 
-        saveCard(0, name: "Robben", info: "info0", image: "UIImage(named: \"robben\")", values: "90,88,60,42,97,31")
-        saveCard(1, name: "Ribery", info: "info1", image: "UIImage(named: \"rib\")", values: "11,12,13,14,15,16")
+        saveCard(0, name: "Robben", info: "info0", image: "rob", values: "90,88,60,42,97,31")
+        saveCard(1, name: "Ribery", info: "info1", image: "rib", values: "11,12,13,14,15,16")
         saveCard(2, name: "Boateng", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
         saveCard(3, name: "Alaba", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
         saveCard(4, name: "Lewandowski", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
 
-        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4", attributes: "0,1,2,3,4,5")
+        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4", attributes: "0,1,2,3,4,5", image: "bayern")
         
         
-        saveCard(5, name: "Reus", info: "info0", image: "UIImage(named: \"rib\")", values: "90,88,60,42,97,31")
+        saveCard(5, name: "Reus", info: "info0", image: "rib", values: "90,88,60,42,97,31")
         saveCard(6, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16")
         saveCard(7, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
         saveCard(8, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
         saveCard(9, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
         
-        saveCardset(1, name: "Dortmund", cards: "5,6,7,8,9", attributes: "0,1,2,3,4,5")
+        saveCardset(1, name: "Dortmund", cards: "5,6,7,8,9", attributes: "0,1,2,3,4,5",image: "dortmund")
+
         
         saveAttribute(0, name: "PAC", icon: "icon0", condition: true)
         saveAttribute(1, name: "DRI", icon: "icon1", condition: true)
@@ -184,16 +185,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func saveCardset(id: Int, name: String, cards: String, attributes: String) {
+    func saveCardset(id: Int, name: String, cards: String, attributes: String, image: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Cardset", inManagedObjectContext:managedContext)
         let newCardset = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
+        
         newCardset.setValue(id, forKey: "id")
         newCardset.setValue(name, forKey: "name")
         newCardset.setValue(cards, forKey: "cards")
         newCardset.setValue(attributes, forKey: "attributes")
+        newCardset.setValue(image, forKey: "image")
         
         do {
             try managedContext.save()
