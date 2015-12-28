@@ -367,7 +367,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="rNC-lR-Jjv" customClass="ChooseGaleryCollectionViewCell" customModule="Quartett" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="10" width="250" height="300"/>
+                                        <rect key="frame" x="78.5" y="10" width="250" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
@@ -476,33 +476,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-m1-gtI">
-                                <rect key="frame" x="0.0" y="56" width="414" height="680"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-m1-gtI">
+                                <rect key="frame" x="0.0" y="63" width="414" height="673"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
-                                <rect key="frame" x="20" y="576" width="98" height="140"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-TK-qhD">
+                                <rect key="frame" x="274" y="93" width="98" height="140"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="D5d-fI-bKq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neE-IE-Sgz">
+                                <rect key="frame" x="0.0" y="15" width="414" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nur Platzhalter für Leiste später" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkm-83-4Jr">
+                                        <rect key="frame" x="86" y="13" width="243" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40952606752955967" blue="0.24638078768122318" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
+                                <rect key="frame" x="32" y="554" width="98" height="140"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="04U-nK-dPU"/>
+                                    <constraint firstAttribute="width" constant="98" id="6Jz-uh-mVG"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="pickUpCardPressed:" destination="iTw-JK-eau" eventType="touchUpInside" id="hpO-8d-2LA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-TK-qhD">
-                                <rect key="frame" x="296" y="63" width="98" height="140"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neE-IE-Sgz">
-                                <rect key="frame" x="0.0" y="15" width="414" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.40952606752955967" blue="0.24638078768122318" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="neE-IE-Sgz" firstAttribute="leading" secondItem="6Pd-m1-gtI" secondAttribute="leading" id="1L0-lL-Tgw"/>
+                            <constraint firstItem="zGO-Jb-hSO" firstAttribute="top" secondItem="0WO-TK-qhD" secondAttribute="bottom" constant="503" id="2Eh-ZL-tKV"/>
+                            <constraint firstItem="zGO-Jb-hSO" firstAttribute="top" secondItem="K5L-OM-OII" secondAttribute="bottom" constant="42" id="2Ka-ie-xrL"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leading" id="3Lh-L3-wdc"/>
                             <constraint firstAttribute="bottom" secondItem="6Pd-m1-gtI" secondAttribute="bottom" id="EwB-k8-ldg"/>
-                            <constraint firstItem="6Pd-m1-gtI" firstAttribute="top" secondItem="GSN-Yi-bNH" secondAttribute="top" id="YK9-pB-2yo"/>
+                            <constraint firstItem="0WO-TK-qhD" firstAttribute="top" secondItem="neE-IE-Sgz" secondAttribute="bottom" constant="30" id="Ndl-n7-298"/>
+                            <constraint firstItem="6Pd-m1-gtI" firstAttribute="top" secondItem="neE-IE-Sgz" secondAttribute="bottom" id="Suw-r8-LDy"/>
+                            <constraint firstItem="6Pd-m1-gtI" firstAttribute="top" secondItem="GSN-Yi-bNH" secondAttribute="top" constant="63" id="YK9-pB-2yo"/>
+                            <constraint firstItem="neE-IE-Sgz" firstAttribute="top" secondItem="GSN-Yi-bNH" secondAttribute="topMargin" constant="15" id="hdM-Vv-VzR"/>
                             <constraint firstAttribute="trailing" secondItem="6Pd-m1-gtI" secondAttribute="trailing" id="hvp-nb-sFr"/>
+                            <constraint firstItem="K5L-OM-OII" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leadingMargin" constant="12" id="ki6-vX-dUI"/>
+                            <constraint firstItem="neE-IE-Sgz" firstAttribute="trailing" secondItem="6Pd-m1-gtI" secondAttribute="trailing" id="nBo-zf-7sQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0WO-TK-qhD" secondAttribute="trailing" constant="22" id="peT-3t-e79"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
