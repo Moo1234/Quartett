@@ -25,11 +25,13 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func openSetGalery(sender: AnyObject) {
     }
     //Vars
+    var dataPassed: Int!
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
     var cpuDifficulty = 1
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
+    var setID: Int = -1
     
     
     
@@ -66,6 +68,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+
     
     // Segment Control: Time
     @IBAction func setTime(sender: AnyObject) {
@@ -87,6 +90,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         playerOneName.delegate = self
         playerOneName.tag = 0
@@ -144,6 +149,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     //Starts and creates Game (Button: Spiel Starten)
     @IBAction func createNewGame(sender: AnyObject) {
         
+        //print(setID)
         let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -167,6 +173,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
+
         
         //set Values
         //cardSet:
@@ -210,6 +217,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         */
     }
+    
+
     /*
     // MARK: - Navigation
     

@@ -37,17 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCard(2, name: "Boateng", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
         saveCard(3, name: "Alaba", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
         saveCard(4, name: "Lewandowski", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
+        saveCard(5, name: "Mueller", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
 
-        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4", attributes: "0,1,2,3,4,5", image: "bayern")
+        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4,5", attributes: "0,1,2,3,4,5", image: "bayern")
         
         
-        saveCard(5, name: "Reus", info: "info0", image: "rib", values: "90,88,60,42,97,31")
-        saveCard(6, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16")
-        saveCard(7, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
-        saveCard(8, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
-        saveCard(9, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
+        saveCard(6, name: "Reus", info: "info0", image: "rib", values: "90,88,60,42,97,31")
+        saveCard(7, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16")
+        saveCard(8, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
+        saveCard(9, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
+        saveCard(10, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
+        saveCard(11, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
         
-        saveCardset(1, name: "Dortmund", cards: "5,6,7,8,9", attributes: "0,1,2,3,4,5",image: "dortmund")
+        saveCardset(1, name: "Dortmund", cards: "6,7,8,9,10,11", attributes: "0,1,2,3,4,5",image: "dortmund")
 
         
         saveAttribute(0, name: "PAC", icon: "icon0", condition: true)

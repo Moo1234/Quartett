@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
-
     @IBOutlet weak var collectionView: UICollectionView!
-
     
     var cardsetArray = [NSManagedObject]()
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,11 +62,48 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ChooseGaleryCollectionViewCell
         let cardset = cardsetArray[indexPath.row]
         
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        
+        cell.showButton.layer.borderWidth = 2
+        cell.showButton.layer.borderColor = UIColor.blackColor().CGColor
+        
+        cell.chooseButton.layer.borderWidth = 2
+        cell.chooseButton.layer.borderColor = UIColor.blackColor().CGColor
+        
         cell.galeryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
         cell.galeryTitle?.text = cardset.valueForKey("name") as? String
-        
+
         return cell
     }
+    
+    
+    
+    //*******************************
+    // https://www.youtube.com/watch?v=JbPc62YWhPQ  Tutorial dazu
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        self.performSegueWithIdentifier("chooseButtonPressed", sender: self)
+//    }
+//    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        print("hallo")
+//        print(segue.identifier)
+//        if segue.identifier == "chooseButtonPressed" {
+//            
+//            
+//            let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
+//            
+//            let indexPath = indexPaths[0] as NSIndexPath
+//            
+//            let vc = segue.destinationViewController as! GameSettingsViewController
+//            vc.setID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
+//            
+//            
+//        }
+//    }
+    
+    //****************************
+    
     /*
     // MARK: - Navigation
 
