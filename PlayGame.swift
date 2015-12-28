@@ -11,8 +11,10 @@ import CoreData
 
 class PlayGame: UIViewController {
 
-    //START
+    //
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
+    //Später muss halt dann statt cardset spiel geladen werden und die vars werden durch das beschrieben
+    //Begin
     //**************
     
     var cpuDif: Int = 1
@@ -44,8 +46,9 @@ class PlayGame: UIViewController {
     
     
     //*************
+    //End
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann! 
-    //ENDE
+    //
     
     
     var cards:String = ""
