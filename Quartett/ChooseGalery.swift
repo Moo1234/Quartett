@@ -70,6 +70,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
         
         cell.chooseButton.layer.borderWidth = 2
         cell.chooseButton.layer.borderColor = UIColor.blackColor().CGColor
+        cell.chooseButton.tag = indexPath.row
         
         cell.galeryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
         cell.galeryTitle?.text = cardset.valueForKey("name") as? String
@@ -81,26 +82,28 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
     
     //*******************************
     // https://www.youtube.com/watch?v=JbPc62YWhPQ  Tutorial dazu
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier("chooseButtonPressed", sender: self)
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // IndexPaths ist nil, wenn du auf "Auswählen drückst". Deshalb ging es nicht
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("chooseButtonPressed", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        print("hallo")
 //        print(segue.identifier)
-//        if segue.identifier == "chooseButtonPressed" {
-//            
-//            
-//            let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
-//            
-//            let indexPath = indexPaths[0] as NSIndexPath
-//            
-//            let vc = segue.destinationViewController as! GameSettingsViewController
-//            vc.setID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
-//            
-//            
-//        }
-//    }
+        if (segue.identifier == "chooseButtonPressed"){
+            let vc = segue.destinationViewController as! GameSettingsViewController
+            
+            if(sender!.tag != nil){
+                vc.setID = sender!.tag
+            }else{
+                let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
+                let indexPath = indexPaths[0] as NSIndexPath
+                vc.setID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
+            }
+            
+            
+        }
+    }
     
     //****************************
     

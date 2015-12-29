@@ -21,6 +21,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cpuSettingsOutlet: UISegmentedControl!
     @IBOutlet weak var cpuLabel: UILabel!
     @IBOutlet weak var setTimeOutlet: UISegmentedControl!
+    @IBOutlet weak var cardSetIcon: UIImageView!
     
     @IBAction func openSetGalery(sender: AnyObject) {
     }
@@ -92,7 +93,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         
-        
         playerOneName.delegate = self
         playerOneName.tag = 0
         playerTwoName.delegate = self
@@ -103,6 +103,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             scrollView.contentSize.height = 800;
         }else if modelName == "iPhone 5" || modelName == "iPhone 5s" {
             scrollView.contentSize.height = 700
+        }
+        if(setID != -1){
+            cardSetIcon.image = UIImage(named: "CardSet" + String(setID))
         }
         playerTwoName.hidden = true
         cpuLabel.hidden = false
