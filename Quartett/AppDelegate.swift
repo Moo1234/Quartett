@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCard(4, name: "Lewandowski", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
         saveCard(5, name: "Mueller", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
 
-        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4,5", attributes: "0,1,2,3,4,5", image: "bayern")
+        saveCardset(0, name: "Bayern", cards: "0,1,2,3,4,5", attributes: "0,1,2,3,4,5", image: "CardSet0")
         
         
         saveCard(6, name: "Reus", info: "info0", image: "rib", values: "90,88,60,42,97,31")
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCard(10, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
         saveCard(11, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
         
-        saveCardset(1, name: "Dortmund", cards: "6,7,8,9,10,11", attributes: "0,1,2,3,4,5",image: "dortmund")
+        saveCardset(1, name: "Dortmund", cards: "6,7,8,9,10,11", attributes: "0,1,2,3,4,5",image: "CardSet1")
 
         
         saveAttribute(0, name: "PAC", icon: "icon0", condition: true)
