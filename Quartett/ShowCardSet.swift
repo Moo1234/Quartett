@@ -11,11 +11,11 @@ import CoreData
 
 class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var navigationBarItem: UINavigationItem!
     
     var cardArray = [NSManagedObject]()
     var cardSetID = 0
+    var navigationBarTitle = "Kartenset"
     
     
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+        navigationBarItem.title = self.navigationBarTitle
     }
     
     func loadData(){

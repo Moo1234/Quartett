@@ -80,12 +80,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
             let indexPath = indexPaths[0] as NSIndexPath
             let vc = segue.destinationViewController as! ShowCardSet
             vc.cardSetID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
-            
-           // print(self.cardsetArray[indexPath.row].valueForKey("name") as? String!)
-          //  print(vc.navigationBarItem.title)
-           // vc.navigationBarItem.title = "Yo"
-//            vc.label = String((self.cardsetArray[indexPath.row].valueForKey("id") as? String)!)
-        
+            vc.navigationBarTitle = (self.cardsetArray[indexPath.row].valueForKey("name") as? String)!
             
         }
     }
