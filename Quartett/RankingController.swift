@@ -12,6 +12,8 @@ import CoreData
 class RankingController: UIViewController, UITableViewDataSource {
 
     
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var navigationBarTitle: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scoreTypeLabel: UILabel!
@@ -122,14 +124,31 @@ class RankingController: UIViewController, UITableViewDataSource {
     
     func swipeGestures(sender:UISwipeGestureRecognizer){
         if(sender.direction == .Left){
-            rankingType = true
-            loadData()
-            self.tableView.reloadData()
+            tableLeft()
         }else{
-            rankingType = false
-            loadData()
-            self.tableView.reloadData()
+            tableRight()
         }
+    }
+    @IBAction func tapLeft(sender: AnyObject) {
+        tableLeft()
+    }
+    @IBAction func tapRight(sender: AnyObject) {
+        tableRight()
+    }
+    
+    func tableLeft(){
+        leftButton.hidden=false
+        rightButton.hidden=true
+        rankingType = true
+        loadData()
+        self.tableView.reloadData()
+    }
+    func tableRight(){
+        leftButton.hidden=true
+        rightButton.hidden=false
+        rankingType = false
+        loadData()
+        self.tableView.reloadData()
     }
     
     
