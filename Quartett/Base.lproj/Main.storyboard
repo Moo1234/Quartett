@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="1ZR-Te-BSQ" customClass="ShowCardSetCollectionViewCell" customModule="Quartett" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="28" width="330" height="617"/>
+                                        <rect key="frame" x="40" y="27.5" width="330" height="617"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="330" height="617"/>
@@ -43,10 +43,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhC-aG-Dee">
-                                                    <rect key="frame" x="8" y="496" width="314" height="121"/>
+                                                    <rect key="frame" x="8" y="496" width="314" height="113"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="121" id="rQ0-5p-OXK"/>
+                                                        <constraint firstAttribute="height" constant="113" id="ehp-4y-U9O"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,7 +62,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nCr-4P-MZA">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttributeCell" id="nCr-4P-MZA" customClass="ShowAttributeCollectionViewCell" customModule="Quartett" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -92,6 +92,10 @@
                                                                 <constraint firstItem="NPO-nl-w7h" firstAttribute="leading" secondItem="aOe-sA-deZ" secondAttribute="trailing" constant="15" id="bOx-U4-Zfu"/>
                                                                 <constraint firstItem="aOe-sA-deZ" firstAttribute="leading" secondItem="nCr-4P-MZA" secondAttribute="leadingMargin" id="rV1-fi-2Dn"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="attributeLabel" destination="NPO-nl-w7h" id="eAf-Ox-aZ2"/>
+                                                                <outlet property="iconImage" destination="aOe-sA-deZ" id="nUb-S6-vTi"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -108,19 +112,19 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="rhC-aG-Dee" secondAttribute="bottom" id="9br-Pu-gaa"/>
-                                            <constraint firstItem="rhC-aG-Dee" firstAttribute="top" secondItem="Cu0-4v-Wkh" secondAttribute="bottom" constant="8" symbolic="YES" id="CNo-1T-3PW"/>
-                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="trailing" secondItem="rhC-aG-Dee" secondAttribute="trailing" id="CtV-f6-FAc"/>
-                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="trailing" secondItem="Cu0-4v-Wkh" secondAttribute="trailing" id="H8S-xR-z3k"/>
-                                            <constraint firstAttribute="trailing" secondItem="NRj-cn-Fuh" secondAttribute="trailing" id="I12-To-Egg"/>
-                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="leading" secondItem="rhC-aG-Dee" secondAttribute="leading" id="JKg-dK-Cnz"/>
-                                            <constraint firstItem="NRj-cn-Fuh" firstAttribute="leading" secondItem="ZtR-yl-eNr" secondAttribute="leading" id="LuB-FQ-oss"/>
-                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="trailing" secondItem="1ZR-Te-BSQ" secondAttribute="trailingMargin" id="gwq-pw-0k2"/>
-                                            <constraint firstItem="NRj-cn-Fuh" firstAttribute="top" secondItem="1ZR-Te-BSQ" secondAttribute="topMargin" id="lL6-Jj-0jh"/>
-                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="top" secondItem="ZtR-yl-eNr" secondAttribute="bottom" constant="8" symbolic="YES" id="smw-6f-fXr"/>
-                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="leading" secondItem="1ZR-Te-BSQ" secondAttribute="leadingMargin" id="tYC-qF-1u9"/>
-                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="top" secondItem="NRj-cn-Fuh" secondAttribute="bottom" constant="3" id="wAW-gI-ktu"/>
-                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="leading" secondItem="ZtR-yl-eNr" secondAttribute="leading" id="xdG-xb-cWP"/>
+                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="trailing" secondItem="Cu0-4v-Wkh" secondAttribute="trailing" id="0y0-ym-cWw"/>
+                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="top" secondItem="ZtR-yl-eNr" secondAttribute="bottom" constant="8" symbolic="YES" id="6H0-9y-fEl"/>
+                                            <constraint firstItem="rhC-aG-Dee" firstAttribute="trailing" secondItem="1ZR-Te-BSQ" secondAttribute="trailingMargin" id="6b8-2a-dsB"/>
+                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="leading" secondItem="rhC-aG-Dee" secondAttribute="leading" id="9ac-2r-qQd"/>
+                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="leading" secondItem="ZtR-yl-eNr" secondAttribute="leading" id="CrQ-JA-QNk"/>
+                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="top" secondItem="NRj-cn-Fuh" secondAttribute="bottom" constant="3" id="Dqh-Ag-M6f"/>
+                                            <constraint firstItem="NRj-cn-Fuh" firstAttribute="top" secondItem="1ZR-Te-BSQ" secondAttribute="topMargin" id="ISv-8u-M7W"/>
+                                            <constraint firstItem="rhC-aG-Dee" firstAttribute="bottom" secondItem="1ZR-Te-BSQ" secondAttribute="bottomMargin" id="RMW-7X-2cl"/>
+                                            <constraint firstItem="rhC-aG-Dee" firstAttribute="leading" secondItem="1ZR-Te-BSQ" secondAttribute="leadingMargin" id="Yg6-iE-pRS"/>
+                                            <constraint firstItem="ZtR-yl-eNr" firstAttribute="leading" secondItem="NRj-cn-Fuh" secondAttribute="leading" id="axC-cs-LbZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="NRj-cn-Fuh" secondAttribute="trailing" id="maj-U3-OTf"/>
+                                            <constraint firstItem="Cu0-4v-Wkh" firstAttribute="trailing" secondItem="rhC-aG-Dee" secondAttribute="trailing" id="pph-5y-oVN"/>
+                                            <constraint firstItem="rhC-aG-Dee" firstAttribute="top" secondItem="Cu0-4v-Wkh" secondAttribute="bottom" constant="8" symbolic="YES" id="wNu-7H-Dsn"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cardSetImage" destination="ZtR-yl-eNr" id="NBz-dh-sHd"/>
@@ -130,8 +134,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="jwB-pA-M4b" id="jRA-PA-fwc"/>
-                                    <outlet property="delegate" destination="jwB-pA-M4b" id="Pht-Aq-mej"/>
+                                    <outlet property="dataSource" destination="jwB-pA-M4b" id="Xvq-c4-hI6"/>
+                                    <outlet property="delegate" destination="jwB-pA-M4b" id="2Fj-p6-ed0"/>
                                 </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-SM-pPX">

@@ -11,6 +11,7 @@
 		3C18C18B1C3409F7006F1633 /* ShowGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18C18A1C3409F7006F1633 /* ShowGallery.swift */; };
 		3C18C18D1C340A86006F1633 /* ShowCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18C18C1C340A86006F1633 /* ShowCardSet.swift */; };
 		3C18C18F1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */; };
+		3C20C5671C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */; };
 		3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0A91C230503003F0D20 /* RankingController.swift */; };
 		3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */; };
 		3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8B0B11C25EC91003F0D20 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		3C18C18A1C3409F7006F1633 /* ShowGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowGallery.swift; sourceTree = "<group>"; };
 		3C18C18C1C340A86006F1633 /* ShowCardSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCardSet.swift; sourceTree = "<group>"; };
 		3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCardSetCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAttributeCollectionViewCell.swift; sourceTree = "<group>"; };
 		3CB8B0A91C230503003F0D20 /* RankingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingController.swift; sourceTree = "<group>"; };
 		3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3CB8B0B21C25EC91003F0D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				3C18C18A1C3409F7006F1633 /* ShowGallery.swift */,
 				3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */,
 				3C18C18C1C340A86006F1633 /* ShowCardSet.swift */,
+				3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */,
 				5882F3B51C23145E006F0BF6 /* UIDevice.swift */,
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
@@ -229,7 +232,7 @@
 				TargetAttributes = {
 					58C49BD81BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = D24AGHC9PF;
+						DevelopmentTeam = 42N696HKU5;
 					};
 					58C49BEF1BFE2A47005C8F1E = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -300,6 +303,7 @@
 				3C18C18F1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift in Sources */,
 				58CE5AF61C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift in Sources */,
 				3C18C18B1C3409F7006F1633 /* ShowGallery.swift in Sources */,
+				3C20C5671C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift in Sources */,
 				58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */,
 				3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */,
 				5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */,
@@ -449,6 +453,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Quartett/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,6 +468,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Quartett/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
 				PRODUCT_NAME = "$(TARGET_NAME)";

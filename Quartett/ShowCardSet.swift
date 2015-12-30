@@ -12,11 +12,10 @@ import CoreData
 class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var navigationBarItem: UINavigationItem!
     
     var cardArray = [NSManagedObject]()
-    var cardSetID = 1
+    var cardSetID = 0
     
     
     override func viewDidLoad() {
@@ -32,26 +31,11 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-//        let fetchRequest2 = NSFetchRequest(entityName: "Cardset")
-//        var cardArray2 = [NSManagedObject]()
-//        do {
-//            let results =
-//            try managedContext.executeFetchRequest(fetchRequest2)
-//            cardArray2 = results as! [NSManagedObject]
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
-//        let text = cardArray2[cardSetID].valueForKey("cards") as! String
-//        let cardIDsArray: [Int] = stringToArrayString(text)
-//        
-//        print(cardIDsArray)
-        
         let fetchRequest = NSFetchRequest(entityName: "Card")
-//        let predicate = NSPredicate(format: "id contains[c] %@", cardIDsArray)
-//       // let predicate = NSPredicate(format: "title == %@", "Best Language")
-//        
-//        // Set the predicate on the fetch request
-//        fetchRequest.predicate = predicate
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "cardset == %d", cardSetID)
+        fetchRequest.predicate = predicate
         
         do {
             let results =
@@ -60,15 +44,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-    }
-    
-    func stringToArrayString(x:String) -> [Int]{
-        let stringArray = x.componentsSeparatedByString(",")
-        var intArray: [Int] = []
-        for (var i=0; i < stringArray.count; i++){
-            intArray.append(Int(stringArray[i]) ?? 0)
-        }
-        return intArray
     }
     
     override func didReceiveMemoryWarning() {
