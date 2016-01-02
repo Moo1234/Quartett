@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveRanking("Willem", rounds: 5, time: 10.0)
         saveRanking("Jörg", rounds: 35, time: 100.0)
 
-        saveCard(0, cardset: 0, name: "Robben", info: "info0", image: "rob", values: "90,88,60,42,97,31")
+        saveCard(0, cardset: 0, name: "Robben", info: "Arjen Robben ist ein niederländischer Fußballspieler. Er steht seit dem 28. August 2009 beim Bundesligisten FC Bayern München unter Vertrag und gehört zum Kader der niederländischen A-Nationalmannschaft.", image: "rob", values: "90,88,60,42,97,31")
         saveCard(1, cardset: 0, name: "Ribery", info: "info1", image: "rib", values: "11,12,13,14,15,16")
         saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
         saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "pic3", values: "70,90,70,90,70,90")

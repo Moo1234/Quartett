@@ -52,23 +52,44 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cardArray.count
+        if(collectionView.tag == 0){
+            return self.cardArray.count
+        }else{
+            let values = self.cardArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+            return values!.count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
-        
-        let card = cardArray[indexPath.row]
-        
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.blackColor().CGColor
-        
-        cell.nameLabel?.text = card.valueForKey("name") as? String
-        cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
-        cell.informationLabel?.text = card.valueForKey("info") as? String
-        
-        return cell
+        if(collectionView.tag == 0){
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
+            
+            let card = cardArray[indexPath.row]
+            
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.blackColor().CGColor
+            
+            cell.nameLabel?.text = card.valueForKey("name") as? String
+            cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
+            cell.textview?.text = card.valueForKey("info") as? String
+            
+            return cell
+        }else{
+            // Attribute stimmen leider noch nicht
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttributeCell", forIndexPath: indexPath) as! ShowAttributeCollectionViewCell
+            
+            let card = cardArray[indexPath.row]
+            
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.blackColor().CGColor
+                
+            let values = card.valueForKey("values")?.componentsSeparatedByString(",")
+            
+            for var index = 0; index < 6; ++index {
+                cell.attributeLabel.text = values![index]
+                return cell
+            }
+        }
     }
 
 
