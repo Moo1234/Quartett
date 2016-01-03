@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import CoreData
 
 class ShowGalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var galleryImage: UIImageView!
     @IBOutlet weak var galleryTitle: UILabel!
-    
-    
+    @IBOutlet weak var deleteGalleryButton: UIButton!
+    @IBOutlet weak var addCardButton: UIButton!    
 }

@@ -20,8 +20,8 @@ class PlayGame: UIViewController {
     var cpuDif: Int = 1
     var numberLaps: Int = 10
     var playerOneNameVar: String = "player1"
-//  maxTime
-//  maxLaps
+    //  maxTime
+    //  maxLaps
     var playerOneCards = [NSManagedObject]()
     var cpuCards = [NSManagedObject]()
     var gameTime: Double = 600.0
@@ -47,7 +47,7 @@ class PlayGame: UIViewController {
     
     //*************
     //End
-    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann! 
+    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //
     
     
@@ -68,7 +68,7 @@ class PlayGame: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func pickUpCardPressed(sender: AnyObject) {
     }
     override func didReceiveMemoryWarning() {
@@ -94,16 +94,16 @@ class PlayGame: UIViewController {
         
         for var index = 0; index < cardIDs.count; ++index {
             for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
-            
+                
                 if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
                     cardArraySet.insert(cardArrayTemp[index2])
                     
                 }
             }
         }
-
+        
     }
-
+    
     
     //Convert String to Array(String)
     func stringToArrayString(x:String) -> [String]{
@@ -114,13 +114,11 @@ class PlayGame: UIViewController {
     
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
-

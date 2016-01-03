@@ -73,7 +73,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-
+    
     
     // Segment Control: Time
     @IBAction func setTime(sender: AnyObject) {
@@ -277,7 +277,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
-
+        
         
         //set Values
         //cardSet:
@@ -319,7 +319,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         */
     }
     
-
+    
     /*
     // MARK: - Navigation
     

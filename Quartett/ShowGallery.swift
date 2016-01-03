@@ -11,8 +11,12 @@ import CoreData
 
 class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var editGalleryButton: UIBarButtonItem!
+    @IBOutlet weak var addCardSetButton: UIButton!
     
     var cardsetArray = [NSManagedObject]()
+    
+    var editable = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Cardset")
+
         
         do {
             let results =
@@ -61,6 +66,16 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         cell.galleryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
         cell.galleryTitle?.text = cardset.valueForKey("name") as? String
         
+        cell.deleteGalleryButton.tag = (cardset.valueForKey("id") as? Int)!
+        
+        if(editable){
+            cell.deleteGalleryButton.hidden = false
+            cell.addCardButton.hidden = false
+        }else{
+            cell.deleteGalleryButton.hidden = true
+            cell.addCardButton.hidden = true
+        }
+        
         return cell
     }
     
@@ -72,8 +87,6 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //        print("hallo")
-        //        print(segue.identifier)
         if (segue.identifier == "showCardSet"){
             
             let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
@@ -82,6 +95,81 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
             vc.cardSetID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
             vc.navigationBarTitle = (self.cardsetArray[indexPath.row].valueForKey("name") as? String)!
             
+        }
+    }
+    
+    
+    @IBAction func editGalleryButton(sender: AnyObject) {
+        if(editable){
+            editGalleryButton.title = "Editieren"
+            editable = false
+            addCardSetButton.hidden = true
+            collectionView.reloadData()
+        }else{
+            editGalleryButton.title = "Fertig"
+            editable = true
+            addCardSetButton.hidden = false
+            collectionView.reloadData()
+        }
+    }
+    
+    @IBAction func addCardButton(sender: AnyObject) {
+        print("addCard geht noch nicht")
+    }
+    
+    @IBAction func deleteGalleryButton(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Löschen", message: "Wollen Sie das Kartenset wirklich löschen?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: .Cancel) { (action) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: "Löschen", style: .Destructive) { (action) in
+            self.deleteObjectsFromEntity(sender.tag)
+            self.loadData()
+            self.collectionView.reloadData()
+        }
+        alertController.addAction(deleteAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func addCardSetButton(sender: AnyObject) {
+        print("addCardSet geht noch nicht")
+    }
+    
+    
+    
+    func deleteObjectsFromEntity(cardSetID: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "Cardset")
+        
+        let predicate = NSPredicate(format: "id == %d", cardSetID)
+        fetchRequest.predicate = predicate
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        let fetchRequest2 = NSFetchRequest(entityName: "Card")
+        
+        let predicate2 = NSPredicate(format: "cardset == %d", cardSetID)
+        fetchRequest2.predicate = predicate2
+        
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        
+        do {
+            try coord.executeRequest(deleteRequest2, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
     
