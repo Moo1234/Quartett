@@ -11,7 +11,7 @@ import CoreData
 
 class PlayGame: UIViewController {
 
-    //ypó
+    //ypóo
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //Später muss halt dann statt cardset spiel geladen werden und die vars werden durch das beschrieben
     //Begin

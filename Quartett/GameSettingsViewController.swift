@@ -302,7 +302,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
         /*
-        yo
+        yoo
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Game")
