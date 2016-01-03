@@ -368,7 +368,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-pN-hVy">
-                                <rect key="frame" x="0.0" y="59" width="414" height="630"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3sH-l6-8M3">
                                     <size key="itemSize" width="300" height="275"/>
@@ -445,7 +445,7 @@
                                 </connections>
                             </collectionView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-99-Rcr" userLabel="addCardSet">
-                                <rect key="frame" x="196" y="697" width="22" height="22"/>
+                                <rect key="frame" x="196" y="706" width="22" height="22"/>
                                 <connections>
                                     <action selector="addCardSetButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="BR0-oA-5Rr"/>
                                 </connections>
@@ -453,15 +453,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cpr-7J-QoI" firstAttribute="top" secondItem="4eb-JT-oqP" secondAttribute="topMargin" constant="15" id="8Ec-cc-1bN"/>
-                            <constraint firstItem="cpr-7J-QoI" firstAttribute="leading" secondItem="sPX-pN-hVy" secondAttribute="leading" id="GX8-Xd-s8S"/>
-                            <constraint firstItem="Ksu-99-Rcr" firstAttribute="top" secondItem="sPX-pN-hVy" secondAttribute="bottom" constant="8" id="GiF-gB-Okg"/>
-                            <constraint firstItem="Ksu-99-Rcr" firstAttribute="centerX" secondItem="sPX-pN-hVy" secondAttribute="centerX" id="TWe-Lf-wog"/>
-                            <constraint firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="TXm-rM-7zq"/>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="top" secondItem="cpr-7J-QoI" secondAttribute="bottom" id="VP7-cx-lJc"/>
-                            <constraint firstItem="cpr-7J-QoI" firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="enR-EA-y3U"/>
-                            <constraint firstItem="zJk-cQ-W93" firstAttribute="top" secondItem="Ksu-99-Rcr" secondAttribute="bottom" constant="17" id="m4q-65-heP"/>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="leading" secondItem="4eb-JT-oqP" secondAttribute="leading" id="mZg-IU-zdx"/>
+                            <constraint firstItem="zJk-cQ-W93" firstAttribute="top" secondItem="sPX-pN-hVy" secondAttribute="bottom" constant="5" id="0kx-Gg-R2a"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="top" secondItem="cpr-7J-QoI" secondAttribute="bottom" id="6SL-he-N7M"/>
+                            <constraint firstItem="cpr-7J-QoI" firstAttribute="leading" secondItem="4eb-JT-oqP" secondAttribute="leading" id="74X-MF-JQb"/>
+                            <constraint firstItem="zJk-cQ-W93" firstAttribute="top" secondItem="Ksu-99-Rcr" secondAttribute="bottom" constant="8" symbolic="YES" id="NOL-Xg-RYy"/>
+                            <constraint firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="TNo-Bn-a2U"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="leading" secondItem="cpr-7J-QoI" secondAttribute="leading" id="WxY-IU-snp"/>
+                            <constraint firstItem="cpr-7J-QoI" firstAttribute="top" secondItem="4eb-JT-oqP" secondAttribute="topMargin" constant="15" id="dW3-wz-P4U"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="trailing" secondItem="cpr-7J-QoI" secondAttribute="trailing" id="kpt-b4-dOr"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="centerX" secondItem="Ksu-99-Rcr" secondAttribute="centerX" id="yGa-cT-Rnp"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
