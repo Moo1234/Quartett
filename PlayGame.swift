@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class PlayGame: UIViewController {
-
+    
     //
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //Später muss halt dann statt cardset spiel geladen werden und die vars werden durch das beschrieben
@@ -20,8 +20,8 @@ class PlayGame: UIViewController {
     var cpuDif: Int = 1
     var numberLaps: Int = 10
     var playerOneNameVar: String = "player1"
-//  maxTime
-//  maxLaps
+    //  maxTime
+    //  maxLaps
     var playerOneCards = [NSManagedObject]()
     var cpuCards = [NSManagedObject]()
     var gameTime: Double = 600.0
@@ -47,7 +47,7 @@ class PlayGame: UIViewController {
     
     //*************
     //End
-    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann! 
+    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //
     
     
@@ -63,22 +63,12 @@ class PlayGame: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadCardset()
-        cards = cardsetArray[0].valueForKey("cards") as! String!
-        cardIDsArray = stringToArrayString(cards)
-        loadCardsFromCardset(cardIDsArray)
-        let cardArray = Array(cardArraySet)
         
-        shuffleCards(cardArray)
-        
-        
-        
-       
         
         
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func pickUpCardPressed(sender: AnyObject) {
     }
     override func didReceiveMemoryWarning() {
@@ -104,71 +94,31 @@ class PlayGame: UIViewController {
         
         for var index = 0; index < cardIDs.count; ++index {
             for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
-            
+                
                 if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
                     cardArraySet.insert(cardArrayTemp[index2])
                     
                 }
             }
         }
-
+        
     }
-
+    
     
     //Convert String to Array(String)
     func stringToArrayString(x:String) -> [String]{
         let toArray = x.componentsSeparatedByString(",")
-    
+        
         return toArray
-    }
-    
-    
-
-    //cardshuffle Algo
-    func shuffleCards(var arr: [NSManagedObject]){
-        var setP1 = Set<NSManagedObject>()
-        var setP2 = Set<NSManagedObject>()
-        let shuffle = 2 * arr.count
-
-        var randomNum: Int = random()  % arr.count
-        var randomNum2: Int = random()  % arr.count
-        var temp: NSManagedObject
-        
-        //shuffle
-        for var index = 0; index < shuffle; ++index {
-            randomNum = random() % arr.count
-            randomNum2 = random() % arr.count
-            temp = arr[randomNum2]
-            arr[randomNum2] = arr[randomNum]
-            arr[randomNum] = temp
-            
-        }
-        
-        
-        //split Arr
-        let split = arr.count / 2
-        
-        for var index3 = 0; index3 < split; ++index3 {
-            setP1.insert(arr[index3])
-        }
-        for var index4 = split; index4 < arr.count; ++index4 {
-            setP2.insert(arr[index4])
-        }
-        
-        playerOneCards = Array(setP1)
-        cpuCards = Array(setP2)
-
     }
     
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
-

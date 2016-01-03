@@ -23,16 +23,20 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var setTimeOutlet: UISegmentedControl!
     @IBOutlet weak var cardSetIcon: UIImageView!
     
+    
+    
     @IBAction func openSetGalery(sender: AnyObject) {
     }
     //Vars
-    var dataPassed: Int!
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
     var cpuDifficulty = 1
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
     var setID: Int = -1
+    var cardArray = [NSManagedObject]()
+    var player1Cards = [NSManagedObject]()
+    var player2Cards = [NSManagedObject]()
     
     
     
@@ -69,7 +73,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-
+    
     
     // Segment Control: Time
     @IBAction func setTime(sender: AnyObject) {
@@ -91,6 +95,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        //        cardSetIcon.layer.borderWidth = 1
+        //        cardSetIcon.layer.borderColor = UIColor.blackColor().CGColor
         
         
         playerOneName.delegate = self
@@ -106,7 +113,12 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         if(setID != -1){
             cardSetIcon.image = UIImage(named: "CardSet" + String(setID))
+            loadCardSetWithSetID()
+            shuffleCards(cardArray)
         }
+        
+        
+        
         playerTwoName.hidden = true
         cpuLabel.hidden = false
         cpuSettingsOutlet.hidden = false
@@ -117,6 +129,26 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func loadCardSetWithSetID(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Card")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "cardset == %d", setID)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            cardArray = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     
@@ -149,6 +181,48 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //Algo shuffle Cards
+    func shuffleCards(var arr: [NSManagedObject]){
+        var setP1 = Set<NSManagedObject>()
+        var setP2 = Set<NSManagedObject>()
+        let shuffle = 2 * arr.count
+        
+        var randomNum: Int = random()  % arr.count
+        var randomNum2: Int = random()  % arr.count
+        var temp: NSManagedObject
+        
+        //shuffle
+        for var index = 0; index < shuffle; ++index {
+            randomNum = random() % arr.count
+            randomNum2 = random() % arr.count
+            temp = arr[randomNum2]
+            arr[randomNum2] = arr[randomNum]
+            arr[randomNum] = temp
+            
+        }
+        
+        
+        //split Arr
+        let split = arr.count / 2
+        
+        for var index3 = 0; index3 < split; ++index3 {
+            setP1.insert(arr[index3])
+        }
+        for var index4 = split; index4 < arr.count; ++index4 {
+            setP2.insert(arr[index4])
+        }
+        
+        player1Cards = Array(setP1)
+        player2Cards = Array(setP2)
+        
+        
+        //        for var index = 0; index < player1Cards.count; ++index {
+        //            print(player1Cards[index].valueForKey("id"))
+        //        }
+        //
+    }
+    
+    
     //Starts and creates Game (Button: Spiel Starten)
     @IBAction func createNewGame(sender: AnyObject) {
         
@@ -174,26 +248,49 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
         
+        var player1CardsString = ""
+        var player2CardsString = ""
+        
+        for var index = 0; index < player1Cards.count; ++index {
+            if index == (player1Cards.count-1){
+                player1CardsString += String(player1Cards[index].valueForKey("id") as? Int)
+            }else{
+                player1CardsString += String(player1Cards[index].valueForKey("id") as? Int) + ","
+            }
+            
+        }
+        
+        for var index2 = 0; index2 < player2Cards.count; ++index2 {
+            if index2 == (player2Cards.count-1){
+                player2CardsString += String(player2Cards[index2].valueForKey("id") as? Int)
+            }else{
+                player2CardsString += String(player2Cards[index2].valueForKey("id") as? Int) + ","
+            }
+            
+        }
+        
+        print(player1CardsString)
+        print(player2CardsString)
+        
+        
+        
+        
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
-
+        
         
         //set Values
         //cardSet:
-        newGame.setValue(2, forKey: "cardset")
+        newGame.setValue(setID, forKey: "cardset")
         newGame.setValue(cpuDifficulty, forKey: "difficulty")
-        newGame.setValue(numberLaps, forKey: "laps")
-        //Max Laps?? :
-        newGame.setValue(100, forKey: "maxLaps")
-        // Max Time?? :
-        newGame.setValue(100.0, forKey: "maxTime")
+        newGame.setValue(0, forKey: "laps")
+        newGame.setValue(numberLaps, forKey: "maxLaps")
+        newGame.setValue(gameTime, forKey: "maxTime")
         newGame.setValue(playerOneNameVar, forKey: "player1")
-        //player one cards:
-        newGame.setValue("JO", forKey: "player1Cards")
+        newGame.setValue(player1CardsString, forKey: "player1Cards")
         newGame.setValue(playerTwoNameVar, forKey: "player2")
-        // player two cards:
-        newGame.setValue("Jo2", forKey: "player2Cards")
-        newGame.setValue(gameTime, forKey: "time")
+        newGame.setValue(player2CardsString, forKey: "player2Cards")
+        newGame.setValue(0.0, forKey: "time")
         newGame.setValue(whoStarts, forKey: "turn")
         
         
@@ -221,7 +318,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         */
     }
     
-
+    
     /*
     // MARK: - Navigation
     
