@@ -95,9 +95,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        cardSetIcon.layer.borderWidth = 1
-//        cardSetIcon.layer.borderColor = UIColor.blackColor().CGColor
+        //
+        //        cardSetIcon.layer.borderWidth = 1
+        //        cardSetIcon.layer.borderColor = UIColor.blackColor().CGColor
         
         
         playerOneName.delegate = self
@@ -137,11 +137,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Card")
-            
+        
         // filters cards from specific cardset
         let predicate = NSPredicate(format: "cardset == %d", setID)
         fetchRequest.predicate = predicate
-            
+        
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
@@ -215,11 +215,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         player1Cards = Array(setP1)
         player2Cards = Array(setP2)
         
-       
-//        for var index = 0; index < player1Cards.count; ++index {
-//            print(player1Cards[index].valueForKey("id"))
-//        }
-//        
+        
+        //        for var index = 0; index < player1Cards.count; ++index {
+        //            print(player1Cards[index].valueForKey("id"))
+        //        }
+        //
     }
     
     

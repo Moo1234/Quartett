@@ -12,6 +12,8 @@ import CoreData
 class PlayGame: UIViewController {
 
     //ypóo
+    
+    //
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //Später muss halt dann statt cardset spiel geladen werden und die vars werden durch das beschrieben
     //Begin
@@ -108,7 +110,7 @@ class PlayGame: UIViewController {
     //Convert String to Array(String)
     func stringToArrayString(x:String) -> [String]{
         let toArray = x.componentsSeparatedByString(",")
-    
+        
         return toArray
     }
     
