@@ -87,8 +87,6 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //        print("hallo")
-        //        print(segue.identifier)
         if (segue.identifier == "showCardSet"){
             
             let indexPaths = self.collectionView!.indexPathsForSelectedItems()!

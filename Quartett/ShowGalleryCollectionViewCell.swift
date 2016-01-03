@@ -13,5 +13,4 @@ class ShowGalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var galleryTitle: UILabel!
     @IBOutlet weak var deleteGalleryButton: UIButton!
     @IBOutlet weak var addCardButton: UIButton!    
-    
 }
