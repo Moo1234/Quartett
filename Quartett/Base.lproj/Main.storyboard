@@ -359,24 +359,29 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="fUU-fT-Ery"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Editieren" id="h1D-CG-bpc">
+                                            <connections>
+                                                <action selector="editGalleryButton:" destination="Ybm-yb-9u4" id="N71-c0-GEo"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-pN-hVy">
-                                <rect key="frame" x="0.0" y="59" width="414" height="677"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="630"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3sH-l6-8M3">
-                                    <size key="itemSize" width="300" height="325"/>
+                                    <size key="itemSize" width="300" height="275"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardSetsCell" id="MfU-kI-u2Z" customClass="ShowGalleryCollectionViewCell" customModule="Quartett" customModuleProvider="target">
-                                        <rect key="frame" x="57" y="10" width="300" height="325"/>
+                                        <rect key="frame" x="57" y="10" width="300" height="275"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="325"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="275"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCe-2X-c6S">
@@ -390,21 +395,45 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jX2-rL-PiI">
-                                                    <rect key="frame" x="0.0" y="25" width="300" height="300"/>
+                                                    <rect key="frame" x="0.0" y="25" width="250" height="250"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="addButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDd-QM-YqN" userLabel="addCard">
+                                                    <rect key="frame" x="266" y="107" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="addCardButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="rQB-UT-49d"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCh-RT-Enk" userLabel="trashButton">
+                                                    <rect key="frame" x="260" y="204" width="33" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="33" id="PHm-Vo-PS9"/>
+                                                        <constraint firstAttribute="height" constant="20" id="QRr-XR-lIf"/>
+                                                    </constraints>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                    <state key="normal" title="Del"/>
+                                                    <connections>
+                                                        <action selector="deleteGalleryButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="kNy-92-BNH"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="oCe-2X-c6S" firstAttribute="trailing" secondItem="jX2-rL-PiI" secondAttribute="trailing" id="8hp-DQ-zOh"/>
-                                            <constraint firstItem="jX2-rL-PiI" firstAttribute="leading" secondItem="oCe-2X-c6S" secondAttribute="leading" id="Kh9-Lo-JSD"/>
-                                            <constraint firstAttribute="trailing" secondItem="oCe-2X-c6S" secondAttribute="trailing" id="Lfq-sr-Oh8"/>
-                                            <constraint firstItem="oCe-2X-c6S" firstAttribute="top" secondItem="MfU-kI-u2Z" secondAttribute="top" id="O0k-hG-6ws"/>
-                                            <constraint firstAttribute="bottom" secondItem="jX2-rL-PiI" secondAttribute="bottom" id="czH-yA-n71"/>
-                                            <constraint firstItem="jX2-rL-PiI" firstAttribute="top" secondItem="oCe-2X-c6S" secondAttribute="bottom" id="gTg-9j-1tF"/>
-                                            <constraint firstItem="jX2-rL-PiI" firstAttribute="leading" secondItem="MfU-kI-u2Z" secondAttribute="leading" id="kLm-2f-NR5"/>
+                                            <constraint firstItem="oCe-2X-c6S" firstAttribute="leading" secondItem="MfU-kI-u2Z" secondAttribute="leading" id="3KU-q3-1Al"/>
+                                            <constraint firstItem="oCe-2X-c6S" firstAttribute="leading" secondItem="jX2-rL-PiI" secondAttribute="leading" id="5Be-DV-Elu"/>
+                                            <constraint firstItem="jX2-rL-PiI" firstAttribute="top" secondItem="oCe-2X-c6S" secondAttribute="bottom" id="7rF-3H-RRR"/>
+                                            <constraint firstItem="iCh-RT-Enk" firstAttribute="leading" secondItem="jX2-rL-PiI" secondAttribute="trailing" constant="10" id="OEc-5M-3nu"/>
+                                            <constraint firstItem="iCh-RT-Enk" firstAttribute="centerX" secondItem="aDd-QM-YqN" secondAttribute="centerX" id="QPH-en-S47"/>
+                                            <constraint firstAttribute="trailing" secondItem="oCe-2X-c6S" secondAttribute="trailing" id="Swt-wO-GIt"/>
+                                            <constraint firstItem="oCe-2X-c6S" firstAttribute="top" secondItem="MfU-kI-u2Z" secondAttribute="top" id="VfC-0S-iVH"/>
+                                            <constraint firstAttribute="bottom" secondItem="jX2-rL-PiI" secondAttribute="bottom" id="Wb2-7N-BpJ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="iCh-RT-Enk" secondAttribute="trailing" constant="-1" id="mfn-xs-Nbx"/>
+                                            <constraint firstItem="iCh-RT-Enk" firstAttribute="top" secondItem="aDd-QM-YqN" secondAttribute="bottom" constant="75" id="upL-GS-pW9"/>
+                                            <constraint firstItem="aDd-QM-YqN" firstAttribute="top" secondItem="oCe-2X-c6S" secondAttribute="bottom" constant="82" id="uuu-R3-5C5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="addCardButton" destination="aDd-QM-YqN" id="a8E-Ym-g52"/>
+                                            <outlet property="deleteGalleryButton" destination="iCh-RT-Enk" id="bs5-dZ-deF"/>
                                             <outlet property="galleryImage" destination="jX2-rL-PiI" id="b3R-2w-nzc"/>
                                             <outlet property="galleryTitle" destination="oCe-2X-c6S" id="Sdd-oz-7C3"/>
                                         </connections>
@@ -415,21 +444,31 @@
                                     <outlet property="delegate" destination="Ybm-yb-9u4" id="1Ii-CK-Kxn"/>
                                 </connections>
                             </collectionView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-99-Rcr" userLabel="addCardSet">
+                                <rect key="frame" x="196" y="697" width="22" height="22"/>
+                                <connections>
+                                    <action selector="addCardSetButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="BR0-oA-5Rr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="top" secondItem="cpr-7J-QoI" secondAttribute="bottom" id="7nz-yp-dXa"/>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="trailing" secondItem="cpr-7J-QoI" secondAttribute="trailing" id="EwG-70-es4"/>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="leading" secondItem="cpr-7J-QoI" secondAttribute="leading" id="FIH-63-kbZ"/>
-                            <constraint firstItem="sPX-pN-hVy" firstAttribute="bottom" secondItem="zJk-cQ-W93" secondAttribute="top" id="duW-ue-2Vn"/>
-                            <constraint firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="s1F-Gv-1mk"/>
-                            <constraint firstItem="cpr-7J-QoI" firstAttribute="leading" secondItem="4eb-JT-oqP" secondAttribute="leading" id="tdc-a3-qvr"/>
-                            <constraint firstItem="cpr-7J-QoI" firstAttribute="top" secondItem="4eb-JT-oqP" secondAttribute="topMargin" constant="15" id="wdP-j7-IDJ"/>
+                            <constraint firstItem="cpr-7J-QoI" firstAttribute="top" secondItem="4eb-JT-oqP" secondAttribute="topMargin" constant="15" id="8Ec-cc-1bN"/>
+                            <constraint firstItem="cpr-7J-QoI" firstAttribute="leading" secondItem="sPX-pN-hVy" secondAttribute="leading" id="GX8-Xd-s8S"/>
+                            <constraint firstItem="Ksu-99-Rcr" firstAttribute="top" secondItem="sPX-pN-hVy" secondAttribute="bottom" constant="8" id="GiF-gB-Okg"/>
+                            <constraint firstItem="Ksu-99-Rcr" firstAttribute="centerX" secondItem="sPX-pN-hVy" secondAttribute="centerX" id="TWe-Lf-wog"/>
+                            <constraint firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="TXm-rM-7zq"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="top" secondItem="cpr-7J-QoI" secondAttribute="bottom" id="VP7-cx-lJc"/>
+                            <constraint firstItem="cpr-7J-QoI" firstAttribute="trailing" secondItem="sPX-pN-hVy" secondAttribute="trailing" id="enR-EA-y3U"/>
+                            <constraint firstItem="zJk-cQ-W93" firstAttribute="top" secondItem="Ksu-99-Rcr" secondAttribute="bottom" constant="17" id="m4q-65-heP"/>
+                            <constraint firstItem="sPX-pN-hVy" firstAttribute="leading" secondItem="4eb-JT-oqP" secondAttribute="leading" id="mZg-IU-zdx"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="addCardSetButton" destination="Ksu-99-Rcr" id="ntp-dB-SJY"/>
                         <outlet property="collectionView" destination="sPX-pN-hVy" id="dmA-O3-jGu"/>
+                        <outlet property="editGalleryButton" destination="h1D-CG-bpc" id="zaa-n7-IbH"/>
                         <segue destination="jwB-pA-M4b" kind="show" identifier="showCardSet" id="VX0-QP-nlY"/>
                     </connections>
                 </viewController>
