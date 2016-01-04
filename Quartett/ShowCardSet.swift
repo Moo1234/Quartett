@@ -12,23 +12,30 @@ import CoreData
 class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationBarItem: UINavigationItem!
+    @IBOutlet weak var cardSetImage: UIImageView!
     
     var cardArray = [NSManagedObject]()
+    var attributeArray = [NSManagedObject]()
     var cardSetID = 0
     var navigationBarTitle = "Kartenset"
     var count = 0
+    var ids = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        
+//        self.collectionView.backgroundColor = UIColor.clearColor()
+        self.cardSetImage.image = UIImage(named: "CardSet" + String(cardSetID))!
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+        loadCardArray()
+        loadAttributes()
         navigationBarItem.title = self.navigationBarTitle
     }
     
-    func loadData(){
+    func loadCardArray(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
@@ -46,6 +53,24 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
+    func loadAttributes(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Attribute")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "cardset == %d", cardSetID)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            attributeArray = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,7 +84,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             return values!.count
         }
     }
-    var ids = [Int]()
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if(collectionView == self.collectionView){
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
@@ -82,9 +106,14 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             let card = cardArray[ids[0]]
             let values = card.valueForKey("values")?.componentsSeparatedByString(",")
 //            print(values)
-            cell.attributeLabel.text = values![indexPath.row]
+            cell.attributeValueLabel?.text = values![indexPath.row]
+            let attribute = attributeArray[indexPath.row]
+            cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
+            cell.attributeNameLabel?.text = attribute.valueForKey("name") as? String
+            
             if(count == (values?.count)!-1){
                 count = 0
+//                print(ids)
                 ids.removeFirst()
             }else{
                 count++

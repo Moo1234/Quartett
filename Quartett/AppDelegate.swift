@@ -53,12 +53,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCardset(1, name: "Dortmund", attributes: "0,1,2,3,4,5",image: "CardSet1")
 
         
-        saveAttribute(0, name: "PAC", icon: "icon0", condition: true)
-        saveAttribute(1, name: "DRI", icon: "icon1", condition: true)
-        saveAttribute(2, name: "SHO", icon: "icon2", condition: true)
-        saveAttribute(3, name: "DEF", icon: "icon3", condition: true)
-        saveAttribute(4, name: "PAS", icon: "icon4", condition: true)
-        saveAttribute(5, name: "PHY", icon: "icon5", condition: true)
+        saveAttribute(0, cardset: 0, name: "PAC", icon: "StandardIcon", condition: true)
+        saveAttribute(1, cardset: 0, name: "DRI", icon: "StandardIcon", condition: true)
+        saveAttribute(2, cardset: 0, name: "SHO", icon: "StandardIcon", condition: true)
+        saveAttribute(3, cardset: 0, name: "DEF", icon: "StandardIcon", condition: true)
+        saveAttribute(4, cardset: 0, name: "PAS", icon: "StandardIcon", condition: true)
+        saveAttribute(5, cardset: 0, name: "PHY", icon: "StandardIcon", condition: true)
+        
+        saveAttribute(6, cardset: 1, name: "PAC", icon: "StandardIcon", condition: true)
+        saveAttribute(7, cardset: 1, name: "DRI", icon: "StandardIcon", condition: true)
+        saveAttribute(8, cardset: 1, name: "SHO", icon: "StandardIcon", condition: true)
+        saveAttribute(9, cardset: 1, name: "DEF", icon: "StandardIcon", condition: true)
+        saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", condition: true)
+        saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", condition: true)
         
         return true
     }
@@ -120,6 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
+            
+            // manually deinstall App
             abort()
         }
         
@@ -198,7 +207,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         newCardset.setValue(id, forKey: "id")
         newCardset.setValue(name, forKey: "name")
-        newCardset.setValue(attributes, forKey: "attributes")
         newCardset.setValue(image, forKey: "image")
         
         do {
@@ -208,13 +216,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func saveAttribute(id: Int, name: String, icon: String, condition: Bool) {
+    func saveAttribute(id: Int, cardset: Int, name: String, icon: String, condition: Bool) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Attribute", inManagedObjectContext:managedContext)
         let attribute = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         attribute.setValue(id, forKey: "id")
+        attribute.setValue(cardset, forKey: "cardset")
         attribute.setValue(name, forKey: "name")
         attribute.setValue(icon, forKey: "icon")
         attribute.setValue(condition, forKey: "condition")
