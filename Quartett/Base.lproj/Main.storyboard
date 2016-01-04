@@ -927,6 +927,12 @@
                                     <action selector="pickUpCardPressed:" destination="iTw-JK-eau" eventType="touchUpInside" id="hpO-8d-2LA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-7X-4NC">
+                                <rect key="frame" x="317" y="512" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -961,8 +967,8 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hqD-dW-LsQ"/>
-        <segue reference="XXD-Nw-i3s"/>
         <segue reference="PUa-f6-a5I"/>
+        <segue reference="RiT-DV-2h0"/>
+        <segue reference="hqD-dW-LsQ"/>
     </inferredMetricsTieBreakers>
 </document>

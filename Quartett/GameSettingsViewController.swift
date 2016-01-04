@@ -286,7 +286,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        //set Values
+        //Set Values
         //cardSet:
         newGame.setValue(setID, forKey: "cardset")
         newGame.setValue(cpuDifficulty, forKey: "difficulty")

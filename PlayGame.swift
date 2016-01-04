@@ -68,7 +68,7 @@ class PlayGame: UIViewController {
     
     
     
-    //*************
+    //*************+
     //End
     //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
     //
