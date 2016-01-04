@@ -86,6 +86,10 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if(collectionView == self.collectionView){
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
             let card = cardArray[indexPath.row]
+//            cell.frame.size.height = collectionView.frame.size.height-64
+//            cell.frame.size.width = collectionView.frame.size.width
+            
+            
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
             
