@@ -20,6 +20,8 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.layer.borderWidth = 1
+        collectionView.layer.borderColor = UIColor.blackColor().CGColor
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -38,7 +40,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Cardset")
-
+        
         
         do {
             let results =
@@ -186,5 +188,5 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
