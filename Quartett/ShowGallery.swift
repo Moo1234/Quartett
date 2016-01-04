@@ -101,11 +101,13 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     @IBAction func editGalleryButton(sender: AnyObject) {
         if(editable){
+            collectionView.frame.size.height = collectionView.frame.size.height + 35.0
             editGalleryButton.title = "Editieren"
             editable = false
             addCardSetButton.hidden = true
             collectionView.reloadData()
         }else{
+            collectionView.frame.size.height = collectionView.frame.size.height - 35.0
             editGalleryButton.title = "Fertig"
             editable = true
             addCardSetButton.hidden = false
