@@ -22,6 +22,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cpuLabel: UILabel!
     @IBOutlet weak var setTimeOutlet: UISegmentedControl!
     @IBOutlet weak var cardSetIcon: UIImageView!
+    @IBOutlet weak var startButton: UIButton!
     
     
     
@@ -99,6 +100,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         //        cardSetIcon.layer.borderWidth = 1
         //        cardSetIcon.layer.borderColor = UIColor.blackColor().CGColor
         
+        startButton.enabled = false
+        
         
         playerOneName.delegate = self
         playerOneName.tag = 0
@@ -122,6 +125,10 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         playerTwoName.hidden = true
         cpuLabel.hidden = false
         cpuSettingsOutlet.hidden = false
+        
+        if playerOneNameVar != "" && setID != -1 {
+            startButton.enabled = true
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -161,6 +168,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.view.endEditing(true)
+        
+        if playerOneNameVar != "" && setID != -1 {
+            startButton.enabled = true
+        }
+        
         return false
     }
     
@@ -268,12 +280,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        
-        print(player1CardsString)
-        print(player2CardsString)
-        
-        
-        
+    
         
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         

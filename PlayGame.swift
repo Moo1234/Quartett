@@ -11,6 +11,28 @@ import CoreData
 
 class PlayGame: UIViewController {
 
+    //GUI-Elements
+    @IBOutlet weak var pickUpCard: UIButton!
+    
+    
+    
+    
+    
+    //Vars
+    var game = [NSManagedObject]()
+    var cardsetID: Int = -1
+    var cardset = [NSManagedObject]()
+    var difficulty: Int = -1
+    var currentLap: Int = 0
+    var maxLaps: Int = -1
+    var maxTime: Double = -1.0
+    var p1Name: String = ""
+    var p1Cards: String = ""
+    
+    var cpuCards: String = ""
+    var turn: Bool = true
+    
+    
     //ypóo
     
     //
@@ -25,7 +47,6 @@ class PlayGame: UIViewController {
     //  maxTime
     //  maxLaps
     var playerOneCards = [NSManagedObject]()
-    var cpuCards = [NSManagedObject]()
     var gameTime: Double = 600.0
     var whostarts: Bool = true
     var cardsetArray = [NSManagedObject]()
@@ -53,26 +74,24 @@ class PlayGame: UIViewController {
     //
     
     
-    var cards:String = ""
-    var cardIDsArray: [String] = []
-    
-    
-    var cardArraySet = Set<NSManagedObject>()
-    var cardArrayTemp = [NSManagedObject]()
-    
-    @IBOutlet weak var pickUpCard: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadGame()
         
+        print("cardset: " , cardsetID, "\n diff: " , difficulty, "\n maxLaps: ",maxLaps, "\n maxTime:", maxTime, "\n p1name: ", p1Name, "\n p1Cards: ", p1Cards, "\n cpuCards", cpuCards, "\n turn", turn)
         
+        //Timer
+        //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
         
         
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func pickUpCardPressed(sender: AnyObject) {
-    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,31 +99,39 @@ class PlayGame: UIViewController {
     
     
     
-    func loadCardsFromCardset(cardIDs: [String]){
+    
+    
+    @IBAction func pickUpCardPressed(sender: AnyObject) {
+    }
+    
+    
+    //Loads Game-Object and fills Vars
+    func loadGame(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Card")
+        let fetchRequest = NSFetchRequest(entityName: "Game")
         
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            cardArrayTemp =  results as! [NSManagedObject]
+            game =  results as! [NSManagedObject]
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-        for var index = 0; index < cardIDs.count; ++index {
-            for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
-                
-                if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
-                    cardArraySet.insert(cardArrayTemp[index2])
-                    
-                }
-            }
-        }
+        cardsetID = game[0].valueForKey("cardset") as! Int!
+        difficulty = game[0].valueForKey("difficulty") as! Int!
+        maxLaps = game[0].valueForKey("maxLaps") as! Int!
+        maxTime = game[0].valueForKey("maxTime") as! Double!
+        p1Name = game[0].valueForKey("player1") as! String!
+        p1Cards = game[0].valueForKey("player1Cards") as! String!
+        cpuCards = game[0].valueForKey("player2Cards") as! String!
+        turn = game[0].valueForKey("turn") as! Bool!
         
     }
+    
+    
     
     
     //Convert String to Array(String)
@@ -122,5 +149,36 @@ class PlayGame: UIViewController {
     // Pass the selected object to the new view controller.
     }
     */
-    
+
+
+
+
+
+//
+//    func loadCardsFromCardset(cardIDs: [String]){
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext
+//        let fetchRequest = NSFetchRequest(entityName: "Card")
+//
+//        do {
+//            let results =
+//            try managedContext.executeFetchRequest(fetchRequest)
+//            cardArrayTemp =  results as! [NSManagedObject]
+//
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//
+//        for var index = 0; index < cardIDs.count; ++index {
+//            for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
+//
+//                if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
+//                    cardArraySet.insert(cardArrayTemp[index2])
+//
+//                }
+//            }
+//        }
+//    }
+
+
 }

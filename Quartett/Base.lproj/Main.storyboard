@@ -734,6 +734,7 @@
                         <outlet property="scrollView" destination="dLu-Ka-5ey" id="xZe-od-r0I"/>
                         <outlet property="setNumberOfRoundsOutlet" destination="tgx-7v-cH2" id="yif-ty-Ydk"/>
                         <outlet property="setTimeOutlet" destination="Kdt-xA-E6Y" id="ozK-Rk-toV"/>
+                        <outlet property="startButton" destination="f3X-rb-GqD" id="Ic3-qh-3vs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -887,7 +888,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-m1-gtI">
                                 <rect key="frame" x="0.0" y="63" width="414" height="673"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-TK-qhD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-TK-qhD">
                                 <rect key="frame" x="274" y="93" width="98" height="140"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -904,10 +905,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huj-ST-kyq">
+                                        <rect key="frame" x="7" y="9" width="49" height="30"/>
+                                        <state key="normal" title="Zurück"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="RiT-DV-2h0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.40952606752955967" blue="0.24638078768122318" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
                                 <rect key="frame" x="32" y="554" width="98" height="140"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -953,8 +961,8 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fUU-fT-Ery"/>
-        <segue reference="pjo-AW-0G0"/>
         <segue reference="hqD-dW-LsQ"/>
+        <segue reference="XXD-Nw-i3s"/>
+        <segue reference="PUa-f6-a5I"/>
     </inferredMetricsTieBreakers>
 </document>

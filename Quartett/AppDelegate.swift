@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         deleteObjectsFromEntity("Card")
         deleteObjectsFromEntity("Cardset")
         deleteObjectsFromEntity("Attribute")
+        deleteObjectsFromEntity("Game")
 
         saveRanking("Hans", rounds: 15, time: 20.0)
         saveRanking("Peter", rounds: 10, time: 30.0)
