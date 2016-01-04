@@ -80,16 +80,11 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
     
     
     
-    //*******************************
-    // https://www.youtube.com/watch?v=JbPc62YWhPQ  Tutorial dazu
-    // IndexPaths ist nil, wenn du auf "Auswählen drückst". Deshalb ging es nicht
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("chooseButtonPressed", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        print("hallo")
-//        print(segue.identifier)
         if (segue.identifier == "chooseButtonPressed"){
             let vc = segue.destinationViewController as! GameSettingsViewController
             

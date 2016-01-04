@@ -8,14 +8,18 @@
 
 import UIKit
 import CoreData
+import Foundation
 
-class PlayGame: UIViewController {
+class PlayGame: UIViewController{
 
     //GUI-Elements
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var pickUpCard: UIButton!
     
+    @IBOutlet weak var showCard: UIView!
+    @IBOutlet weak var cardImage: UIImageView!  
     
-    
+    @IBOutlet weak var cardInfo: UITextView!
     
     
     //Vars
@@ -31,48 +35,7 @@ class PlayGame: UIViewController {
     
     var cpuCards: String = ""
     var turn: Bool = true
-    
-    
-    //ypóo
-    
-    //
-    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
-    //Später muss halt dann statt cardset spiel geladen werden und die vars werden durch das beschrieben
-    //Begin
-    //**************
-    
-    var cpuDif: Int = 1
-    var numberLaps: Int = 10
-    var playerOneNameVar: String = "player1"
-    //  maxTime
-    //  maxLaps
-    var playerOneCards = [NSManagedObject]()
-    var gameTime: Double = 600.0
-    var whostarts: Bool = true
-    var cardsetArray = [NSManagedObject]()
-    
-    
-    func loadCardset(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Cardset")
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            cardsetArray = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
-    
-    
-    
-    //*************+
-    //End
-    //Testvariablen so lange noch kein richtiges SpielObjekt erstellt werden kann!
-    //
-    
+
     
 
     
@@ -80,7 +43,12 @@ class PlayGame: UIViewController {
         super.viewDidLoad()
         loadGame()
         
+
+        
         print("cardset: " , cardsetID, "\n diff: " , difficulty, "\n maxLaps: ",maxLaps, "\n maxTime:", maxTime, "\n p1name: ", p1Name, "\n p1Cards: ", p1Cards, "\n cpuCards", cpuCards, "\n turn", turn)
+        
+        loadCardset()
+    
         
         //Timer
         //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
@@ -102,8 +70,21 @@ class PlayGame: UIViewController {
     
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
+        
+        showCard.hidden = false
+        var test = cardset[0].valueForKey("image") as! String!
+        
+        
+        showCard.layer.borderWidth = 3
+        
+        //cardImage.image = UIImage(named: "rib")
+        
     }
     
+    
+    //******************************************
+    //DB-Opertions
+    //START
     
     //Loads Game-Object and fills Vars
     func loadGame(){
@@ -132,6 +113,30 @@ class PlayGame: UIViewController {
     }
     
     
+    func loadCardset(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Cardset")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "id == %d", cardsetID)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            cardset = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+    }
+
+    
+    //******************************************
+    //DB-Operations
+    //END
     
     
     //Convert String to Array(String)
@@ -140,6 +145,8 @@ class PlayGame: UIViewController {
         
         return toArray
     }
+    
+
     
     /*
     // MARK: - Navigation
