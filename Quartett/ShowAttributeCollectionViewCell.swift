@@ -7,7 +7,7 @@
 //
 
 import UIKit
-// noch ohne FUnktion
+
 class ShowAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var attributeValueLabel: UILabel!

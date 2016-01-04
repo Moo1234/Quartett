@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class ShowCardSetCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collectionView: UICollectionView!

@@ -23,15 +23,13 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        self.collectionView.backgroundColor = UIColor.clearColor()
-        self.cardSetImage.image = UIImage(named: "CardSet" + String(cardSetID))!
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadCardArray()
         loadAttributes()
+        self.cardSetImage.image = UIImage(named: "CardSet" + String(cardSetID))!
         navigationBarItem.title = self.navigationBarTitle
     }
     
