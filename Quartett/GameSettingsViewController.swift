@@ -159,6 +159,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
     //Hide Keyboard after typing
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.tag == 0{
@@ -237,7 +239,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     //Starts and creates Game (Button: Spiel Starten)
     @IBAction func createNewGame(sender: AnyObject) {
-        
+        var temp: Int  = -1
         //print(setID)
         let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -265,25 +267,29 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         for var index = 0; index < player1Cards.count; ++index {
             if index == (player1Cards.count-1){
-                player1CardsString += String(player1Cards[index].valueForKey("id") as? Int)
+                temp = Int((player1Cards[index].valueForKey("id") as? Int)!)
+                player1CardsString += String(temp)
             }else{
-                player1CardsString += String(player1Cards[index].valueForKey("id") as? Int) + ","
+                temp = Int((player1Cards[index].valueForKey("id") as? Int)!)
+                player1CardsString += String(temp) + ","
             }
             
         }
         
         for var index2 = 0; index2 < player2Cards.count; ++index2 {
             if index2 == (player2Cards.count-1){
-                player2CardsString += String(player2Cards[index2].valueForKey("id") as? Int)
+                temp = Int((player2Cards[index2].valueForKey("id") as? Int)!)
+                player2CardsString += String(temp)
+            
             }else{
-                player2CardsString += String(player2Cards[index2].valueForKey("id") as? Int) + ","
+                temp = Int((player2Cards[index2].valueForKey("id") as? Int)!)
+                player2CardsString += String(temp) + ","
             }
             
         }
     
         
         var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
-        
         
         
         //Set Values

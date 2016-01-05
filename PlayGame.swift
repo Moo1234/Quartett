@@ -33,29 +33,23 @@ class PlayGame: UIViewController{
     var p1Name: String = ""
     var p1Cards: String = ""
     
+    var cards = [NSManagedObject]()
     var cpuCards: String = ""
     var turn: Bool = true
     var nextCard: Int = -1
 
+    var card = [NSManagedObject]()
     
 
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        print("jo")
-        loadGame()
-        loadCardset()
-
-        showCard.hidden = true
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-
-        
+        loadGame()
+        loadCardset()
+        showCard.hidden = true
         print("cardset: " , cardsetID, "\n diff: " , difficulty, "\n maxLaps: ",maxLaps, "\n maxTime:", maxTime, "\n p1name: ", p1Name, "\n p1Cards: ", p1Cards, "\n cpuCards", cpuCards, "\n turn", turn)
         
         
@@ -85,13 +79,14 @@ class PlayGame: UIViewController{
         showCard.hidden = false
         showCard.layer.borderWidth = 3
         showCard.layer.borderColor = UIColor.blackColor().CGColor
+        showCard.layer.cornerRadius = 10
         
         var p1CardsString = stringToArrayString(p1Cards)
         
-        nextCard = Int(p1CardsString[0])!
-        loadNextCard(nextCard)
+        loadNextCard(Int(p1CardsString[0])!)
         
-        cardImage.image = UIImage(named: cardset[0].valueForKey("image") as! String!)
+        cardImage.image = UIImage(named: card[0].valueForKey("image") as! String!)
+        cardInfo.text = card[0].valueForKey("info") as! String!
         //self.cardImage.image = UIImage(named: "rib")
     }
     
@@ -151,7 +146,7 @@ class PlayGame: UIViewController{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Cardset")
+        let fetchRequest = NSFetchRequest(entityName: "Card")
         
         // filters cards from specific cardset
         let predicate = NSPredicate(format: "id == %d", currentCard)
@@ -160,7 +155,7 @@ class PlayGame: UIViewController{
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            cardset = results as! [NSManagedObject]
+            card = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }

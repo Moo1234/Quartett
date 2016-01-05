@@ -35,12 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         saveCard(0, cardset: 0, name: "Robben", info: "Arjen Robben ist ein niederländischer Fußballspieler. Er steht seit dem 28. August 2009 beim Bundesligisten FC Bayern München unter Vertrag und gehört zum Kader der niederländischen A-Nationalmannschaft.", image: "rob", values: "90,88,60,42,97,31")
         saveCard(1, cardset: 0, name: "Ribery", info: "info1", image: "rib", values: "11,12,13,14,15,16")
-        saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
-        saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
-        saveCard(4, cardset: 0, name: "Lewandowski", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
-        saveCard(5, cardset: 0, name: "Mueller", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
+        saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "boateng", values: "1,2,3,4,5,6")
+        saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "alaba", values: "70,90,70,90,70,90")
+        saveCard(4, cardset: 0, name: "Lewandowski", info: "info4", image: "lewa", values: "66,77,88,99,88,77")
+        saveCard(5, cardset: 0, name: "Mueller", info: "info5", image: "mueller", values: "66,77,88,99,88,77")
 
-        saveCardset(0, name: "Bayern", attributes: "0,1,2,3,4,5", image: "CardSet0")
+        saveCardset(0, name: "Bayern", image: "CardSet0")
         
         
         saveCard(6, cardset: 1, name: "Reus", info: "info0", image: "reus", values: "90,88,60,42,97,31")
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
         saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
         
-        saveCardset(1, name: "Dortmund", attributes: "0,1,2,3,4,5",image: "CardSet1")
+        saveCardset(1, name: "Dortmund",image: "CardSet1")
 
         
         saveAttribute(0, cardset: 0, name: "PAC", icon: "StandardIcon", condition: true)
@@ -198,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func saveCardset(id: Int, name: String, attributes: String, image: String) {
+    func saveCardset(id: Int, name: String, image: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Cardset", inManagedObjectContext:managedContext)
