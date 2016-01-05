@@ -12,5 +12,5 @@ class ShowAttributeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var attributeValueLabel: UILabel!
     @IBOutlet weak var attributeNameLabel: UILabel!
-    
+    @IBOutlet weak var attributeUnitLabel: UILabel!
 }

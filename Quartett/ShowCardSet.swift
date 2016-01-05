@@ -112,8 +112,10 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
 //            print(values)
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
+            cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
             cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
             cell.attributeNameLabel?.text = attribute.valueForKey("name") as? String
+            
             
             if(count == (values?.count)!-1){
                 count = 0
@@ -123,6 +125,15 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 count++
             }
             return cell
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if(collectionView == self.collectionView){
+            return CGSizeMake(collectionView.bounds.size.width-20, collectionView.bounds.size.height-20)
+        }else{
+            let cellsHeight = CGFloat(Int((cardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
+            return CGSizeMake(collectionView.bounds.size.width/2, collectionView.bounds.size.height/cellsHeight)
         }
     }
     
