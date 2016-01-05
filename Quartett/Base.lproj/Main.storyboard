@@ -1046,6 +1046,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="attributesCollectionView" destination="42e-il-z6b" id="iWh-hi-acz"/>
                         <outlet property="cardImage" destination="k9L-hZ-sdC" id="Tn0-eb-ryM"/>
                         <outlet property="cardInfo" destination="epx-WY-K2o" id="GFd-Yb-gSw"/>
                         <outlet property="cardView" destination="neE-IE-Sgz" id="nc8-Dv-GGn"/>

@@ -20,6 +20,7 @@ class PlayGame: UIViewController{
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardInfo: UITextView!
     
+    @IBOutlet weak var attributesCollectionView: UICollectionView!
     
     
     //Vars
@@ -87,6 +88,9 @@ class PlayGame: UIViewController{
         
         cardImage.image = UIImage(named: card[0].valueForKey("image") as! String!)
         cardInfo.text = card[0].valueForKey("info") as! String!
+        
+        
+        
         //self.cardImage.image = UIImage(named: "rib")
     }
     
