@@ -199,14 +199,14 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         var setP2 = Set<NSManagedObject>()
         let shuffle = 2 * arr.count
         
-        var randomNum: Int = random()  % arr.count
-        var randomNum2: Int = random()  % arr.count
+        var randomNum: Int = Int(arc4random())  % arr.count
+        var randomNum2: Int = Int(arc4random())  % arr.count
         var temp: NSManagedObject
         
         //shuffle
         for var index = 0; index < shuffle; ++index {
-            randomNum = random() % arr.count
-            randomNum2 = random() % arr.count
+            randomNum = Int(arc4random()) % arr.count
+            randomNum2 = Int(arc4random()) % arr.count
             temp = arr[randomNum2]
             arr[randomNum2] = arr[randomNum]
             arr[randomNum] = temp
