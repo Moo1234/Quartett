@@ -23,6 +23,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var cardNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var compareView: UIView!
+    @IBOutlet weak var winLoseLabel: UILabel!
+    @IBOutlet weak var cpuAttLabel: UILabel!
+    @IBOutlet weak var p1AttLabel: UILabel!
     
     //Vars
     var game = [NSManagedObject]()
@@ -59,6 +63,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let cpuCardsString = stringToArrayString(cpuCards)
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
+        
         
     
         
@@ -102,6 +107,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
+        
         atCell.valueLabel?.text = values![indexPath.row]
         atCell.nameLabel?.text = attribute.valueForKey("name") as? String
         
@@ -122,21 +128,68 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         print("P1 :" , values![indexPath.row])
         let cpuValues = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
         print("CPU: ", cpuValues![indexPath.row])
+        let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
+        compareView.hidden = false
+        compareView.backgroundColor = UIColor.grayColor()
+        compareView.layer.cornerRadius = 10
+        
+        if(condition){
+            if(values![indexPath.row] == cpuValues![indexPath.row]){
+                print("unentschieden")
+            }else if(values![indexPath.row] > cpuValues![indexPath.row]){
+                print("cool")
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.greenColor()
+                winLoseLabel.text = "Dein Wert ist höher"
+                p1AttLabel.text = values![indexPath.row]
+                p1AttLabel.backgroundColor = UIColor.greenColor()
+                cpuAttLabel.text = cpuValues![indexPath.row]
+                cpuAttLabel.backgroundColor = UIColor.redColor()
+                
+                
+                
+            }else{
+                print("verloren")
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.redColor()
+                winLoseLabel.text = "Dein Wert ist kleiner"
+                p1AttLabel.text = values![indexPath.row]
+                p1AttLabel.backgroundColor = UIColor.redColor()
+                cpuAttLabel.text = cpuValues![indexPath.row]
+                cpuAttLabel.backgroundColor = UIColor.greenColor()
+                           }
+        }else{
+            if(values![indexPath.row] == cpuValues![indexPath.row]){
+                print("unentschiiiieden")
+            }else if(values![indexPath.row] < cpuValues![indexPath.row]){
+                print("cooool")
+                
+            }else{
+                print("verloooren")
+            }
+        }
+        
+        gameContinue()
         
     }
 
     
-    
+    func gameContinue(){
+        
+    }
     
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
+        gamestart()
+        
+    }
     
+    func gamestart(){
         showCard.hidden = false
         showCard.layer.borderWidth = 3
         showCard.layer.borderColor = UIColor.blackColor().CGColor
@@ -145,16 +198,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cardInfo.layer.cornerRadius = 10
         showCard.layer.cornerRadius = 10
         
-        var p1CardsString = stringToArrayString(p1Cards)
         
-        loadNextCard(Int(p1CardsString[0])!)
-        
-        cardImage.image = UIImage(named: currCard[0].valueForKey("image") as! String!)
-        cardInfo.text = currCard[0].valueForKey("info") as! String!
-        cardNameLabel.text = currCard[0].valueForKey("name") as! String!
+        cardImage.image = UIImage(named: p1CardsArray[0].valueForKey("image") as! String!)
+        cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
+        cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
         
         //self.cardImage.image = UIImage(named: "rib")
     }
+    
+    
+    
     
     
     //******************************************
@@ -182,6 +235,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         maxTime = game[0].valueForKey("maxTime") as! Double!
         p1Name = game[0].valueForKey("player1") as! String!
         p1Cards = game[0].valueForKey("player1Cards") as! String!
+        print(p1Cards)
         cpuCards = game[0].valueForKey("player2Cards") as! String!
         turn = game[0].valueForKey("turn") as! Bool!
         
@@ -257,25 +311,26 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         var returnArr = [NSManagedObject]()
         // filters cards from specific cardset
         
-        let firstp = Int(arr[0])!
+//        let firstp = Int(arr[0])!
         
-        var predicate = NSPredicate(format: "id == %d",firstp)
-        for var index = 1; index < arr.count; ++index{
+//        var predicate = NSPredicate(format: "id == %d",firstp)
+        for var index = 0; index < arr.count; ++index{
             let predicate2 = NSPredicate(format: "id == %d", Int(arr[index])!)
-            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
+//            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
+        
+        
+        
+            fetchRequest.predicate = predicate2
+        
+            do {
+                let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+                let returnArr2 = results as! [NSManagedObject]
+                returnArr.append(returnArr2[0])
+            } catch let error as NSError {
+                print("Could not fetch \(error), \(error.userInfo)")
+            }
         }
-        
-        
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            returnArr = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    
         return returnArr
     }
 
