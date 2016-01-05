@@ -126,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				587DE0DE1C307AC900D49225 /* PlayGame.swift */,
+				58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */,
 				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
 				58CE5AF51C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift */,
 				58CE5AF71C283469001FE34B /* ChooseGalery.swift */,
@@ -138,7 +139,6 @@
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
 				3CB8B0B11C25EC91003F0D20 /* Main.storyboard */,
-				58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
 				58C49BE61BFE2A47005C8F1E /* Assets.xcassets */,

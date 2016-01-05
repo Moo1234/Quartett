@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class PlayGame: UIViewController{
+class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
 
     
     //GUI-Elements
@@ -20,7 +20,7 @@ class PlayGame: UIViewController{
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardInfo: UITextView!
     
-    @IBOutlet weak var attributesCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     //Vars
@@ -33,14 +33,16 @@ class PlayGame: UIViewController{
     var maxTime: Double = -1.0
     var p1Name: String = ""
     var p1Cards: String = ""
+    var p1CardsArray = [NSManagedObject]()
     
     var cards = [NSManagedObject]()
     var cpuCards: String = ""
     var turn: Bool = true
     var nextCard: Int = -1
 
-    var card = [NSManagedObject]()
-    
+    var currCard = [NSManagedObject]()
+
+    var attributes = [NSManagedObject]()
 
 
     
@@ -50,6 +52,10 @@ class PlayGame: UIViewController{
         
         loadGame()
         loadCardset()
+        loadAttribute()
+        loadCards()
+        
+        
         showCard.hidden = true
         print("cardset: " , cardsetID, "\n diff: " , difficulty, "\n maxLaps: ",maxLaps, "\n maxTime:", maxTime, "\n p1name: ", p1Name, "\n p1Cards: ", p1Cards, "\n cpuCards", cpuCards, "\n turn", turn)
         
@@ -64,6 +70,7 @@ class PlayGame: UIViewController{
     }
     
     
+
     
     
     override func didReceiveMemoryWarning() {
@@ -71,6 +78,35 @@ class PlayGame: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(attributes.count)
+        return self.attributes.count
+        
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let atCell = collectionView.dequeueReusableCellWithReuseIdentifier("atCell", forIndexPath: indexPath) as! GameAttributesCollectionViewCell
+        let attribute = attributes[indexPath.row]
+        
+
+        atCell.layer.borderWidth = 2
+        atCell.layer.borderColor = UIColor.blackColor().CGColor
+        
+        
+        let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        
+        atCell.valueLabel?.text = values![indexPath.row]
+        atCell.nameLabel?.text = attribute.valueForKey("name") as? String
+        
+       
+        
+        
+        return atCell
+        
+    }
     
     
     
@@ -86,9 +122,8 @@ class PlayGame: UIViewController{
         
         loadNextCard(Int(p1CardsString[0])!)
         
-        cardImage.image = UIImage(named: card[0].valueForKey("image") as! String!)
-        cardInfo.text = card[0].valueForKey("info") as! String!
-        
+        cardImage.image = UIImage(named: currCard[0].valueForKey("image") as! String!)
+        cardInfo.text = currCard[0].valueForKey("info") as! String!
         
         
         //self.cardImage.image = UIImage(named: "rib")
@@ -159,14 +194,64 @@ class PlayGame: UIViewController{
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            card = results as! [NSManagedObject]
+            currCard = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    func loadAttribute(){
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Attribute")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "cardset == %d", cardsetID)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            attributes = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+
+    }
+    
+    func loadCards(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Card")
+        
+        // filters cards from specific cardset
+        var p1CardsString = stringToArrayString(p1Cards)
+        print(p1CardsString)
+        var firstp = Int(p1CardsString[0])!
+        
+        var predicate = NSPredicate(format: "id == %d",firstp)
+        for var index = 1; index < p1CardsString.count; ++index{
+            let predicate2 = NSPredicate(format: "id == %d", Int(p1CardsString[index])!)
+            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
+        }
+        
+        
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            p1CardsArray = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-
-        
     }
+
 
     
     //******************************************
