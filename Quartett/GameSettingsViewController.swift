@@ -102,6 +102,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         startButton.enabled = false
         
+        setID = 0
         
         playerOneName.delegate = self
         playerOneName.tag = 0

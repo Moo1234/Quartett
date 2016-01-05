@@ -20,6 +20,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardInfo: UITextView!
     
+    @IBOutlet weak var cardNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -34,6 +35,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var p1Name: String = ""
     var p1Cards: String = ""
     var p1CardsArray = [NSManagedObject]()
+    var cpuCardsArray = [NSManagedObject]()
     
     var cards = [NSManagedObject]()
     var cpuCards: String = ""
@@ -53,15 +55,18 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         loadGame()
         loadCardset()
         loadAttribute()
-        loadCards()
-        
-        
-        showCard.hidden = true
-        print("cardset: " , cardsetID, "\n diff: " , difficulty, "\n maxLaps: ",maxLaps, "\n maxTime:", maxTime, "\n p1name: ", p1Name, "\n p1Cards: ", p1Cards, "\n cpuCards", cpuCards, "\n turn", turn)
-        
+        let p1CardsString = stringToArrayString(p1Cards)
+        let cpuCardsString = stringToArrayString(cpuCards)
+        p1CardsArray = loadCards(p1CardsString)
+        cpuCardsArray = loadCards(cpuCardsString)
         
     
         
+        
+        
+        showCard.hidden = true
+        
+
         //Timer
         //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
         
@@ -80,7 +85,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(attributes.count)
         return self.attributes.count
         
     }
@@ -94,7 +98,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 
         atCell.layer.borderWidth = 2
         atCell.layer.borderColor = UIColor.blackColor().CGColor
-        
+        atCell.layer.cornerRadius = 10
         
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
@@ -108,6 +112,26 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let cellsHeight = CGFloat(Int((p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
+    
+        return CGSizeMake((collectionView.bounds.size.width)/2, collectionView.bounds.size.height/cellsHeight)
+    
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath.row)
+        let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        print("P1 :" , values![indexPath.row])
+        let cpuValues = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        
+        print("CPU: ", cpuValues![indexPath.row])
+        
+    }
+
+    
     
     
     
@@ -116,6 +140,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         showCard.hidden = false
         showCard.layer.borderWidth = 3
         showCard.layer.borderColor = UIColor.blackColor().CGColor
+        cardNameLabel.layer.cornerRadius = 10
+        cardImage.layer.cornerRadius = 10
+        cardInfo.layer.cornerRadius = 10
         showCard.layer.cornerRadius = 10
         
         var p1CardsString = stringToArrayString(p1Cards)
@@ -124,7 +151,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         cardImage.image = UIImage(named: currCard[0].valueForKey("image") as! String!)
         cardInfo.text = currCard[0].valueForKey("info") as! String!
-        
+        cardNameLabel.text = currCard[0].valueForKey("name") as! String!
         
         //self.cardImage.image = UIImage(named: "rib")
     }
@@ -222,20 +249,19 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 
     }
     
-    func loadCards(){
+    func loadCards(arr:[String]) -> [NSManagedObject]{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Card")
-        
+        var returnArr = [NSManagedObject]()
         // filters cards from specific cardset
-        var p1CardsString = stringToArrayString(p1Cards)
-        print(p1CardsString)
-        var firstp = Int(p1CardsString[0])!
+        
+        let firstp = Int(arr[0])!
         
         var predicate = NSPredicate(format: "id == %d",firstp)
-        for var index = 1; index < p1CardsString.count; ++index{
-            let predicate2 = NSPredicate(format: "id == %d", Int(p1CardsString[index])!)
+        for var index = 1; index < arr.count; ++index{
+            let predicate2 = NSPredicate(format: "id == %d", Int(arr[index])!)
             predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
         }
         
@@ -245,11 +271,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            p1CardsArray = results as! [NSManagedObject]
+            returnArr = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
+    
+        return returnArr
     }
 
 
@@ -257,6 +284,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //******************************************
     //DB-Operations
     //END
+    
+    
+    
     
     
     //Convert String to Array(String)
