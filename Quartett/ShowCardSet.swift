@@ -92,7 +92,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
-            
             cell.layer.cornerRadius = 10
             
             cell.nameLabel?.text = card.valueForKey("name") as? String
