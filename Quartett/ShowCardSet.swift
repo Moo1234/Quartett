@@ -126,6 +126,15 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         }
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if(collectionView == self.collectionView){
+            return CGSizeMake(collectionView.bounds.size.width-20, collectionView.bounds.size.height-20)
+        }else{
+            let cellsHeight = CGFloat(Int((cardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
+            return CGSizeMake(collectionView.bounds.size.width/2, collectionView.bounds.size.height/cellsHeight)
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if(collectionView == self.collectionView){
             guard let showCardSetCollectionViewCell = cell as? ShowCardSetCollectionViewCell else { return }
