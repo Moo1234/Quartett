@@ -93,6 +93,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
             
+            cell.layer.cornerRadius = 10
+            
             cell.nameLabel?.text = card.valueForKey("name") as? String
             cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
             cell.textview?.text = card.valueForKey("info") as? String
@@ -103,6 +105,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             // Attribute sind komischerweise bis zum ersten rechts-links scrollen noch vertauscht
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttributeCell", forIndexPath: indexPath) as! ShowAttributeCollectionViewCell
             
+            cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
             let card = cardArray[ids[0]]
