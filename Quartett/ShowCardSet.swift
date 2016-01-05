@@ -112,8 +112,10 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
 //            print(values)
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
+            cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
             cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
             cell.attributeNameLabel?.text = attribute.valueForKey("name") as? String
+            
             
             if(count == (values?.count)!-1){
                 count = 0

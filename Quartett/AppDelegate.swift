@@ -53,19 +53,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCardset(1, name: "Dortmund",image: "CardSet1")
 
         
-        saveAttribute(0, cardset: 0, name: "PAC", icon: "StandardIcon", condition: true)
-        saveAttribute(1, cardset: 0, name: "DRI", icon: "StandardIcon", condition: true)
-        saveAttribute(2, cardset: 0, name: "SHO", icon: "StandardIcon", condition: true)
-        saveAttribute(3, cardset: 0, name: "DEF", icon: "StandardIcon", condition: true)
-        saveAttribute(4, cardset: 0, name: "PAS", icon: "StandardIcon", condition: true)
-        saveAttribute(5, cardset: 0, name: "PHY", icon: "StandardIcon", condition: true)
+        saveAttribute(0, cardset: 0, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(1, cardset: 0, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(2, cardset: 0, name: "SHO", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(3, cardset: 0, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(4, cardset: 0, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(5, cardset: 0, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
         
-        saveAttribute(6, cardset: 1, name: "PAC", icon: "StandardIcon", condition: true)
-        saveAttribute(7, cardset: 1, name: "DRI", icon: "StandardIcon", condition: true)
-        saveAttribute(8, cardset: 1, name: "SHO", icon: "StandardIcon", condition: true)
-        saveAttribute(9, cardset: 1, name: "DEF", icon: "StandardIcon", condition: true)
-        saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", condition: true)
-        saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", condition: true)
+        saveAttribute(6, cardset: 1, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(7, cardset: 1, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(8, cardset: 1, name: "SHO", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(9, cardset: 1, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
         
         return true
     }
@@ -216,7 +216,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func saveAttribute(id: Int, cardset: Int, name: String, icon: String, condition: Bool) {
+    func saveAttribute(id: Int, cardset: Int, name: String, icon: String, unit: String, condition: Bool) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Attribute", inManagedObjectContext:managedContext)
@@ -226,6 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         attribute.setValue(cardset, forKey: "cardset")
         attribute.setValue(name, forKey: "name")
         attribute.setValue(icon, forKey: "icon")
+        attribute.setValue(unit, forKey: "unit")
         attribute.setValue(condition, forKey: "condition")
         
         do {
