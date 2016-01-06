@@ -16,13 +16,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //GUI-Elements
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var pickUpCard: UIButton!
+    
+    //picked up card
     @IBOutlet weak var showCard: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardInfo: UITextView!
-    
     @IBOutlet weak var cardNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    //View to compare valuse
     @IBOutlet weak var compareView: UIView!
     @IBOutlet weak var winLoseLabel: UILabel!
     @IBOutlet weak var cpuAttLabel: UILabel!
@@ -64,11 +67,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
         
-        
-    
-        
-        
-        
         showCard.hidden = true
         
 
@@ -78,16 +76,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         // Do any additional setup after loading the view.
     }
-    
-    
-
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    //******************************************
+    //Collection View Operations
+    //START
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.attributes.count
@@ -134,58 +133,127 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         print("CPU: ", cpuValues![indexPath.row])
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
+        
+
+        var timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
+
+        
+        
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
         compareView.layer.cornerRadius = 10
-        
         if(condition){
             if(values![indexPath.row] == cpuValues![indexPath.row]){
-                print("unentschieden")
+                drawOperations()
             }else if(values![indexPath.row] > cpuValues![indexPath.row]){
-                print("cool")
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
-                winLoseLabel.text = "Dein Wert ist höher"
                 p1AttLabel.text = values![indexPath.row]
-                p1AttLabel.backgroundColor = UIColor.greenColor()
                 cpuAttLabel.text = cpuValues![indexPath.row]
-                cpuAttLabel.backgroundColor = UIColor.redColor()
-                
+                winOperations()
                 
                 
             }else{
-                print("verloren")
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
-                winLoseLabel.text = "Dein Wert ist kleiner"
                 p1AttLabel.text = values![indexPath.row]
-                p1AttLabel.backgroundColor = UIColor.redColor()
                 cpuAttLabel.text = cpuValues![indexPath.row]
-                cpuAttLabel.backgroundColor = UIColor.greenColor()
-                           }
+                looseOperations()
+                
+            }
         }else{
             if(values![indexPath.row] == cpuValues![indexPath.row]){
-                print("unentschiiiieden")
+                drawOperations()
             }else if(values![indexPath.row] < cpuValues![indexPath.row]){
-                print("cooool")
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.greenColor()
+                p1AttLabel.text = values![indexPath.row]
+                cpuAttLabel.text = cpuValues![indexPath.row]
+                winOperations()
                 
             }else{
-                print("verloooren")
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.redColor()
+                p1AttLabel.text = values![indexPath.row]
+                cpuAttLabel.text = cpuValues![indexPath.row]
+                looseOperations()
             }
         }
-        
-        gameContinue()
         
     }
 
     
-    func gameContinue(){
-        
-    }
+    //******************************************
+    //Collection-View Operations
+    //END
     
+    
+    //******************************************
+    //IBActions 
+    //START
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
         gamestart()
+        
+    }
+    
+    //******************************************
+    //IBActions
+    //END
+    
+   
+    
+    
+    
+
+    //******************************************
+    //Functions
+    //START
+    
+    
+    func winOperations(){
+        
+        print("cool")
+        winLoseLabel.text = "Dein Wert ist höher!"
+        p1AttLabel.textColor = UIColor.greenColor()
+        p1AttLabel.layer.borderWidth = 3
+        p1AttLabel.backgroundColor = UIColor.whiteColor()
+        p1AttLabel.layer.borderColor = UIColor.greenColor().CGColor
+        cpuAttLabel.textColor = UIColor.redColor()
+        cpuAttLabel.layer.borderWidth = 3
+        cpuAttLabel.backgroundColor = UIColor.whiteColor()
+        cpuAttLabel.layer.borderColor = UIColor.redColor().CGColor
+        
+        //print(p1CardsArray)
+        p1CardsArray.append(p1CardsArray[0])
+        p1CardsArray.append(cpuCardsArray[0])
+        p1CardsArray.removeAtIndex(0)
+        cpuCardsArray.removeAtIndex(0)
+        //print(p1CardsArray)
+
+        
+    }
+    func looseOperations(){
+        
+        print("verloren")
+        winLoseLabel.text = "Dein Wert ist kleiner!"
+        p1AttLabel.textColor = UIColor.redColor()
+        p1AttLabel.layer.borderWidth = 3
+        p1AttLabel.backgroundColor = UIColor.whiteColor()
+        p1AttLabel.layer.borderColor = UIColor.redColor().CGColor
+        cpuAttLabel.textColor = UIColor.greenColor()
+        cpuAttLabel.layer.borderWidth = 3
+        cpuAttLabel.backgroundColor = UIColor.whiteColor()
+        cpuAttLabel.layer.borderColor = UIColor.greenColor().CGColor
+        
+        cpuCardsArray.append(p1CardsArray[0])
+        cpuCardsArray.append(cpuCardsArray[0])
+        cpuCardsArray.removeAtIndex(0)
+        p1CardsArray.removeAtIndex(0)
+        
+    }
+    func drawOperations(){
+        print("unentschieden")
         
     }
     
@@ -206,6 +274,39 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         //self.cardImage.image = UIImage(named: "rib")
     }
     
+    
+    func gameContinue(){
+        
+        if p1CardsArray.count > 0 && cpuCardsArray.count > 0 {
+            
+            cardImage.image = UIImage(named: p1CardsArray[0].valueForKey("image") as! String!)
+            cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
+            cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
+            
+            
+            collectionView.reloadData()
+        }
+        
+    }
+    
+    func dismissAlert()
+    {
+        // Dismiss the alert from here
+        compareView.hidden = true
+        gameContinue()
+        
+    }
+
+    //Convert String to Array(String)
+    func stringToArrayString(x:String) -> [String]{
+        let toArray = x.componentsSeparatedByString(",")
+        
+        return toArray
+    }
+    
+    //******************************************
+    //Functions
+    //END
     
     
     
@@ -341,16 +442,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //END
     
     
-    
-    
-    
-    //Convert String to Array(String)
-    func stringToArrayString(x:String) -> [String]{
-        let toArray = x.componentsSeparatedByString(",")
-        
-        return toArray
-    }
-
     
     /*
     // MARK: - Navigation
