@@ -13,7 +13,7 @@ import Foundation
 class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
 
     
-    //GUI-Elements
+    //GUI-Elementss
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var pickUpCard: UIButton!
     
