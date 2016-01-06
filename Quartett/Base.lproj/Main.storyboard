@@ -1060,7 +1060,7 @@
                                             <constraint firstAttribute="height" constant="182" id="HjJ-Ss-lVv"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sa-2c-9yb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sa-2c-9yb">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6up-Vz-wXg"/>

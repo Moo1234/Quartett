@@ -179,7 +179,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                // 6 gegen 16 oder 31 gewinnt noch manchmal???
+                // d6 gegen 16 oder 31 gewinnt noch manchmal???
 //                print(values![indexPath.row] > cpuValues![indexPath.row] , ";" , values![indexPath.row] , ":" , cpuValues![indexPath.row])
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
