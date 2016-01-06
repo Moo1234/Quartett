@@ -18,7 +18,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var pickUpCard: UIButton!
     
     //picked up card
-    @IBOutlet weak var showCard: UIView!
+    @IBOutlet var showCardBack: UIView!
+    @IBOutlet var showCard: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardInfo: UITextView!
     @IBOutlet weak var cardNameLabel: UILabel!
@@ -43,6 +44,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var p1Cards: String = ""
     var p1CardsArray = [NSManagedObject]()
     var cpuCardsArray = [NSManagedObject]()
+    var drawStack = [NSManagedObject]()
     
     var cards = [NSManagedObject]()
     var cpuCards: String = ""
@@ -67,7 +69,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
         
+//        showCard.addSubview(showCardBack)
+//        view.addSubview(showCard)
+        
         showCard.hidden = true
+        showCardBack.hidden = true
+        
         
 
         //Timer
@@ -103,6 +110,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         atCell.layer.borderWidth = 2
         atCell.layer.borderColor = UIColor.blackColor().CGColor
         atCell.layer.cornerRadius = 10
+        atCell.backgroundColor = UIColor.whiteColor()
         
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
@@ -110,7 +118,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         atCell.valueLabel?.text = values![indexPath.row]
         atCell.nameLabel?.text = attribute.valueForKey("name") as? String
         
-       
+        collectionView.userInteractionEnabled = true
         
         
         return atCell
@@ -127,6 +135,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.userInteractionEnabled = false
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         print("P1 :" , values![indexPath.row])
         let cpuValues = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
@@ -138,12 +147,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         var timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
 
         
-        
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
         compareView.layer.cornerRadius = 10
+        
         if(condition){
+//            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(values![indexPath.row] == cpuValues![indexPath.row]){
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.orangeColor()
+                p1AttLabel.text = values![indexPath.row]
+                cpuAttLabel.text = cpuValues![indexPath.row]
                 drawOperations()
             }else if(values![indexPath.row] > cpuValues![indexPath.row]){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
@@ -154,6 +168,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 
             }else{
+                // 6 gegen 16 oder 31 gewinnt noch manchmal???
+//                print(values![indexPath.row] > cpuValues![indexPath.row] , ";" , values![indexPath.row] , ":" , cpuValues![indexPath.row])
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
                 p1AttLabel.text = values![indexPath.row]
@@ -163,6 +179,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }else{
             if(values![indexPath.row] == cpuValues![indexPath.row]){
+                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                cell.backgroundColor = UIColor.orangeColor()
+                p1AttLabel.text = values![indexPath.row]
+                cpuAttLabel.text = cpuValues![indexPath.row]
                 drawOperations()
             }else if(values![indexPath.row] < cpuValues![indexPath.row]){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
@@ -225,6 +245,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.layer.borderColor = UIColor.redColor().CGColor
         
         //print(p1CardsArray)
+        while(drawStack.count > 0){
+            p1CardsArray.append(drawStack[0])
+            drawStack.removeFirst()
+        }
         p1CardsArray.append(p1CardsArray[0])
         p1CardsArray.append(cpuCardsArray[0])
         p1CardsArray.removeAtIndex(0)
@@ -246,6 +270,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.backgroundColor = UIColor.whiteColor()
         cpuAttLabel.layer.borderColor = UIColor.greenColor().CGColor
         
+        while(drawStack.count > 0){
+            cpuCardsArray.append(drawStack[0])
+            drawStack.removeFirst()
+        }
         cpuCardsArray.append(p1CardsArray[0])
         cpuCardsArray.append(cpuCardsArray[0])
         cpuCardsArray.removeAtIndex(0)
@@ -254,11 +282,28 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     }
     func drawOperations(){
         print("unentschieden")
+        winLoseLabel.text = "Eure Werte sind gleich"
+        p1AttLabel.textColor = UIColor.orangeColor()
+        p1AttLabel.layer.borderWidth = 3
+        p1AttLabel.backgroundColor = UIColor.whiteColor()
+        p1AttLabel.layer.borderColor = UIColor.orangeColor().CGColor
+        cpuAttLabel.textColor = UIColor.orangeColor()
+        cpuAttLabel.layer.borderWidth = 3
+        cpuAttLabel.backgroundColor = UIColor.whiteColor()
+        cpuAttLabel.layer.borderColor = UIColor.orangeColor().CGColor
+        
+        drawStack.append(p1CardsArray[0])
+        drawStack.append(cpuCardsArray[0])
+        cpuCardsArray.removeAtIndex(0)
+        p1CardsArray.removeAtIndex(0)
         
     }
     
     func gamestart(){
         showCard.hidden = false
+        showCardBack.hidden = false
+        
+        UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
         showCard.layer.borderWidth = 3
         showCard.layer.borderColor = UIColor.blackColor().CGColor
         cardNameLabel.layer.cornerRadius = 10
@@ -283,7 +328,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
             cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
             
+            showCard.hidden = false
+            showCardBack.hidden = false
             
+//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+//            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             collectionView.reloadData()
         }
         
@@ -293,7 +342,22 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     {
         // Dismiss the alert from here
         compareView.hidden = true
-        gameContinue()
+        currentLap++
+        print("Anzahl P1 Karten " , p1CardsArray.count)
+        print("Anzahl P2 Karten " , cpuCardsArray.count)
+        if(p1CardsArray.count > 0 && cpuCardsArray.count > 0 && currentLap < maxLaps){
+            gameContinue()
+        }
+        else{
+            if(p1CardsArray.count > cpuCardsArray.count){
+                print("Win Game")
+            }else if(p1CardsArray.count == cpuCardsArray.count){
+                print("Draw Game")
+            }
+            else{
+                print("Loose Game")
+            }
+        }
         
     }
 
