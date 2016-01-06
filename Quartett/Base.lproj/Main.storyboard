@@ -1070,7 +1070,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkf-3j-DEz">
-                                        <rect key="frame" x="67" y="60" width="240" height="128"/>
+                                        <rect key="frame" x="67" y="60" width="240" height="155"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewonnen oder verloren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBQ-vL-K4c">
                                                 <rect key="frame" x="21" y="8" width="188" height="21"/>
@@ -1118,7 +1118,7 @@
                                             <constraint firstItem="2AU-BI-1x6" firstAttribute="leading" secondItem="iS5-hX-CXl" secondAttribute="trailing" constant="3" id="EK7-aC-YDq"/>
                                             <constraint firstItem="iBQ-vL-K4c" firstAttribute="leading" secondItem="dkf-3j-DEz" secondAttribute="leading" constant="21" id="H0g-e5-D27"/>
                                             <constraint firstItem="iBQ-vL-K4c" firstAttribute="top" secondItem="dkf-3j-DEz" secondAttribute="topMargin" id="Os2-Rd-gVb"/>
-                                            <constraint firstAttribute="bottom" secondItem="i5X-IF-jUF" secondAttribute="bottom" constant="17" id="VJI-2I-CC7"/>
+                                            <constraint firstAttribute="bottom" secondItem="i5X-IF-jUF" secondAttribute="bottom" constant="44" id="VJI-2I-CC7"/>
                                             <constraint firstItem="iS5-hX-CXl" firstAttribute="bottom" secondItem="2AU-BI-1x6" secondAttribute="bottom" id="Wv0-lJ-ITp"/>
                                             <constraint firstItem="iS5-hX-CXl" firstAttribute="leading" secondItem="dkf-3j-DEz" secondAttribute="leadingMargin" id="X0Y-f0-PMW"/>
                                             <constraint firstItem="iS5-hX-CXl" firstAttribute="top" secondItem="2AU-BI-1x6" secondAttribute="top" id="YL0-YV-i0N"/>
@@ -1130,6 +1130,12 @@
                                             <constraint firstItem="i5X-IF-jUF" firstAttribute="top" secondItem="iS5-hX-CXl" secondAttribute="bottom" constant="24" id="ykb-28-AXE"/>
                                         </constraints>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-3R-rdH">
+                                        <rect key="frame" x="77" y="175" width="221" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1142,7 +1148,7 @@
                                     <constraint firstAttribute="bottom" secondItem="epx-WY-K2o" secondAttribute="bottom" id="Ov4-lp-jJz"/>
                                     <constraint firstItem="k9L-hZ-sdC" firstAttribute="leading" secondItem="1sa-2c-9yb" secondAttribute="leading" id="POY-JD-ybD"/>
                                     <constraint firstAttribute="bottom" secondItem="42e-il-z6b" secondAttribute="bottom" constant="85" id="TbI-pz-N03"/>
-                                    <constraint firstItem="dkf-3j-DEz" firstAttribute="centerY" secondItem="k9L-hZ-sdC" secondAttribute="centerY" id="Yab-3c-EZv"/>
+                                    <constraint firstItem="dkf-3j-DEz" firstAttribute="centerY" secondItem="k9L-hZ-sdC" secondAttribute="centerY" constant="13.5" id="Yab-3c-EZv"/>
                                     <constraint firstItem="dkf-3j-DEz" firstAttribute="top" secondItem="1sa-2c-9yb" secondAttribute="bottom" constant="16" id="aBa-Cc-6cX"/>
                                     <constraint firstItem="1sa-2c-9yb" firstAttribute="top" secondItem="auk-yF-Z9S" secondAttribute="top" id="ks9-dS-krg"/>
                                     <constraint firstAttribute="trailing" secondItem="42e-il-z6b" secondAttribute="trailing" id="ncq-KF-rp1"/>
@@ -1191,6 +1197,7 @@
                         <outlet property="pickUpCard" destination="K5L-OM-OII" id="l89-Ka-i0D"/>
                         <outlet property="showCard" destination="auk-yF-Z9S" id="61l-NI-6CZ"/>
                         <outlet property="showCardBack" destination="NbN-qL-QqB" id="3x7-ee-Vu2"/>
+                        <outlet property="turnLabel" destination="a1e-3R-rdH" id="3ER-M8-o1U"/>
                         <outlet property="winLoseLabel" destination="iBQ-vL-K4c" id="McM-dn-VPL"/>
                     </connections>
                 </viewController>

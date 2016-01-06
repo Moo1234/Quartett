@@ -32,6 +32,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var winLoseLabel: UILabel!
     @IBOutlet weak var cpuAttLabel: UILabel!
     @IBOutlet weak var p1AttLabel: UILabel!
+    @IBOutlet weak var turnLabel: UILabel!
     
     //Vars
     var game = [NSManagedObject]()
@@ -148,59 +149,68 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
         
 
-        var timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
 
         
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
         compareView.layer.cornerRadius = 10
         
-        if(condition){
+        p1AttLabel.text = values![indexPath.row]
+        cpuAttLabel.text = cpuValues![indexPath.row]
+        
+        //Draw
+        if(values![indexPath.row] == cpuValues![indexPath.row]){
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+            cell.backgroundColor = UIColor.orangeColor()
+            drawOperations()
+            
+        }else if(condition){
 //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
-            if(values![indexPath.row] == cpuValues![indexPath.row]){
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.orangeColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
-                drawOperations()
-            }else if(values![indexPath.row] > cpuValues![indexPath.row]){
+            if(values![indexPath.row] > cpuValues![indexPath.row]){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
-                winOperations()
-                
-                
+                if(!turn){
+                    winOperations()
+                    turn = true
+                    turnLabel.hidden = false
+                    turnLabel.text = "Du bist an der Reihe!"
+                }else{
+                    winOperations()
+                }
             }else{
                 // 6 gegen 16 oder 31 gewinnt noch manchmal???
 //                print(values![indexPath.row] > cpuValues![indexPath.row] , ";" , values![indexPath.row] , ":" , cpuValues![indexPath.row])
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
-                looseOperations()
-                
+                if(!turn){
+                    looseOperations()
+                }else{
+                    looseOperations()
+                    turn = false
+                    turnLabel.hidden = false
+                    turnLabel.text = "Der Gegner ist an der Reihe!"
+                }
             }
         }else{
-            if(values![indexPath.row] == cpuValues![indexPath.row]){
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.orangeColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
-                drawOperations()
-            }else if(values![indexPath.row] < cpuValues![indexPath.row]){
+            print("CPU KHDJKHDKDHKJHDKJDHJD ")
+            if(values![indexPath.row] < cpuValues![indexPath.row]){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
                 winOperations()
-                
+                if(!turn){
+                    winOperations()
+                }else{
+                    looseOperations()
+                }
             }else{
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
-                p1AttLabel.text = values![indexPath.row]
-                cpuAttLabel.text = cpuValues![indexPath.row]
-                looseOperations()
+                if(!turn){
+                    looseOperations()
+                }else{
+                    winOperations()
+                }
             }
         }
         
@@ -236,7 +246,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func winOperations(){
-        
         print("cool")
         winLoseLabel.text = "Dein Wert ist höher!"
         p1AttLabel.textColor = UIColor.greenColor()
@@ -264,11 +273,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     func looseOperations(){
         
         print("verloren")
-        if(turn){
-            turn = false
-        }else{
-            turn = true
-        }
+    
         winLoseLabel.text = "Dein Wert ist kleiner!"
         p1AttLabel.textColor = UIColor.redColor()
         p1AttLabel.layer.borderWidth = 3
@@ -307,6 +312,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1CardsArray.removeAtIndex(0)
         
     }
+    
+    
     
     func cpuTurn(){
         let values = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
@@ -393,6 +400,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     {
         // Dismiss the alert from here
         compareView.hidden = true
+        turnLabel.hidden = true
         currentLap++
         print("Anzahl P1 Karten " , p1CardsArray.count)
         print("Anzahl P2 Karten " , cpuCardsArray.count)
