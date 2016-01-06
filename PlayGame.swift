@@ -68,8 +68,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let cpuCardsString = stringToArrayString(cpuCards)
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
-
-        self.container.frame = CGRect(x: 20, y: 233, width: 374, height: 483)
+        self.container.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         self.view.addSubview(container)
         
         self.container.addSubview(self.showCardBack)
@@ -99,8 +98,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //START
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if(turn){
+            collectionView.userInteractionEnabled = true
+        }else{
+            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("cpuTurn"), userInfo: nil, repeats: false)
+        }
         return self.attributes.count
-        
     }
     
     
@@ -120,15 +123,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         atCell.valueLabel?.text = values![indexPath.row]
         atCell.nameLabel?.text = attribute.valueForKey("name") as? String
         
-        collectionView.userInteractionEnabled = true
-        
-        
         return atCell
         
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
         let cellsHeight = CGFloat(Int((p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
     
         return CGSizeMake((collectionView.bounds.size.width)/2, collectionView.bounds.size.height/cellsHeight)
@@ -138,6 +137,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.userInteractionEnabled = false
+        print(indexPath)
+        print("..." , NSIndexPath(forRow: 0, inSection: 0))
+        
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         print("P1 :" , values![indexPath.row])
         let cpuValues = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
@@ -262,6 +264,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     func looseOperations(){
         
         print("verloren")
+        if(turn){
+            turn = false
+        }else{
+            turn = true
+        }
         winLoseLabel.text = "Dein Wert ist kleiner!"
         p1AttLabel.textColor = UIColor.redColor()
         p1AttLabel.layer.borderWidth = 3
@@ -299,6 +306,21 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuCardsArray.removeAtIndex(0)
         p1CardsArray.removeAtIndex(0)
         
+    }
+    
+    func cpuTurn(){
+        let values = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        var choice: Int = -1
+        if(difficulty == 1){
+            print(values)
+            choice = Int(arc4random())  % values!.count
+        }else if(difficulty == 2){
+            choice = Int(arc4random())  % values!.count
+        }else{
+            
+        }
+        print(choice)
+        collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
     }
     
     func gamestart(){
@@ -360,8 +382,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 //                    })
 //            })
             
-            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
-            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+//            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             collectionView.reloadData()
         }
         

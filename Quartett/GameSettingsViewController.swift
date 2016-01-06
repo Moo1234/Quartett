@@ -252,15 +252,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             playerTwoNameVar = "SinglePlayerGame"
         }
         
-        let random = Int(arc4random_uniform(2) + 1)
-        var whoStarts = true
-        
-        
-        if random == 1{
-            whoStarts = true
-        }else{
-            whoStarts = false
-        }
+        let whoStarts = true
         
         
         var player1CardsString = ""
