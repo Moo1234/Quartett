@@ -12,6 +12,11 @@ import Foundation
 
 class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
 
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressView2: UIProgressView!
+    @IBOutlet weak var progressView3: UIProgressView!
+    @IBOutlet weak var progressView4: UIProgressView!
+    @IBOutlet weak var progressView5: UIProgressView!
     
     //GUI-Elementss
     @IBOutlet weak var cardView: UIView!
@@ -138,8 +143,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.userInteractionEnabled = false
-        print(indexPath)
-        print("..." , NSIndexPath(forRow: 0, inSection: 0))
         
         let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         print("P1 :" , values![indexPath.row])
@@ -149,7 +152,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
         
 
-        var timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
 
         
         compareView.hidden = false
@@ -193,7 +196,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }
         }else{
-            print("CPU KHDJKHDKDHKJHDKJDHJD ")
             if(values![indexPath.row] < cpuValues![indexPath.row]){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
@@ -246,7 +248,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func winOperations(){
-        print("cool")
         winLoseLabel.text = "Dein Wert ist höher!"
         p1AttLabel.textColor = UIColor.greenColor()
         p1AttLabel.layer.borderWidth = 3
@@ -271,9 +272,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     func looseOperations(){
-        
-        print("verloren")
-    
         winLoseLabel.text = "Dein Wert ist kleiner!"
         p1AttLabel.textColor = UIColor.redColor()
         p1AttLabel.layer.borderWidth = 3
@@ -295,7 +293,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     func drawOperations(){
-        print("unentschieden")
         winLoseLabel.text = "Eure Werte sind gleich"
         p1AttLabel.textColor = UIColor.orangeColor()
         p1AttLabel.layer.borderWidth = 3
@@ -319,14 +316,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let values = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         var choice: Int = -1
         if(difficulty == 1){
-            print(values)
             choice = Int(arc4random())  % values!.count
         }else if(difficulty == 2){
             choice = Int(arc4random())  % values!.count
         }else{
             
         }
-        print(choice)
         collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
     }
     
@@ -404,6 +399,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         currentLap++
         print("Anzahl P1 Karten " , p1CardsArray.count)
         print("Anzahl P2 Karten " , cpuCardsArray.count)
+        let bar = Float(p1CardsArray.count) / Float(p1CardsArray.count+cpuCardsArray.count)
+        progressView.setProgress(bar, animated: true)
+        progressView2.setProgress(bar, animated: true)
+        progressView3.setProgress(bar, animated: true)
+        progressView4.setProgress(bar, animated: true)
+        progressView5.setProgress(bar, animated: true)
         if(p1CardsArray.count > 0 && cpuCardsArray.count > 0 && currentLap < maxLaps){
             gameContinue()
         }
@@ -459,7 +460,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         maxTime = game[0].valueForKey("maxTime") as! Double!
         p1Name = game[0].valueForKey("player1") as! String!
         p1Cards = game[0].valueForKey("player1Cards") as! String!
-        print(p1Cards)
         cpuCards = game[0].valueForKey("player2Cards") as! String!
         turn = game[0].valueForKey("turn") as! Bool!
         

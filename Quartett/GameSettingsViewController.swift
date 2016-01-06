@@ -34,7 +34,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     var cpuDifficulty = 1
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
-    var setID: Int = -1
+    var setID: Int = 0
     var cardArray = [NSManagedObject]()
     var player1Cards = [NSManagedObject]()
     var player2Cards = [NSManagedObject]()
@@ -101,8 +101,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         //        cardSetIcon.layer.borderColor = UIColor.blackColor().CGColor
         
         startButton.enabled = false
-        
-        setID = 0
         
         playerOneName.delegate = self
         playerOneName.tag = 0
@@ -282,7 +280,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
     
         
-        var newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
+        let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
         
         //Set Values
