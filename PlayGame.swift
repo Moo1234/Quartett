@@ -18,6 +18,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var pickUpCard: UIButton!
     
     //picked up card
+    let container = UIView()
     @IBOutlet var showCardBack: UIView!
     @IBOutlet var showCard: UIView!
     @IBOutlet weak var cardImage: UIImageView!
@@ -55,7 +56,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 
     var attributes = [NSManagedObject]()
 
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,10 +68,13 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let cpuCardsString = stringToArrayString(cpuCards)
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
+
+        self.container.frame = CGRect(x: 20, y: 233, width: 374, height: 483)
+        self.view.addSubview(container)
         
-//        showCard.addSubview(showCardBack)
-//        view.addSubview(showCard)
+        self.container.addSubview(self.showCardBack)
         
+        container.hidden = true
         showCard.hidden = true
         showCardBack.hidden = true
         
@@ -105,7 +108,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         let atCell = collectionView.dequeueReusableCellWithReuseIdentifier("atCell", forIndexPath: indexPath) as! GameAttributesCollectionViewCell
         let attribute = attributes[indexPath.row]
-        
 
         atCell.layer.borderWidth = 2
         atCell.layer.borderColor = UIColor.blackColor().CGColor
@@ -302,8 +304,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     func gamestart(){
         showCard.hidden = false
         showCardBack.hidden = false
-        
+        container.hidden = false
         UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+        
         showCard.layer.borderWidth = 3
         showCard.layer.borderColor = UIColor.blackColor().CGColor
         cardNameLabel.layer.cornerRadius = 10
@@ -316,7 +319,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
         cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
         
-        //self.cardImage.image = UIImage(named: "rib")
     }
     
     
@@ -331,8 +333,35 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             showCard.hidden = false
             showCardBack.hidden = false
             
-//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
-//            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+//            let views = (frontView: self.showCard, backView: self.showCardBack)
+//            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
+//            UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: {
+//                // remove the front object...
+//                views.frontView.removeFromSuperview()
+//                
+//                // ... and add the other object
+//                self.container.addSubview(views.backView)
+//                
+//                
+//                }, completion: { finished in
+//                    let views2 = (frontView: self.showCardBack, backView: self.showCard)
+//                    let transitionOptions2 = UIViewAnimationOptions.TransitionFlipFromRight
+//                    UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions2, animations: {
+//                        // remove the front object...
+//                        views2.backView.removeFromSuperview()
+//                        
+//                        // ... and add the other object
+//                        self.container.addSubview(views2.frontView)
+//                        
+//                        
+//                        }, completion: { finished in
+//                            // any code entered here will be applied
+//                            // .once the animation has completed
+//                    })
+//            })
+            
+            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             collectionView.reloadData()
         }
         
