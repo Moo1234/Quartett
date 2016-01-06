@@ -163,14 +163,14 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.text = cpuValues![indexPath.row]
         
         //Draw
-        if(values![indexPath.row] == cpuValues![indexPath.row]){
+        if(Int(values![indexPath.row]) == Int(cpuValues![indexPath.row])){
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
             cell.backgroundColor = UIColor.orangeColor()
             drawOperations()
             
         }else if(condition){
 //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
-            if(values![indexPath.row] > cpuValues![indexPath.row]){
+            if(Int(values![indexPath.row]) > Int(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
                 if(!turn){
@@ -183,7 +183,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }else{
                 // d6 gegen 16 oder 31 gewinnt noch manchmal???
-//                print(values![indexPath.row] > cpuValues![indexPath.row] , ";" , values![indexPath.row] , ":" , cpuValues![indexPath.row])
+//                print(values![indexPath.row] > cpuValues![indexPath.row] , "; \(values![indexPath.row].dynamicType) : \(cpuValues![indexPath.row].dynamicType)")
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
                 if(!turn){
@@ -196,7 +196,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }
         }else{
-            if(values![indexPath.row] < cpuValues![indexPath.row]){
+            if(Int(values![indexPath.row]) < Int(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
                 winOperations()
