@@ -526,40 +526,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startScreen" translatesAutoresizingMaskIntoConstraints="NO" id="OaW-sg-cLA">
+                                <rect key="frame" x="0.0" y="20" width="414" height="672"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-D7-7ey">
-                                <rect key="frame" x="139" y="255" width="136" height="30"/>
-                                <state key="normal" title="Neues Spiel Starten"/>
+                                <rect key="frame" x="149" y="254" width="116" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="taQ-O2-RgH"/>
+                                </constraints>
+                                <state key="normal" title="Neues Spiel">
+                                    <color key="titleColor" red="0.29752066731452942" green="0.8155861496925354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="oDE-RZ-ugo" kind="show" id="yC0-Vk-LX7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2i-fB-fdT">
-                                <rect key="frame" x="183" y="353" width="49" height="30"/>
-                                <state key="normal" title="Galerie"/>
+                                <rect key="frame" x="149" y="316" width="116" height="30"/>
+                                <state key="normal" title="Galerie">
+                                    <color key="titleColor" red="0.32156862745098036" green="0.80784313725490198" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="Ybm-yb-9u4" kind="show" id="PUa-f6-a5I"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-QB-zFE">
-                                <rect key="frame" x="171" y="458" width="72" height="30"/>
-                                <state key="normal" title="Ranglisten"/>
+                                <rect key="frame" x="149" y="385" width="116" height="30"/>
+                                <state key="normal" title="Ranglisten">
+                                    <color key="titleColor" red="0.32156862745098036" green="0.80784313725490198" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="J8t-rY-j3h" kind="show" id="c19-ko-Gax"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="c2i-fB-fdT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="07R-m4-Jdf"/>
-                            <constraint firstItem="c2i-fB-fdT" firstAttribute="leading" secondItem="Jig-QB-zFE" secondAttribute="trailing" constant="-60" id="CUc-7K-Rqh"/>
-                            <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="68" id="CXs-AQ-XaA"/>
-                            <constraint firstItem="c2i-fB-fdT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nWT-Cf-6L1"/>
-                            <constraint firstItem="c2i-fB-fdT" firstAttribute="leading" secondItem="Ru9-D7-7ey" secondAttribute="trailing" constant="-92" id="uQj-Vf-TBy"/>
-                            <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="75" id="zoa-zg-TfI"/>
+                            <constraint firstItem="OaW-sg-cLA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="02J-PM-cJW"/>
+                            <constraint firstItem="OaW-sg-cLA" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Bxd-6l-gJr"/>
+                            <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="39" id="D4T-Bu-geJ"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="32" id="H7B-pV-PsX"/>
+                            <constraint firstItem="OaW-sg-cLA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ngm-6O-4yS"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="trailing" secondItem="Ru9-D7-7ey" secondAttribute="trailing" id="O7x-bO-doR"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="trailing" secondItem="Jig-QB-zFE" secondAttribute="trailing" id="VT5-H1-Igw"/>
+                            <constraint firstItem="Ru9-D7-7ey" firstAttribute="centerX" secondItem="OaW-sg-cLA" secondAttribute="centerX" id="bTO-CN-O2f"/>
+                            <constraint firstItem="Jig-QB-zFE" firstAttribute="leading" secondItem="c2i-fB-fdT" secondAttribute="leading" id="dzQ-ny-YL4"/>
+                            <constraint firstItem="c2i-fB-fdT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-37" id="ePb-ev-ead"/>
+                            <constraint firstItem="Ru9-D7-7ey" firstAttribute="leading" secondItem="c2i-fB-fdT" secondAttribute="leading" id="fhO-3y-RDY"/>
+                            <constraint firstAttribute="trailing" secondItem="OaW-sg-cLA" secondAttribute="trailing" id="myZ-eF-5fW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KZ7-3E-R1F"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="galleryButton" destination="c2i-fB-fdT" id="7ux-1g-DVF"/>
+                        <outlet property="newGameButton" destination="Ru9-D7-7ey" id="dr5-yc-xTc"/>
+                        <outlet property="rankingButton" destination="Jig-QB-zFE" id="kxp-ML-HBM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -1278,7 +1301,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-kp-JjN">
                                 <rect key="frame" x="20" y="28" width="374" height="275"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Game  Over  Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VDW-oo-dQl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPh-Q0-chJ">
+                                <rect key="frame" x="175" y="478" width="64" height="30"/>
+                                <state key="normal" title="Rangliste"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLt-VB-RVd">
+                                <rect key="frame" x="167" y="556" width="80" height="30"/>
+                                <state key="normal" title="Hauptmenü"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-rK-nqA">
+                                <rect key="frame" x="166" y="631" width="82" height="30"/>
+                                <state key="normal" title="Neues Spiel"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Game  Over  Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VDW-oo-dQl">
                                 <rect key="frame" x="20" y="311" width="374" height="133"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1287,18 +1322,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="49"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPh-Q0-chJ">
-                                <rect key="frame" x="175" y="478" width="64" height="30"/>
-                                <state key="normal" title="Rangliste"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-rK-nqA">
-                                <rect key="frame" x="166" y="631" width="82" height="30"/>
-                                <state key="normal" title="Neues Spiel"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLt-VB-RVd">
-                                <rect key="frame" x="167" y="556" width="80" height="30"/>
-                                <state key="normal" title="Hauptmenü"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1309,7 +1332,7 @@
                             <constraint firstItem="FbP-kp-JjN" firstAttribute="leading" secondItem="Ixn-4s-cHK" secondAttribute="leadingMargin" id="Dtn-BH-pHM"/>
                             <constraint firstItem="VDW-oo-dQl" firstAttribute="centerX" secondItem="iPh-Q0-chJ" secondAttribute="centerX" id="UCs-2r-obg"/>
                             <constraint firstItem="BLt-VB-RVd" firstAttribute="top" secondItem="iPh-Q0-chJ" secondAttribute="bottom" constant="48" id="fII-ax-IOY"/>
-                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="m9L-rK-nqA" secondAttribute="bottom" constant="75" id="fLv-Mf-IOi"/>
+                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="m9L-rK-nqA" secondAttribute="bottom" constant="31" id="fLv-Mf-IOi"/>
                             <constraint firstItem="iPh-Q0-chJ" firstAttribute="top" secondItem="VDW-oo-dQl" secondAttribute="bottom" constant="34" id="h5r-x3-zHl"/>
                             <constraint firstItem="FbP-kp-JjN" firstAttribute="top" secondItem="ZUq-MX-7La" secondAttribute="bottom" constant="8" symbolic="YES" id="idL-16-YvO"/>
                             <constraint firstItem="iPh-Q0-chJ" firstAttribute="centerX" secondItem="m9L-rK-nqA" secondAttribute="centerX" id="iwI-zo-CEB"/>
@@ -1325,17 +1348,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdg-uh-4tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2267" y="387"/>
+            <point key="canvasLocation" x="961" y="1199"/>
         </scene>
     </scenes>
     <resources>
         <image name="ImageIcon" width="164" height="134"/>
         <image name="StandardIcon" width="150" height="150"/>
+        <image name="startScreen" width="1080" height="1920"/>
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RiT-DV-2h0"/>
-        <segue reference="hqD-dW-LsQ"/>
-        <segue reference="pjo-AW-0G0"/>
+        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="xl4-c8-XJd"/>
+        <segue reference="PUa-f6-a5I"/>
     </inferredMetricsTieBreakers>
 </document>
