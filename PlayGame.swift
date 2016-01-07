@@ -60,7 +60,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var nextCard: Int = -1
     
     var currCard = [NSManagedObject]()
-    
+
     var attributes = [NSManagedObject]()
     
     var currentTime: Double = 0.0
@@ -82,11 +82,22 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         self.view.addSubview(container)
         
         self.container.addSubview(self.showCardBack)
-        
-        container.hidden = true
-        showCard.hidden = true
-        showCardBack.hidden = true
-        
+
+        if(currentLap == 0){
+            container.hidden = true
+            showCard.hidden = true
+            showCardBack.hidden = true
+        }else{
+            print("Resume Game")
+            gamestart()
+            
+            let bar = Float(p1CardsArray.count) / Float(p1CardsArray.count+cpuCardsArray.count)
+            progressView.setProgress(bar, animated: true)
+            progressView2.setProgress(bar, animated: true)
+            progressView3.setProgress(bar, animated: true)
+            progressView4.setProgress(bar, animated: true)
+            progressView5.setProgress(bar, animated: true)
+        }
         
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "timer", userInfo: nil, repeats: true)
         
@@ -230,6 +241,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //******************************************
     //IBActions
     //START
+    
+    
+    @IBAction func backButton(sender: AnyObject) {
+        deleteObjectsFromEntity("Game")
+        saveGame()
+    }
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
         gamestart()
@@ -479,12 +496,14 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         currentLap++
         print("Anzahl P1 Karten " , p1CardsArray.count)
         print("Anzahl P2 Karten " , cpuCardsArray.count)
+        
         let bar = Float(p1CardsArray.count) / Float(p1CardsArray.count+cpuCardsArray.count)
         progressView.setProgress(bar, animated: true)
         progressView2.setProgress(bar, animated: true)
         progressView3.setProgress(bar, animated: true)
         progressView4.setProgress(bar, animated: true)
         progressView5.setProgress(bar, animated: true)
+        
         if(p1CardsArray.count > 0 && cpuCardsArray.count > 0 && currentLap < maxLaps){
             gameContinue()
         }
@@ -508,6 +527,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }else{
                 vc.labelTxt = "Du hast verloren!"
             }
+            deleteObjectsFromEntity("Game")
         }
     }
     
@@ -517,6 +537,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let toArray = x.componentsSeparatedByString(",")
         
         return toArray
+    }
+    
+    func objectToString(object: [NSManagedObject]) -> String{
+        var cards = ""
+        for var index = 0; index < object.count; index++ {
+            cards += "\(object[index].valueForKey("id")!)"
+            if(index < object.count - 1){
+                cards += ","
+            }
+        }
+        return cards
     }
     
     //******************************************
@@ -547,14 +578,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         cardsetID = game[0].valueForKey("cardset") as! Int!
         difficulty = game[0].valueForKey("difficulty") as! Int!
+        currentLap = game[0].valueForKey("laps") as! Int
         maxLaps = game[0].valueForKey("maxLaps") as! Int!
         maxTime = game[0].valueForKey("maxTime") as! Double!
         p1Name = game[0].valueForKey("player1") as! String!
         p1Cards = game[0].valueForKey("player1Cards") as! String!
         cpuCards = game[0].valueForKey("player2Cards") as! String!
+        currentTime = game[0].valueForKey("time") as! Double
         turn = game[0].valueForKey("turn") as! Bool!
-        
-        
+
     }
     
     
@@ -640,6 +672,47 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         newRanking.setValue(player, forKey: "player")
         newRanking.setValue(rounds, forKey: "scoreRounds")
         newRanking.setValue(time, forKey: "scoreTime")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteObjectsFromEntity(entity: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func saveGame() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Game", inManagedObjectContext:managedContext)
+        let game = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        
+        game.setValue(cardsetID, forKey: "cardset")
+        game.setValue(difficulty, forKey: "difficulty")
+        game.setValue(currentLap, forKey: "laps")
+        game.setValue(maxLaps, forKey: "maxLaps")
+        game.setValue(maxTime, forKey: "maxTime")
+        game.setValue(p1Name, forKey: "player1")
+        game.setValue(objectToString(p1CardsArray), forKey: "player1Cards")
+        game.setValue("SinglePlayerGame", forKey: "player2")
+        game.setValue(objectToString(cpuCardsArray), forKey: "player2Cards")
+        game.setValue(currentTime, forKey: "time")
+        game.setValue(turn, forKey: "turn")
         
         do {
             try managedContext.save()

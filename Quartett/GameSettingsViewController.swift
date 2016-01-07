@@ -237,7 +237,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     //Starts and creates Game (Button: Spiel Starten)
     @IBAction func createNewGame(sender: AnyObject) {
         var temp: Int  = -1
-        print(setID)
+//        print(setID)
         let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let context:NSManagedObjectContext = appDel.managedObjectContext
         

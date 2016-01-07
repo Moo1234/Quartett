@@ -564,12 +564,24 @@
                                     <segue destination="J8t-rY-j3h" kind="show" id="c19-ko-Gax"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpT-SS-EaI">
+                                <rect key="frame" x="149" y="457" width="116" height="30"/>
+                                <state key="normal" title="Spiel fortsetzen">
+                                    <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iTw-JK-eau" kind="show" id="7oX-Ch-EFP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OaW-sg-cLA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="02J-PM-cJW"/>
+                            <constraint firstItem="KpT-SS-EaI" firstAttribute="top" secondItem="Jig-QB-zFE" secondAttribute="bottom" constant="42" id="3b8-St-Ggj"/>
+                            <constraint firstItem="KpT-SS-EaI" firstAttribute="trailing" secondItem="Jig-QB-zFE" secondAttribute="trailing" id="ANT-iv-0Pg"/>
                             <constraint firstItem="OaW-sg-cLA" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Bxd-6l-gJr"/>
                             <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="39" id="D4T-Bu-geJ"/>
+                            <constraint firstItem="KpT-SS-EaI" firstAttribute="leading" secondItem="Jig-QB-zFE" secondAttribute="leading" id="GY0-vu-8nY"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="32" id="H7B-pV-PsX"/>
                             <constraint firstItem="OaW-sg-cLA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ngm-6O-4yS"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="trailing" secondItem="Ru9-D7-7ey" secondAttribute="trailing" id="O7x-bO-doR"/>
@@ -584,6 +596,7 @@
                     <navigationItem key="navigationItem" id="KZ7-3E-R1F"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="continueGameButton" destination="KpT-SS-EaI" id="Cda-Ln-gUO"/>
                         <outlet property="galleryButton" destination="c2i-fB-fdT" id="7ux-1g-DVF"/>
                         <outlet property="newGameButton" destination="Ru9-D7-7ey" id="dr5-yc-xTc"/>
                         <outlet property="rankingButton" destination="Jig-QB-zFE" id="kxp-ML-HBM"/>
@@ -951,10 +964,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-m1-gtI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-m1-gtI">
                                 <rect key="frame" x="0.0" y="63" width="414" height="673"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-qL-QqB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-qL-QqB">
                                 <rect key="frame" x="20" y="233" width="374" height="483"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -965,6 +978,7 @@
                                         <rect key="frame" x="7" y="9" width="49" height="30"/>
                                         <state key="normal" title="Zurück"/>
                                         <connections>
+                                            <action selector="backButton:" destination="iTw-JK-eau" eventType="touchUpInside" id="222-xk-wJz"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="RiT-DV-2h0"/>
                                         </connections>
                                     </button>
@@ -1007,7 +1021,7 @@
                                     <constraint firstItem="Wm8-xs-30W" firstAttribute="top" secondItem="N9i-WT-pEt" secondAttribute="bottom" id="yuy-pz-eVP"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="pickUpButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pickUpButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-OM-OII">
                                 <rect key="frame" x="32" y="554" width="98" height="140"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1019,7 +1033,7 @@
                                     <action selector="pickUpCardPressed:" destination="iTw-JK-eau" eventType="touchUpInside" id="XN8-jC-azX"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auk-yF-Z9S">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auk-yF-Z9S">
                                 <rect key="frame" x="20" y="233" width="374" height="483"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="epx-WY-K2o">
@@ -1233,36 +1247,22 @@
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="centerX" secondItem="auk-yF-Z9S" secondAttribute="centerX" id="25F-SJ-rw8"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leading" id="5M6-zw-ULm"/>
                             <constraint firstItem="NbN-qL-QqB" firstAttribute="top" secondItem="auk-yF-Z9S" secondAttribute="top" id="9Op-dY-5DH"/>
-                            <constraint firstItem="K5L-OM-OII" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leadingMargin" constant="12" id="9TL-eX-xhe"/>
                             <constraint firstItem="NbN-qL-QqB" firstAttribute="bottom" secondItem="auk-yF-Z9S" secondAttribute="bottom" id="Aco-8K-IWY"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="leading" secondItem="neE-IE-Sgz" secondAttribute="leading" id="D4s-bu-9Xm"/>
                             <constraint firstAttribute="leadingMargin" secondItem="auk-yF-Z9S" secondAttribute="leading" id="DxK-iA-QvF"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="top" secondItem="0WO-TK-qhD" secondAttribute="bottom" constant="-170" id="HhZ-Hc-Nsk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="auk-yF-Z9S" secondAttribute="trailing" id="I5H-ay-wZu"/>
                             <constraint firstItem="neE-IE-Sgz" firstAttribute="top" secondItem="GSN-Yi-bNH" secondAttribute="topMargin" constant="15" id="IPg-Jh-kfC"/>
-                            <constraint firstItem="auk-yF-Z9S" firstAttribute="centerX" secondItem="GSN-Yi-bNH" secondAttribute="centerX" id="Pq8-9x-Syx"/>
                             <constraint firstItem="zGO-Jb-hSO" firstAttribute="top" secondItem="K5L-OM-OII" secondAttribute="bottom" constant="42" id="RMQ-mB-G7d"/>
                             <constraint firstItem="NbN-qL-QqB" firstAttribute="leading" secondItem="auk-yF-Z9S" secondAttribute="leading" id="UtX-nZ-Ky2"/>
-                            <constraint firstItem="auk-yF-Z9S" firstAttribute="top" secondItem="0WO-TK-qhD" secondAttribute="bottom" id="Xk3-n0-Y4F"/>
-                            <constraint firstItem="NbN-qL-QqB" firstAttribute="top" secondItem="0WO-TK-qhD" secondAttribute="bottom" id="ZUj-2o-HLH"/>
                             <constraint firstItem="0WO-TK-qhD" firstAttribute="leading" secondItem="6Pd-m1-gtI" secondAttribute="trailing" constant="-123" id="cPw-Kx-Iz6"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="top" secondItem="neE-IE-Sgz" secondAttribute="bottom" id="eQb-1w-EM0"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="trailing" secondItem="neE-IE-Sgz" secondAttribute="trailing" id="edu-ga-YHD"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="centerX" secondItem="NbN-qL-QqB" secondAttribute="centerX" id="lP4-Tp-qFH"/>
                             <constraint firstItem="K5L-OM-OII" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leadingMargin" constant="12" id="x7I-Pf-wmw"/>
                             <constraint firstItem="zGO-Jb-hSO" firstAttribute="top" secondItem="auk-yF-Z9S" secondAttribute="bottom" constant="20" id="xG0-jj-HiC"/>
-                            <constraint firstItem="K5L-OM-OII" firstAttribute="leading" secondItem="GSN-Yi-bNH" secondAttribute="leadingMargin" constant="12" id="xak-dR-obZ"/>
                             <constraint firstItem="6Pd-m1-gtI" firstAttribute="bottom" secondItem="zGO-Jb-hSO" secondAttribute="top" id="z1A-C1-yuM"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZUj-2o-HLH"/>
-                                <exclude reference="Pq8-9x-Syx"/>
-                                <exclude reference="Xk3-n0-Y4F"/>
-                                <exclude reference="9TL-eX-xhe"/>
-                                <exclude reference="xak-dR-obZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -1375,9 +1375,10 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yC0-Vk-LX7"/>
-        <segue reference="EGa-qr-Zxe"/>
+        <segue reference="7oX-Ch-EFP"/>
+        <segue reference="RiT-DV-2h0"/>
         <segue reference="PUa-f6-a5I"/>
-        <segue reference="c19-ko-Gax"/>
+        <segue reference="teC-wT-cBc"/>
+        <segue reference="AUB-2S-sNB"/>
     </inferredMetricsTieBreakers>
 </document>
