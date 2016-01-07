@@ -115,8 +115,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         if(setID != -1){
             cardSetIcon.image = UIImage(named: "CardSet" + String(setID))
-            loadCardSetWithSetID()
-            shuffleCards(cardArray)
         }
         
         
@@ -239,9 +237,12 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     //Starts and creates Game (Button: Spiel Starten)
     @IBAction func createNewGame(sender: AnyObject) {
         var temp: Int  = -1
-        //print(setID)
+        print(setID)
         let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        loadCardSetWithSetID()
+        shuffleCards(cardArray)
         
         if playerTwoName.hidden == false{
             
@@ -278,7 +279,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-    
+        deleteObjectsFromEntity("Game")
         
         let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
@@ -321,6 +322,21 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         
         */
+    }
+    
+    func deleteObjectsFromEntity(entity: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     
     

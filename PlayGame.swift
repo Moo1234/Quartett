@@ -88,7 +88,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         showCardBack.hidden = true
         
         
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timer", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "timer", userInfo: nil, repeats: true)
         
         
         // Do any additional setup after loading the view.
@@ -251,7 +251,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func timer(){
-        currentTime++
+        currentTime += 0.1
         if currentTime == maxTime{
             self.performSegueWithIdentifier("gameOver", sender:self)
             
@@ -502,6 +502,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             let vc = segue.destinationViewController as! EndScreenViewController
             if (p1CardsArray.count > cpuCardsArray.count){
                 vc.labelTxt = "Du hast gewonnen!"
+                saveRanking(p1Name, rounds: currentLap, time: currentTime)
             }else if(p1CardsArray.count == cpuCardsArray.count){
                 vc.labelTxt = "Unentschieden!"
             }else{
@@ -628,6 +629,23 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }
         return returnArr
+    }
+    
+    func saveRanking(player: String, rounds: Int, time: Double) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Ranking", inManagedObjectContext:managedContext)
+        let newRanking = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        newRanking.setValue(player, forKey: "player")
+        newRanking.setValue(rounds, forKey: "scoreRounds")
+        newRanking.setValue(time, forKey: "scoreTime")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="45Q-Ym-VG5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -267,9 +267,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-qN-NhB">
-                                                    <rect key="frame" x="154" y="11" width="52" height="21"/>
+                                                    <rect key="frame" x="137" y="11" width="93" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="52" id="WMK-1L-BgP"/>
+                                                        <constraint firstAttribute="width" constant="93" id="WMK-1L-BgP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -278,12 +278,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e95-id-p1g" firstAttribute="firstBaseline" secondItem="Abp-qN-NhB" secondAttribute="firstBaseline" id="39n-r4-NDw"/>
-                                                <constraint firstItem="Abp-qN-NhB" firstAttribute="leading" secondItem="83H-Aa-Bhf" secondAttribute="trailing" constant="83" id="Bvd-OL-3bH"/>
+                                                <constraint firstItem="Abp-qN-NhB" firstAttribute="leading" secondItem="83H-Aa-Bhf" secondAttribute="trailing" constant="66" id="Bvd-OL-3bH"/>
                                                 <constraint firstItem="Abp-qN-NhB" firstAttribute="centerY" secondItem="bAD-rQ-SIm" secondAttribute="centerY" id="I8P-LO-p8F"/>
-                                                <constraint firstItem="e95-id-p1g" firstAttribute="leading" secondItem="Abp-qN-NhB" secondAttribute="trailing" constant="55" id="JJ2-gR-xaq"/>
+                                                <constraint firstItem="e95-id-p1g" firstAttribute="leading" secondItem="Abp-qN-NhB" secondAttribute="trailing" constant="31" id="JJ2-gR-xaq"/>
                                                 <constraint firstItem="Abp-qN-NhB" firstAttribute="baseline" secondItem="83H-Aa-Bhf" secondAttribute="baseline" id="dAH-4e-KHJ"/>
                                                 <constraint firstItem="e95-id-p1g" firstAttribute="trailing" secondItem="bAD-rQ-SIm" secondAttribute="trailingMargin" id="dKv-Rp-uuq"/>
-                                                <constraint firstItem="Abp-qN-NhB" firstAttribute="centerX" secondItem="bAD-rQ-SIm" secondAttribute="centerX" id="leH-0F-nvN"/>
+                                                <constraint firstItem="Abp-qN-NhB" firstAttribute="centerX" secondItem="bAD-rQ-SIm" secondAttribute="centerX" constant="3" id="leH-0F-nvN"/>
                                                 <constraint firstItem="83H-Aa-Bhf" firstAttribute="top" secondItem="bAD-rQ-SIm" secondAttribute="topMargin" constant="3" id="oa9-xY-OzG"/>
                                                 <constraint firstItem="Abp-qN-NhB" firstAttribute="firstBaseline" secondItem="83H-Aa-Bhf" secondAttribute="firstBaseline" id="pni-Jq-ys7"/>
                                                 <constraint firstItem="83H-Aa-Bhf" firstAttribute="leading" secondItem="bAD-rQ-SIm" secondAttribute="leadingMargin" id="rsF-W2-WJg"/>
@@ -1368,9 +1368,9 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="teC-wT-cBc"/>
-        <segue reference="EGa-qr-Zxe"/>
-        <segue reference="AUB-2S-sNB"/>
+        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="xl4-c8-XJd"/>
+        <segue reference="c19-ko-Gax"/>
         <segue reference="PUa-f6-a5I"/>
     </inferredMetricsTieBreakers>
 </document>
