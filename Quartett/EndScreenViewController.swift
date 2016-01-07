@@ -13,11 +13,12 @@ class EndScreenViewController: UIViewController {
     @IBOutlet weak var gameOverImage: UIImageView!
     @IBOutlet weak var gameOverText: UITextView!
     
-    var labelTxt: String = ""
+    var labelTxt: String = "Game Over Text"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         gameOverText.text = labelTxt
         gameOverText.selectable = false
         if(gameOverText.text == "Du hast gewonnen!"){
@@ -36,7 +37,6 @@ class EndScreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

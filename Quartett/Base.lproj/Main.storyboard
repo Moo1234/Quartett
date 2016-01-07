@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="45Q-Ym-VG5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -230,7 +230,7 @@
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Runden Rangliste" id="HIt-5A-uij">
-                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="PVa-FA-nnO">
+                                        <barButtonItem key="leftBarButtonItem" title="Hauptmenü" id="PVa-FA-nnO">
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="xl4-c8-XJd"/>
                                             </connections>
@@ -1300,44 +1300,54 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-kp-JjN">
                                 <rect key="frame" x="20" y="28" width="374" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="275" id="Zm2-ke-9dH"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPh-Q0-chJ">
-                                <rect key="frame" x="175" y="478" width="64" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuC-gs-Xy4">
+                                <rect key="frame" x="175" y="452" width="64" height="30"/>
                                 <state key="normal" title="Rangliste"/>
+                                <connections>
+                                    <segue destination="J8t-rY-j3h" kind="show" id="AUB-2S-sNB"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLt-VB-RVd">
-                                <rect key="frame" x="167" y="556" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnk-PF-5LG">
+                                <rect key="frame" x="167" y="516" width="80" height="30"/>
                                 <state key="normal" title="Hauptmenü"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="EGa-qr-Zxe"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-rK-nqA">
-                                <rect key="frame" x="166" y="631" width="82" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kin-bO-KdM">
+                                <rect key="frame" x="166" y="582" width="82" height="30"/>
                                 <state key="normal" title="Neues Spiel"/>
+                                <connections>
+                                    <segue destination="oDE-RZ-ugo" kind="show" id="teC-wT-cBc"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Game  Over  Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VDW-oo-dQl">
                                 <rect key="frame" x="20" y="311" width="374" height="133"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="133" id="Da3-u6-Npk"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="49"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VDW-oo-dQl" firstAttribute="trailing" secondItem="FbP-kp-JjN" secondAttribute="trailing" id="1JS-xf-HUf"/>
-                            <constraint firstItem="VDW-oo-dQl" firstAttribute="top" secondItem="FbP-kp-JjN" secondAttribute="bottom" constant="8" symbolic="YES" id="1jQ-eI-prz"/>
-                            <constraint firstItem="FbP-kp-JjN" firstAttribute="leading" secondItem="VDW-oo-dQl" secondAttribute="leading" id="3SJ-bv-em6"/>
-                            <constraint firstItem="m9L-rK-nqA" firstAttribute="top" secondItem="BLt-VB-RVd" secondAttribute="bottom" constant="45" id="4VF-FJ-Wsg"/>
-                            <constraint firstItem="FbP-kp-JjN" firstAttribute="leading" secondItem="Ixn-4s-cHK" secondAttribute="leadingMargin" id="Dtn-BH-pHM"/>
-                            <constraint firstItem="VDW-oo-dQl" firstAttribute="centerX" secondItem="iPh-Q0-chJ" secondAttribute="centerX" id="UCs-2r-obg"/>
-                            <constraint firstItem="BLt-VB-RVd" firstAttribute="top" secondItem="iPh-Q0-chJ" secondAttribute="bottom" constant="48" id="fII-ax-IOY"/>
-                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="m9L-rK-nqA" secondAttribute="bottom" constant="31" id="fLv-Mf-IOi"/>
-                            <constraint firstItem="iPh-Q0-chJ" firstAttribute="top" secondItem="VDW-oo-dQl" secondAttribute="bottom" constant="34" id="h5r-x3-zHl"/>
-                            <constraint firstItem="FbP-kp-JjN" firstAttribute="top" secondItem="ZUq-MX-7La" secondAttribute="bottom" constant="8" symbolic="YES" id="idL-16-YvO"/>
-                            <constraint firstItem="iPh-Q0-chJ" firstAttribute="centerX" secondItem="m9L-rK-nqA" secondAttribute="centerX" id="iwI-zo-CEB"/>
-                            <constraint firstItem="BLt-VB-RVd" firstAttribute="leading" secondItem="m9L-rK-nqA" secondAttribute="leading" constant="1" id="rih-Qw-pvF"/>
-                            <constraint firstItem="FbP-kp-JjN" firstAttribute="trailing" secondItem="Ixn-4s-cHK" secondAttribute="trailingMargin" id="xZO-9d-6gC"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="leading" secondItem="Ixn-4s-cHK" secondAttribute="leadingMargin" id="1dO-GD-lrM"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="centerX" secondItem="qnk-PF-5LG" secondAttribute="centerX" id="4mN-Bk-kwg"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="centerX" secondItem="iuC-gs-Xy4" secondAttribute="centerX" id="DTS-pp-C2D"/>
+                            <constraint firstItem="iuC-gs-Xy4" firstAttribute="top" secondItem="VDW-oo-dQl" secondAttribute="bottom" constant="8" symbolic="YES" id="FL9-Do-uXO"/>
+                            <constraint firstItem="qnk-PF-5LG" firstAttribute="top" secondItem="iuC-gs-Xy4" secondAttribute="bottom" constant="34" id="FkX-2G-3yQ"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="trailing" secondItem="Ixn-4s-cHK" secondAttribute="trailingMargin" id="NIp-CK-5qd"/>
+                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="VDW-oo-dQl" secondAttribute="bottom" constant="248" id="Sui-mI-liU"/>
+                            <constraint firstItem="VDW-oo-dQl" firstAttribute="top" secondItem="ZUq-MX-7La" secondAttribute="bottom" constant="291" id="Ucn-m8-H7q"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="trailing" secondItem="VDW-oo-dQl" secondAttribute="trailing" id="Xaw-iU-2De"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="centerX" secondItem="kin-bO-KdM" secondAttribute="centerX" id="gML-ZT-PNN"/>
+                            <constraint firstItem="VDW-oo-dQl" firstAttribute="top" secondItem="FbP-kp-JjN" secondAttribute="bottom" constant="8" symbolic="YES" id="i4q-Iu-0Ra"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="leading" secondItem="VDW-oo-dQl" secondAttribute="leading" id="kLn-Q4-iGX"/>
+                            <constraint firstItem="FbP-kp-JjN" firstAttribute="top" secondItem="ZUq-MX-7La" secondAttribute="bottom" constant="8" symbolic="YES" id="pCz-ID-dm1"/>
+                            <constraint firstItem="kin-bO-KdM" firstAttribute="top" secondItem="qnk-PF-5LG" secondAttribute="bottom" constant="36" id="yGC-K2-Rya"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -1358,8 +1368,9 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yC0-Vk-LX7"/>
-        <segue reference="xl4-c8-XJd"/>
+        <segue reference="teC-wT-cBc"/>
+        <segue reference="EGa-qr-Zxe"/>
+        <segue reference="AUB-2S-sNB"/>
         <segue reference="PUa-f6-a5I"/>
     </inferredMetricsTieBreakers>
 </document>
