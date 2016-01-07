@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 
 class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
-
+    
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressView2: UIProgressView!
     @IBOutlet weak var progressView3: UIProgressView!
@@ -58,15 +58,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var cpuCards: String = ""
     var turn: Bool = true
     var nextCard: Int = -1
-
+    
     var currCard = [NSManagedObject]()
-
+    
     var attributes = [NSManagedObject]()
-
+    
+    var currentTime: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         loadGame()
         loadCardset()
@@ -86,8 +87,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         showCard.hidden = true
         showCardBack.hidden = true
         
-        //Timer
-        //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timer", userInfo: nil, repeats: true)
         
         
         // Do any additional setup after loading the view.
@@ -118,7 +119,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         let atCell = collectionView.dequeueReusableCellWithReuseIdentifier("atCell", forIndexPath: indexPath) as! GameAttributesCollectionViewCell
         let attribute = attributes[indexPath.row]
-
+        
         atCell.layer.borderWidth = 2
         atCell.layer.borderColor = UIColor.blackColor().CGColor
         atCell.layer.cornerRadius = 10
@@ -139,7 +140,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let collectionWidth = collectionView.bounds.size.width
         let collectionHeight = collectionView.bounds.size.height
         return CGSizeMake(collectionWidth/2, collectionHeight/cellsHeight)
-    
+        
     }
     
     
@@ -153,9 +154,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         print("CPU: ", cpuValues![indexPath.row])
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
         
-
+        
         NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
-
+        
         
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
@@ -171,7 +172,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             drawOperations()
             
         }else if(condition){
-//            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
+            //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(Int(values![indexPath.row]) > Int(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
@@ -185,7 +186,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }else{
                 // d6 gegen 16 oder 31 gewinnt noch manchmal???
-//                print(values![indexPath.row] > cpuValues![indexPath.row] , "; \(values![indexPath.row].dynamicType) : \(cpuValues![indexPath.row].dynamicType)")
+                //                print(values![indexPath.row] > cpuValues![indexPath.row] , "; \(values![indexPath.row].dynamicType) : \(cpuValues![indexPath.row].dynamicType)")
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.redColor()
                 if(!turn){
@@ -219,7 +220,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         }
         
     }
-
+    
     
     //******************************************
     //Collection-View Operations
@@ -227,7 +228,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     //******************************************
-    //IBActions 
+    //IBActions
     //START
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
@@ -239,15 +240,24 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //IBActions
     //END
     
-   
     
     
     
-
+    
+    
     //******************************************
     //Functions
     //START
     
+    
+    func timer(){
+        currentTime++
+        if currentTime == maxTime{
+            self.performSegueWithIdentifier("gameOver", sender:self)
+            
+        }
+        
+    }
     
     func winOperations(){
         winLoseLabel.text = "Dein Wert ist höher!"
@@ -270,7 +280,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1CardsArray.removeAtIndex(0)
         cpuCardsArray.removeAtIndex(0)
         //print(p1CardsArray)
-
+        
         
     }
     func looseOperations(){
@@ -334,7 +344,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-
+            
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
             
@@ -351,7 +361,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }else{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
                 }
-
+                
             }
         }else if(difficulty == 2){
             choice = Int(arc4random())  % values!.count
@@ -426,37 +436,37 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             
             self.collectionView.reloadData()
             
-//            let views = (frontView: self.showCard, backView: self.showCardBack)
-//            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
-//            UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: {
-//                // remove the front object...
-//                views.frontView.removeFromSuperview()
-//                
-//                // ... and add the other object
-//                self.container.addSubview(views.backView)
-//                
-//                
-//                }, completion: { finished in
-//                    let views2 = (frontView: self.showCardBack, backView: self.showCard)
-//                    let transitionOptions2 = UIViewAnimationOptions.TransitionFlipFromRight
-//                    UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions2, animations: {
-//                        // remove the front object...
-//                        views2.backView.removeFromSuperview()
-//                        
-//                        // ... and add the other object
-//                        self.container.addSubview(views2.frontView)
-//                        
-//                        
-//                        }, completion: { finished in
-//                            // any code entered here will be applied
-//                            // .once the animation has completed
-//                    })
-//            })
+            //            let views = (frontView: self.showCard, backView: self.showCardBack)
+            //            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
+            //            UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: {
+            //                // remove the front object...
+            //                views.frontView.removeFromSuperview()
+            //
+            //                // ... and add the other object
+            //                self.container.addSubview(views.backView)
+            //
+            //
+            //                }, completion: { finished in
+            //                    let views2 = (frontView: self.showCardBack, backView: self.showCard)
+            //                    let transitionOptions2 = UIViewAnimationOptions.TransitionFlipFromRight
+            //                    UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions2, animations: {
+            //                        // remove the front object...
+            //                        views2.backView.removeFromSuperview()
+            //
+            //                        // ... and add the other object
+            //                        self.container.addSubview(views2.frontView)
+            //
+            //
+            //                        }, completion: { finished in
+            //                            // any code entered here will be applied
+            //                            // .once the animation has completed
+            //                    })
+            //            })
             
-//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished: Bool) -> Void in
-//
-//                UIView.transitionFromView(self.showCardBack, toView: self.showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-//            })
+            //            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished: Bool) -> Void in
+            //
+            //                UIView.transitionFromView(self.showCardBack, toView: self.showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+            //            })
         }
         
     }
@@ -499,8 +509,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }
     }
-
-
+    
+    
     //Convert String to Array(String)
     func stringToArrayString(x:String) -> [String]{
         let toArray = x.componentsSeparatedByString(",")
@@ -542,6 +552,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1Cards = game[0].valueForKey("player1Cards") as! String!
         cpuCards = game[0].valueForKey("player2Cards") as! String!
         turn = game[0].valueForKey("turn") as! Bool!
+        
         
     }
     
@@ -585,7 +596,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-
+        
     }
     
     func loadCards(arr:[String]) -> [NSManagedObject]{
@@ -596,17 +607,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         var returnArr = [NSManagedObject]()
         // filters cards from specific cardset
         
-//        let firstp = Int(arr[0])!
+        //        let firstp = Int(arr[0])!
         
-//        var predicate = NSPredicate(format: "id == %d",firstp)
+        //        var predicate = NSPredicate(format: "id == %d",firstp)
         for var index = 0; index < arr.count; ++index{
             let predicate2 = NSPredicate(format: "id == %d", Int(arr[index])!)
-//            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
-        
-        
-        
+            //            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
+            
+            
+            
             fetchRequest.predicate = predicate2
-        
+            
             do {
                 let results =
                 try managedContext.executeFetchRequest(fetchRequest)
@@ -618,8 +629,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         }
         return returnArr
     }
-
-
+    
+    
     
     //******************************************
     //DB-Operations
@@ -635,36 +646,36 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     // Pass the selected object to the new view controller.
     }
     */
-
-
-
-
-
-//
-//    func loadCardsFromCardset(cardIDs: [String]){
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext
-//        let fetchRequest = NSFetchRequest(entityName: "Card")
-//
-//        do {
-//            let results =
-//            try managedContext.executeFetchRequest(fetchRequest)
-//            cardArrayTemp =  results as! [NSManagedObject]
-//
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
-//
-//        for var index = 0; index < cardIDs.count; ++index {
-//            for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
-//
-//                if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
-//                    cardArraySet.insert(cardArrayTemp[index2])
-//
-//                }
-//            }
-//        }
-//    }
-
-
+    
+    
+    
+    
+    
+    //
+    //    func loadCardsFromCardset(cardIDs: [String]){
+    //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    //        let managedContext = appDelegate.managedObjectContext
+    //        let fetchRequest = NSFetchRequest(entityName: "Card")
+    //
+    //        do {
+    //            let results =
+    //            try managedContext.executeFetchRequest(fetchRequest)
+    //            cardArrayTemp =  results as! [NSManagedObject]
+    //
+    //        } catch let error as NSError {
+    //            print("Could not fetch \(error), \(error.userInfo)")
+    //        }
+    //
+    //        for var index = 0; index < cardIDs.count; ++index {
+    //            for var index2 = 0; index2 < cardArrayTemp.count; ++index2 {
+    //
+    //                if Int(cardIDs[index]) == cardArrayTemp[index2].valueForKey("id") as! Int{
+    //                    cardArraySet.insert(cardArrayTemp[index2])
+    //
+    //                }
+    //            }
+    //        }
+    //    }
+    
+    
 }
