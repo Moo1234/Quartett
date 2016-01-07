@@ -51,6 +51,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var p1Cards: String = ""
     var p1CardsArray = [NSManagedObject]()
     var cpuCardsArray = [NSManagedObject]()
+    var everyCardArray = [NSManagedObject]()
     var drawStack = [NSManagedObject]()
     
     var cards = [NSManagedObject]()
@@ -72,8 +73,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         loadAttribute()
         let p1CardsString = stringToArrayString(p1Cards)
         let cpuCardsString = stringToArrayString(cpuCards)
+        let everyCard = stringToArrayString((p1Cards + "," + cpuCards))
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
+        everyCardArray = loadCards(everyCard)
         self.container.frame = CGRect(x: 0, y: 63, width: view.frame.size.width, height: view.frame.size.height-63)
         self.view.addSubview(container)
         
@@ -83,7 +86,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         showCard.hidden = true
         showCardBack.hidden = true
         
-
         //Timer
         //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
         
@@ -313,71 +315,76 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func cpuTurn(){
-        let values = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
-        print(values)
-
+        var values = everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        var values3 = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        var averageValue = [Float] (count: (values?.count)!, repeatedValue: 0)
         var choice: Int = -1
-        var minValue: Int = Int(values![0])!
+        var minValue: Float = Float(values![0])!
         var minValueIndex: Int = 0
-        var maxValue: Int = Int(values![0])!
+        var maxValue: Float = Float(values![0])!
         var maxValueIndex: Int = 0
         if(difficulty == 1){
-            for var index = 0; index < values!.count; ++index{
-                if minValue > Int(values![index]){
-                    minValue = Int(values![index])!
-                    minValueIndex = index
+            for var index = 0; index < everyCardArray.count; ++index{
+                for var index1 = 0; index1 < values!.count; ++index1{
+                    var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
+                    averageValue[index] += Float(values2![index])!
+                    
                 }
-                if maxValue < Int(values![index]){
-                    maxValue = Int(values![index])!
-                    maxValueIndex = index
-                }
+                averageValue[index] /= (Float(everyCardArray.count))
                 
+                averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-            print(minValueIndex ,"dddd", maxValueIndex)
+
+            minValue = averageValue.minElement()!
+            minValueIndex = averageValue.indexOf(minValue)!
+            
+            maxValue = averageValue.maxElement()!
+            maxValueIndex = averageValue.indexOf(maxValue)!
             
             if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
             }else{
-                choice = Int(arc4random())  % 2
-                if choice == 0{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
-                }else{
+                if maxValue - 1 > 1 - minValue{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                }else{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
                 }
+
             }
-        
-        
-            
         }else if(difficulty == 2){
             choice = Int(arc4random())  % values!.count
             collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
         }else{
-            for var index = 0; index < values!.count; ++index{
-                if minValue > Int(values![index]){
-                    minValue = Int(values![index])!
-                    minValueIndex = index
+            for var index = 0; index < everyCardArray.count; ++index{
+                for var index1 = 0; index1 < values!.count; ++index1{
+                    var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
+                    averageValue[index] += Float(values2![index])!
+                    
                 }
-                if maxValue < Int(values![index]){
-                    maxValue = Int(values![index])!
-                    maxValueIndex = index
-                }
+                averageValue[index] /= (Float(everyCardArray.count))
                 
+                averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-            print(minValueIndex ,"dddd", maxValueIndex)
+            
+            minValue = averageValue.minElement()!
+            minValueIndex = averageValue.indexOf(minValue)!
+            
+            maxValue = averageValue.maxElement()!
+            maxValueIndex = averageValue.indexOf(maxValue)!
             
             if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
             }else{
-                choice = Int(arc4random())  % 2
-                if choice == 0{
+                if maxValue - 1 > 1 - minValue{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
                 }else{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
                 }
+                
             }
             
         }
@@ -472,17 +479,27 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             gameContinue()
         }
         else{
-            if(p1CardsArray.count > cpuCardsArray.count){
-                print("Win Game")
-            }else if(p1CardsArray.count == cpuCardsArray.count){
-                print("Draw Game")
-            }
-            else{
-                print("Loose Game")
-            }
+            self.performSegueWithIdentifier("gameOver", sender:self)
         }
         
     }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "gameOver"){
+            
+            let vc = segue.destinationViewController as! EndScreenViewController
+            if (p1CardsArray.count > cpuCardsArray.count){
+                vc.labelTxt = "Gewonnen!"
+            }else if(p1CardsArray.count == cpuCardsArray.count){
+                vc.labelTxt = "Draw"
+            }else{
+                vc.labelTxt = "Loose"
+            }
+        }
+    }
+
 
     //Convert String to Array(String)
     func stringToArrayString(x:String) -> [String]{
@@ -547,25 +564,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-    }
-    
-    func loadNextCard(currentCard: Int){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Card")
-        
-        // filters cards from specific cardset
-        let predicate = NSPredicate(format: "id == %d", currentCard)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            currCard = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
     }
     
     

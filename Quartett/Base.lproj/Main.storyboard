@@ -1256,11 +1256,42 @@
                         <outlet property="showCardBack" destination="NbN-qL-QqB" id="3x7-ee-Vu2"/>
                         <outlet property="turnLabel" destination="a1e-3R-rdH" id="3ER-M8-o1U"/>
                         <outlet property="winLoseLabel" destination="iBQ-vL-K4c" id="McM-dn-VPL"/>
+                        <segue destination="45Q-Ym-VG5" kind="show" identifier="gameOver" id="2Mo-UC-Cw9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vh-5I-xex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1624" y="455"/>
+        </scene>
+        <!--End Screen View Controller-->
+        <scene sceneID="xa7-P7-PUD">
+            <objects>
+                <viewController id="45Q-Ym-VG5" customClass="EndScreenViewController" customModule="Quartett" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZUq-MX-7La"/>
+                        <viewControllerLayoutGuide type="bottom" id="zdo-Oz-Y71"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ixn-4s-cHK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jo gewonnen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHo-eX-CIc">
+                                <rect key="frame" x="46" y="48" width="269" height="460"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="winLabel" destination="FHo-eX-CIc" id="Axd-4u-MsX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdg-uh-4tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2267" y="387"/>
         </scene>
     </scenes>
     <resources>
