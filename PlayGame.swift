@@ -83,7 +83,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         showCard.hidden = true
         showCardBack.hidden = true
         
-        
 
         //Timer
         //var currentTime = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
@@ -315,15 +314,74 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func cpuTurn(){
         let values = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        print(values)
+
         var choice: Int = -1
+        var minValue: Int = Int(values![0])!
+        var minValueIndex: Int = 0
+        var maxValue: Int = Int(values![0])!
+        var maxValueIndex: Int = 0
         if(difficulty == 1){
-            choice = Int(arc4random())  % values!.count
+            for var index = 0; index < values!.count; ++index{
+                if minValue > Int(values![index]){
+                    minValue = Int(values![index])!
+                    minValueIndex = index
+                }
+                if maxValue < Int(values![index]){
+                    maxValue = Int(values![index])!
+                    maxValueIndex = index
+                }
+                
+            }
+            print(minValueIndex ,"dddd", maxValueIndex)
+            
+            if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
+                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
+                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+            }else{
+                choice = Int(arc4random())  % 2
+                if choice == 0{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                }else{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                }
+            }
+        
+        
+            
         }else if(difficulty == 2){
             choice = Int(arc4random())  % values!.count
+            collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
         }else{
+            for var index = 0; index < values!.count; ++index{
+                if minValue > Int(values![index]){
+                    minValue = Int(values![index])!
+                    minValueIndex = index
+                }
+                if maxValue < Int(values![index]){
+                    maxValue = Int(values![index])!
+                    maxValueIndex = index
+                }
+                
+            }
+            print(minValueIndex ,"dddd", maxValueIndex)
+            
+            if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
+                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
+                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+            }else{
+                choice = Int(arc4random())  % 2
+                if choice == 0{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                }else{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                }
+            }
             
         }
-        collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
+        
     }
     
     func gamestart(){

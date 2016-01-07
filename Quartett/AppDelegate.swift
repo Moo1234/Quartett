@@ -33,12 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveRanking("Willem", rounds: 5, time: 10.0)
         saveRanking("Jörg", rounds: 35, time: 100.0)
 
-        saveCard(0, cardset: 0, name: "Robben", info: "Arjen Robben ist ein niederländischer Fußballspieler. Er steht seit dem 28. August 2009 beim Bundesligisten FC Bayern München unter Vertrag und gehört zum Kader der niederländischen A-Nationalmannschaft.", image: "rob", values: "90,88,60,42,97,31")
-        saveCard(1, cardset: 0, name: "Ribery", info: "info1", image: "rib", values: "11,12,13,14,15,16")
-        saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "boateng", values: "1,2,3,4,5,6")
-        saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "alaba", values: "70,90,70,90,70,90")
-        saveCard(4, cardset: 0, name: "Lewandowski", info: "info4", image: "lewa", values: "66,77,88,99,88,77")
-        saveCard(5, cardset: 0, name: "Mueller", info: "info5", image: "mueller", values: "66,77,88,99,88,77")
+        saveCard(0, cardset: 0, name: "Robben", info: "Arjen Robben ist ein niederländischer Fußballspieler. Er steht seit dem 28. August 2009 beim Bundesligisten FC Bayern München unter Vertrag und gehört zum Kader der niederländischen A-Nationalmannschaft.", image: "rob", values: "92,92,86,32,82,64")
+        saveCard(1, cardset: 0, name: "Ribery", info: "info1", image: "rib", values: "87,91,77,25,84,61")
+        saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "boateng", values: "79,68,50,87,69,84")
+        saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "alaba", values: "86,83,72,84,81,72")
+        saveCard(4, cardset: 0, name: "Lewandowski", info: "info4", image: "lewa", values: "80,84,85,38,74,80")
+        saveCard(5, cardset: 0, name: "Mueller", info: "info5", image: "mueller", values: "77,79,84,46,80,72")
 
         saveCardset(0, name: "Bayern", image: "CardSet0")
         
