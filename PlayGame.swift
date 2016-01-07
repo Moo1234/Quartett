@@ -74,7 +74,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let cpuCardsString = stringToArrayString(cpuCards)
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
-        self.container.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        self.container.frame = CGRect(x: 0, y: 63, width: view.frame.size.width, height: view.frame.size.height-63)
         self.view.addSubview(container)
         
         self.container.addSubview(self.showCardBack)
@@ -135,8 +135,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let cellsHeight = CGFloat(Int((p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
-    
-        return CGSizeMake((collectionView.bounds.size.width)/2, collectionView.bounds.size.height/cellsHeight)
+        let collectionWidth = collectionView.bounds.size.width
+        let collectionHeight = collectionView.bounds.size.height
+        return CGSizeMake(collectionWidth/2, collectionHeight/cellsHeight)
     
     }
     
@@ -384,9 +385,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 //                    })
 //            })
             
-//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
-//            UIView.transitionFromView(showCardBack, toView: showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            collectionView.reloadData()
+//            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished: Bool) -> Void in
+//                
+//                self.collectionView.reloadData()
+//                UIView.transitionFromView(self.showCardBack, toView: self.showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+//            })
         }
         
     }
