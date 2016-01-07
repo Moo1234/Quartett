@@ -491,11 +491,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             
             let vc = segue.destinationViewController as! EndScreenViewController
             if (p1CardsArray.count > cpuCardsArray.count){
-                vc.labelTxt = "Gewonnen!"
+                vc.labelTxt = "Du hast gewonnen!"
             }else if(p1CardsArray.count == cpuCardsArray.count){
-                vc.labelTxt = "Draw"
+                vc.labelTxt = "Unentschieden!"
             }else{
-                vc.labelTxt = "Loose"
+                vc.labelTxt = "Du hast verloren!"
             }
         }
     }

@@ -10,14 +10,23 @@ import UIKit
 
 class EndScreenViewController: UIViewController {
 
-    @IBOutlet weak var winLabel: UILabel!
+    @IBOutlet weak var gameOverImage: UIImageView!
+    @IBOutlet weak var gameOverText: UITextView!
     
     var labelTxt: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        winLabel.text = labelTxt
+        gameOverText.text = labelTxt
+        if(gameOverText.text == "Du hast gewonnen!"){
+            gameOverImage.image = UIImage(named: "winLogo")
+        }else if(gameOverText.text == "Unentschieden!"){
+            gameOverImage.image = UIImage(named: "drawLogo")
+        }
+        else{
+            gameOverImage.image = UIImage(named: "looseLogo")
+        }
 
         // Do any additional setup after loading the view.
     }
