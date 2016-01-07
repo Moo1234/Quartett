@@ -35,6 +35,13 @@ class RankingController: UIViewController, UITableViewDataSource {
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         
+        
+        // remove empty table part
+        let tblView =  UIView(frame: CGRectZero)
+        tableView.tableFooterView = tblView
+        tableView.tableFooterView!.hidden = true
+        tableView.backgroundColor = UIColor.clearColor()
+        
         //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view, typically from a nib.
     }
