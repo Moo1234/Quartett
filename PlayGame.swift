@@ -416,6 +416,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             showCard.hidden = false
             showCardBack.hidden = false
             
+            
+            self.collectionView.reloadData()
+            
 //            let views = (frontView: self.showCard, backView: self.showCardBack)
 //            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
 //            UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: {
@@ -444,8 +447,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
 //            })
             
 //            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished: Bool) -> Void in
-//                
-//                self.collectionView.reloadData()
+//
 //                UIView.transitionFromView(self.showCardBack, toView: self.showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
 //            })
         }
