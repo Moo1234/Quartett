@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
+
 
 class EndScreenViewController: UIViewController {
 
+    
     @IBOutlet weak var gameOverImage: UIImageView!
     @IBOutlet weak var gameOverText: UITextView!
     
@@ -37,6 +40,7 @@ class EndScreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
 
     /*
     // MARK: - Navigation

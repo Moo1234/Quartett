@@ -107,6 +107,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         playerTwoName.delegate = self
         playerTwoName.tag = 1
         
+        startButton.layer.borderWidth = 2
+        startButton.layer.borderColor = UIColorFromRGB(0x209624).CGColor
+        
         let modelName = UIDevice.currentDevice().modelName
         if modelName == "iPhone 4" || modelName == "iPhone 4s" {
             scrollView.contentSize.height = 800;
@@ -155,6 +158,14 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
     
     
