@@ -35,6 +35,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
     var setID: Int = 0
+    var cardSetIconString = "CardSet0"
     var cardArray = [NSManagedObject]()
     var player1Cards = [NSManagedObject]()
     var player2Cards = [NSManagedObject]()
@@ -117,7 +118,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             scrollView.contentSize.height = 700
         }
         if(setID != -1){
-            cardSetIcon.image = UIImage(named: "CardSet" + String(setID))
+            cardSetIcon.image = UIImage(named: cardSetIconString)
         }
         
         

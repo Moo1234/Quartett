@@ -96,6 +96,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
             let vc = segue.destinationViewController as! ShowCardSet
             vc.cardSetID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
             vc.navigationBarTitle = (self.cardsetArray[indexPath.row].valueForKey("name") as? String)!
+            vc.cardSetImageString = (self.cardsetArray[indexPath.row].valueForKey("image") as? String)!
             
         }
     }

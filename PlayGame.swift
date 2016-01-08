@@ -177,14 +177,14 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.text = cpuValues![indexPath.row]
         
         //Draw
-        if(Int(values![indexPath.row]) == Int(cpuValues![indexPath.row])){
+        if(Float(values![indexPath.row]) == Float(cpuValues![indexPath.row])){
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
             cell.backgroundColor = UIColor.orangeColor()
             drawOperations()
             
         }else if(condition){
             //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
-            if(Int(values![indexPath.row]) > Int(cpuValues![indexPath.row])){
+            if(Float(values![indexPath.row]) > Float(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
                 if(!turn){
@@ -210,7 +210,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }
         }else{
-            if(Int(values![indexPath.row]) < Int(cpuValues![indexPath.row])){
+            if(Float(values![indexPath.row]) < Float(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
                 winOperations()
@@ -277,7 +277,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     }
     
     func winOperations(){
-        winLoseLabel.text = "Dein Wert ist höher!"
+        print("winOperation")
+        winLoseLabel.text = "Dein Wert ist besser!"
         p1AttLabel.textColor = UIColor.greenColor()
         p1AttLabel.layer.borderWidth = 3
         p1AttLabel.backgroundColor = UIColor.whiteColor()
@@ -301,7 +302,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     func looseOperations(){
-        winLoseLabel.text = "Dein Wert ist kleiner!"
+        print("looseOperation")
+        winLoseLabel.text = "Dein Wert ist schlechter!"
         p1AttLabel.textColor = UIColor.redColor()
         p1AttLabel.layer.borderWidth = 3
         p1AttLabel.backgroundColor = UIColor.whiteColor()
@@ -322,6 +324,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     func drawOperations(){
+        print("drawOperation")
         winLoseLabel.text = "Eure Werte sind gleich"
         p1AttLabel.textColor = UIColor.orangeColor()
         p1AttLabel.layer.borderWidth = 3
@@ -354,6 +357,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             for var index = 0; index < everyCardArray.count; ++index{
                 for var index1 = 0; index1 < values!.count; ++index1{
                     var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
+                    print("." , values2![index])
+                    print("," , averageValue.count)
                     averageValue[index] += Float(values2![index])!
                     
                 }

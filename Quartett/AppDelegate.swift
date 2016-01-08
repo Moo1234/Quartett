@@ -68,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
         
+        loadFromJsonFile()
+        
         return true
     }
 
@@ -160,8 +162,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
-    
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- Save Methods ------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
     func saveRanking(player: String, rounds: Int, time: Double) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -236,6 +239,173 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- End Save Methods --------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
+    
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- Loading Methods ---------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
+    
+    func loadFromJsonFile(){
+//        let fileManager = NSFileManager.defaultManager()
+//        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath("/Users/Baschdi/Downloads/bikes")!
+//        
+//        while let element = enumerator.nextObject() as? String {
+//            if element.hasSuffix("ext") { // checks the extension
+//                print(element)
+//            }
+//        }
+        
+//        // URL
+//        let url = NSURL(string: "http://pic3.zhimg.com/8161ba9638273e0fb1a0201789d22d8e_m.jpg")
+//        let data = NSData(contentsOfURL: url!)
+//        NSData(contentsOfURL: <#T##NSURL#>, options: <#T##NSDataReadingOptions#>)
+        
+        do{
+            let targetURL = NSBundle.mainBundle().pathForResource("bikes/bikes", ofType: "json")
+            let data = try NSData(contentsOfFile: targetURL!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+
+            let cardsetName = jsonResult.objectForKey("name") as! String
+            let cards = jsonResult.objectForKey("cards") as! NSArray
+            let properties = jsonResult.objectForKey("properties") as! NSArray
+            
+            // Save Cardset
+            var cardSetId = 0
+            while cardSetExists(cardSetId){
+                cardSetId++
+            }
+            let images = cards[0].valueForKey("images") as! NSArray
+            let cardSetImage = cardsetName + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
+            saveCardset(cardSetId, name: cardsetName, image: cardSetImage)
+            
+            // Save Card
+            for var card = 0; card < cards.count; card++ {
+                var cardId = 0
+                while cardExists(cardId){
+                    cardId++
+                }
+                let cardName = cards[card].valueForKey("name") as! String
+//                let info = cards[card].valueForKey("description") as! NSDictionary
+//                let cardInfo = info[card]?.
+                let images = cards[card].valueForKey("images") as! NSArray
+                let cardImage = cardsetName + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
+                
+                let properties = cards[card].valueForKey("values") as! NSArray
+                var values = ""
+                for var propertyCount = 0; propertyCount < properties.count; propertyCount++ {
+                    values += properties[propertyCount].valueForKey("value") as! String
+                    if(propertyCount < properties.count - 1){
+                        values += ","
+                    }
+                }
+                saveCard(cardId, cardset: cardSetId, name: cardName, info: "Keine Info", image: cardImage, values: values)
+            }
+            
+            // Save Properties
+            for var attribute = 0; attribute < properties.count; attribute++ {
+                var attributeId = 0
+                while attributeExists(attributeId){
+                    attributeId++
+                }
+                let attributeName = properties[attribute].valueForKey("text") as! String
+                let attributeUnit = properties[attribute].valueForKey("unit") as! String
+                var attributeCondition = false
+                if((properties[attribute].valueForKey("compare") as! NSString).doubleValue == 1){
+                    attributeCondition = true
+                }else{
+                    attributeCondition = false
+                }
+//                let attributePrecision = properties[attribute].valueForKey("precision") as! String
+//                print(attributePrecision)
+                saveAttribute(attributeId, cardset: cardSetId, name: attributeName, icon: "StandardIcon", unit: attributeUnit, condition: attributeCondition)
+            }
+        
+        }catch{
+            print("Json Datei konnte nicht gefunden werden")
+        }
+        
+    }
+    
+    func cardSetExists(id: Int) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Cardset")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            if results.count == 0{
+                return false
+            }else{
+                return true
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
+    func cardExists(id: Int) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Card")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            if results.count == 0{
+                return false
+            }else{
+                return true
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
+    func attributeExists(id: Int) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Attribute")
+        
+        // filters cards from specific cardset
+        let predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            if results.count == 0{
+                return false
+            }else{
+                return true
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- End Loading Methods -----------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
+    
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- Delete Method -----------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
     
     func deleteObjectsFromEntity(entity: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -251,6 +421,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             debugPrint(error)
         }
     }
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------- End Delete Method -------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
 
 }
 

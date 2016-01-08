@@ -14,9 +14,11 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     @IBOutlet weak var navigationBarItem: UINavigationItem!
     @IBOutlet weak var cardSetImage: UIImageView!
     
+    var cardSet = [NSManagedObject]()
     var cardArray = [NSManagedObject]()
     var attributeArray = [NSManagedObject]()
     var cardSetID = 0
+    var cardSetImageString = ""
     var navigationBarTitle = "Kartenset"
     var count = 0
     var ids = [Int]()
@@ -29,7 +31,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         super.viewWillAppear(animated)
         loadCardArray()
         loadAttributes()
-        self.cardSetImage.image = UIImage(named: "CardSet" + String(cardSetID))!
+        self.cardSetImage.image = UIImage(named: cardSetImageString)
         navigationBarItem.title = self.navigationBarTitle
     }
     

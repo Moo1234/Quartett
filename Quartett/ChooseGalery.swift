@@ -97,6 +97,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
                 let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
                 let indexPath = indexPaths[0] as NSIndexPath
                 vc.setID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
+                vc.cardSetIconString = (self.cardsetArray[indexPath.row].valueForKey("image") as? String)!
             }
             
             
