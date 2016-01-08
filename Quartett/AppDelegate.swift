@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
         
-        loadFromJsonFile()
+        loadFromJsonFile("bikes/bikes")
         
         return true
     }
@@ -247,23 +247,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // ----------------------------------------------------- Loading Methods ---------------------------------------------------------
     // -------------------------------------------------------------------------------------------------------------------------------
     
-    func loadFromJsonFile(){
-//        let fileManager = NSFileManager.defaultManager()
-//        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath("/Users/Baschdi/Downloads/bikes")!
-//        
-//        while let element = enumerator.nextObject() as? String {
-//            if element.hasSuffix("ext") { // checks the extension
-//                print(element)
-//            }
-//        }
-        
-//        // URL
-//        let url = NSURL(string: "http://pic3.zhimg.com/8161ba9638273e0fb1a0201789d22d8e_m.jpg")
-//        let data = NSData(contentsOfURL: url!)
-//        NSData(contentsOfURL: <#T##NSURL#>, options: <#T##NSDataReadingOptions#>)
+    func loadFromJsonFile(filename: String){
         
         do{
-            let targetURL = NSBundle.mainBundle().pathForResource("bikes/bikes", ofType: "json")
+            let targetURL = NSBundle.mainBundle().pathForResource(filename, ofType: "json")
             let data = try NSData(contentsOfFile: targetURL!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
 
@@ -277,7 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cardSetId++
             }
             let images = cards[0].valueForKey("images") as! NSArray
-            let cardSetImage = cardsetName + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
+            let cardSetImage = filename.componentsSeparatedByString("/")[0] + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
             saveCardset(cardSetId, name: cardsetName, image: cardSetImage)
             
             // Save Card
@@ -290,7 +277,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                let info = cards[card].valueForKey("description") as! NSDictionary
 //                let cardInfo = info[card]?.
                 let images = cards[card].valueForKey("images") as! NSArray
-                let cardImage = cardsetName + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
+                let cardImage = filename.componentsSeparatedByString("/")[0] + "/" + (images.objectAtIndex(0).valueForKey("filename") as! String)
                 
                 let properties = cards[card].valueForKey("values") as! NSArray
                 var values = ""

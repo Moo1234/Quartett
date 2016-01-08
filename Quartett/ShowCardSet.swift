@@ -31,6 +31,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         super.viewWillAppear(animated)
         loadCardArray()
         loadAttributes()
+        
         self.cardSetImage.image = UIImage(named: cardSetImageString)
         navigationBarItem.title = self.navigationBarTitle
     }

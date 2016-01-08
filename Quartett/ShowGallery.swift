@@ -27,7 +27,6 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
-        
     }
     
     override func didReceiveMemoryWarning() {
