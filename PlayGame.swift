@@ -163,8 +163,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let cpuValues = cpuCardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
         print("CPU: ", cpuValues![indexPath.row])
-        let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool!)!
-        
+        let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
         
         NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
         
@@ -213,11 +212,13 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             if(Float(values![indexPath.row]) < Float(cpuValues![indexPath.row])){
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                 cell.backgroundColor = UIColor.greenColor()
-                winOperations()
                 if(!turn){
                     winOperations()
+                    turn = true
+                    turnLabel.hidden = false
+                    turnLabel.text = "Du bist an der Reihe!"
                 }else{
-                    looseOperations()
+                    winOperations()
                 }
             }else{
                 let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
@@ -225,7 +226,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 if(!turn){
                     looseOperations()
                 }else{
-                    winOperations()
+                    looseOperations()
+                    turn = false
+                    turnLabel.hidden = false
+                    turnLabel.text = "Der Gegner ist an der Reihe!"
                 }
             }
         }
@@ -354,18 +358,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         var maxValue: Float = Float(values![0])!
         var maxValueIndex: Int = 0
         if(difficulty == 1){
-            for var index = 0; index < everyCardArray.count; ++index{
-                for var index1 = 0; index1 < values!.count; ++index1{
+            for var index = 0; index < averageValue.count; ++index{
+                for var index1 = 0; index1 < everyCardArray.count; ++index1{
                     var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
-                    print("." , values2![index])
-                    print("," , averageValue.count)
                     averageValue[index] += Float(values2![index])!
                     
                 }
                 averageValue[index] /= (Float(everyCardArray.count))
-                
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
+            
             
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
@@ -373,9 +375,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             maxValue = averageValue.maxElement()!
             maxValueIndex = averageValue.indexOf(maxValue)!
             
-            if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
+            if ((attributes[minValueIndex].valueForKey("condition") as? Bool) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == true ){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
-            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
+            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
             }else{
                 if maxValue - 1 > 1 - minValue{
@@ -389,8 +391,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             choice = Int(arc4random())  % values!.count
             collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
         }else{
-            for var index = 0; index < everyCardArray.count; ++index{
-                for var index1 = 0; index1 < values!.count; ++index1{
+            for var index = 0; index < averageValue.count; ++index{
+                for var index1 = 0; index1 < everyCardArray.count; ++index1{
                     var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
                     averageValue[index] += Float(values2![index])!
                     
@@ -406,9 +408,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             maxValue = averageValue.maxElement()!
             maxValueIndex = averageValue.indexOf(maxValue)!
             
-            if ((attributes[minValueIndex].valueForKey("condition") as? Bool!) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == true ){
+            if ((attributes[minValueIndex].valueForKey("condition") as? Bool) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == true ){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
-            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool!) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool!) == false){
+            }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
             }else{
                 if maxValue - 1 > 1 - minValue{
