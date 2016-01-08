@@ -23,7 +23,7 @@ class EndScreenViewController: UIViewController {
         
 
         gameOverText.text = labelTxt
-        gameOverText.selectable = false
+//        gameOverText.selectable = false
         if(gameOverText.text == "Du hast gewonnen!"){
             gameOverImage.image = UIImage(named: "winLogo")
         }else if(gameOverText.text == "Unentschieden!"){
