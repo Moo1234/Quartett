@@ -391,9 +391,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
             }else{
                 if maxValue - 1 > 1 - minValue{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
-                }else{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                }else{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
                 }
                 
             }
@@ -411,7 +411,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-            
+            print(averageValue)
+            print(attributes[minValueIndex].valueForKey("condition") as? Bool)
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
             
@@ -424,9 +425,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
             }else{
                 if maxValue - 1 > 1 - minValue{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
-                }else{
                     collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                }else{
+                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
                 }
                 
             }

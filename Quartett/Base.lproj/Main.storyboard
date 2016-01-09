@@ -37,7 +37,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-lZ-NCb">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-lZ-NCb">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
@@ -234,14 +234,20 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiL-EZ-Ts2">
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Runden Rangliste" id="HIt-5A-uij">
                                         <barButtonItem key="leftBarButtonItem" title="Hauptmenü" id="PVa-FA-nnO">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="xl4-c8-XJd"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Zurücksetzen" id="TxX-qi-d4W">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="resetRanking:" destination="J8t-rY-j3h" id="WCQ-MG-Q7Z"/>
                                             </connections>
@@ -869,9 +875,14 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-Gp-tTh">
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Verfügbare Kartensets" id="buJ-RM-Taa">
                                         <barButtonItem key="leftBarButtonItem" title="Zurück" id="aDJ-Id-SiU">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="oDE-RZ-ugo" kind="show" identifier="backButton" id="ND2-bq-jn8"/>
                                             </connections>
@@ -961,7 +972,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="4iB-Gp-tTh" firstAttribute="top" secondItem="mlH-73-2R0" secondAttribute="topMargin" constant="15" id="GkM-vk-Da3"/>
                             <constraint firstAttribute="trailing" secondItem="4iB-Gp-tTh" secondAttribute="trailing" id="Izn-5b-sH6"/>
@@ -1411,9 +1422,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pjo-AW-0G0"/>
-        <segue reference="fUU-fT-Ery"/>
-        <segue reference="c19-ko-Gax"/>
+        <segue reference="hqD-dW-LsQ"/>
         <segue reference="7oX-Ch-EFP"/>
-        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="xl4-c8-XJd"/>
+        <segue reference="c19-ko-Gax"/>
     </inferredMetricsTieBreakers>
 </document>

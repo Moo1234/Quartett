@@ -44,12 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCardset(0, name: "Bayern", image: "CardSet0")
         
         
-        saveCard(6, cardset: 1, name: "Reus", info: "info0", image: "reus", values: "90,88,60,42,97,31")
-        saveCard(7, cardset: 1, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16")
-        saveCard(8, cardset: 1, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6")
-        saveCard(9, cardset: 1, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90")
-        saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77")
-        saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77")
+        saveCard(6, cardset: 1, name: "Reus", info: "info0", image: "reus", values: "90,88,60,42,97,31,71")
+        saveCard(7, cardset: 1, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16,31")
+        saveCard(8, cardset: 1, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6,21")
+        saveCard(9, cardset: 1, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90,1")
+        saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77,2")
+        saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77,5")
         
         saveCardset(1, name: "Dortmund",image: "CardSet1")
 
@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveAttribute(9, cardset: 1, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(2, cardset: 1, name: "bla", icon: "StandardIcon", unit: "km/h", condition: false)
 
         saveAttribute(6, cardset: 2, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(7, cardset: 2, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
