@@ -456,8 +456,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-            print(averageValue)
-            print(attributes[minValueIndex].valueForKey("condition") as? Bool)
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
             
@@ -513,7 +511,18 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             showCard.hidden = false
             showCardBack.hidden = false
             
+//            let views = (frontView: self.showCard, backView: self.showCardBack)
+//            
+//            // with no animation block, and a completion block set to 'nil' this makes a single line of code
+//            UIView.transitionFromView(views.frontView, toView: views.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {finished in
+//                UIView.transitionFromView(views.backView, toView: views.frontView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: {finished in
+//                    
+//                })
+//                
+//            })
+            
             self.collectionView.reloadData()
+
             
             //            let views = (frontView: self.showCard, backView: self.showCardBack)
             //            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
