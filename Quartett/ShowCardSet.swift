@@ -98,6 +98,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.nameLabel?.text = card.valueForKey("name") as? String
             cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
             cell.textview?.text = card.valueForKey("info") as? String
+            cell.textview.selectable = false
+            cell.textview.contentInset = UIEdgeInsetsMake(-7.0,0.0,0,0.0)
             ids.append(indexPath.row)
             
             return cell

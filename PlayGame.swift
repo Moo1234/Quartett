@@ -82,6 +82,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1CardsArray = loadCards(p1CardsString)
         cpuCardsArray = loadCards(cpuCardsString)
         everyCardArray = loadCards(everyCard)
+        cardInfo.selectable = false
+        cardInfo.contentInset = UIEdgeInsetsMake(-7.0,0.0,0,0.0)
         self.container.frame = CGRect(x: 0, y: 63, width: view.frame.size.width, height: view.frame.size.height-63)
         self.view.addSubview(container)
         
