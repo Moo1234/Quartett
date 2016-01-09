@@ -78,7 +78,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(collectionView.tag == 0){
+        if(collectionView == self.collectionView){
             return self.cardArray.count
         }else{
             let values = self.cardArray[0].valueForKey("values")?.componentsSeparatedByString(",")

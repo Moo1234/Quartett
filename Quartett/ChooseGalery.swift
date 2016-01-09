@@ -14,6 +14,11 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
     
     var cardsetArray = [NSManagedObject]()
     
+    var p1NameTemp: String = ""
+    var p2NameTemp: String = ""
+    var difficultyTemp: Int = 0
+    var roundsTemp: Int = 0
+    var timeTemp: Double = 0.0
     
     
     override func viewDidLoad() {
@@ -99,6 +104,13 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
                 let indexPath = indexPaths[0] as NSIndexPath
                 vc.setID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
                 vc.cardSetIconString = (self.cardsetArray[indexPath.row].valueForKey("image") as? String)!
+                
+                vc.playerOneNameVar = p1NameTemp
+                vc.cpuDifficulty = difficultyTemp
+                vc.gameTime = timeTemp
+                vc.numberLaps = roundsTemp
+                vc.playerTwoNameVar = p2NameTemp
+                vc.backID = 1
             }
             
             

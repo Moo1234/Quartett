@@ -369,7 +369,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         var minValueIndex: Int = 0
         var maxValue: Float = Float(values![0])!
         var maxValueIndex: Int = 0
-        if(difficulty == 1){
+        if(difficulty == 0){
             for var index = 0; index < averageValue.count; ++index{
                 for var index1 = 0; index1 < everyCardArray.count; ++index1{
                     var values2 = everyCardArray[index1].valueForKey("values")?.componentsSeparatedByString(",")
@@ -399,7 +399,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
                 
             }
-        }else if(difficulty == 2){
+        }else if(difficulty == 1){
             choice = Int(arc4random())  % values!.count
             collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
         }else{

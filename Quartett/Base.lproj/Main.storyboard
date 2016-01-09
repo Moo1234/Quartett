@@ -843,6 +843,7 @@
                         <outlet property="cardSetIcon" destination="OL7-Kk-wyb" id="XZx-YM-d3f"/>
                         <outlet property="cpuLabel" destination="ish-NN-6fX" id="lBb-3Q-jdc"/>
                         <outlet property="cpuSettingsOutlet" destination="v4r-wm-G4I" id="PMf-q0-UN7"/>
+                        <outlet property="oneOrTwoPlayerOutlet" destination="CXK-hp-e7e" id="rVQ-5M-11G"/>
                         <outlet property="playerOneName" destination="Kh5-cr-RHs" id="NMJ-La-glt"/>
                         <outlet property="playerTwoName" destination="JGN-cj-E6U" id="lkO-M6-gyT"/>
                         <outlet property="scrollView" destination="dLu-Ka-5ey" id="xZe-od-r0I"/>
@@ -855,7 +856,7 @@
                 <tapGestureRecognizer id="H2d-PF-aH4">
                     <connections>
                         <action selector="openSetGalery:" destination="oDE-RZ-ugo" id="nWZ-Ie-dCF"/>
-                        <segue destination="Hek-GV-0ki" kind="show" id="Zzy-zs-Hj3"/>
+                        <segue destination="Hek-GV-0ki" kind="show" identifier="chooseGaleryButton" id="Zzy-zs-Hj3"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1421,10 +1422,10 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hqD-dW-LsQ"/>
-        <segue reference="pjo-AW-0G0"/>
         <segue reference="c19-ko-Gax"/>
-        <segue reference="RiT-DV-2h0"/>
-        <segue reference="7oX-Ch-EFP"/>
+        <segue reference="XXD-Nw-i3s"/>
+        <segue reference="hqD-dW-LsQ"/>
+        <segue reference="NGp-wx-xkl"/>
+        <segue reference="pjo-AW-0G0"/>
     </inferredMetricsTieBreakers>
 </document>

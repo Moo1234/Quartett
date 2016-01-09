@@ -81,8 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCardset(2, name: "Allstars", image: "CardSet3")
         
         
-        saveCard(12, cardset: 2, name: "Messi", info: "info0", image: "messi", values: "92,86,88,95,24,62")
-        saveCard(13, cardset: 2, name: "Ronaldo", info: "info1", image: "ronaldo", values: "92,80,93,90,33,78")
+        saveCard(12, cardset: 2, name: "Messi", info: "Lionel Leo Andrés Messi Cuccittini  (* 24. Juni 1987 in Rosario) ist ein argentinischer Fußballspieler, der auch die spanische Staatsangehörigkeit besitzt. Messi spielt seit seinem 14. Lebensjahr für den FC Barcelona. Mit 24 Jahren wurde er Rekordtorschütze des FC Barcelona, mit 25 der jüngste Spieler in der La-Liga-Geschichte, der 200 Tore erzielte. Inzwischen ist Messi Rekordtorschütze der Primera División." , image: "messi", values: "92,86,88,95,24,62")
+        saveCard(13, cardset: 2, name: "Ronaldo", info: "Cristiano Ronaldo dos Santos Aveiro (* 5. Februar 1985 in Funchal, Portugal) ist ein portugiesischer Fußballspieler. Er steht nach dem bis zu diesem Zeitpunkt teuersten Transfer[A 1] seit Sommer 2009 bei Real Madrid unter Vertrag. Er ist Kapitän und Rekordtorschütze der portugiesischen Nationalmannschaft. In der Jugendakademie von Sporting Lissabon ausgebildet, wurde Ronaldo mit 18 Jahren von Manchester United unter Vertrag genommen und entwickelte sich dort zu einem Spitzenfußballer. Zu Beginn seiner Karriere im rechten Mittelfeld eingesetzt, wechselte er später auf den linken Flügel und wurde einer der torgefährlichsten Spieler seiner Zeit.", image: "ronaldo", values: "92,80,93,90,33,78")
         saveCard(14, cardset: 2, name: "Suarez", info: "info2", image: "suarez", values: "82,79,88,88,42,79")
         saveCard(15, cardset: 2, name: "Robben", info: "info3", image: "rob", values: "92,82,86,92,32,64")
         saveCard(16, cardset: 2, name: "Hazard", info: "info0", image: "hazard", values: "90,84,82,92,32,64")
@@ -99,8 +99,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCard(27, cardset: 2, name: "Özil", info: "info3", image: "ozil", values: "72,85,74,86,24,57")
         saveCard(28, cardset: 2, name: "Bale", info: "info3", image: "bale", values: "94,83,83,84,63,80")
         saveCard(29, cardset: 2, name: "Fabregas", info: "info3", image: "fabregas", values: "68,90,78,81,64,65")
-        saveCard(30, cardset: 2, name: "ribery", info: "info3", image: "rib", values: "87,91,77,25,84,61")
-        
+        saveCard(30, cardset: 2, name: "Ribery", info: "info3", image: "rib", values: "87,91,77,25,84,61")
+        saveCard(31, cardset: 2, name: "Sergio Ramos", info: "info3", image: "ramos", values: "79,71,60,66,87,81")
+        saveCard(32, cardset: 2, name: "Agüero", info: "info3", image: "aguero", values: "89,77,87,89,23,68")
+        saveCard(33, cardset: 2, name: "Chiellini", info: "info3", image: "chiellini", values: "77,56,47,58,90,84")
+        saveCard(34, cardset: 2, name: "Lahm", info: "info3", image: "lahm", values: "75,84,56,85,87,66")
+        saveCard(35, cardset: 2, name: "De Bruyne", info: "info3", image: "debruyne", values: "77,86,83,84,40,75")
+        saveCard(36, cardset: 2, name: "Pogba", info: "info3", image: "pogba", values: "77,82,80,86,74,88")
+        saveCard(37, cardset: 2, name: "Müller", info: "info3", image: "mueller", values: "77,80,84,79,46,72")
+        saveCard(38, cardset: 2, name: "Sergio Busquets", info: "info3", image: "busquets", values: "53,77,59,74,83,80")
+        saveCard(39, cardset: 2, name: "Reus", info: "info3", image: "reus", values: "90,85,84,86,39,64")
+        saveCard(40, cardset: 2, name: "Sanchez", info: "info3", image: "sanchez", values: "87,78,83,88,39,73")
+        saveCard(41, cardset: 2, name: "Vidal", info: "info3", image: "vidal", values: "77,80,79,81,83,83")
+        saveCard(42, cardset: 2, name: "Diego Costa", info: "info3", image: "diegocosta", values: "82,63,83,79,40,88")
+        saveCard(43, cardset: 2, name: "Hummels", info: "info3", image: "hummels", values: "64,74,58,70,88,77")
 
         
         loadFromJsonFile("bikes/bikes")

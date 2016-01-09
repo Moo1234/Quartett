@@ -17,6 +17,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var playerOneName: UITextField!
     @IBOutlet weak var playerTwoName: UITextField!
     
+    @IBOutlet weak var oneOrTwoPlayerOutlet: UISegmentedControl!
     @IBOutlet weak var setNumberOfRoundsOutlet: UISegmentedControl!
     @IBOutlet weak var cpuSettingsOutlet: UISegmentedControl!
     @IBOutlet weak var cpuLabel: UILabel!
@@ -31,7 +32,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     //Vars
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
-    var cpuDifficulty = 1
+    var cpuDifficulty = 0
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
     var setID: Int = 0
@@ -39,7 +40,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     var cardArray = [NSManagedObject]()
     var player1Cards = [NSManagedObject]()
     var player2Cards = [NSManagedObject]()
-    
+    var backID: Int = 0
     
     
     // Segment Control: CPU Settings
@@ -48,11 +49,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         switch cpuSettingsOutlet.selectedSegmentIndex{
             
         case 0:
-            cpuDifficulty = 1
+            cpuDifficulty = 0
         case 1:
-            cpuDifficulty = 2
+            cpuDifficulty = 1
         case 2:
-            cpuDifficulty = 3
+            cpuDifficulty = 2
         default:
             break
         }
@@ -111,6 +112,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         startButton.layer.borderWidth = 2
         startButton.layer.borderColor = UIColorFromRGB(0x209624).CGColor
         
+        
+        
+        
         let modelName = UIDevice.currentDevice().modelName
         if modelName == "iPhone 4" || modelName == "iPhone 4s" {
             scrollView.contentSize.height = 800;
@@ -121,13 +125,51 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             cardSetIcon.image = UIImage(named: cardSetIconString)
         }
         
-        
-        
         playerTwoName.hidden = true
         cpuLabel.hidden = false
         cpuSettingsOutlet.hidden = false
         
-        if playerOneNameVar != "" && setID != -1 {
+        if backID == 1{
+            playerOneName.text = playerOneNameVar
+            
+            cpuSettingsOutlet.selectedSegmentIndex = cpuDifficulty
+            
+            if gameTime == 600.0{
+                setTimeOutlet.selectedSegmentIndex = 0
+            }else if gameTime == 1200.0{
+                setTimeOutlet.selectedSegmentIndex = 1
+            }else{
+                setTimeOutlet.selectedSegmentIndex = 2
+            }
+            
+            
+            if numberLaps == 20{
+                setNumberOfRoundsOutlet.selectedSegmentIndex = 0
+            }else if numberLaps == 40{
+                setNumberOfRoundsOutlet.selectedSegmentIndex = 1
+            }else{
+                setNumberOfRoundsOutlet.selectedSegmentIndex = 2
+            }
+            
+            if playerTwoNameVar != ""{
+                oneOrTwoPlayerOutlet.selectedSegmentIndex = 1
+                playerTwoName.text = playerTwoNameVar
+                playerTwoName.hidden = false
+                cpuLabel.hidden = true
+                cpuSettingsOutlet.hidden = true
+                
+            }
+            
+        }
+        
+        
+        
+        
+        if playerOneNameVar != "" && setID != -1 && oneOrTwoPlayerOutlet.selectedSegmentIndex == 0{
+            startButton.enabled = true
+        }
+        
+        if oneOrTwoPlayerOutlet.selectedSegmentIndex == 1 && playerOneNameVar != "" && playerTwoNameVar != "" && setID != -1{
             startButton.enabled = true
         }
         
@@ -180,7 +222,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         
         self.view.endEditing(true)
         
-        if playerOneNameVar != "" && setID != -1 {
+        if playerOneNameVar != "" && setID != -1 && oneOrTwoPlayerOutlet.selectedSegmentIndex == 0{
+            startButton.enabled = true
+        }
+        
+        if oneOrTwoPlayerOutlet.selectedSegmentIndex == 1 && playerOneNameVar != "" && playerTwoNameVar != "" && setID != -1{
             startButton.enabled = true
         }
         
@@ -195,6 +241,9 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             playerTwoName.hidden = false
             cpuLabel.hidden = true
             cpuSettingsOutlet.hidden = true
+            if playerTwoNameVar == ""{
+                startButton.enabled = false
+            }
         }else{
             playerTwoName.hidden = true
             cpuLabel.hidden = false
@@ -352,6 +401,16 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "chooseGaleryButton"){
+            let vc = segue.destinationViewController as! ChooseGalery
+            vc.p1NameTemp = playerOneNameVar
+            vc.difficultyTemp = cpuDifficulty
+            vc.timeTemp = gameTime
+            vc.roundsTemp = numberLaps
+            vc.p2NameTemp = playerTwoNameVar
+        }
+    }
     /*
     // MARK: - Navigation
     
