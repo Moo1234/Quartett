@@ -21,7 +21,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     var cardSetImageString = ""
     var navigationBarTitle = "Kartenset"
     var count = 0
-    var ids = [Int]()
+    var cardID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +81,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if(collectionView == self.collectionView){
             return self.cardArray.count
         }else{
+            collectionView.setContentOffset(CGPointZero, animated: false)
             let values = self.cardArray[0].valueForKey("values")?.componentsSeparatedByString(",")
             return values!.count
         }
@@ -90,7 +91,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
             
             let card = cardArray[indexPath.row]
-            
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
             cell.layer.cornerRadius = 10
@@ -99,8 +99,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
             cell.textview?.text = card.valueForKey("info") as? String
             cell.textview.selectable = false
-            cell.textview.contentInset = UIEdgeInsetsMake(-7.0,0.0,0,0.0)
-            ids.append(indexPath.row)
+            cell.textview.contentOffset = CGPoint(x: 0, y: 7)
+            cardID = indexPath.row
             
             return cell
         }else{
@@ -109,9 +109,9 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
-            let card = cardArray[ids[0]]
+            let card = cardArray[cardID]
             let values = card.valueForKey("values")?.componentsSeparatedByString(",")
-//            print(values)
+            //            print(values)
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
             cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
@@ -126,8 +126,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             
             if(count == (values?.count)!-1){
                 count = 0
-//                print(ids)
-                ids.removeFirst()
             }else{
                 count++
             }

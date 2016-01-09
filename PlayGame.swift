@@ -83,7 +83,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuCardsArray = loadCards(cpuCardsString)
         everyCardArray = loadCards(everyCard)
         cardInfo.selectable = false
-        cardInfo.contentInset = UIEdgeInsetsMake(-7.0,0.0,0,0.0)
         self.container.frame = CGRect(x: 0, y: 63, width: view.frame.size.width, height: view.frame.size.height-63)
         self.view.addSubview(container)
         
@@ -148,6 +147,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         atCell.valueLabel?.text = values![indexPath.row]
         atCell.nameLabel?.text = attribute.valueForKey("name") as? String
         
+        cardInfo.contentOffset = CGPoint(x: 0, y: 7)
+        
         return atCell
         
     }
@@ -190,8 +191,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         }else if(condition){
             //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(Float(values![indexPath.row]) > Float(cpuValues![indexPath.row])){
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.greenColor()
+                if(indexPath.row < 6){
+                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                    cell.backgroundColor = UIColor.greenColor()
+                }
                 if(!turn){
                     winOperations()
                     turn = true
@@ -201,10 +204,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                // d6 gegen 16 oder 31 gewinnt noch manchmal???
-                //                print(values![indexPath.row] > cpuValues![indexPath.row] , "; \(values![indexPath.row].dynamicType) : \(cpuValues![indexPath.row].dynamicType)")
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.redColor()
+                if(indexPath.row < 6){
+                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                    cell.backgroundColor = UIColor.redColor()
+                }
                 if(!turn){
                     looseOperations()
                 }else{
@@ -216,8 +219,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }else{
             if(Float(values![indexPath.row]) < Float(cpuValues![indexPath.row])){
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.greenColor()
+                if(indexPath.row < 6){
+                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                    cell.backgroundColor = UIColor.greenColor()
+                }
                 if(!turn){
                     winOperations()
                     turn = true
@@ -227,8 +232,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.redColor()
+                if(indexPath.row < 6){
+                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
+                    cell.backgroundColor = UIColor.redColor()
+                }
                 if(!turn){
                     looseOperations()
                 }else{
