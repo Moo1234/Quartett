@@ -76,17 +76,5 @@ class ViewController: UIViewController {
         
     }
     
-    
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
-    
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if motion == .MotionShake {
-            self.rankingButton.layer.backgroundColor = UIColor.redColor().CGColor
-        }
-
-    }
-    
 }
 
