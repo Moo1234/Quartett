@@ -67,6 +67,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveAttribute(9, cardset: 1, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
+
+        saveAttribute(6, cardset: 2, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(7, cardset: 2, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(8, cardset: 2, name: "SHO", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(9, cardset: 2, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(10, cardset: 2, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(11, cardset: 2, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
+
+        
+        
+        saveCardset(2, name: "Allstars", image: "CardSet3")
+        
+        
+        saveCard(12, cardset: 2, name: "Messi", info: "info0", image: "messi", values: "92,86,88,95,24,62")
+        saveCard(13, cardset: 2, name: "Ronaldo", info: "info1", image: "ronaldo", values: "92,80,93,90,33,78")
+        saveCard(14, cardset: 2, name: "Suarez", info: "info2", image: "suarez", values: "82,79,88,88,42,79")
+        saveCard(15, cardset: 2, name: "Robben", info: "info3", image: "rob", values: "92,82,86,92,32,64")
+        saveCard(16, cardset: 2, name: "Hazard", info: "info0", image: "hazard", values: "90,84,82,92,32,64")
+        saveCard(17, cardset: 2, name: "Ibrahimovic", info: "info1", image: "ibrahimovic", values: "73,81,90,85,31,86")
+        saveCard(18, cardset: 2, name: "Neymar", info: "info2", image: "neymar", values: "90,72,80,92,30,58")
+        saveCard(19, cardset: 2, name: "David Silva", info: "info3", image: "davidsilva", values: "73,89,74,89,32,58")
+        saveCard(20, cardset: 2, name: "Thiago Silva", info: "info3", image: "thiagosilva", values: "74,73,57,73,90,79")
+        saveCard(21, cardset: 2, name: "Iniesta", info: "info3", image: "iniesta", values: "75,87,72,90,59,63")
+        saveCard(22, cardset: 2, name: "Rodriguez", info: "info3", image: "rodriguez", values: "78,84,86,85,40,72")
+        saveCard(23, cardset: 2, name: "Lewandowski", info: "info3", image: "lewa", values: "80,74,85,84,38,80")
+        saveCard(24, cardset: 2, name: "Boateng", info: "info3", image: "boateng", values: "79,68,50,87,69,84")
+        saveCard(25, cardset: 2, name: "Kroos", info: "info3", image: "kroos", values: "56,88,81,82,66,69")
+        saveCard(26, cardset: 2, name: "Modric", info: "info3", image: "modric", values: "76,84,74,89,71,68")
+        saveCard(27, cardset: 2, name: "Özil", info: "info3", image: "ozil", values: "72,85,74,86,24,57")
+        saveCard(28, cardset: 2, name: "Bale", info: "info3", image: "bale", values: "94,83,83,84,63,80")
+        saveCard(29, cardset: 2, name: "Fabregas", info: "info3", image: "fabregas", values: "68,90,78,81,64,65")
+        saveCard(30, cardset: 2, name: "ribery", info: "info3", image: "rib", values: "87,91,77,25,84,61")
+        
+
         
         loadFromJsonFile("bikes/bikes")
         
