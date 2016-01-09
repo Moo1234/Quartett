@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Foundation
+import AudioToolbox
 
 class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
     
@@ -64,6 +65,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var attributes = [NSManagedObject]()
     
     var currentTime: Double = 0.0
+    var cpuSpeed: Double = 2.0
+    var showAlertTime: Double = 4.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +124,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         if(turn){
             collectionView.userInteractionEnabled = true
         }else{
-            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("cpuTurn"), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(cpuSpeed, target: self, selector: Selector("cpuTurn"), userInfo: nil, repeats: false)
         }
         return self.attributes.count
     }
@@ -165,7 +169,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         print("CPU: ", cpuValues![indexPath.row])
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
         
-        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
         
         
         compareView.hidden = false
@@ -283,6 +287,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     func winOperations(){
         print("winOperation")
         winLoseLabel.text = "Dein Wert ist besser!"
+        if (cpuSpeed == 0.0) {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            cpuSpeed = 2.0
+            showAlertTime = 4.0
+            
+        }
         p1AttLabel.textColor = UIColor.greenColor()
         p1AttLabel.layer.borderWidth = 3
         p1AttLabel.backgroundColor = UIColor.whiteColor()
@@ -555,6 +565,28 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }
         return cards
+    }
+    
+    
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            cpuSpeed = 0.0
+            showAlertTime = 0.5
+        }
+    }
+    
+
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake{
+            cpuSpeed = 2.0
+            showAlertTime = 4.0
+            
+        }
     }
     
     //******************************************
