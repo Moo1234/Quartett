@@ -194,6 +194,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 if(indexPath.row < 6){
                     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                     cell.backgroundColor = UIColor.greenColor()
+                    UIView.animateWithDuration(0.6 ,
+                        animations: {
+                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        },
+                        completion: { finish in
+                            UIView.animateWithDuration(0.6){
+                                cell.transform = CGAffineTransformIdentity
+                            }
+                    })
                 }
                 if(!turn){
                     winOperations()
@@ -207,6 +216,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 if(indexPath.row < 6){
                     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                     cell.backgroundColor = UIColor.redColor()
+                    UIView.animateWithDuration(0.6 ,
+                        animations: {
+                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        },
+                        completion: { finish in
+                            UIView.animateWithDuration(0.6){
+                                cell.transform = CGAffineTransformIdentity
+                            }
+                    })
                 }
                 if(!turn){
                     looseOperations()
@@ -222,6 +240,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 if(indexPath.row < 6){
                     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                     cell.backgroundColor = UIColor.greenColor()
+                    UIView.animateWithDuration(0.6 ,
+                        animations: {
+                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        },
+                        completion: { finish in
+                            UIView.animateWithDuration(0.6){
+                                cell.transform = CGAffineTransformIdentity
+                            }
+                    })
                 }
                 if(!turn){
                     winOperations()
@@ -235,6 +262,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 if(indexPath.row < 6){
                     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
                     cell.backgroundColor = UIColor.redColor()
+                    UIView.animateWithDuration(0.6 ,
+                        animations: {
+                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        },
+                        completion: { finish in
+                            UIView.animateWithDuration(0.6){
+                                cell.transform = CGAffineTransformIdentity
+                            }
+                    })
                 }
                 if(!turn){
                     looseOperations()
@@ -476,7 +512,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             
             showCard.hidden = false
             showCardBack.hidden = false
-            
             
             self.collectionView.reloadData()
             

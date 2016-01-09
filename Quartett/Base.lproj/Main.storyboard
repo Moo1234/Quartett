@@ -1422,10 +1422,10 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c19-ko-Gax"/>
-        <segue reference="XXD-Nw-i3s"/>
-        <segue reference="hqD-dW-LsQ"/>
+        <segue reference="RiT-DV-2h0"/>
         <segue reference="NGp-wx-xkl"/>
+        <segue reference="hqD-dW-LsQ"/>
+        <segue reference="c19-ko-Gax"/>
         <segue reference="pjo-AW-0G0"/>
     </inferredMetricsTieBreakers>
 </document>
