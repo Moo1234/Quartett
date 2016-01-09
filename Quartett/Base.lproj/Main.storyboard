@@ -22,9 +22,14 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-SM-pPX">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Kartenset" id="LCI-QH-Dl4">
                                         <barButtonItem key="leftBarButtonItem" title="Zurück" id="Bbr-6c-csg">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="Ybm-yb-9u4" kind="show" id="pjo-AW-0G0"/>
                                             </connections>
@@ -189,7 +194,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.59051865183246077" green="0.59051865183246077" blue="0.59051865183246077" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hED-72-yzz" firstAttribute="top" secondItem="Gne-SM-pPX" secondAttribute="top" id="9hC-Yo-bi5"/>
                             <constraint firstItem="Gne-SM-pPX" firstAttribute="top" secondItem="ycT-LP-cWW" secondAttribute="bottom" id="Bd8-5e-5iy"/>
@@ -396,14 +401,20 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpr-7J-QoI">
                                 <rect key="frame" x="0.0" y="15" width="414" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Kartensets" id="Gdr-hb-MWz">
                                         <barButtonItem key="leftBarButtonItem" title="Zurück" id="v7C-ep-x4C">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="fUU-fT-Ery"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Editieren" id="h1D-CG-bpc">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="editGalleryButton:" destination="Ybm-yb-9u4" id="N71-c0-GEo"/>
                                             </connections>
@@ -443,6 +454,7 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="addButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDd-QM-YqN" userLabel="addCard">
                                                     <rect key="frame" x="266" y="107" width="22" height="22"/>
+                                                    <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="addCardButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="rQB-UT-49d"/>
                                                     </connections>
@@ -454,7 +466,9 @@
                                                         <constraint firstAttribute="height" constant="20" id="QRr-XR-lIf"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                    <state key="normal" title="Del"/>
+                                                    <state key="normal" title="Del">
+                                                        <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="deleteGalleryButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="kNy-92-BNH"/>
                                                     </connections>
@@ -490,12 +504,13 @@
                             </collectionView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-99-Rcr" userLabel="addCardSet">
                                 <rect key="frame" x="196" y="706" width="22" height="22"/>
+                                <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="addCardSetButton:" destination="Ybm-yb-9u4" eventType="touchUpInside" id="BR0-oA-5Rr"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zJk-cQ-W93" firstAttribute="top" secondItem="sPX-pN-hVy" secondAttribute="bottom" constant="5" id="0kx-Gg-R2a"/>
                             <constraint firstItem="sPX-pN-hVy" firstAttribute="top" secondItem="cpr-7J-QoI" secondAttribute="bottom" id="6SL-he-N7M"/>
@@ -1395,10 +1410,10 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PUa-f6-a5I"/>
-        <segue reference="EGa-qr-Zxe"/>
-        <segue reference="7oX-Ch-EFP"/>
+        <segue reference="pjo-AW-0G0"/>
+        <segue reference="fUU-fT-Ery"/>
         <segue reference="c19-ko-Gax"/>
+        <segue reference="7oX-Ch-EFP"/>
         <segue reference="yC0-Vk-LX7"/>
     </inferredMetricsTieBreakers>
 </document>

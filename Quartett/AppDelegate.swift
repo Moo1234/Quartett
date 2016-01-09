@@ -103,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         loadFromJsonFile("bikes/bikes")
+        loadFromJsonFile("tuning/tuning")
         
         return true
     }

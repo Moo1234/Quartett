@@ -93,6 +93,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
             
             if(sender!.tag != nil){
                 vc.setID = sender!.tag
+                vc.cardSetIconString = (self.cardsetArray[sender!.tag].valueForKey("image") as? String)!
             }else{
                 let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
                 let indexPath = indexPaths[0] as NSIndexPath

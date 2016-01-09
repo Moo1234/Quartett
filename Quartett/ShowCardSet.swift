@@ -88,10 +88,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if(collectionView == self.collectionView){
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardCell", forIndexPath: indexPath) as! ShowCardSetCollectionViewCell
-            let card = cardArray[indexPath.row]
-//            cell.frame.size.height = collectionView.frame.size.height-64
-//            cell.frame.size.width = collectionView.frame.size.width
             
+            let card = cardArray[indexPath.row]
             
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
@@ -106,7 +104,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         }else{
             // Attribute sind komischerweise bis zum ersten rechts-links scrollen noch vertauscht
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttributeCell", forIndexPath: indexPath) as! ShowAttributeCollectionViewCell
-            
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
@@ -116,6 +113,11 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
             cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
+            if attribute.valueForKey("condition") as! Int == 0 {
+                cell.backgroundColor = UIColor.lightGrayColor()
+            }else{
+                cell.backgroundColor = UIColor.whiteColor()
+            }
             cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
             cell.attributeNameLabel?.text = attribute.valueForKey("name") as? String
             
