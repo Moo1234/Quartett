@@ -398,11 +398,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.backgroundColor = UIColor.whiteColor()
         cpuAttLabel.layer.borderColor = UIColor.orangeColor().CGColor
         
-        drawStack.append(p1CardsArray[0])
-        drawStack.append(cpuCardsArray[0])
-        cpuCardsArray.removeAtIndex(0)
-        p1CardsArray.removeAtIndex(0)
-        
+        if(p1CardsArray.count > 1){
+            drawStack.append(p1CardsArray[0])
+            cpuCardsArray.removeAtIndex(0)
+        }
+        if(cpuCardsArray.count > 1){
+            drawStack.append(cpuCardsArray[0])
+            p1CardsArray.removeAtIndex(0)
+        }
+        if(cpuCardsArray.count == 1 && p1CardsArray.count == 1){
+            self.performSegueWithIdentifier("gameOver", sender:self)
+        }
     }
     
     
