@@ -24,7 +24,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var pickUpCard: UIButton!
     
     //picked up card
-    let container = UIView()
     @IBOutlet var showCardBack: UIView!
     @IBOutlet var showCard: UIView!
     @IBOutlet weak var cardImage: UIImageView!
@@ -70,6 +69,11 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     var index = NSIndexPath(forRow: 0, inSection: 0)
     
+    // Views for animations
+    let container = UIView()
+    var front = UIView()
+    var back = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +93,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         self.view.addSubview(container)
         
         self.container.addSubview(self.showCardBack)
-
+        self.container.addSubview(self.front)
         if(currentLap == 0){
             container.hidden = true
             showCard.hidden = true
@@ -501,7 +505,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
     }
     
-    
     func gameContinue(){
         
         if p1CardsArray.count > 0 && cpuCardsArray.count > 0 {
@@ -513,50 +516,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             showCard.hidden = false
             showCardBack.hidden = false
             
-//            let views = (frontView: self.showCard, backView: self.showCardBack)
-//            
-//            // with no animation block, and a completion block set to 'nil' this makes a single line of code
-//            UIView.transitionFromView(views.frontView, toView: views.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {finished in
-//                UIView.transitionFromView(views.backView, toView: views.frontView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: {finished in
-//                    
-//                })
-//                
-//            })
-            
             self.collectionView.reloadData()
 
-            
-            //            let views = (frontView: self.showCard, backView: self.showCardBack)
-            //            let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
-            //            UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: {
-            //                // remove the front object...
-            //                views.frontView.removeFromSuperview()
-            //
-            //                // ... and add the other object
-            //                self.container.addSubview(views.backView)
-            //
-            //
-            //                }, completion: { finished in
-            //                    let views2 = (frontView: self.showCardBack, backView: self.showCard)
-            //                    let transitionOptions2 = UIViewAnimationOptions.TransitionFlipFromRight
-            //                    UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions2, animations: {
-            //                        // remove the front object...
-            //                        views2.backView.removeFromSuperview()
-            //
-            //                        // ... and add the other object
-            //                        self.container.addSubview(views2.frontView)
-            //
-            //
-            //                        }, completion: { finished in
-            //                            // any code entered here will be applied
-            //                            // .once the animation has completed
-            //                    })
-            //            })
-            
-            //            UIView.transitionFromView(showCard, toView: showCardBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished: Bool) -> Void in
-            //
-            //                UIView.transitionFromView(self.showCardBack, toView: self.showCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            //            })
+            var views : (frontView: UIView, backView: UIView)
+            if(self.front.superview != nil){
+                views = (frontView: self.front, backView: self.back)
+            }
+            else {
+                views = (frontView: self.back, backView: self.front)
+            }
+            UIView.transitionFromView(views.frontView, toView: views.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+
         }
         
     }
