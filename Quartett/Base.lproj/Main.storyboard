@@ -554,7 +554,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startScreen" translatesAutoresizingMaskIntoConstraints="NO" id="OaW-sg-cLA">
-                                <rect key="frame" x="0.0" y="20" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-D7-7ey">
                                 <rect key="frame" x="149" y="254" width="116" height="30"/>
@@ -601,7 +601,7 @@
                             <constraint firstItem="OaW-sg-cLA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="02J-PM-cJW"/>
                             <constraint firstItem="KpT-SS-EaI" firstAttribute="top" secondItem="Jig-QB-zFE" secondAttribute="bottom" constant="42" id="3b8-St-Ggj"/>
                             <constraint firstItem="KpT-SS-EaI" firstAttribute="trailing" secondItem="Jig-QB-zFE" secondAttribute="trailing" id="ANT-iv-0Pg"/>
-                            <constraint firstItem="OaW-sg-cLA" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-44" id="Bxd-6l-gJr"/>
+                            <constraint firstItem="OaW-sg-cLA" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Bxd-6l-gJr"/>
                             <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="39" id="D4T-Bu-geJ"/>
                             <constraint firstItem="KpT-SS-EaI" firstAttribute="leading" secondItem="Jig-QB-zFE" secondAttribute="leading" id="GY0-vu-8nY"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="32" id="H7B-pV-PsX"/>

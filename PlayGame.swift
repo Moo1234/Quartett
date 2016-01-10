@@ -118,9 +118,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if(!turn){
-            collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
-        }
     }
     
     
@@ -147,15 +144,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         atCell.layer.borderColor = UIColor.blackColor().CGColor
         atCell.layer.cornerRadius = 10
         atCell.backgroundColor = UIColor.whiteColor()
-        
-        let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
-        
-        
-        atCell.valueLabel?.text = values![indexPath.row]
-        atCell.nameLabel?.text = attribute.valueForKey("name") as? String
-        
-        cardInfo.contentOffset = CGPoint(x: 0, y: 7)
-        
+        if(p1CardsArray.count > 0){
+            let values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+            
+            
+            atCell.valueLabel?.text = values![indexPath.row]
+            atCell.nameLabel?.text = attribute.valueForKey("name") as? String
+            
+            cardInfo.contentOffset = CGPoint(x: 0, y: 7)
+        }
         return atCell
         
     }
@@ -178,10 +175,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         print("CPU: ", cpuValues![indexPath.row])
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
+ 
         
-        NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
-        
-        if(!turn && (p1CardsArray.count > 0 && cpuCardsArray.count > 0 && currentLap < maxLaps)){
+        if(!turn){
+            print("Indexpath" , indexPath.row)
             collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
             collectionView.layoutIfNeeded()
         }else{
@@ -283,6 +280,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 }
             }
         }
+        
+        NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
         
     }
     
