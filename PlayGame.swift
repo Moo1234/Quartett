@@ -68,6 +68,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var cpuSpeed: Double = 2.0
     var showAlertTime: Double = 4.0
     
+    var index = NSIndexPath(forRow: 0, inSection: 0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +116,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if(!turn){
+            collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        }
+    }
     
     
     //******************************************
@@ -174,6 +181,13 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
         
+        if(!turn && (p1CardsArray.count > 0 && cpuCardsArray.count > 0 && currentLap < maxLaps)){
+            collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+            collectionView.layoutIfNeeded()
+        }else{
+            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        }
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
         
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
@@ -184,26 +198,22 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         //Draw
         if(Float(values![indexPath.row]) == Float(cpuValues![indexPath.row])){
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
             cell.backgroundColor = UIColor.orangeColor()
             drawOperations()
             
         }else if(condition){
             //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(Float(values![indexPath.row]) > Float(cpuValues![indexPath.row])){
-                if(indexPath.row < 6){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.greenColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
+                cell.backgroundColor = UIColor.greenColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            cell.transform = CGAffineTransformIdentity
+                        }
+                })
                 if(!turn){
                     winOperations()
                     turn = true
@@ -213,19 +223,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                if(indexPath.row < 6){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.redColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
+                cell.backgroundColor = UIColor.redColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            cell.transform = CGAffineTransformIdentity
+                        }
+                })
                 if(!turn){
                     looseOperations()
                 }else{
@@ -237,19 +244,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }else{
             if(Float(values![indexPath.row]) < Float(cpuValues![indexPath.row])){
-                if(indexPath.row < 6){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.greenColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
+                cell.backgroundColor = UIColor.greenColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            cell.transform = CGAffineTransformIdentity
+                        }
+                })
                 if(!turn){
                     winOperations()
                     turn = true
@@ -259,19 +263,16 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                if(indexPath.row < 6){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.redColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
+                cell.backgroundColor = UIColor.redColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            cell.transform = CGAffineTransformIdentity
+                        }
+                })
                 if(!turn){
                     looseOperations()
                 }else{
@@ -431,20 +432,19 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             maxValueIndex = averageValue.indexOf(maxValue)!
             
             if ((attributes[minValueIndex].valueForKey("condition") as? Bool) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == true ){
-                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                choice = minValueIndex
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
-                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                choice = maxValueIndex
             }else{
                 if maxValue - 1 > 1 - minValue{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                    choice = maxValueIndex
                 }else{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                    choice = minValueIndex
                 }
                 
             }
         }else if(difficulty == 1){
             choice = Int(arc4random())  % values!.count
-            collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: choice, inSection: 0))
         }else{
             for var index = 0; index < averageValue.count; ++index{
                 for var index1 = 0; index1 < everyCardArray.count; ++index1{
@@ -456,6 +456,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
+//            print(averageValue)
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
             
@@ -463,19 +464,21 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             maxValueIndex = averageValue.indexOf(maxValue)!
             
             if ((attributes[minValueIndex].valueForKey("condition") as? Bool) == true  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == true ){
-                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                choice = maxValueIndex
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
-                collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                choice = minValueIndex
             }else{
                 if maxValue - 1 > 1 - minValue{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: minValueIndex, inSection: 0))
+                    choice = minValueIndex
                 }else{
-                    collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: NSIndexPath(forRow: maxValueIndex, inSection: 0))
+                    choice = maxValueIndex
                 }
                 
             }
             
         }
+        index = NSIndexPath(forRow: choice, inSection: 0)
+        collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: index)
         
     }
     
