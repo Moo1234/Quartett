@@ -22,6 +22,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     //GUI-Elementss
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var pickUpCard: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     //picked up card
     @IBOutlet var showCardBack: UIView!
@@ -80,6 +81,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         
         loadGame()
+        if (cardsetID == 3 || cardsetID == 4){
+            backgroundImage.image = UIImage(named: "tisch")
+        }
+        
         loadCardset()
         loadAttribute()
         let p1CardsString = stringToArrayString(p1Cards)

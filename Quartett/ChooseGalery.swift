@@ -79,6 +79,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
         cell.chooseButton.layer.borderWidth = 2
         cell.chooseButton.layer.borderColor = UIColor.blackColor().CGColor
         cell.chooseButton.tag = indexPath.row
+        cell.showButton.tag = indexPath.row
         
         cell.galeryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
         cell.galeryTitle?.text = cardset.valueForKey("name") as? String
@@ -114,7 +115,30 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
             }
             
             
+        }else if (segue.identifier == "showCardSetButton"){
+            let vc2 = segue.destinationViewController as! ShowCardSet
+            
+            
+            if(sender!.tag != nil){
+                
+                vc2.cardSetID = (self.cardsetArray[sender!.tag].valueForKey("id") as? Int)!
+                vc2.navigationBarTitle = (self.cardsetArray[sender!.tag].valueForKey("name") as? String)!
+                vc2.cardSetImageString = (self.cardsetArray[sender!.tag].valueForKey("image") as? String)!
+                vc2.idInt = 1
+
+            }else{
+                let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
+                let indexPath = indexPaths[0] as NSIndexPath
+            
+
+                vc2.cardSetID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
+                vc2.navigationBarTitle = (self.cardsetArray[indexPath.row].valueForKey("name") as? String)!
+                vc2.cardSetImageString = (self.cardsetArray[indexPath.row].valueForKey("image") as? String)!
+            }
+            
         }
+    
+    
     }
     
     //****************************

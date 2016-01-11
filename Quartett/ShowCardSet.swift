@@ -11,8 +11,11 @@ import CoreData
 
 class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var navigationBarItem: UINavigationItem!
+   
+    @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var cardSetImage: UIImageView!
+    @IBOutlet weak var back1: UIButton!
+    @IBOutlet weak var back2: UIButton!
     
     var cardSet = [NSManagedObject]()
     var cardArray = [NSManagedObject]()
@@ -22,9 +25,19 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     var navigationBarTitle = "Kartenset"
     var count = 0
     var cardID = 0
+    var idInt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if idInt == 0{
+            back2.hidden = true
+            back2.enabled = false
+        }else{
+            back1.hidden = true
+            back1.enabled = false
+        
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,7 +46,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         loadAttributes()
         
         self.cardSetImage.image = UIImage(named: cardSetImageString)
-        navigationBarItem.title = self.navigationBarTitle
+        setLabel.text = self.navigationBarTitle
     }
     
     func loadCardArray(){

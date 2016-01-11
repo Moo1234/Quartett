@@ -20,23 +20,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-SM-pPX">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Kartenset" id="LCI-QH-Dl4">
-                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="Bbr-6c-csg">
-                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <segue destination="Ybm-yb-9u4" kind="show" id="pjo-AW-0G0"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-lZ-NCb">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -187,33 +170,61 @@
                                     <outlet property="delegate" destination="jwB-pA-M4b" id="2Fj-p6-ed0"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnS-fN-h7N">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuE-fm-RiK">
+                                        <rect key="frame" x="3" y="4" width="56" height="30"/>
+                                        <state key="normal" title="Zurück"/>
+                                        <connections>
+                                            <segue destination="Ybm-yb-9u4" kind="show" id="mmQ-nR-dMT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13p-mF-mgv">
+                                        <rect key="frame" x="3" y="3" width="58" height="30"/>
+                                        <state key="normal" title="Zurück"/>
+                                        <connections>
+                                            <segue destination="Hek-GV-0ki" kind="show" id="Avo-jD-HBl"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KartenSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-3o-XX9">
+                                        <rect key="frame" x="134" y="8" width="146" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.29752066729999999" green="0.81558614969999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hED-72-yzz" userLabel="Set Image">
                                 <rect key="frame" x="350" y="20" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="2GX-JH-TH1"/>
+                                    <constraint firstAttribute="height" constant="44" id="Nwj-U6-7PM"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hED-72-yzz" firstAttribute="top" secondItem="Gne-SM-pPX" secondAttribute="top" id="9hC-Yo-bi5"/>
-                            <constraint firstItem="Gne-SM-pPX" firstAttribute="top" secondItem="ycT-LP-cWW" secondAttribute="bottom" id="Bd8-5e-5iy"/>
-                            <constraint firstItem="Wb7-lZ-NCb" firstAttribute="top" secondItem="Gne-SM-pPX" secondAttribute="bottom" id="JAz-6w-Ta2"/>
-                            <constraint firstItem="Wb7-lZ-NCb" firstAttribute="trailing" secondItem="Gne-SM-pPX" secondAttribute="trailing" id="Uxv-PC-EIF"/>
-                            <constraint firstItem="hED-72-yzz" firstAttribute="top" secondItem="Gne-SM-pPX" secondAttribute="bottom" constant="-44" id="XFj-Js-y37"/>
-                            <constraint firstItem="Gne-SM-pPX" firstAttribute="leading" secondItem="Wb7-lZ-NCb" secondAttribute="leading" id="amk-5I-DCb"/>
-                            <constraint firstItem="hED-72-yzz" firstAttribute="trailing" secondItem="Gne-SM-pPX" secondAttribute="trailing" constant="-20" id="bR3-84-fib"/>
+                            <constraint firstItem="hED-72-yzz" firstAttribute="top" secondItem="OnS-fN-h7N" secondAttribute="top" id="48X-a3-zQb"/>
+                            <constraint firstItem="hED-72-yzz" firstAttribute="top" secondItem="ycT-LP-cWW" secondAttribute="bottom" id="Gax-zq-XcD"/>
+                            <constraint firstItem="OnS-fN-h7N" firstAttribute="leading" secondItem="Wb7-lZ-NCb" secondAttribute="leading" id="T18-Od-qjs"/>
+                            <constraint firstItem="Wb7-lZ-NCb" firstAttribute="top" secondItem="hED-72-yzz" secondAttribute="bottom" id="Zpk-vn-KVn"/>
+                            <constraint firstItem="OnS-fN-h7N" firstAttribute="trailing" secondItem="Wb7-lZ-NCb" secondAttribute="trailing" id="jJe-cg-rnq"/>
                             <constraint firstItem="Wb7-lZ-NCb" firstAttribute="leading" secondItem="4VW-UQ-Rxi" secondAttribute="leading" id="mKA-bQ-UEB"/>
                             <constraint firstAttribute="trailing" secondItem="Wb7-lZ-NCb" secondAttribute="trailing" id="mOA-IY-n6a"/>
                             <constraint firstItem="Wb7-lZ-NCb" firstAttribute="bottom" secondItem="SgC-Rc-sdz" secondAttribute="top" id="oI3-ij-KPm"/>
-                            <constraint firstItem="hED-72-yzz" firstAttribute="bottom" secondItem="Gne-SM-pPX" secondAttribute="bottom" id="uya-68-81N"/>
+                            <constraint firstItem="hED-72-yzz" firstAttribute="trailing" secondItem="4VW-UQ-Rxi" secondAttribute="trailingMargin" id="sR6-2y-Kma"/>
+                            <constraint firstItem="hED-72-yzz" firstAttribute="bottom" secondItem="OnS-fN-h7N" secondAttribute="bottom" id="waC-xz-8Nw"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="back1" destination="ZuE-fm-RiK" id="Hwp-YQ-rEx"/>
+                        <outlet property="back2" destination="13p-mF-mgv" id="cZy-fw-Kud"/>
                         <outlet property="cardSetImage" destination="hED-72-yzz" id="gxe-eB-EBz"/>
                         <outlet property="collectionView" destination="Wb7-lZ-NCb" id="dBW-gK-J5D"/>
-                        <outlet property="navigationBarItem" destination="LCI-QH-Dl4" id="C38-0k-AgC"/>
+                        <outlet property="setLabel" destination="Mxy-3o-XX9" id="Pvl-UC-8dR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4y-oZ-0uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -932,6 +943,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="showButtonPressed:" destination="rNC-lR-Jjv" eventType="touchUpInside" id="ivz-FB-QUL"/>
+                                                        <segue destination="jwB-pA-M4b" kind="show" identifier="showCardSetButton" id="5cy-OY-PiX"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXC-Cj-Yh6">
@@ -1314,6 +1326,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="6Pd-m1-gtI" id="UA9-F5-niv"/>
                         <outlet property="cardImage" destination="k9L-hZ-sdC" id="Tn0-eb-ryM"/>
                         <outlet property="cardInfo" destination="epx-WY-K2o" id="GFd-Yb-gSw"/>
                         <outlet property="cardNameLabel" destination="1sa-2c-9yb" id="hAn-ZR-1i9"/>
@@ -1433,10 +1446,12 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pjo-AW-0G0"/>
+        <segue reference="mmQ-nR-dMT"/>
+        <segue reference="5cy-OY-PiX"/>
+        <segue reference="Avo-jD-HBl"/>
         <segue reference="c19-ko-Gax"/>
-        <segue reference="EGa-qr-Zxe"/>
-        <segue reference="7oX-Ch-EFP"/>
+        <segue reference="xl4-c8-XJd"/>
         <segue reference="yC0-Vk-LX7"/>
+        <segue reference="7oX-Ch-EFP"/>
     </inferredMetricsTieBreakers>
 </document>
