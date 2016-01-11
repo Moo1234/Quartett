@@ -35,8 +35,8 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     var cpuDifficulty = 0
     var numberLaps = 20
     var gameTime: NSTimeInterval = 600.0
-    var setID: Int = 0
-    var cardSetIconString = "CardSet0"
+    var setID: Int = 2
+    var cardSetIconString = "CardSet3"
     var cardArray = [NSManagedObject]()
     var player1Cards = [NSManagedObject]()
     var player2Cards = [NSManagedObject]()

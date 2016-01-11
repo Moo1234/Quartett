@@ -145,7 +145,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
+        var iconString: String = ""
         let atCell = collectionView.dequeueReusableCellWithReuseIdentifier("atCell", forIndexPath: indexPath) as! GameAttributesCollectionViewCell
         let attribute = attributes[indexPath.row]
         
@@ -159,6 +159,17 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             
             atCell.valueLabel?.text = values![indexPath.row]
             atCell.nameLabel?.text = attribute.valueForKey("name") as? String
+            
+            iconString = (attribute.valueForKey("icon") as? String)!
+            
+            if iconString == "" {
+                atCell.attributeIcon?.image = UIImage(named: "StandardIcon")
+            }else{
+                atCell.attributeIcon?.image = UIImage(named: iconString)
+                
+            }
+            
+            
             
             cardInfo.contentOffset = CGPoint(x: 0, y: 7)
         }
