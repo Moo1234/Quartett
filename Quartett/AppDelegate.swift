@@ -68,13 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveAttribute(10, cardset: 1, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(11, cardset: 1, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
         saveAttribute(12, cardset: 1, name: "bla", icon: "StandardIcon", unit: "km/h", condition: false)
+        
+        
 
-        saveAttribute(6, cardset: 2, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
-        saveAttribute(7, cardset: 2, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
-        saveAttribute(8, cardset: 2, name: "SHO", icon: "StandardIcon", unit: "m/s", condition: true)
-        saveAttribute(9, cardset: 2, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
-        saveAttribute(10, cardset: 2, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
-        saveAttribute(11, cardset: 2, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(13, cardset: 2, name: "PAC", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(14, cardset: 2, name: "PAS", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(15, cardset: 2, name: "SHO", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(16, cardset: 2, name: "DRI", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(17, cardset: 2, name: "DEF", icon: "StandardIcon", unit: "m/s", condition: true)
+        saveAttribute(18, cardset: 2, name: "PHY", icon: "StandardIcon", unit: "m/s", condition: true)
 
         
         
@@ -82,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         saveCard(12, cardset: 2, name: "Messi", info: "Lionel Leo Andrés Messi Cuccittini  (* 24. Juni 1987 in Rosario) ist ein argentinischer Fußballspieler, der auch die spanische Staatsangehörigkeit besitzt. Messi spielt seit seinem 14. Lebensjahr für den FC Barcelona. Mit 24 Jahren wurde er Rekordtorschütze des FC Barcelona, mit 25 der jüngste Spieler in der La-Liga-Geschichte, der 200 Tore erzielte. Inzwischen ist Messi Rekordtorschütze der Primera División." , image: "messi", values: "92,86,88,95,24,62")
-        saveCard(13, cardset: 2, name: "Ronaldo", info: "Cristiano Ronaldo dos Santos Aveiro (* 5. Februar 1985 in Funchal, Portugal) ist ein portugiesischer Fußballspieler. Er steht nach dem bis zu diesem Zeitpunkt teuersten Transfer[A 1] seit Sommer 2009 bei Real Madrid unter Vertrag. Er ist Kapitän und Rekordtorschütze der portugiesischen Nationalmannschaft. In der Jugendakademie von Sporting Lissabon ausgebildet, wurde Ronaldo mit 18 Jahren von Manchester United unter Vertrag genommen und entwickelte sich dort zu einem Spitzenfußballer. Zu Beginn seiner Karriere im rechten Mittelfeld eingesetzt, wechselte er später auf den linken Flügel und wurde einer der torgefährlichsten Spieler seiner Zeit.", image: "ronaldo", values: "92,80,93,90,33,78")
+        saveCard(13, cardset: 2, name: "Ronaldo", info: "Cristiano Ronaldo dos Santos Aveiro (* 5. Februar 1985 in Funchal, Portugal) ist ein portugiesischer Fußballspieler. Er steht nach dem bis zu diesem Zeitpunkt teuersten Transfer seit Sommer 2009 bei Real Madrid unter Vertrag. Er ist Kapitän und Rekordtorschütze der portugiesischen Nationalmannschaft. In der Jugendakademie von Sporting Lissabon ausgebildet, wurde Ronaldo mit 18 Jahren von Manchester United unter Vertrag genommen und entwickelte sich dort zu einem Spitzenfußballer. Zu Beginn seiner Karriere im rechten Mittelfeld eingesetzt, wechselte er später auf den linken Flügel und wurde einer der torgefährlichsten Spieler seiner Zeit.", image: "ronaldo", values: "92,80,93,90,33,78")
         saveCard(14, cardset: 2, name: "Suarez", info: "info2", image: "suarez", values: "82,79,88,88,42,79")
         saveCard(15, cardset: 2, name: "Robben", info: "info3", image: "rob", values: "92,82,86,92,32,64")
         saveCard(16, cardset: 2, name: "Hazard", info: "info0", image: "hazard", values: "90,84,82,92,32,64")
