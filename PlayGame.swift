@@ -162,10 +162,10 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let cellsHeight = CGFloat(Int((p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
+//        let cellsHeight = CGFloat(Int((p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
         let collectionWidth = collectionView.bounds.size.width
         let collectionHeight = collectionView.bounds.size.height
-        return CGSizeMake(collectionWidth/2, collectionHeight/cellsHeight)
+        return CGSizeMake(collectionWidth/2, collectionHeight/3)
         
     }
     

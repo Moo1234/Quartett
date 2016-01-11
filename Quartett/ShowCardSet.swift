@@ -120,7 +120,9 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             }else{
                 cell.backgroundColor = UIColor.whiteColor()
             }
-            cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
+            if((attribute.valueForKey("icon") as? String)! != ""){
+                cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
+            }
             cell.attributeNameLabel?.text = attribute.valueForKey("name") as? String
             
             
@@ -137,8 +139,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if(collectionView == self.collectionView){
             return CGSizeMake(collectionView.bounds.size.width-20, collectionView.bounds.size.height-20)
         }else{
-            let cellsHeight = CGFloat(Int((cardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
-            return CGSizeMake(collectionView.bounds.size.width/2, collectionView.bounds.size.height/cellsHeight)
+//            let cellsHeight = CGFloat(Int((cardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count)!) / 2)
+            return CGSizeMake(collectionView.bounds.size.width/2, collectionView.bounds.size.height/3)
         }
     }
     
