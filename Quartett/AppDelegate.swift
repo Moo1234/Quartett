@@ -364,7 +364,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
 //                let attributePrecision = properties[attribute].valueForKey("precision") as! String
 //                print(attributePrecision)
-                saveAttribute(attributeId, cardset: cardSetId, name: attributeName, icon: "StandardIcon", unit: attributeUnit, condition: attributeCondition)
+                var attributeIcon = "StandardIcon"
+                switch attributeName {
+                    case "Geschwindigkeit": attributeIcon = "speed"
+                    case "Umdrehungen": attributeIcon = "umdrehung"
+                    case "0 auf 100": attributeIcon = "0auf100"
+                    case "Hubraum": attributeIcon = "hubraum"
+                    case "Leistung": attributeIcon = "PS"
+                    case "Drehmoment": attributeIcon = "drehmoment"
+                    case "Zylinder": attributeIcon = "zylinder"
+                default: attributeIcon = "StandardIcon"
+                }
+                saveAttribute(attributeId, cardset: cardSetId, name: attributeName, icon: attributeIcon, unit: attributeUnit, condition: attributeCondition)
             }
         
         }catch{

@@ -175,14 +175,18 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuE-fm-RiK">
                                         <rect key="frame" x="3" y="4" width="56" height="30"/>
-                                        <state key="normal" title="Zurück"/>
+                                        <state key="normal" title="Zurück">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="Ybm-yb-9u4" kind="show" id="mmQ-nR-dMT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13p-mF-mgv">
                                         <rect key="frame" x="3" y="3" width="58" height="30"/>
-                                        <state key="normal" title="Zurück"/>
+                                        <state key="normal" title="Zurück">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="Hek-GV-0ki" kind="show" id="Avo-jD-HBl"/>
                                         </connections>
@@ -1446,12 +1450,12 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mmQ-nR-dMT"/>
         <segue reference="5cy-OY-PiX"/>
         <segue reference="Avo-jD-HBl"/>
         <segue reference="hqD-dW-LsQ"/>
-        <segue reference="c19-ko-Gax"/>
+        <segue reference="mmQ-nR-dMT"/>
         <segue reference="RiT-DV-2h0"/>
         <segue reference="7oX-Ch-EFP"/>
+        <segue reference="c19-ko-Gax"/>
     </inferredMetricsTieBreakers>
 </document>
