@@ -1368,10 +1368,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-kp-JjN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-kp-JjN">
                                 <rect key="frame" x="20" y="110" width="374" height="265"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuC-gs-Xy4">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuC-gs-Xy4">
                                 <rect key="frame" x="149" y="475" width="116" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="9zB-a7-X0l"/>
@@ -1382,7 +1382,7 @@
                                     <segue destination="J8t-rY-j3h" kind="show" id="AUB-2S-sNB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnk-PF-5LG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnk-PF-5LG">
                                 <rect key="frame" x="149" y="549" width="116" height="30"/>
                                 <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hauptmenü"/>
@@ -1399,7 +1399,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kin-bO-KdM">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kin-bO-KdM">
                                 <rect key="frame" x="149" y="630" width="116" height="30"/>
                                 <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Neues Spiel"/>
@@ -1415,12 +1415,12 @@
                             <constraint firstItem="FbP-kp-JjN" firstAttribute="trailing" secondItem="jPS-tE-Nea" secondAttribute="trailing" id="3tl-zq-csv"/>
                             <constraint firstItem="iuC-gs-Xy4" firstAttribute="trailing" secondItem="qnk-PF-5LG" secondAttribute="trailing" id="5AK-Eb-kua"/>
                             <constraint firstItem="qnk-PF-5LG" firstAttribute="top" secondItem="iuC-gs-Xy4" secondAttribute="bottom" constant="44" id="BlB-Je-oE2"/>
-                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="FbP-kp-JjN" secondAttribute="bottom" constant="317" id="Bob-7J-sE0"/>
+                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="FbP-kp-JjN" secondAttribute="bottom" constant="361" id="Bob-7J-sE0"/>
                             <constraint firstItem="iuC-gs-Xy4" firstAttribute="centerX" secondItem="FbP-kp-JjN" secondAttribute="centerX" id="Ogh-wT-SQC"/>
                             <constraint firstItem="FbP-kp-JjN" firstAttribute="top" secondItem="jPS-tE-Nea" secondAttribute="bottom" constant="8" symbolic="YES" id="YW8-iI-VZE"/>
                             <constraint firstItem="jPS-tE-Nea" firstAttribute="leading" secondItem="FbP-kp-JjN" secondAttribute="leading" id="cam-cd-KKQ"/>
                             <constraint firstItem="FbP-kp-JjN" firstAttribute="trailing" secondItem="Ixn-4s-cHK" secondAttribute="trailingMargin" id="csl-CJ-0DQ"/>
-                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="kin-bO-KdM" secondAttribute="bottom" constant="32" id="hFA-kI-6eS"/>
+                            <constraint firstItem="zdo-Oz-Y71" firstAttribute="top" secondItem="kin-bO-KdM" secondAttribute="bottom" constant="76" id="hFA-kI-6eS"/>
                             <constraint firstItem="jPS-tE-Nea" firstAttribute="top" secondItem="ZUq-MX-7La" secondAttribute="bottom" id="hdh-2t-wyB"/>
                             <constraint firstItem="kin-bO-KdM" firstAttribute="trailing" secondItem="qnk-PF-5LG" secondAttribute="trailing" id="j5t-wp-55N"/>
                             <constraint firstItem="kin-bO-KdM" firstAttribute="top" secondItem="qnk-PF-5LG" secondAttribute="bottom" constant="51" id="jQE-ZT-okY"/>
@@ -1450,12 +1450,12 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="AUB-2S-sNB"/>
+        <segue reference="7oX-Ch-EFP"/>
+        <segue reference="EGa-qr-Zxe"/>
+        <segue reference="teC-wT-cBc"/>
         <segue reference="5cy-OY-PiX"/>
         <segue reference="Avo-jD-HBl"/>
-        <segue reference="hqD-dW-LsQ"/>
         <segue reference="mmQ-nR-dMT"/>
-        <segue reference="RiT-DV-2h0"/>
-        <segue reference="7oX-Ch-EFP"/>
-        <segue reference="c19-ko-Gax"/>
     </inferredMetricsTieBreakers>
 </document>
