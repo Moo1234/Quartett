@@ -188,7 +188,7 @@
                                             <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Hek-GV-0ki" kind="show" id="Avo-jD-HBl"/>
+                                            <segue destination="Hek-GV-0ki" kind="show" identifier="backToChoose" id="Avo-jD-HBl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KartenSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-3o-XX9">
@@ -790,7 +790,6 @@
                                         <state key="normal" title="Spiel Starten"/>
                                         <connections>
                                             <action selector="createNewGame:" destination="oDE-RZ-ugo" eventType="touchUpInside" id="XMr-KI-20s"/>
-                                            <segue destination="iTw-JK-eau" kind="show" id="NGp-wx-xkl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -865,6 +864,8 @@
                         <outlet property="setNumberOfRoundsOutlet" destination="tgx-7v-cH2" id="yif-ty-Ydk"/>
                         <outlet property="setTimeOutlet" destination="Kdt-xA-E6Y" id="ozK-Rk-toV"/>
                         <outlet property="startButton" destination="f3X-rb-GqD" id="Ic3-qh-3vs"/>
+                        <segue destination="iTw-JK-eau" kind="show" identifier="singlePlayer" id="B4i-n7-2HZ"/>
+                        <segue destination="oed-wR-CJ6" kind="show" identifier="multiPlayer" id="0DY-f5-Z30"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe2-3i-ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1008,6 +1009,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQv-0A-Rfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1591" y="-493"/>
+        </scene>
+        <!--Multi Play Game-->
+        <scene sceneID="bB9-3N-OQM">
+            <objects>
+                <viewController id="oed-wR-CJ6" customClass="MultiPlayGame" customModule="Quartett" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GWL-yT-ClM"/>
+                        <viewControllerLayoutGuide type="bottom" id="8c5-Dh-HzK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1rP-d6-yEp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaU-hu-bc8">
+                                <rect key="frame" x="0.0" y="344" width="414" height="48"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pdo-Tp-adt">
+                                <rect key="frame" x="0.0" y="391" width="414" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFj-Cm-yR9">
+                                <rect key="frame" x="0.0" y="224" width="414" height="120"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="toD-8o-eis">
+                                <rect key="frame" x="0.0" y="512" width="414" height="158"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DU7-g7-R5b">
+                                    <size key="itemSize" width="187" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QFI-lv-SML">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hUc-rF-DB9">
+                                <rect key="frame" x="0.0" y="66" width="414" height="158"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xRX-Wv-Y0u">
+                                    <size key="itemSize" width="187" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Aeb-09-K2g">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nCm-H2-977">
+                                <rect key="frame" x="0.0" y="678" width="414" height="58"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WNt-IX-jbq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="p1CardImage" destination="Pdo-Tp-adt" id="eWB-ce-DGA"/>
+                        <outlet property="p1CardInfo" destination="nCm-H2-977" id="EV3-kH-1fo"/>
+                        <outlet property="p1CollectionView" destination="toD-8o-eis" id="1Rq-wM-6Ps"/>
+                        <outlet property="p2CardImage" destination="YFj-Cm-yR9" id="dkM-lC-R0V"/>
+                        <outlet property="p2CardInfo" destination="WNt-IX-jbq" id="OFQ-YZ-XCG"/>
+                        <outlet property="p2CollectionView" destination="hUc-rF-DB9" id="0PJ-hg-c0O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p4h-KL-1pO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2168" y="51"/>
         </scene>
         <!--Play Game-->
         <scene sceneID="qq8-Ij-hMq">
@@ -1450,12 +1545,12 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AUB-2S-sNB"/>
-        <segue reference="7oX-Ch-EFP"/>
-        <segue reference="EGa-qr-Zxe"/>
+        <segue reference="B4i-n7-2HZ"/>
         <segue reference="teC-wT-cBc"/>
+        <segue reference="AUB-2S-sNB"/>
+        <segue reference="RiT-DV-2h0"/>
+        <segue reference="mmQ-nR-dMT"/>
         <segue reference="5cy-OY-PiX"/>
         <segue reference="Avo-jD-HBl"/>
-        <segue reference="mmQ-nR-dMT"/>
     </inferredMetricsTieBreakers>
 </document>

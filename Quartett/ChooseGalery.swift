@@ -125,17 +125,37 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
                 vc2.navigationBarTitle = (self.cardsetArray[sender!.tag].valueForKey("name") as? String)!
                 vc2.cardSetImageString = (self.cardsetArray[sender!.tag].valueForKey("image") as? String)!
                 vc2.idInt = 1
-
+                vc2.p1NameTemp1 = p1NameTemp
+                vc2.p2NameTemp1 = p2NameTemp
+                vc2.difficultyTemp1 = difficultyTemp
+                vc2.roundsTemp1 = roundsTemp
+                vc2.timeTemp1 = timeTemp
+                
             }else{
                 let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
                 let indexPath = indexPaths[0] as NSIndexPath
             
-
                 vc2.cardSetID = (self.cardsetArray[indexPath.row].valueForKey("id") as? Int)!
                 vc2.navigationBarTitle = (self.cardsetArray[indexPath.row].valueForKey("name") as? String)!
                 vc2.cardSetImageString = (self.cardsetArray[indexPath.row].valueForKey("image") as? String)!
+                
+                vc2.p1NameTemp1 = p1NameTemp
+                vc2.p2NameTemp1 = p2NameTemp
+                vc2.difficultyTemp1 = difficultyTemp
+                vc2.roundsTemp1 = roundsTemp
+                vc2.timeTemp1 = timeTemp
             }
             
+        }else if (segue.identifier == "backButton"){
+            
+            
+            let vc = segue.destinationViewController as! GameSettingsViewController
+            vc.playerOneNameVar = p1NameTemp
+            vc.cpuDifficulty = difficultyTemp
+            vc.gameTime = timeTemp
+            vc.numberLaps = roundsTemp
+            vc.playerTwoNameVar = p2NameTemp
+            vc.backID = 1
         }
     
     

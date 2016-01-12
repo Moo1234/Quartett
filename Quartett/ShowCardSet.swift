@@ -27,6 +27,13 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     var cardID = 0
     var idInt = 0
     
+    //GameSettingsVars
+    var p1NameTemp1: String = ""
+    var p2NameTemp1: String = ""
+    var difficultyTemp1: Int = 0
+    var roundsTemp1: Int = 0
+    var timeTemp1: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -161,6 +168,20 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if(collectionView == self.collectionView){
             guard let showCardSetCollectionViewCell = cell as? ShowCardSetCollectionViewCell else { return }
             showCardSetCollectionViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        }
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "backToChoose"){
+            let vc = segue.destinationViewController as! ChooseGalery
+        
+            vc.p1NameTemp = p1NameTemp1
+            vc.p2NameTemp = p2NameTemp1
+            vc.difficultyTemp = difficultyTemp1
+            vc.roundsTemp = roundsTemp1
+            vc.timeTemp = timeTemp1
+
         }
     }
     

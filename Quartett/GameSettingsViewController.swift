@@ -367,22 +367,13 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             print("Could not save \(error), \(error.userInfo)")
         }
         
-        /*
-        yoo
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Game")
-        do {
-        let results =
-        try managedContext.executeFetchRequest(fetchRequest)
-        var bla = results as! [NSManagedObject]
-        let bla2 = bla[0]
-        print(bla2.valueForKey("player1"))
-        } catch let error as NSError {
-        print("Could not fetch \(error), \(error.userInfo)")
+        
+        if playerTwoNameVar != "SinglePlayerGame" {
+            self.performSegueWithIdentifier("multiPlayer", sender:self)
+        }else{
+            self.performSegueWithIdentifier("singlePlayer", sender:self)
         }
         
-        */
     }
     
     func deleteObjectsFromEntity(entity: String) {
