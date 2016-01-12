@@ -29,7 +29,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func openSetGalery(sender: AnyObject) {
     }
-    
     //Vars
     var playerOneNameVar = ""
     var playerTwoNameVar = ""
