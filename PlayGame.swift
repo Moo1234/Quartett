@@ -31,7 +31,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var cardInfo: UITextView!
     @IBOutlet weak var cardNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     
     //View to compare valuse
     @IBOutlet weak var compareView: UIView!
@@ -160,6 +160,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             atCell.valueLabel?.text = values![indexPath.row]
             atCell.nameLabel?.text = attribute.valueForKey("name") as? String
             
+            
             iconString = (attribute.valueForKey("icon") as? String)!
             
             if iconString == "" {
@@ -168,8 +169,12 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 atCell.attributeIcon?.image = UIImage(named: iconString)
                 
             }
-            
-            
+            if attribute.valueForKey("unit") as? String != ""{
+                
+                atCell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
+            }else{
+                atCell.attributeUnitLabel?.text = "n.A."
+            }
             
             cardInfo.contentOffset = CGPoint(x: 0, y: 7)
         }

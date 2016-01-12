@@ -13,6 +13,7 @@ class GameAttributesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var attributeIcon: UIImageView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var attributeUnitLabel: UILabel!
     
     
     
