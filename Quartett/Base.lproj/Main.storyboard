@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -173,8 +174,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnS-fN-h7N">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuE-fm-RiK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuE-fm-RiK">
                                         <rect key="frame" x="3" y="4" width="56" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="WA8-LX-dvo"/>
+                                        </constraints>
                                         <state key="normal" title="Zurück">
                                             <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -182,8 +186,11 @@
                                             <segue destination="Ybm-yb-9u4" kind="show" id="mmQ-nR-dMT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13p-mF-mgv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13p-mF-mgv">
                                         <rect key="frame" x="3" y="3" width="58" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="Oeu-S2-3KO"/>
+                                        </constraints>
                                         <state key="normal" title="Zurück">
                                             <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -191,14 +198,25 @@
                                             <segue destination="Hek-GV-0ki" kind="show" identifier="backToChoose" id="Avo-jD-HBl"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KartenSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-3o-XX9">
-                                        <rect key="frame" x="134" y="8" width="146" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KartenSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-3o-XX9">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.29752066729999999" green="0.81558614969999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZuE-fm-RiK" firstAttribute="leading" secondItem="13p-mF-mgv" secondAttribute="leading" id="B6Y-IT-oli"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="centerY" secondItem="ZuE-fm-RiK" secondAttribute="centerY" id="Guc-ix-4I5"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="baseline" secondItem="ZuE-fm-RiK" secondAttribute="baseline" id="N4e-3x-0Nq"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="centerY" secondItem="13p-mF-mgv" secondAttribute="centerY" id="Q4K-iz-zhR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mxy-3o-XX9" secondAttribute="trailing" id="Svg-sV-aWo"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="top" secondItem="OnS-fN-h7N" secondAttribute="topMargin" id="W2j-9M-Uwt"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="leading" secondItem="OnS-fN-h7N" secondAttribute="leading" id="Xth-49-ivc"/>
+                                    <constraint firstItem="13p-mF-mgv" firstAttribute="leading" secondItem="OnS-fN-h7N" secondAttribute="leading" constant="3" id="ZvW-y6-60f"/>
+                                    <constraint firstItem="Mxy-3o-XX9" firstAttribute="baseline" secondItem="ZuE-fm-RiK" secondAttribute="firstBaseline" id="eKA-ug-9ad"/>
+                                </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hED-72-yzz" userLabel="Set Image">
                                 <rect key="frame" x="350" y="20" width="44" height="44"/>
@@ -1546,11 +1564,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="B4i-n7-2HZ"/>
-        <segue reference="teC-wT-cBc"/>
-        <segue reference="AUB-2S-sNB"/>
-        <segue reference="RiT-DV-2h0"/>
-        <segue reference="mmQ-nR-dMT"/>
-        <segue reference="5cy-OY-PiX"/>
+        <segue reference="ND2-bq-jn8"/>
         <segue reference="Avo-jD-HBl"/>
+        <segue reference="5cy-OY-PiX"/>
+        <segue reference="mmQ-nR-dMT"/>
+        <segue reference="RiT-DV-2h0"/>
+        <segue reference="AUB-2S-sNB"/>
     </inferredMetricsTieBreakers>
 </document>
