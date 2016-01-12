@@ -466,7 +466,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
                 choice = maxValueIndex
             }else{
-                if maxValue - 1 > 1 - minValue{
+                if maxValue > (1 / minValue){
                     choice = maxValueIndex
                 }else{
                     choice = minValueIndex
@@ -498,7 +498,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }else if((attributes[minValueIndex].valueForKey("condition") as? Bool) == false  && (attributes[maxValueIndex].valueForKey("condition") as? Bool) == false){
                 choice = minValueIndex
             }else{
-                if maxValue - 1 > 1 - minValue{
+                if maxValue > (1 / minValue) {
                     choice = minValueIndex
                 }else{
                     choice = maxValueIndex
