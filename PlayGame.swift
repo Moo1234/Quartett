@@ -467,9 +467,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 choice = maxValueIndex
             }else{
                 if maxValue > (1 / minValue){
-                    choice = maxValueIndex
-                }else{
                     choice = minValueIndex
+                }else{
+                    choice = maxValueIndex
                 }
                 
             }
@@ -486,7 +486,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 
                 averageValue[index] = Float(values3![index])! / averageValue[index]
             }
-//            print(averageValue)
+            print(averageValue)
             minValue = averageValue.minElement()!
             minValueIndex = averageValue.indexOf(minValue)!
             
@@ -499,9 +499,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                 choice = minValueIndex
             }else{
                 if maxValue > (1 / minValue) {
-                    choice = minValueIndex
-                }else{
                     choice = maxValueIndex
+                }else{
+                    choice = minValueIndex
                 }
                 
             }
