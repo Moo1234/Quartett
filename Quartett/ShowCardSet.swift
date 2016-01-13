@@ -135,10 +135,12 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
             cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
-            if attribute.valueForKey("condition") as! Int == 0 {
+            if !(attribute.valueForKey("condition") as? Bool)! {
                 cell.backgroundColor = UIColor.lightGrayColor()
+                cell.iconImage?.image = UIImage(named: "ButtonDown")
             }else{
                 cell.backgroundColor = UIColor.whiteColor()
+                cell.iconImage?.image = UIImage(named: "ButtonUp")
             }
             if((attribute.valueForKey("icon") as? String)! != ""){
                 cell.iconImage?.image = UIImage(named: (attribute.valueForKey("icon") as? String)!)
