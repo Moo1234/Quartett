@@ -134,7 +134,12 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             //            print(values)
             cell.attributeValueLabel?.text = values![indexPath.row]
             let attribute = attributeArray[indexPath.row]
-            cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
+            if attribute.valueForKey("unit") as? String != ""{
+                
+                cell.attributeUnitLabel?.text = attribute.valueForKey("unit") as? String
+            }else{
+                cell.attributeUnitLabel?.text = "n.A."
+            }
             if !(attribute.valueForKey("condition") as? Bool)! {
                 cell.backgroundColor = UIColor.lightGrayColor()
                 cell.iconImage?.image = UIImage(named: "ButtonDown")
