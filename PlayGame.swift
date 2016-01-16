@@ -79,6 +79,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "appMovedToBackground", name: UIApplicationWillResignActiveNotification, object: nil)
         
         loadGame()
         if (cardsetID == 3 || cardsetID == 4){
@@ -128,7 +130,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
     
     //******************************************
     //Collection View Operations
@@ -661,6 +662,13 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             showAlertTime = 4.0
             
         }
+    }
+    
+    
+    func appMovedToBackground() {
+        print("App to the Background. Saving Game.")
+        deleteObjectsFromEntity("Game")
+        saveGame()
     }
     
     //******************************************
