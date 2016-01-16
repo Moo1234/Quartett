@@ -16,6 +16,8 @@
 		3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */; };
 		3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8B0B11C25EC91003F0D20 /* Main.storyboard */; };
 		3CB918111C4A892000A30390 /* OnlineDeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB918101C4A892000A30390 /* OnlineDeckStore.swift */; };
+		3CB918151C4AD3D000A30390 /* MultiplayerAttributeCollectionViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB918141C4AD3D000A30390 /* MultiplayerAttributeCollectionViewCell1.swift */; };
+		3CB918171C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB918161C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift */; };
 		3CE2295C1C402196008DF7A9 /* bikes in Resources */ = {isa = PBXBuildFile; fileRef = 3CE2295B1C402196008DF7A9 /* bikes */; };
 		3CE2295E1C413F4D008DF7A9 /* tuning in Resources */ = {isa = PBXBuildFile; fileRef = 3CE2295D1C413F4D008DF7A9 /* tuning */; };
 		58550F8C1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */; };
@@ -74,6 +76,8 @@
 		3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3CB8B0B21C25EC91003F0D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3CB918101C4A892000A30390 /* OnlineDeckStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineDeckStore.swift; sourceTree = "<group>"; };
+		3CB918141C4AD3D000A30390 /* MultiplayerAttributeCollectionViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerAttributeCollectionViewCell1.swift; sourceTree = "<group>"; };
+		3CB918161C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerAttributeCollectionViewCell2.swift; sourceTree = "<group>"; };
 		3CE2295B1C402196008DF7A9 /* bikes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bikes; sourceTree = "<group>"; };
 		3CE2295D1C413F4D008DF7A9 /* tuning */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tuning; sourceTree = "<group>"; };
 		58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAttributesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			children = (
 				587DE0DE1C307AC900D49225 /* PlayGame.swift */,
 				58675FA71C455FA7003F7C3E /* MultiPlayGame.swift */,
+				3CB918141C4AD3D000A30390 /* MultiplayerAttributeCollectionViewCell1.swift */,
+				3CB918161C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift */,
 				58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */,
 				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
 				58CE5AF51C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift */,
@@ -336,6 +342,7 @@
 				587DE0DF1C307AC900D49225 /* PlayGame.swift in Sources */,
 				3C18C18F1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift in Sources */,
 				58675FA81C455FA7003F7C3E /* MultiPlayGame.swift in Sources */,
+				3CB918171C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift in Sources */,
 				58CE5AF61C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift in Sources */,
 				58AE58B41C3EAA9F003CC5F9 /* EndScreenViewController.swift in Sources */,
 				3C18C18B1C3409F7006F1633 /* ShowGallery.swift in Sources */,
@@ -347,6 +354,7 @@
 				3C18C18D1C340A86006F1633 /* ShowCardSet.swift in Sources */,
 				3C18C1891C340989006F1633 /* ShowGalleryCollectionViewCell.swift in Sources */,
 				58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */,
+				3CB918151C4AD3D000A30390 /* MultiplayerAttributeCollectionViewCell1.swift in Sources */,
 				58CE5AF81C283469001FE34B /* ChooseGalery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
