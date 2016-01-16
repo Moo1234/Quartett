@@ -15,6 +15,7 @@
 		3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0A91C230503003F0D20 /* RankingController.swift */; };
 		3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */; };
 		3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8B0B11C25EC91003F0D20 /* Main.storyboard */; };
+		3CB918111C4A892000A30390 /* OnlineDeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB918101C4A892000A30390 /* OnlineDeckStore.swift */; };
 		3CE2295C1C402196008DF7A9 /* bikes in Resources */ = {isa = PBXBuildFile; fileRef = 3CE2295B1C402196008DF7A9 /* bikes */; };
 		3CE2295E1C413F4D008DF7A9 /* tuning in Resources */ = {isa = PBXBuildFile; fileRef = 3CE2295D1C413F4D008DF7A9 /* tuning */; };
 		58550F8C1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */; };
@@ -72,6 +73,7 @@
 		3CB8B0A91C230503003F0D20 /* RankingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingController.swift; sourceTree = "<group>"; };
 		3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3CB8B0B21C25EC91003F0D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3CB918101C4A892000A30390 /* OnlineDeckStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineDeckStore.swift; sourceTree = "<group>"; };
 		3CE2295B1C402196008DF7A9 /* bikes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bikes; sourceTree = "<group>"; };
 		3CE2295D1C413F4D008DF7A9 /* tuning */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tuning; sourceTree = "<group>"; };
 		58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAttributesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				587DE0DE1C307AC900D49225 /* PlayGame.swift */,
+				58675FA71C455FA7003F7C3E /* MultiPlayGame.swift */,
 				58550F8B1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift */,
 				5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */,
 				58CE5AF51C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift */,
@@ -157,12 +160,12 @@
 				3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */,
 				3C18C18C1C340A86006F1633 /* ShowCardSet.swift */,
 				3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */,
+				3CB918101C4A892000A30390 /* OnlineDeckStore.swift */,
 				5882F3B51C23145E006F0BF6 /* UIDevice.swift */,
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
-				3CB8B0B11C25EC91003F0D20 /* Main.storyboard */,
-				58675FA71C455FA7003F7C3E /* MultiPlayGame.swift */,
 				58AE58B31C3EAA9F003CC5F9 /* EndScreenViewController.swift */,
+				3CB8B0B11C25EC91003F0D20 /* Main.storyboard */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
 				58C49BE61BFE2A47005C8F1E /* Assets.xcassets */,
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5882F3B61C23145E006F0BF6 /* UIDevice.swift in Sources */,
+				3CB918111C4A892000A30390 /* OnlineDeckStore.swift in Sources */,
 				58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */,
 				3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */,
 				587DE0DF1C307AC900D49225 /* PlayGame.swift in Sources */,

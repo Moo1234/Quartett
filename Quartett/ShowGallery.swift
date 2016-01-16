@@ -12,9 +12,9 @@ import CoreData
 class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var editGalleryButton: UIBarButtonItem!
-    @IBOutlet weak var addCardSetButton: UIButton!
     
     var cardsetArray = [NSManagedObject]()
+    @IBOutlet weak var addGalleryView: UIView!
     
     var editable = false
     
@@ -71,10 +71,8 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         if(editable){
             cell.deleteGalleryButton.hidden = false
-            cell.addCardButton.hidden = false
         }else{
             cell.deleteGalleryButton.hidden = true
-            cell.addCardButton.hidden = true
         }
         
         return cell
@@ -103,22 +101,16 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     @IBAction func editGalleryButton(sender: AnyObject) {
         if(editable){
-            collectionView.frame.size.height = collectionView.frame.size.height + 35.0
             editGalleryButton.title = "Editieren"
             editable = false
-            addCardSetButton.hidden = true
+            addGalleryView.hidden = true
             collectionView.reloadData()
         }else{
-            collectionView.frame.size.height = collectionView.frame.size.height - 35.0
             editGalleryButton.title = "Fertig"
             editable = true
-            addCardSetButton.hidden = false
+            addGalleryView.hidden = false
             collectionView.reloadData()
         }
-    }
-    
-    @IBAction func addCardButton(sender: AnyObject) {
-        print("addCard geht noch nicht")
     }
     
     @IBAction func deleteGalleryButton(sender: AnyObject) {
@@ -137,10 +129,6 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         alertController.addAction(deleteAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func addCardSetButton(sender: AnyObject) {
-        print("addCardSet geht noch nicht")
     }
     
     
