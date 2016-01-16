@@ -1104,7 +1104,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QFI-lv-SML">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="p1Cell" id="QFI-lv-SML">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1124,7 +1124,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Aeb-09-K2g">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="p2Cell" id="Aeb-09-K2g">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1622,9 +1622,9 @@
         <segue reference="ND2-bq-jn8"/>
         <segue reference="Avo-jD-HBl"/>
         <segue reference="VX0-QP-nlY"/>
-        <segue reference="iid-UG-J69"/>
-        <segue reference="fUU-fT-Ery"/>
+        <segue reference="mmQ-nR-dMT"/>
         <segue reference="B4i-n7-2HZ"/>
+        <segue reference="RiT-DV-2h0"/>
         <segue reference="AUB-2S-sNB"/>
     </inferredMetricsTieBreakers>
 </document>
