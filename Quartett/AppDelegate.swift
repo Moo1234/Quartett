@@ -200,6 +200,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // parse the result as JSON, since that's what the API provides
             let post: NSDictionary
             do {
+//                let jsonData = try NSData.dataWithContentsOfFile(responseData, options: nil)
+                
                 post = try NSJSONSerialization.JSONObjectWithData(responseData,
                     options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             } catch  {
