@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -130,8 +131,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
 //        loadStandardData()
-        
+        test()
         return true
+    }
+    
+    func test3(){
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        //        let userPasswordString = "username@gmail.com:password"
+        //        let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)
+        //        let base64EncodedCredential = userPasswordData!.base64EncodedStringWithOptions(nil)
+        let authString = "Basic c3R1ZGVudDphZm1iYQ=="
+        config.HTTPAdditionalHeaders = ["Authorization" : authString]
+        config.HTTPAdditionalHeaders = ["Content-Type" : "application/json"]
+        let session = NSURLSession(configuration: config)
+        
+        var running = false
+        let url = NSURL(string: "http://quartett.af-mba.dbis.info/decks")
+        let urlRequest = NSMutableURLRequest(URL: url!)
+        
+        urlRequest.HTTPMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Basic c3R1ZGVudDphZm1iYQ==", forHTTPHeaderField: "Authorization")
+        let task = session.dataTaskWithRequest(urlRequest) {
+            (let data, let response, let error) in
+            if let httpResponse = response as? NSHTTPURLResponse {
+                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print(dataString)
+            }
+            running = false
+        }
+        
+        running = true
+        task.resume()
+        
+        while running {
+            print("waiting...")
+            sleep(1)
+        }
+    }
+    
+    func test(){
+        let postEndpoint: String = "http://quartett.af-mba.dbis.info"
+        guard let url = NSURL(string: postEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = NSMutableURLRequest(URL: url)
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        
+        urlRequest.HTTPMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Basic c3R1ZGVudDphZm1iYQ==", forHTTPHeaderField: "Authorization")
+        
+        
+        let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            guard error == nil else {
+                print("error calling GET on /posts/1")
+                print(error)
+                return
+            }
+            print(responseData)
+            // parse the result as JSON, since that's what the API provides
+            let post: NSDictionary
+            do {
+                post = try NSJSONSerialization.JSONObjectWithData(responseData,
+                    options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+            // now we have the post, let's just print it to prove we can access it
+            print("The post is: " + post.description)
+            
+            // the post object is a dictionary
+            // so we just access the title using the "title" key
+            // so check for a title and print it if we have one
+            if let postTitle = post["title"] as? String {
+                print("The title is: " + postTitle)
+            }
+        })
+        task.resume()
     }
 
     func applicationWillResignActive(application: UIApplication) {
