@@ -12,6 +12,8 @@
 		3C18C18D1C340A86006F1633 /* ShowCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18C18C1C340A86006F1633 /* ShowCardSet.swift */; };
 		3C18C18F1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */; };
 		3C20C5671C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */; };
+		3CB3BEB61C4E776A00641DA8 /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB3BEB51C4E776A00641DA8 /* DeckTableViewCell.swift */; };
+		3CB3BEB81C4E804F00641DA8 /* ShowOnlineDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB3BEB71C4E804F00641DA8 /* ShowOnlineDeck.swift */; };
 		3CB8B0AA1C230503003F0D20 /* RankingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0A91C230503003F0D20 /* RankingController.swift */; };
 		3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */; };
 		3CB8B0B31C25EC91003F0D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8B0B11C25EC91003F0D20 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		3C18C18C1C340A86006F1633 /* ShowCardSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCardSet.swift; sourceTree = "<group>"; };
 		3C18C18E1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCardSetCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAttributeCollectionViewCell.swift; sourceTree = "<group>"; };
+		3CB3BEB51C4E776A00641DA8 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
+		3CB3BEB71C4E804F00641DA8 /* ShowOnlineDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowOnlineDeck.swift; sourceTree = "<group>"; };
 		3CB8B0A91C230503003F0D20 /* RankingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingController.swift; sourceTree = "<group>"; };
 		3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3CB8B0B21C25EC91003F0D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				3C18C18C1C340A86006F1633 /* ShowCardSet.swift */,
 				3C20C5661C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift */,
 				3CB918101C4A892000A30390 /* OnlineDeckStore.swift */,
+				3CB3BEB51C4E776A00641DA8 /* DeckTableViewCell.swift */,
+				3CB3BEB71C4E804F00641DA8 /* ShowOnlineDeck.swift */,
 				5882F3B51C23145E006F0BF6 /* UIDevice.swift */,
 				3CB8B0A91C230503003F0D20 /* RankingController.swift */,
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
@@ -335,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB3BEB81C4E804F00641DA8 /* ShowOnlineDeck.swift in Sources */,
 				5882F3B61C23145E006F0BF6 /* UIDevice.swift in Sources */,
 				3CB918111C4A892000A30390 /* OnlineDeckStore.swift in Sources */,
 				58C49BE51BFE2A47005C8F1E /* Quartett.xcdatamodeld in Sources */,
@@ -343,6 +350,7 @@
 				3C18C18F1C341CF9006F1633 /* ShowCardSetCollectionViewCell.swift in Sources */,
 				58675FA81C455FA7003F7C3E /* MultiPlayGame.swift in Sources */,
 				3CB918171C4AD56900A30390 /* MultiplayerAttributeCollectionViewCell2.swift in Sources */,
+				3CB3BEB61C4E776A00641DA8 /* DeckTableViewCell.swift in Sources */,
 				58CE5AF61C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift in Sources */,
 				58AE58B41C3EAA9F003CC5F9 /* EndScreenViewController.swift in Sources */,
 				3C18C18B1C3409F7006F1633 /* ShowGallery.swift in Sources */,

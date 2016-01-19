@@ -103,12 +103,10 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if(editable){
             editGalleryButton.title = "Editieren"
             editable = false
-            addGalleryView.hidden = true
             collectionView.reloadData()
         }else{
             editGalleryButton.title = "Fertig"
             editable = true
-            addGalleryView.hidden = false
             collectionView.reloadData()
         }
     }

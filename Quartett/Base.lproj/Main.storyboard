@@ -426,6 +426,45 @@
             </objects>
             <point key="canvasLocation" x="325" y="1160"/>
         </scene>
+        <!--Show Online Deck-->
+        <scene sceneID="Fyx-X5-FG7">
+            <objects>
+                <viewController id="hgu-sB-vwu" customClass="ShowOnlineDeck" customModule="Quartett" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ioO-Fa-SXA"/>
+                        <viewControllerLayoutGuide type="bottom" id="Go1-fl-P2J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="69q-Ff-uKW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VY7-LG-UTd">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="Hwu-Zi-FU6">
+                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="yaf-Rq-Koa">
+                                            <color key="tintColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="lod-qk-1AZ" kind="show" id="Bon-a4-yyM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kit-M3-LwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1439" y="242"/>
+        </scene>
         <!--Online Deck Store-->
         <scene sceneID="jfS-fY-IvV">
             <objects>
@@ -455,15 +494,80 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xBO-cR-SZY">
+                                <rect key="frame" x="20" y="64" width="374" height="652"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeckCell" rowHeight="115" id="lFC-Zd-aOc" customClass="DeckTableViewCell" customModule="Quartett" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFC-Zd-aOc" id="tQn-j6-3xZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="115"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LE7-FT-ljH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="114" height="115"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="114" id="0Ih-Z5-nHQ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9y-eh-eyi" userLabel="NameLabel">
+                                                    <rect key="frame" x="122" y="0.0" width="244" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="XvE-yu-IkV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vK-KU-f6p" userLabel="Description">
+                                                    <rect key="frame" x="122" y="40" width="244" height="67"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LE7-FT-ljH" firstAttribute="leading" secondItem="tQn-j6-3xZ" secondAttribute="leading" id="EUT-yu-Lyb"/>
+                                                <constraint firstItem="LE7-FT-ljH" firstAttribute="top" secondItem="m9y-eh-eyi" secondAttribute="top" id="Iro-2q-HeP"/>
+                                                <constraint firstItem="8vK-KU-f6p" firstAttribute="trailing" secondItem="m9y-eh-eyi" secondAttribute="trailing" id="NoD-cR-Jd6"/>
+                                                <constraint firstItem="8vK-KU-f6p" firstAttribute="leading" secondItem="m9y-eh-eyi" secondAttribute="leading" id="V8t-lo-fQs"/>
+                                                <constraint firstItem="m9y-eh-eyi" firstAttribute="top" secondItem="tQn-j6-3xZ" secondAttribute="top" id="Wao-wB-vCL"/>
+                                                <constraint firstItem="LE7-FT-ljH" firstAttribute="centerY" secondItem="tQn-j6-3xZ" secondAttribute="centerY" id="ZCp-CO-Pn0"/>
+                                                <constraint firstItem="8vK-KU-f6p" firstAttribute="trailing" secondItem="tQn-j6-3xZ" secondAttribute="trailingMargin" id="ah5-Q8-NFA"/>
+                                                <constraint firstItem="m9y-eh-eyi" firstAttribute="leading" secondItem="LE7-FT-ljH" secondAttribute="trailing" constant="8" symbolic="YES" id="hxV-6Z-dz0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8vK-KU-f6p" secondAttribute="bottom" constant="-0.5" id="lyE-Sk-YXB"/>
+                                                <constraint firstItem="8vK-KU-f6p" firstAttribute="top" secondItem="m9y-eh-eyi" secondAttribute="bottom" constant="8" symbolic="YES" id="zx7-Dp-WDW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deckDescriptionLabel" destination="8vK-KU-f6p" id="ZSQ-nw-YgR"/>
+                                            <outlet property="deckIcon" destination="LE7-FT-ljH" id="QQr-fJ-KD3"/>
+                                            <outlet property="deckNameLabel" destination="m9y-eh-eyi" id="Hi4-ll-r6r"/>
+                                            <segue destination="hgu-sB-vwu" kind="show" identifier="ShowDeck" id="IyQ-Pt-yfb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lod-qk-1AZ" id="y48-WM-tst"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="R5l-bf-90u" secondAttribute="trailing" id="5zT-n7-emM"/>
-                            <constraint firstItem="R5l-bf-90u" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leading" id="6wq-JX-Gfq"/>
-                            <constraint firstItem="R5l-bf-90u" firstAttribute="top" secondItem="0t6-kP-dIH" secondAttribute="bottom" id="GmZ-8C-KWe"/>
+                            <constraint firstItem="xBO-cR-SZY" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leadingMargin" id="2jz-dJ-hZd"/>
+                            <constraint firstAttribute="bottom" secondItem="xBO-cR-SZY" secondAttribute="bottom" constant="20" symbolic="YES" id="5Tu-go-Laa"/>
+                            <constraint firstItem="R5l-bf-90u" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leading" id="HIz-Us-URZ"/>
+                            <constraint firstItem="xBO-cR-SZY" firstAttribute="top" secondItem="R5l-bf-90u" secondAttribute="bottom" id="QN6-5W-lHy"/>
+                            <constraint firstAttribute="trailing" secondItem="R5l-bf-90u" secondAttribute="trailing" id="VFk-Es-ibK"/>
+                            <constraint firstItem="R5l-bf-90u" firstAttribute="centerX" secondItem="xBO-cR-SZY" secondAttribute="centerX" id="jfe-Ev-ICJ"/>
+                            <constraint firstItem="R5l-bf-90u" firstAttribute="top" secondItem="0t6-kP-dIH" secondAttribute="bottom" id="oLm-gH-FXl"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="tableView" destination="xBO-cR-SZY" id="Gec-MN-2Qd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSW-LI-2Gr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -574,7 +678,7 @@
                                     <outlet property="delegate" destination="Ybm-yb-9u4" id="1Ii-CK-Kxn"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkW-Yh-6JM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkW-Yh-6JM">
                                 <rect key="frame" x="0.0" y="695" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-99-Rcr" userLabel="addCardSet">
@@ -1816,11 +1920,12 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VcQ-lR-oH1"/>
-        <segue reference="ND2-bq-jn8"/>
         <segue reference="Avo-jD-HBl"/>
         <segue reference="VX0-QP-nlY"/>
-        <segue reference="mmQ-nR-dMT"/>
+        <segue reference="iid-UG-J69"/>
+        <segue reference="Bon-a4-yyM"/>
+        <segue reference="fUU-fT-Ery"/>
+        <segue reference="ND2-bq-jn8"/>
         <segue reference="B4i-n7-2HZ"/>
         <segue reference="AUB-2S-sNB"/>
     </inferredMetricsTieBreakers>

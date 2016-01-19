@@ -131,90 +131,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
 //        loadStandardData()
-//        test()
-        self.httpGETRequestDBIS("http://quartett.af-mba.dbis.info/decks", postCompleted: { (data: AnyObject?) -> () in            
-        })
         
         return true
     }
-    
-    func httpGETRequestDBIS(url: String ,postCompleted : (data: AnyObject?) -> ()) {
-        
-        let encodedUrlString = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var request = NSMutableURLRequest(URL: NSURL(string:encodedUrlString!)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        
-        var err: NSError?
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic c3R1ZGVudDphZm1iYQ==", forHTTPHeaderField: "Authorization")
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            
-            do{
-                let json: AnyObject = try NSJSONSerialization.JSONObjectWithData(data!,
-                    options: NSJSONReadingOptions.MutableContainers)
-                print(json)
-                postCompleted(data: json)
-                
-            }catch  {
-                print("No")
-                postCompleted(data: nil)
-            }
-            postCompleted(data: nil)
-        })
-        task.resume()
-    }
 
-    
-    func test(){
-        let postEndpoint: String = "http://quartett.af-mba.dbis.info"
-        guard let url = NSURL(string: postEndpoint) else {
-            print("Error: cannot create URL")
-            return
-        }
-        let urlRequest = NSMutableURLRequest(URL: url)
-        
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: config)
-        
-        urlRequest.HTTPMethod = "GET"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("Basic c3R1ZGVudDphZm1iYQ==", forHTTPHeaderField: "Authorization")
-        
-        
-        let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
-            guard let responseData = data else {
-                print("Error: did not receive data")
-                return
-            }
-            guard error == nil else {
-                print("error calling GET on /posts/1")
-                print(error)
-                return
-            }
-            print(responseData)
-            
-            // parse the result as JSON, since that's what the API provides
-            let post: NSDictionary
-            do {
-                post = try NSJSONSerialization.JSONObjectWithData(responseData,
-                    options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
-            }
-            // now we have the post, let's just print it to prove we can access it
-            print("The post is: " + post.description)
-            
-            // the post object is a dictionary
-            // so we just access the title using the "title" key
-            // so check for a title and print it if we have one
-            if let postTitle = post["title"] as? String {
-                print("The title is: " + postTitle)
-            }
-        })
-        task.resume()
-    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
