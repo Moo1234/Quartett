@@ -27,6 +27,7 @@
 		587DE0DF1C307AC900D49225 /* PlayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587DE0DE1C307AC900D49225 /* PlayGame.swift */; };
 		5882F3B41C22DAFF006F0BF6 /* GameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */; };
 		5882F3B61C23145E006F0BF6 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882F3B51C23145E006F0BF6 /* UIDevice.swift */; };
+		58AAB3A81C4E99AC00F16926 /* OnlineCardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAB3A71C4E99AC00F16926 /* OnlineCardsTableViewCell.swift */; };
 		58AE58B41C3EAA9F003CC5F9 /* EndScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE58B31C3EAA9F003CC5F9 /* EndScreenViewController.swift */; };
 		58C49BDD1BFE2A47005C8F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */; };
 		58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C49BDE1BFE2A47005C8F1E /* ViewController.swift */; };
@@ -89,6 +90,7 @@
 		587DE0DE1C307AC900D49225 /* PlayGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayGame.swift; path = ../PlayGame.swift; sourceTree = "<group>"; };
 		5882F3B31C22DAFF006F0BF6 /* GameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsViewController.swift; sourceTree = "<group>"; };
 		5882F3B51C23145E006F0BF6 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		58AAB3A71C4E99AC00F16926 /* OnlineCardsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineCardsTableViewCell.swift; sourceTree = "<group>"; };
 		58AE58B31C3EAA9F003CC5F9 /* EndScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndScreenViewController.swift; sourceTree = "<group>"; };
 		58C49BD91BFE2A47005C8F1E /* Quartett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quartett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				3CB8B0AF1C25CB77003F0D20 /* RankingTableViewCell.swift */,
 				58AE58B31C3EAA9F003CC5F9 /* EndScreenViewController.swift */,
 				3CB8B0B11C25EC91003F0D20 /* Main.storyboard */,
+				58AAB3A71C4E99AC00F16926 /* OnlineCardsTableViewCell.swift */,
 				58C49BDC1BFE2A47005C8F1E /* AppDelegate.swift */,
 				58C49BDE1BFE2A47005C8F1E /* ViewController.swift */,
 				58C49BE61BFE2A47005C8F1E /* Assets.xcassets */,
@@ -355,6 +358,7 @@
 				58AE58B41C3EAA9F003CC5F9 /* EndScreenViewController.swift in Sources */,
 				3C18C18B1C3409F7006F1633 /* ShowGallery.swift in Sources */,
 				3C20C5671C345F8100C96D0C /* ShowAttributeCollectionViewCell.swift in Sources */,
+				58AAB3A81C4E99AC00F16926 /* OnlineCardsTableViewCell.swift in Sources */,
 				58C49BDF1BFE2A47005C8F1E /* ViewController.swift in Sources */,
 				58550F8C1C3C0D93002A63C9 /* GameAttributesCollectionViewCell.swift in Sources */,
 				3CB8B0B01C25CB77003F0D20 /* RankingTableViewCell.swift in Sources */,

@@ -22,7 +22,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
-        
+
         sleep(1)
         
     }
@@ -113,6 +113,8 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
                 let indexPath = tableView.indexPathForCell(selectedDeckCell)!
                 showOnlineDeckViewController.deckID = ids[indexPath.row]
                 showOnlineDeckViewController.deckName = names[indexPath.row]
+                showOnlineDeckViewController.deckImage = images[indexPath.row]
+                
             }
         }
     }
