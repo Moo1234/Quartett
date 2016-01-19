@@ -460,6 +460,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="navBar" destination="VY7-LG-UTd" id="7nb-Sj-t3y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kit-M3-LwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1922,11 +1925,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="Avo-jD-HBl"/>
         <segue reference="VX0-QP-nlY"/>
-        <segue reference="iid-UG-J69"/>
-        <segue reference="Bon-a4-yyM"/>
+        <segue reference="mmQ-nR-dMT"/>
         <segue reference="fUU-fT-Ery"/>
         <segue reference="ND2-bq-jn8"/>
         <segue reference="B4i-n7-2HZ"/>
         <segue reference="AUB-2S-sNB"/>
+        <segue reference="Bon-a4-yyM"/>
     </inferredMetricsTieBreakers>
 </document>

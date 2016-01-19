@@ -112,6 +112,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
             if let selectedDeckCell = sender as? DeckTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedDeckCell)!
                 showOnlineDeckViewController.deckID = ids[indexPath.row]
+                showOnlineDeckViewController.deckName = names[indexPath.row]
             }
         }
     }

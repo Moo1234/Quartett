@@ -10,13 +10,15 @@ import UIKit
 
 class ShowOnlineDeck: UIViewController {
     
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     var deckID = -1
+    var deckName = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(deckID)
-        
+        self.navBar.topItem?.title = deckName
         
     }
     override func viewWillAppear(animated: Bool) {
