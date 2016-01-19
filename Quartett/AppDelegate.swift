@@ -131,9 +131,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
 //        loadStandardData()
-        test()
+//        test()
+        self.httpGETRequestDBIS("http://quartett.af-mba.dbis.info/decks", postCompleted: { (data: AnyObject?) -> () in            
+        })
+        
         return true
     }
+    
+    func httpGETRequestDBIS(url: String ,postCompleted : (data: AnyObject?) -> ()) {
+        
+        let encodedUrlString = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var request = NSMutableURLRequest(URL: NSURL(string:encodedUrlString!)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "GET"
+        
+        var err: NSError?
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Basic c3R1ZGVudDphZm1iYQ==", forHTTPHeaderField: "Authorization")
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            
+            do{
+                let json: AnyObject = try NSJSONSerialization.JSONObjectWithData(data!,
+                    options: NSJSONReadingOptions.MutableContainers)
+                print(json)
+                postCompleted(data: json)
+                
+            }catch  {
+                print("No")
+                postCompleted(data: nil)
+            }
+            postCompleted(data: nil)
+        })
+        task.resume()
+    }
+
     
     func test(){
         let postEndpoint: String = "http://quartett.af-mba.dbis.info"
