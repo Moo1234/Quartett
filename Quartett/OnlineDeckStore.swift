@@ -10,6 +10,7 @@ import UIKit
 
 class OnlineDeckStore: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     var descriptions = [String]()
@@ -22,8 +23,6 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
-
-        sleep(1)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -46,9 +45,13 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     }
     
     
-    
+    func loadData(){
+        tableView.reloadData()
+    }
     
     func loadFromOnlineStore(link: String){
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
         guard let url = NSURL(string: link) else {
             print("Error: cannot create URL")
             return
@@ -96,6 +99,11 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
                 self.images.append((post[index].valueForKey("image") as? String)!)
                 self.ids.append((post[index].valueForKey("id") as? Int)!)
             }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.hidden = true
+            })
         })
         task.resume()
     }

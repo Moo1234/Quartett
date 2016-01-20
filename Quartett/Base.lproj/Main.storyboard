@@ -576,7 +576,7 @@
                                         <rect key="frame" x="0.0" y="28" width="374" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFC-Zd-aOc" id="tQn-j6-3xZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="114.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LE7-FT-ljH">
@@ -626,20 +626,27 @@
                                     <outlet property="dataSource" destination="lod-qk-1AZ" id="y48-WM-tst"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mkS-J1-erJ">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xBO-cR-SZY" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leadingMargin" id="2jz-dJ-hZd"/>
                             <constraint firstAttribute="bottom" secondItem="xBO-cR-SZY" secondAttribute="bottom" constant="20" symbolic="YES" id="5Tu-go-Laa"/>
+                            <constraint firstItem="mkS-J1-erJ" firstAttribute="centerY" secondItem="Kw2-HC-y6L" secondAttribute="centerY" id="GQd-VW-50J"/>
                             <constraint firstItem="R5l-bf-90u" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leading" id="HIz-Us-URZ"/>
                             <constraint firstItem="xBO-cR-SZY" firstAttribute="top" secondItem="R5l-bf-90u" secondAttribute="bottom" id="QN6-5W-lHy"/>
                             <constraint firstAttribute="trailing" secondItem="R5l-bf-90u" secondAttribute="trailing" id="VFk-Es-ibK"/>
                             <constraint firstItem="R5l-bf-90u" firstAttribute="centerX" secondItem="xBO-cR-SZY" secondAttribute="centerX" id="jfe-Ev-ICJ"/>
                             <constraint firstItem="R5l-bf-90u" firstAttribute="top" secondItem="0t6-kP-dIH" secondAttribute="bottom" id="oLm-gH-FXl"/>
+                            <constraint firstItem="mkS-J1-erJ" firstAttribute="centerX" secondItem="R5l-bf-90u" secondAttribute="centerX" id="qt2-fx-d1G"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="mkS-J1-erJ" id="AKv-f2-x0N"/>
                         <outlet property="tableView" destination="xBO-cR-SZY" id="Gec-MN-2Qd"/>
                     </connections>
                 </viewController>
