@@ -23,6 +23,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
+
         
     }
     override func viewWillAppear(animated: Bool) {

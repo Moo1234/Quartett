@@ -11,7 +11,8 @@ import UIKit
 
 class ShowOnlineDeck: UIViewController{
     
-
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     
@@ -20,14 +21,14 @@ class ShowOnlineDeck: UIViewController{
         
         
         let alert = UIAlertController(title: "UIAlertController", message: "Wollen Sie das Kartenset herunterladen?", preferredStyle: UIAlertControllerStyle.Alert)
-    
-       
+        
+        
         
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
             self.saveSetInDB()
         }))
         alert.addAction(UIAlertAction(title: "Nein", style: UIAlertActionStyle.Cancel, handler: { action in
-        
+            
         }))
         
         // show the alert
@@ -40,7 +41,7 @@ class ShowOnlineDeck: UIViewController{
     var deckImage = ""
     
     
-
+    
     var images = [String]()
     var names = [String]()
     var ids = [Int]()
@@ -53,12 +54,17 @@ class ShowOnlineDeck: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBar.topItem?.title = deckName
-    
+        
         
         link = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"
         loadCardsFromOnlineStore(link)
-
-        sleep(2)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+            
+            
+            
+        })
+        
         
         
     }
@@ -68,7 +74,7 @@ class ShowOnlineDeck: UIViewController{
     
     
     
-
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
@@ -79,15 +85,22 @@ class ShowOnlineDeck: UIViewController{
         
         
         cell.cardName.text = names[indexPath.row]
-        let url = NSURL(string: images[indexPath.row])
-        let data = NSData(contentsOfURL: url!)
-        cell.cardImage.image = UIImage(data: data!)
+        if(images.count > indexPath.row){
+            let url = NSURL(string: images[indexPath.row])
+            let data = NSData(contentsOfURL: url!)
+            cell.cardImage.image = UIImage(data: data!)
+
+        }
+        
         return cell
     }
     
     
     
     func loadCardsFromOnlineStore(link: String){
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
         guard let url = NSURL(string: link) else {
             print("Error: cannot create URL")
             return
@@ -136,11 +149,12 @@ class ShowOnlineDeck: UIViewController{
                 var id: Int = (post[index].valueForKey("id") as? Int!)!
                 self.loadCardsImagesFromOnlineStore(link+String(id)+"/images/")
             }
+            
         })
         task.resume()
         
     }
-
+    
     
     func loadCardsImagesFromOnlineStore(link: String){
         guard let url = NSURL(string: link) else {
@@ -188,6 +202,12 @@ class ShowOnlineDeck: UIViewController{
             for var index = 0; index < post.count; index++ {
                 self.images.append((post[index].valueForKey("image") as? String)!)
             }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.hidden = true
+                
+            })
         })
         task.resume()
     }
@@ -255,7 +275,7 @@ class ShowOnlineDeck: UIViewController{
         })
         task.resume()
     }
-
+    
     
     func saveSetInDB(){
         
@@ -317,6 +337,6 @@ class ShowOnlineDeck: UIViewController{
         
         
     }
-  
+    
     
 }
