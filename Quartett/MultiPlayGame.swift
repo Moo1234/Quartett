@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     @IBOutlet weak var p2CardInfo: UITextView!
     @IBOutlet weak var p2CardImage: UIImageView!
     @IBOutlet weak var p2CollectionView: UICollectionView!
@@ -68,10 +68,10 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2CardInfo.selectable = false
         
         showCard()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -191,36 +191,37 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p1CardInfo.hidden = false
         p2CardInfo.hidden = false
         
+        p1CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        p2CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        
+        let p1Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
+        let p2Cell = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
         if(Float(p1values![indexPath.row]) == Float(p2Values![indexPath.row])){
-            let cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
-            cell.backgroundColor = UIColor.orangeColor()
-            let cell2 = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
-            cell2.backgroundColor = UIColor.orangeColor()
+            p1Cell.backgroundColor = UIColor.orangeColor()
+            p2Cell.backgroundColor = UIColor.orangeColor()
             drawOperations()
             
         }else if(condition){
             //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(Float(p1values![indexPath.row]) > Float(p2Values![indexPath.row])){
-                let cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
-                cell.backgroundColor = UIColor.greenColor()
+                p1Cell.backgroundColor = UIColor.greenColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p1Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell.transform = CGAffineTransformIdentity
+                            p1Cell.transform = CGAffineTransformIdentity
                         }
                 })
-                let cell2 = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
-                cell2.backgroundColor = UIColor.redColor()
+                p2Cell.backgroundColor = UIColor.redColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell2.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p2Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell2.transform = CGAffineTransformIdentity
+                            p2Cell.transform = CGAffineTransformIdentity
                         }
                 })
                 if(!turn){
@@ -228,26 +229,24 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
                 }
                 p1winOperations()
             }else{
-                let cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
-                cell.backgroundColor = UIColor.redColor()
+                p1Cell.backgroundColor = UIColor.redColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p1Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell.transform = CGAffineTransformIdentity
+                            p1Cell.transform = CGAffineTransformIdentity
                         }
                 })
-                let cell2 = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
-                cell2.backgroundColor = UIColor.greenColor()
+                p2Cell.backgroundColor = UIColor.greenColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell2.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p2Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell2.transform = CGAffineTransformIdentity
+                            p2Cell.transform = CGAffineTransformIdentity
                         }
                 })
                 if(turn){
@@ -257,16 +256,24 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             }
         }else{
             if(Float(p1values![indexPath.row]) < Float(p2Values![indexPath.row])){
-                
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.greenColor()
+                p1Cell.backgroundColor = UIColor.greenColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p1Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell.transform = CGAffineTransformIdentity
+                            p1Cell.transform = CGAffineTransformIdentity
+                        }
+                })
+                p2Cell.backgroundColor = UIColor.redColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        p2Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            p2Cell.transform = CGAffineTransformIdentity
                         }
                 })
                 if(!turn){
@@ -274,15 +281,24 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
                 }
                 p1winOperations()
             }else{
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.redColor()
+                p1Cell.backgroundColor = UIColor.redColor()
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        p1Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
                     },
                     completion: { finish in
                         UIView.animateWithDuration(0.6){
-                            cell.transform = CGAffineTransformIdentity
+                            p1Cell.transform = CGAffineTransformIdentity
+                        }
+                })
+                p2Cell.backgroundColor = UIColor.greenColor()
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        p2Cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(0.6){
+                            p2Cell.transform = CGAffineTransformIdentity
                         }
                 })
                 if(turn){
@@ -294,7 +310,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
     }
     
-
+    
     
     // functions
     //Convert String to Array(String)
@@ -385,10 +401,11 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         
         let bar = Float(p1CardsArray.count) / Float(p1CardsArray.count+p2CardsArray.count)
         progressView.setProgress(bar, animated: true)
-//        progressView2.setProgress(bar, animated: true)
-//        progressView3.setProgress(bar, animated: true)
-//        progressView4.setProgress(bar, animated: true)
-//        progressView5.setProgress(bar, animated: true)
+        currentLap++
+        //        progressView2.setProgress(bar, animated: true)
+        //        progressView3.setProgress(bar, animated: true)
+        //        progressView4.setProgress(bar, animated: true)
+        //        progressView5.setProgress(bar, animated: true)
         
         if(p1CardsArray.count > 0 && p2CardsArray.count > 0 && currentLap < maxLaps){
             gameContinue()
@@ -404,7 +421,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         if p1CardsArray.count > 0 && p2CardsArray.count > 0 {
             showCard()
             self.p2CollectionView.reloadData()
-            self.p1CollectionView.reloadData()            
+            self.p1CollectionView.reloadData()
         }
         
     }
@@ -515,16 +532,16 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     
-
+    
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
