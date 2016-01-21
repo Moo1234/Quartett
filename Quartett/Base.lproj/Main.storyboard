@@ -464,7 +464,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXX-fy-Zr8" id="EP3-P6-W3X">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-XG-PFl">
@@ -633,28 +633,27 @@
                                     <outlet property="dataSource" destination="lod-qk-1AZ" id="y48-WM-tst"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mkS-J1-erJ">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BzB-Ie-t7X">
                                 <rect key="frame" x="189" y="349" width="37" height="37"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="mkS-J1-erJ" firstAttribute="centerX" secondItem="R5l-bf-90u" secondAttribute="centerX" id="0wm-Al-qnF"/>
-                            <constraint firstAttribute="trailing" secondItem="R5l-bf-90u" secondAttribute="trailing" id="EJZ-No-oft"/>
-                            <constraint firstAttribute="bottom" secondItem="xBO-cR-SZY" secondAttribute="bottom" constant="20" symbolic="YES" id="Eel-VF-sW8"/>
-                            <constraint firstItem="xBO-cR-SZY" firstAttribute="top" secondItem="R5l-bf-90u" secondAttribute="bottom" id="ElJ-WT-WOO"/>
-                            <constraint firstItem="xBO-cR-SZY" firstAttribute="centerX" secondItem="mkS-J1-erJ" secondAttribute="centerX" id="IK7-eW-Miu"/>
-                            <constraint firstItem="R5l-bf-90u" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leading" id="Xg2-DY-2oT"/>
-                            <constraint firstItem="R5l-bf-90u" firstAttribute="top" secondItem="0t6-kP-dIH" secondAttribute="bottom" id="YbG-po-05s"/>
-                            <constraint firstItem="mkS-J1-erJ" firstAttribute="centerY" secondItem="Kw2-HC-y6L" secondAttribute="centerY" id="nu1-Z6-Pzd"/>
-                            <constraint firstItem="xBO-cR-SZY" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leadingMargin" id="t6C-wb-aXM"/>
+                            <constraint firstItem="xBO-cR-SZY" firstAttribute="top" secondItem="R5l-bf-90u" secondAttribute="bottom" id="0iF-cx-ozu"/>
+                            <constraint firstItem="xBO-cR-SZY" firstAttribute="centerX" secondItem="BzB-Ie-t7X" secondAttribute="centerX" id="8iU-QX-1lg"/>
+                            <constraint firstItem="R5l-bf-90u" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leading" id="Mfb-hy-hhY"/>
+                            <constraint firstAttribute="trailing" secondItem="R5l-bf-90u" secondAttribute="trailing" id="Qwx-GY-zFC"/>
+                            <constraint firstItem="xBO-cR-SZY" firstAttribute="leading" secondItem="Kw2-HC-y6L" secondAttribute="leadingMargin" id="ZNH-hC-Nfp"/>
+                            <constraint firstItem="R5l-bf-90u" firstAttribute="top" secondItem="0t6-kP-dIH" secondAttribute="bottom" id="fCX-v0-M5d"/>
+                            <constraint firstItem="BzB-Ie-t7X" firstAttribute="centerY" secondItem="Kw2-HC-y6L" secondAttribute="centerY" id="oMc-Rm-R0c"/>
+                            <constraint firstAttribute="bottom" secondItem="xBO-cR-SZY" secondAttribute="bottom" constant="20" symbolic="YES" id="q3b-zu-9bB"/>
+                            <constraint firstItem="BzB-Ie-t7X" firstAttribute="centerX" secondItem="R5l-bf-90u" secondAttribute="centerX" id="qvv-Fg-iCX"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="mkS-J1-erJ" id="AKv-f2-x0N"/>
-                        <outlet property="loadingView" destination="mkS-J1-erJ" id="0xC-3m-qVZ"/>
+                        <outlet property="activityIndicator" destination="BzB-Ie-t7X" id="leL-SB-Uhv"/>
                         <outlet property="tableView" destination="xBO-cR-SZY" id="Gec-MN-2Qd"/>
                     </connections>
                 </viewController>
@@ -2009,10 +2008,10 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fUU-fT-Ery"/>
-        <segue reference="iid-UG-J69"/>
-        <segue reference="Bon-a4-yyM"/>
         <segue reference="VX0-QP-nlY"/>
+        <segue reference="iid-UG-J69"/>
+        <segue reference="LGP-s6-iKe"/>
+        <segue reference="fUU-fT-Ery"/>
         <segue reference="Avo-jD-HBl"/>
         <segue reference="ND2-bq-jn8"/>
         <segue reference="B4i-n7-2HZ"/>
