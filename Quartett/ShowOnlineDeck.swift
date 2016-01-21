@@ -288,8 +288,6 @@ class ShowOnlineDeck: UIViewController{
             cardSetId++
         }
         
-        //DeckImage passt noch nicht!
-        AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
         
         var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
         
@@ -319,12 +317,12 @@ class ShowOnlineDeck: UIViewController{
             
             print(valueString)
             let url = saveImageToDevice(images[index], name: String(cardId))
-            print(url)
-//            let url = NSURL(string: images[index])
             AppDelegate().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
             values.removeAll()
             
         }
+        
+        AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
         
         print(attName.count)
         for var index3 = 0; index3 < attName.count; ++index3{
@@ -351,6 +349,9 @@ class ShowOnlineDeck: UIViewController{
             let fileURL = documentsURL.URLByAppendingPathComponent(name + ".png")
             if let pngImageData = UIImagePNGRepresentation(image) {
                 pngImageData.writeToURL(fileURL, atomically: false)
+                if deckImage == "" {
+                    deckImage = name + ".png"
+                }
                 return name + ".png"
             }
         }

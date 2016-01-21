@@ -122,7 +122,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
                 let indexPath = tableView.indexPathForCell(selectedDeckCell)!
                 showOnlineDeckViewController.deckID = ids[indexPath.row]
                 showOnlineDeckViewController.deckName = names[indexPath.row]
-                showOnlineDeckViewController.deckImage = images[indexPath.row]
+//                showOnlineDeckViewController.deckImage = images[indexPath.row]
                 
             }
         }

@@ -64,7 +64,14 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor.blackColor().CGColor
         
-        cell.galleryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
+        let imageString = (cardset.valueForKey("image") as? String)!
+        if(imageString.containsString(".png")){
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+            let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
+            cell.galleryImage?.image = UIImage(data: data!)
+        }else{
+            cell.galleryImage?.image = UIImage(named: imageString)
+        }
         
         cell.galleryTitle?.text = cardset.valueForKey("name") as? String
         

@@ -52,7 +52,13 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         loadCardArray()
         loadAttributes()
         
-        self.cardSetImage.image = UIImage(named: cardSetImageString)
+        if(cardSetImageString.containsString(".png")){
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+            let data = NSData(contentsOfFile: documentsURL.path! + "/" + cardSetImageString)
+            self.cardSetImage.image = UIImage(data: data!)
+        }else{
+            self.cardSetImage.image = UIImage(named: cardSetImageString)
+        }
         setLabel.text = self.navigationBarTitle
     }
     

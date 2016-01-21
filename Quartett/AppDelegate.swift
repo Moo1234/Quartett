@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
-//        loadStandardData()
+        loadStandardData()
         
         return true
     }
