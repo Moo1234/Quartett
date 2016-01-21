@@ -65,6 +65,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         cell.layer.borderColor = UIColor.blackColor().CGColor
         
         cell.galleryImage?.image = UIImage(named: (cardset.valueForKey("image") as? String)!)
+        
         cell.galleryTitle?.text = cardset.valueForKey("name") as? String
         
         cell.deleteGalleryButton.tag = (cardset.valueForKey("id") as? Int)!

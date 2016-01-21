@@ -102,8 +102,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             return self.cardArray.count
         }else{
             collectionView.setContentOffset(CGPointZero, animated: false)
-            let values = self.cardArray[0].valueForKey("values")?.componentsSeparatedByString(",")
-            return values!.count
+            return self.attributeArray.count
         }
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -114,14 +113,19 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.blackColor().CGColor
             cell.layer.cornerRadius = 10
-            
             cell.nameLabel?.text = card.valueForKey("name") as? String
-            cell.cardSetImage?.image = UIImage(named: (card.valueForKey("image") as? String)!)
+            let imageString = (card.valueForKey("image") as? String)!
+            if(imageString.containsString(".png")){
+                let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+                let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
+                cell.cardSetImage?.image = UIImage(data: data!)
+            }else{
+                cell.cardSetImage?.image = UIImage(named: imageString)
+            }
             cell.textview?.text = card.valueForKey("info") as? String
             cell.textview.selectable = false
             cell.textview.contentOffset = CGPoint(x: 0, y: 7)
             cardID = indexPath.row
-            
             return cell
         }else{
             // Attribute sind komischerweise bis zum ersten rechts-links scrollen noch vertauscht
