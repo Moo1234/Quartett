@@ -12,6 +12,8 @@ import UIKit
 class ShowOnlineDeck: UIViewController{
     
     
+    @IBOutlet weak var downloadProgress: UIProgressView!
+    @IBOutlet weak var downloadView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -19,13 +21,15 @@ class ShowOnlineDeck: UIViewController{
     
     @IBAction func downloadButtonPressed(sender: AnyObject) {
         
-        
-        let alert = UIAlertController(title: "UIAlertController", message: "Wollen Sie das Kartenset herunterladen?", preferredStyle: UIAlertControllerStyle.Alert)
+        self.cardSetSize = self.names.count
+        let alert = UIAlertController(title: "Download", message: "Wollen Sie das Kartenset herunterladen?", preferredStyle: UIAlertControllerStyle.Alert)
         
         
         
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
+            
             self.saveSetInDB()
+            
         }))
         alert.addAction(UIAlertAction(title: "Nein", style: UIAlertActionStyle.Cancel, handler: { action in
             
@@ -49,7 +53,7 @@ class ShowOnlineDeck: UIViewController{
     var attName = [String]()
     var attUnit = [String]()
     var condition = [Bool]()
-    
+    var cardSetSize: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +93,7 @@ class ShowOnlineDeck: UIViewController{
             let url = NSURL(string: images[indexPath.row])
             let data = NSData(contentsOfURL: url!)
             cell.cardImage.image = UIImage(data: data!)
-
+            
         }
         
         return cell
@@ -148,6 +152,7 @@ class ShowOnlineDeck: UIViewController{
                 self.ids.append((post[index].valueForKey("id") as? Int)!)
                 var id: Int = (post[index].valueForKey("id") as? Int!)!
                 self.loadCardsImagesFromOnlineStore(link+String(id)+"/images/")
+                
             }
             
         })
@@ -157,6 +162,7 @@ class ShowOnlineDeck: UIViewController{
     
     
     func loadCardsImagesFromOnlineStore(link: String){
+        let semaphore = dispatch_semaphore_create(0);
         guard let url = NSURL(string: link) else {
             print("Error: cannot create URL")
             return
@@ -202,6 +208,7 @@ class ShowOnlineDeck: UIViewController{
             for var index = 0; index < post.count; index++ {
                 self.images.append((post[index].valueForKey("image") as? String)!)
             }
+            dispatch_semaphore_signal(semaphore);
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()
@@ -210,6 +217,8 @@ class ShowOnlineDeck: UIViewController{
             })
         })
         task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
     }
     
     
@@ -217,9 +226,12 @@ class ShowOnlineDeck: UIViewController{
     
     
     func loadCardsAttributesFromOnlineStore(link: String){
+        values.removeAll()
         attName.removeAll()
         attUnit.removeAll()
         condition.removeAll()
+        
+        let semaphore = dispatch_semaphore_create(0);
         guard let url = NSURL(string: link) else {
             print("Error: cannot create URL")
             return
@@ -271,10 +283,16 @@ class ShowOnlineDeck: UIViewController{
                 }else{
                     self.condition.append(false)
                 }
+                
             }
+            dispatch_semaphore_signal(semaphore);
         })
         task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
+    
+    
+    
     
     
     func saveSetInDB(){
@@ -284,6 +302,7 @@ class ShowOnlineDeck: UIViewController{
         var attId = 0
         
         
+        
         while AppDelegate().cardSetExists(cardSetId){
             cardSetId++
         }
@@ -291,9 +310,10 @@ class ShowOnlineDeck: UIViewController{
         
         var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
         
+        
         loadCardsAttributesFromOnlineStore(attLink)
-        sleep(2)
-        print(values)
+        //sleep(2)
+        
         
         for var index = 0; index < names.count; ++index{
             while AppDelegate().cardExists(cardId){
@@ -302,7 +322,7 @@ class ShowOnlineDeck: UIViewController{
             var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
             
             loadCardsAttributesFromOnlineStore(attLink)
-            sleep(2)
+            //sleep(2)
             print(values)
             
             
@@ -318,13 +338,15 @@ class ShowOnlineDeck: UIViewController{
             print(valueString)
             let url = saveImageToDevice(images[index], name: String(cardId))
             AppDelegate().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
-            values.removeAll()
+            //values.removeAll()
+            let bar = Float(index) / Float(cardSetSize)
+            downloadProgress.setProgress(bar, animated: true)
             
         }
         
         AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
         
-        print(attName.count)
+        
         for var index3 = 0; index3 < attName.count; ++index3{
             while AppDelegate().attributeExists(attId){
                 attId++
@@ -336,6 +358,8 @@ class ShowOnlineDeck: UIViewController{
         
         
     }
+    
+    
     
     
     func saveImageToDevice(imageURL: String, name: String) -> String{
