@@ -16,8 +16,10 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak var p2CollectionView: UICollectionView!
     @IBOutlet weak var p2NameLabel: UILabel!
     @IBOutlet weak var p2InfoButton: UIButton!
+    @IBOutlet weak var p2Back: UIImageView!
     
     
+    @IBOutlet weak var p1Back: UIImageView!
     @IBOutlet weak var p1CardImage: UIImageView!
     @IBOutlet weak var p1CardInfo: UITextView!
     @IBOutlet weak var p1CollectionView: UICollectionView!
@@ -90,6 +92,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2CollectionView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         p2NameLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         p2InfoButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
+        p2Back.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "appMovedToBackground", name: UIApplicationWillResignActiveNotification, object: nil)
@@ -230,6 +233,15 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
 //        p2CardInfo.hidden = false
         p1InfoButton.hidden = false
         p2InfoButton.hidden = false
+        
+        
+        if (turn){
+            p2Back.hidden = true
+        }else{
+            p1Back.hidden = true
+        }
+        
+       
         
         p1CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
         p2CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
@@ -383,12 +395,16 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             p2CollectionView.hidden = true
             p2NameLabel.hidden = true
             p2InfoButton.hidden = true
+            p2Back.hidden = false
+            p1Back.hidden = true
         }else{
             p1CardImage.hidden = true
             //p1CardInfo.hidden = true
             p1CollectionView.hidden = true
             p1NameLabel.hidden = true
             p1InfoButton.hidden = true
+            p1Back.hidden = false
+            p2Back.hidden = true
         }
         
     }
