@@ -1604,6 +1604,7 @@
                         <outlet property="p2CollectionView" destination="hUc-rF-DB9" id="0PJ-hg-c0O"/>
                         <outlet property="p2NameLabel" destination="1VM-32-JDA" id="n1w-gY-pkH"/>
                         <outlet property="progressView" destination="hOf-Sy-Xs2" id="APT-04-GSJ"/>
+                        <segue destination="45Q-Ym-VG5" kind="show" identifier="gameOver" id="ZiO-9a-Ysl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4h-KL-1pO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2064,6 +2065,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="VcQ-lR-oH1"/>
         <segue reference="d70-wt-ogI"/>
+        <segue reference="ZiO-9a-Ysl"/>
         <segue reference="6xy-R5-uj4"/>
         <segue reference="yC0-Vk-LX7"/>
         <segue reference="PUa-f6-a5I"/>

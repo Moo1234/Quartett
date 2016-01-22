@@ -22,7 +22,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadGame()
+        var game = Data().loadGame()
+        if(game.count > 0){
+            gameExists = true
+            if game[0].valueForKey("player2") as? String == "SinglePlayerGame" {
+                singlePlayerGame = true
+            }
+            else{
+                singlePlayerGame = false
+            }
+        }
         
         rankingButton.layer.borderWidth = 2
         galleryButton.layer.borderWidth = 2
@@ -56,31 +65,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func loadGame(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Game")
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            let game =  results as! [NSManagedObject]
-            if(game.count > 0){
-                gameExists = true
-                if game[0].valueForKey("player2") as? String == "SinglePlayerGame" {
-                    singlePlayerGame = true
-                }
-                else{
-                    singlePlayerGame = false
-                }
-            }
-            
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
     }
     
     @IBAction func continueGame(sender: AnyObject) {

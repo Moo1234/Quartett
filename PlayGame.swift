@@ -87,14 +87,14 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             backgroundImage.image = UIImage(named: "tisch")
         }
         
-        loadCardset()
-        loadAttribute()
-        let p1CardsString = stringToArrayString(p1Cards)
-        let cpuCardsString = stringToArrayString(cpuCards)
-        let everyCard = stringToArrayString((p1Cards + "," + cpuCards))
-        p1CardsArray = loadCards(p1CardsString)
-        cpuCardsArray = loadCards(cpuCardsString)
-        everyCardArray = loadCards(everyCard)
+        cardset = Data().loadCardset(cardsetID)
+        attributes = Data().loadAttributes(cardsetID)
+        let p1CardsString = Data().stringToArrayString(p1Cards)
+        let cpuCardsString = Data().stringToArrayString(cpuCards)
+        let everyCard = Data().stringToArrayString((p1Cards + "," + cpuCards))
+        p1CardsArray = Data().loadCards(p1CardsString)
+        cpuCardsArray = Data().loadCards(cpuCardsString)
+        everyCardArray = Data().loadCards(everyCard)
         cardInfo.selectable = false
         self.container.frame = CGRect(x: 0, y: 63, width: view.frame.size.width, height: view.frame.size.height-63)
         self.view.addSubview(container)
@@ -344,8 +344,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     
     @IBAction func backButton(sender: AnyObject) {
-        deleteObjectsFromEntity("Game")
-        saveGame()
+        Data().deleteObjectsFromEntity("Game")
+        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: "SinglePlayerGame", p2CardsArray: cpuCardsArray, currentTime: currentTime, turn: turn)
     }
     
     @IBAction func pickUpCardPressed(sender: AnyObject) {
@@ -547,7 +547,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cardInfo.layer.cornerRadius = 10
         showCard.layer.cornerRadius = 10
         
-        cardImage.image = AppDelegate().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
+        cardImage.image = Data().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
         cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
         cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
         
@@ -558,7 +558,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         if p1CardsArray.count > 0 && cpuCardsArray.count > 0 {
             
 
-            cardImage.image = AppDelegate().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
+            cardImage.image = Data().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
             cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
             cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
             
@@ -613,33 +613,14 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             let vc = segue.destinationViewController as! EndScreenViewController
             if (p1CardsArray.count > cpuCardsArray.count){
                 vc.labelTxt = "Du hast gewonnen!"
-                saveRanking(p1Name, rounds: currentLap, time: currentTime)
+                Data().saveRanking(p1Name, rounds: currentLap, time: currentTime)
             }else if(p1CardsArray.count == cpuCardsArray.count){
                 vc.labelTxt = "Unentschieden!"
             }else{
                 vc.labelTxt = "Du hast verloren!"
             }
-            deleteObjectsFromEntity("Game")
+            Data().deleteObjectsFromEntity("Game")
         }
-    }
-    
-    
-    //Convert String to Array(String)
-    func stringToArrayString(x:String) -> [String]{
-        let toArray = x.componentsSeparatedByString(",")
-        
-        return toArray
-    }
-    
-    func objectToString(object: [NSManagedObject]) -> String{
-        var cards = ""
-        for var index = 0; index < object.count; index++ {
-            cards += "\(object[index].valueForKey("id")!)"
-            if(index < object.count - 1){
-                cards += ","
-            }
-        }
-        return cards
     }
     
     
@@ -667,8 +648,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func appMovedToBackground() {
         print("App to the Background. Saving Game.")
-        deleteObjectsFromEntity("Game")
-        saveGame()
+        Data().deleteObjectsFromEntity("Game")
+        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: "SinglePlayerGame", p2CardsArray: cpuCardsArray, currentTime: currentTime, turn: turn)
     }
     
     //******************************************
@@ -711,136 +692,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     }
     
     
-    func loadCardset(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Cardset")
-        
-        // filters cards from specific cardset
-        let predicate = NSPredicate(format: "id == %d", cardsetID)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            cardset = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-    }
-    
-    
-    func loadAttribute(){
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Attribute")
-        
-        // filters cards from specific cardset
-        let predicate = NSPredicate(format: "cardset == %d", cardsetID)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            attributes = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-    }
-    
-    func loadCards(arr:[String]) -> [NSManagedObject]{
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Card")
-        var returnArr = [NSManagedObject]()
-        // filters cards from specific cardset
-        
-        //        let firstp = Int(arr[0])!
-        
-        //        var predicate = NSPredicate(format: "id == %d",firstp)
-        for var index = 0; index < arr.count; ++index{
-            let predicate2 = NSPredicate(format: "id == %d", Int(arr[index])!)
-            //            predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: [predicate, predicate2])
-            
-            
-            
-            fetchRequest.predicate = predicate2
-            
-            do {
-                let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-                let returnArr2 = results as! [NSManagedObject]
-                returnArr.append(returnArr2[0])
-            } catch let error as NSError {
-                print("Could not fetch \(error), \(error.userInfo)")
-            }
-        }
-        return returnArr
-    }
-    
-    func saveRanking(player: String, rounds: Int, time: Double) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("Ranking", inManagedObjectContext:managedContext)
-        let newRanking = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        newRanking.setValue(player, forKey: "player")
-        newRanking.setValue(rounds, forKey: "scoreRounds")
-        newRanking.setValue(time, forKey: "scoreTime")
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
-    
-    func deleteObjectsFromEntity(entity: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        let coord = appDelegate.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    func saveGame() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("Game", inManagedObjectContext:managedContext)
-        let game = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        
-        game.setValue(cardsetID, forKey: "cardset")
-        game.setValue(difficulty, forKey: "difficulty")
-        game.setValue(currentLap, forKey: "laps")
-        game.setValue(maxLaps, forKey: "maxLaps")
-        game.setValue(maxTime, forKey: "maxTime")
-        game.setValue(p1Name, forKey: "player1")
-        game.setValue(objectToString(p1CardsArray), forKey: "player1Cards")
-        game.setValue("SinglePlayerGame", forKey: "player2")
-        game.setValue(objectToString(cpuCardsArray), forKey: "player2Cards")
-        game.setValue(currentTime, forKey: "time")
-        game.setValue(turn, forKey: "turn")
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
+
     
     
     

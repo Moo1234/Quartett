@@ -49,50 +49,10 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        cardArray = loadCardArray()
-        attributeArray = loadAttributes()
-        print(cardSetImageString)
-        cardSetImage.image = AppDelegate().stringToImage(cardSetImageString)
+        cardArray = Data().loadCardArray(cardSetID)
+        attributeArray = Data().loadAttributes(cardSetID)
+        cardSetImage.image = Data().stringToImage(cardSetImageString)
         setLabel.text = self.navigationBarTitle
-    }
-    
-    func loadCardArray() -> [NSManagedObject]{
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Card")
-        
-        // filters cards from specific cardset
-        let predicate = NSPredicate(format: "cardset == %d", cardSetID)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            return results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return [NSManagedObject]()
-    }
-    func loadAttributes() -> [NSManagedObject]{
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Attribute")
-        
-        // filters cards from specific cardset
-        let predicate = NSPredicate(format: "cardset == %d", cardSetID)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            return results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return [NSManagedObject]()
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,7 +77,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.layer.cornerRadius = 10
             cell.nameLabel?.text = card.valueForKey("name") as? String
 
-            cell.cardSetImage?.image = AppDelegate().stringToImage((card.valueForKey("image") as? String)!)
+            cell.cardSetImage?.image = Data().stringToImage((card.valueForKey("image") as? String)!)
             cell.textview?.text = card.valueForKey("info") as? String
             cell.textview.selectable = false
             cell.textview.contentOffset = CGPoint(x: 0, y: 7)

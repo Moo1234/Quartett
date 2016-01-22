@@ -27,7 +27,7 @@ class EndScreenViewController: UIViewController {
         super.viewDidLoad()
         
         gameOverText.text = labelTxt
-        if(gameOverText.text == "Du hast gewonnen!"){
+        if(gameOverText.text!.containsString("gewonnen")){
             gameOverImage.image = UIImage(named: "winLogo")
         }else if(gameOverText.text == "Unentschieden!"){
             gameOverImage.image = UIImage(named: "drawLogo")

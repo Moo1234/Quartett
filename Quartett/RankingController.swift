@@ -71,8 +71,8 @@ class RankingController: UIViewController, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.Cancel, handler: nil))
         let saveAction = UIAlertAction(title: "Zurücksetzen", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction) -> Void in
             
-            self.resetRanking()
-            self.loadRanking()
+            Data().resetRankings()
+            Data().loadRankings(self.rankingType)
             self.tableView.reloadData()
         })
         alert.addAction(saveAction)
@@ -82,53 +82,12 @@ class RankingController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        ranking = loadRanking()
+        ranking = Data().loadRankings(rankingType)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func loadRanking() -> [NSManagedObject]{
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Ranking")
-        
-        if(rankingType){
-            // sort less rounds as best
-            let sortDescriptor = NSSortDescriptor(key: "scoreRounds", ascending: true)
-            let sortDescriptors = [sortDescriptor]
-            fetchRequest.sortDescriptors = sortDescriptors
-        }else{
-            // sort less time as best
-            let sortDescriptor = NSSortDescriptor(key: "scoreTime", ascending: true)
-            let sortDescriptors = [sortDescriptor]
-            fetchRequest.sortDescriptors = sortDescriptors
-        }
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            return results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return [NSManagedObject]()
-    }
-    
-    func resetRanking(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        let coord = appDelegate.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: "Ranking")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
     }
     
     func swipeGestures(sender:UISwipeGestureRecognizer){
@@ -149,14 +108,14 @@ class RankingController: UIViewController, UITableViewDataSource {
         leftButton.hidden=false
         rightButton.hidden=true
         rankingType = true
-        ranking = loadRanking()
+        ranking = Data().loadRankings(rankingType)
         self.tableView.reloadData()
     }
     func tableRight(){
         leftButton.hidden=true
         rightButton.hidden=false
         rankingType = false
-        ranking = loadRanking()
+        ranking = Data().loadRankings(rankingType)
         self.tableView.reloadData()
     }
     

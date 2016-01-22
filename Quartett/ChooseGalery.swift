@@ -81,7 +81,7 @@ class ChooseGalery: UIViewController, UICollectionViewDelegate,  UICollectionVie
         cell.chooseButton.tag = indexPath.row
         cell.showButton.tag = indexPath.row
         
-        cell.galeryImage?.image = AppDelegate().stringToImage((cardset.valueForKey("image") as? String)!)
+        cell.galeryImage?.image = Data().stringToImage((cardset.valueForKey("image") as? String)!)
         cell.galeryTitle?.text = cardset.valueForKey("name") as? String
 
         return cell

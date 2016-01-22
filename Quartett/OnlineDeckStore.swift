@@ -26,7 +26,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
         loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
 
         
-        cardSetArray = ShowGallery().loadCardSet()
+        cardSetArray = Data().loadCardSets()
         
     }
     override func viewWillAppear(animated: Bool) {

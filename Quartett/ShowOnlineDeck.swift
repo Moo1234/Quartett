@@ -81,7 +81,7 @@ class ShowOnlineDeck: UIViewController{
     }
     
     func checkDeckExists() -> Bool {
-        let cardSetArray = ShowGallery().loadCardSet()
+        let cardSetArray = Data().loadCardSets()
         for var index = 0; index < cardSetArray.count; index++ {
             if(cardSetArray[index].valueForKey("name") as! String == deckName){
                 cardSetIdForSegue = cardSetArray[index].valueForKey("id") as! Int
@@ -318,7 +318,7 @@ class ShowOnlineDeck: UIViewController{
         
         
         
-        while AppDelegate().cardSetExists(cardSetId){
+        while Data().cardSetExists(cardSetId){
             cardSetId++
         }
         
@@ -340,7 +340,7 @@ class ShowOnlineDeck: UIViewController{
             print(error.localizedDescription);
         }
         deckImage = saveImageToDevice(deckImage, id: cardSetId, name: "SetImage")
-        AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
+        Data().saveCardset(cardSetId, name: deckName, image: deckImage)
         
         var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
         
@@ -350,7 +350,7 @@ class ShowOnlineDeck: UIViewController{
         
         
         for var index = 0; index < names.count; ++index{
-            while AppDelegate().cardExists(cardId){
+            while Data().cardExists(cardId){
                 cardId++
             }
             var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
@@ -371,7 +371,7 @@ class ShowOnlineDeck: UIViewController{
             
             print(valueString)
             let url = saveImageToDevice(images[index], id: cardSetId, name: String(cardId))
-            AppDelegate().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
+            Data().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
             //values.removeAll()
             let bar = Float(index) / Float(cardSetSize)
             downloadProgress.setProgress(bar, animated: true)
@@ -381,11 +381,11 @@ class ShowOnlineDeck: UIViewController{
         
         
         for var index3 = 0; index3 < attName.count; ++index3{
-            while AppDelegate().attributeExists(attId){
+            while Data().attributeExists(attId){
                 attId++
             }
             
-            AppDelegate().saveAttribute(attId, cardset: cardSetId, name: attName[index3], icon: "", unit: attUnit[index3], condition: condition[index3])
+            Data().saveAttribute(attId, cardset: cardSetId, name: attName[index3], icon: "", unit: attUnit[index3], condition: condition[index3])
         }
         
         

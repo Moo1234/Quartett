@@ -122,7 +122,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             scrollView.contentSize.height = 700
         }
         if(setID != -1){
-            cardSetIcon.image = AppDelegate().stringToImage(cardSetIconString)
+            cardSetIcon.image = Data().stringToImage(cardSetIconString)
         }
         
         playerTwoName.hidden = true
@@ -340,7 +340,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        deleteObjectsFromEntity("Game")
+        Data().deleteObjectsFromEntity("Game")
         
         let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context)
         
@@ -374,23 +374,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             self.performSegueWithIdentifier("singlePlayer", sender:self)
         }
         
-    }
-    
-    func deleteObjectsFromEntity(entity: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        let coord = appDelegate.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
+    }    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "chooseGaleryButton"){

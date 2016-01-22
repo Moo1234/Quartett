@@ -26,7 +26,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        cardsetArray = loadCardSet()
+        cardsetArray = Data().loadCardSets()
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,21 +35,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     
-    func loadCardSet() -> [NSManagedObject] {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Cardset")
-        
-        
-        do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            return results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return [NSManagedObject]()
-    }
+
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,7 +51,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor.blackColor().CGColor
         
-        cell.galleryImage?.image = AppDelegate().stringToImage((cardset.valueForKey("image") as? String)!)
+        cell.galleryImage?.image = Data().stringToImage((cardset.valueForKey("image") as? String)!)
         
         cell.galleryTitle?.text = cardset.valueForKey("name") as? String
         
@@ -130,9 +116,8 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
             } catch  {
                 print("No image folder found")
             }
-            
-            self.deleteObjectsFromEntity(sender.tag)
-            self.loadCardSet()
+            Data().deleteCardSet(sender.tag)
+            self.cardsetArray = Data().loadCardSets()
             self.collectionView.reloadData()
         }
         alertController.addAction(deleteAction)
@@ -142,37 +127,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     
     
-    func deleteObjectsFromEntity(cardSetID: Int) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        let coord = appDelegate.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: "Cardset")
-        
-        let predicate = NSPredicate(format: "id == %d", cardSetID)
-        fetchRequest.predicate = predicate
-        
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        let fetchRequest2 = NSFetchRequest(entityName: "Card")
-        
-        let predicate2 = NSPredicate(format: "cardset == %d", cardSetID)
-        fetchRequest2.predicate = predicate2
-        
-        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-        
-        do {
-            try coord.executeRequest(deleteRequest2, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
+
     
     //****************************
     
