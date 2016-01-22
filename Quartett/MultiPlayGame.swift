@@ -310,6 +310,10 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
     }
     
+    @IBAction func backButton(sender: AnyObject) {
+        PlayGame().deleteObjectsFromEntity("Game")
+        saveGame()
+    }
     
     
     // functions
@@ -529,6 +533,32 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             }
         }
         return returnArr
+    }
+    
+    func saveGame() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Game", inManagedObjectContext:managedContext)
+        let game = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        
+        game.setValue(cardsetID, forKey: "cardset")
+        game.setValue(difficulty, forKey: "difficulty")
+        game.setValue(currentLap, forKey: "laps")
+        game.setValue(maxLaps, forKey: "maxLaps")
+        game.setValue(maxTime, forKey: "maxTime")
+        game.setValue(p1Name, forKey: "player1")
+        game.setValue(PlayGame().objectToString(p1CardsArray), forKey: "player1Cards")
+        game.setValue(p2Name, forKey: "player2")
+        game.setValue(PlayGame().objectToString(p2CardsArray), forKey: "player2Cards")
+        game.setValue(currentTime, forKey: "time")
+        game.setValue(turn, forKey: "turn")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     

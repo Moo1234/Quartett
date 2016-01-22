@@ -911,7 +911,7 @@
                                     <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iTw-JK-eau" kind="show" id="7oX-Ch-EFP"/>
+                                    <action selector="continueGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bd2-vN-HRX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -941,6 +941,8 @@
                         <outlet property="galleryButton" destination="c2i-fB-fdT" id="7ux-1g-DVF"/>
                         <outlet property="newGameButton" destination="Ru9-D7-7ey" id="dr5-yc-xTc"/>
                         <outlet property="rankingButton" destination="Jig-QB-zFE" id="kxp-ML-HBM"/>
+                        <segue destination="oed-wR-CJ6" kind="show" identifier="MultiplayGame" id="d70-wt-ogI"/>
+                        <segue destination="iTw-JK-eau" kind="show" identifier="PlayGame" id="6xy-R5-uj4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1539,8 +1541,11 @@
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-Hu-lT1">
                                         <rect key="frame" x="16" y="8" width="49" height="30"/>
-                                        <state key="normal" title="Zurück"/>
+                                        <state key="normal" title="Zurück">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.80784313730000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
+                                            <action selector="backButton:" destination="oed-wR-CJ6" eventType="touchUpInside" id="ed2-0l-xIX"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="VcQ-lR-oH1"/>
                                         </connections>
                                     </button>
@@ -2057,13 +2062,14 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fUU-fT-Ery"/>
-        <segue reference="mmQ-nR-dMT"/>
-        <segue reference="3AO-dB-gDT"/>
+        <segue reference="VcQ-lR-oH1"/>
+        <segue reference="d70-wt-ogI"/>
+        <segue reference="6xy-R5-uj4"/>
+        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="PUa-f6-a5I"/>
+        <segue reference="c19-ko-Gax"/>
         <segue reference="Bon-a4-yyM"/>
-        <segue reference="Avo-jD-HBl"/>
-        <segue reference="ND2-bq-jn8"/>
-        <segue reference="B4i-n7-2HZ"/>
-        <segue reference="AUB-2S-sNB"/>
+        <segue reference="5cy-OY-PiX"/>
+        <segue reference="Zzy-zs-Hj3"/>
     </inferredMetricsTieBreakers>
 </document>

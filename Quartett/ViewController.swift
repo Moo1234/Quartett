@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var continueGameButton: UIButton!
     
     var gameExists = false
+    var singlePlayerGame = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,12 +69,27 @@ class ViewController: UIViewController {
             let game =  results as! [NSManagedObject]
             if(game.count > 0){
                 gameExists = true
+                if game[0].valueForKey("player2") as? String == "SinglePlayerGame" {
+                    singlePlayerGame = true
+                }
+                else{
+                    singlePlayerGame = false
+                }
             }
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
+    }
+    
+    @IBAction func continueGame(sender: AnyObject) {
+        
+        if singlePlayerGame {
+            performSegueWithIdentifier("PlayGame", sender: nil)
+        }else{
+            performSegueWithIdentifier("MultiplayGame", sender: nil)
+        }
     }
     
 }
