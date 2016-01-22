@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class OnlineDeckStore: UIViewController, UITableViewDataSource {
     
@@ -18,12 +19,14 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     var names = [String]()
     var ids = [Int]()
     
-    
+    var cardSetArray = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
 
+        
+        cardSetArray = ShowGallery().loadCardSet()
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -42,9 +45,21 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
         let url = NSURL(string: images[indexPath.row])
         let data = NSData(contentsOfURL: url!)
         cell.deckIcon.image = UIImage(data: data!)
+        if(checkDeckExists(names[indexPath.row])){
+            cell.deckExistsView.image = UIImage(named: "check")
+        }
         return cell
     }
     
+    
+    func checkDeckExists(name: String) -> Bool {
+        for var index = 0; index < cardSetArray.count; index++ {
+            if(cardSetArray[index].valueForKey("name") as! String == name){
+                return true
+            }
+        }
+        return false
+    }
     
     func loadData(){
         tableView.reloadData()
@@ -120,9 +135,10 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
             // Get the cell that generated this segue.
             if let selectedDeckCell = sender as? DeckTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedDeckCell)!
+                print(indexPath.row)
                 showOnlineDeckViewController.deckID = ids[indexPath.row]
                 showOnlineDeckViewController.deckName = names[indexPath.row]
-//                showOnlineDeckViewController.deckImage = images[indexPath.row]
+                showOnlineDeckViewController.deckImage = images[indexPath.row]
                 
             }
         }

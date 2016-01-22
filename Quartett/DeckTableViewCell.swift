@@ -13,5 +13,5 @@ class DeckTableViewCell: UITableViewCell {
     @IBOutlet weak var deckIcon: UIImageView!
     @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var deckDescriptionLabel: UILabel!
-
+    @IBOutlet weak var deckExistsView: UIImageView!
 }

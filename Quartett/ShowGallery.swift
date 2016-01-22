@@ -26,7 +26,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+        cardsetArray = loadCardSet()
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,7 +35,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     
-    func loadData(){
+    func loadCardSet() -> [NSManagedObject] {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Cardset")
@@ -45,9 +45,11 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
             cardsetArray = results as! [NSManagedObject]
+            return cardsetArray
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        return [NSManagedObject]()
     }
     
     
@@ -128,8 +130,17 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         alertController.addAction(cancelAction)
         
         let deleteAction = UIAlertAction(title: "Löschen", style: .Destructive) { (action) in
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+            let dataPath = documentsURL.URLByAppendingPathComponent(String(sender.tag))
+            do{
+                try NSFileManager.defaultManager().removeItemAtURL(dataPath)
+                print("Image folder deleted")
+            } catch  {
+                print("No image folder found")
+            }
+            
             self.deleteObjectsFromEntity(sender.tag)
-            self.loadData()
+            self.loadCardSet()
             self.collectionView.reloadData()
         }
         alertController.addAction(deleteAction)

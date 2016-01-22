@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
+import CoreData
 
 class ShowOnlineDeck: UIViewController{
     
     
+    @IBOutlet weak var showButton: UIButton!
+    @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var downloadProgress: UIProgressView!
     @IBOutlet weak var downloadView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -29,6 +31,8 @@ class ShowOnlineDeck: UIViewController{
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
             
             self.saveSetInDB()
+            self.showButton.hidden = false
+            self.downloadButton.hidden = true
             
         }))
         alert.addAction(UIAlertAction(title: "Nein", style: UIAlertActionStyle.Cancel, handler: { action in
@@ -44,7 +48,7 @@ class ShowOnlineDeck: UIViewController{
     var link: String = ""
     var deckImage = ""
     
-    
+    var cardSetIdForSegue = -1
     
     var images = [String]()
     var names = [String]()
@@ -59,21 +63,32 @@ class ShowOnlineDeck: UIViewController{
         super.viewDidLoad()
         self.navBar.topItem?.title = deckName
         
-        
         link = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"
         loadCardsFromOnlineStore(link)
+        if checkDeckExists() {
+            downloadButton.hidden = true
+            showButton.hidden = false
+        }
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
-            
-            
-            
         })
-        
+
         
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func checkDeckExists() -> Bool {
+        let cardSetArray = ShowGallery().loadCardSet()
+        for var index = 0; index < cardSetArray.count; index++ {
+            if(cardSetArray[index].valueForKey("name") as! String == deckName){
+                cardSetIdForSegue = cardSetArray[index].valueForKey("id") as! Int
+                return true
+            }
+        }
+        return false
     }
     
     
@@ -307,6 +322,25 @@ class ShowOnlineDeck: UIViewController{
             cardSetId++
         }
         
+        cardSetIdForSegue = cardSetId
+        // delete directory if exists
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let dataPath = documentsURL.URLByAppendingPathComponent(String(cardSetId))
+        do{
+            try NSFileManager.defaultManager().removeItemAtURL(dataPath)
+            print("Image folder already exists. Delete folder.")
+        } catch  {
+            print("No image folder found")
+        }
+        // create image folder
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtPath(dataPath.path!, withIntermediateDirectories: false, attributes: nil)
+            print("Create image folder at path: " + dataPath.path!)
+        } catch let error as NSError {
+            print(error.localizedDescription);
+        }
+        deckImage = saveImageToDevice(deckImage, id: cardSetId, name: "SetImage")
+        AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
         
         var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
         
@@ -336,7 +370,7 @@ class ShowOnlineDeck: UIViewController{
             }
             
             print(valueString)
-            let url = saveImageToDevice(images[index], name: String(cardId))
+            let url = saveImageToDevice(images[index], id: cardSetId, name: String(cardId))
             AppDelegate().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
             //values.removeAll()
             let bar = Float(index) / Float(cardSetSize)
@@ -344,7 +378,6 @@ class ShowOnlineDeck: UIViewController{
             
         }
         
-        AppDelegate().saveCardset(cardSetId, name: deckName, image: deckImage)
         
         
         for var index3 = 0; index3 < attName.count; ++index3{
@@ -362,24 +395,31 @@ class ShowOnlineDeck: UIViewController{
     
     
     
-    func saveImageToDevice(imageURL: String, name: String) -> String{
+    func saveImageToDevice(imageURL: String, id: Int, name: String) -> String{
         
         let url = NSURL(string: imageURL)
         let data = NSData(contentsOfURL: url!)
-        print(name)
         
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         if let image = UIImage(data: data!) {
-            let fileURL = documentsURL.URLByAppendingPathComponent(name + ".png")
+            let path = String(id) + "/" + name + ".png"
+            let fileURL = documentsURL.URLByAppendingPathComponent(path)
             if let pngImageData = UIImagePNGRepresentation(image) {
                 pngImageData.writeToURL(fileURL, atomically: false)
-                if deckImage == "" {
-                    deckImage = name + ".png"
-                }
-                return name + ".png"
+                return path
             }
         }
         return "failed"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowCardSet" {
+            let showCardSetViewController = segue.destinationViewController as! ShowCardSet
+            
+            showCardSetViewController.cardSetID = cardSetIdForSegue
+        }
     }
     
     
