@@ -325,14 +325,13 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     func showCard(){
-        
-        p1CardImage.image = UIImage(named: p1CardsArray[0].valueForKey("image") as! String!)
+        p1CardImage.image = AppDelegate().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
         p1CardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
         p1NameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
         p1CardImage.layer.cornerRadius = 10
         p1CardInfo.layer.cornerRadius = 10
         
-        p2CardImage.image = UIImage(named: p2CardsArray[0].valueForKey("image") as! String!)
+        p2CardImage.image = AppDelegate().stringToImage(p2CardsArray[0].valueForKey("image") as! String!)
         p2CardInfo.text = p2CardsArray[0].valueForKey("info") as! String!
         p2NameLabel.text = p2CardsArray[0].valueForKey("name") as! String!
         p2CardImage.layer.cornerRadius = 10

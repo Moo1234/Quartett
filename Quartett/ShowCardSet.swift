@@ -51,14 +51,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         super.viewWillAppear(animated)
         cardArray = loadCardArray()
         attributeArray = loadAttributes()
-        
-        if(cardSetImageString.containsString(".png")){
-            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-            let data = NSData(contentsOfFile: documentsURL.path! + "/" + cardSetImageString)
-            self.cardSetImage.image = UIImage(data: data!)
-        }else{
-            self.cardSetImage.image = UIImage(named: cardSetImageString)
-        }
+        print(cardSetImageString)
+        cardSetImage.image = AppDelegate().stringToImage(cardSetImageString)
         setLabel.text = self.navigationBarTitle
     }
     
@@ -122,14 +116,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cell.layer.borderColor = UIColor.blackColor().CGColor
             cell.layer.cornerRadius = 10
             cell.nameLabel?.text = card.valueForKey("name") as? String
-            let imageString = (card.valueForKey("image") as? String)!
-            if(imageString.containsString(".png")){
-                let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-                let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
-                cell.cardSetImage?.image = UIImage(data: data!)
-            }else{
-                cell.cardSetImage?.image = UIImage(named: imageString)
-            }
+
+            cell.cardSetImage?.image = AppDelegate().stringToImage((card.valueForKey("image") as? String)!)
             cell.textview?.text = card.valueForKey("info") as? String
             cell.textview.selectable = false
             cell.textview.contentOffset = CGPoint(x: 0, y: 7)

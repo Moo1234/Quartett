@@ -419,6 +419,7 @@ class ShowOnlineDeck: UIViewController{
             let showCardSetViewController = segue.destinationViewController as! ShowCardSet
             
             showCardSetViewController.cardSetID = cardSetIdForSegue
+            showCardSetViewController.cardSetImageString = deckImage
         }
     }
     

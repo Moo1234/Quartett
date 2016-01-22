@@ -460,6 +460,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return false
     }
+    
+    
+    func stringToImage(imageString: String) -> UIImage {
+        var image = UIImage()
+        if(imageString.containsString(".png")){
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+            let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
+            image = UIImage(data: data!)!
+        }else{
+            image = UIImage(named: imageString)!
+        }
+        return image
+    }
     // -------------------------------------------------------------------------------------------------------------------------------
     // ----------------------------------------------------- End Loading Methods -----------------------------------------------------
     // -------------------------------------------------------------------------------------------------------------------------------

@@ -547,14 +547,7 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cardInfo.layer.cornerRadius = 10
         showCard.layer.cornerRadius = 10
         
-        let imageString = p1CardsArray[0].valueForKey("image") as! String!
-        if(imageString.containsString(".png")){
-            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-            let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
-            cardImage.image = UIImage(data: data!)
-        }else{
-            cardImage.image = UIImage(named: imageString)
-        }
+        cardImage.image = AppDelegate().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
         cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
         cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
         
@@ -564,14 +557,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         
         if p1CardsArray.count > 0 && cpuCardsArray.count > 0 {
             
-            let imageString = p1CardsArray[0].valueForKey("image") as! String!
-            if(imageString.containsString(".png")){
-                let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-                let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
-                cardImage.image = UIImage(data: data!)
-            }else{
-                cardImage.image = UIImage(named: imageString)
-            }
+
+            cardImage.image = AppDelegate().stringToImage(p1CardsArray[0].valueForKey("image") as! String!)
             cardInfo.text = p1CardsArray[0].valueForKey("info") as! String!
             cardNameLabel.text = p1CardsArray[0].valueForKey("name") as! String!
             

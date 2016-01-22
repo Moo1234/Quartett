@@ -122,7 +122,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             scrollView.contentSize.height = 700
         }
         if(setID != -1){
-            cardSetIcon.image = UIImage(named: cardSetIconString)
+            cardSetIcon.image = AppDelegate().stringToImage(cardSetIconString)
         }
         
         playerTwoName.hidden = true
