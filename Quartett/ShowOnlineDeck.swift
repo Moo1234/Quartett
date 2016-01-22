@@ -30,11 +30,17 @@ class ShowOnlineDeck: UIViewController{
         
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
             
-            self.saveSetInDB()
-            self.showButton.hidden = false
-            self.downloadButton.hidden = true
+            dispatch_async(dispatch_get_main_queue(), {
+                self.saveSetInDB()
+                self.showButton.hidden = false
+                self.downloadButton.hidden = true
+                
+            })
+            self.downloadView.hidden = false
+            
             
         }))
+        
         alert.addAction(UIAlertAction(title: "Nein", style: UIAlertActionStyle.Cancel, handler: { action in
             
         }))
@@ -73,7 +79,7 @@ class ShowOnlineDeck: UIViewController{
             self.tableView.reloadData()
         })
 
-        
+        downloadProgress.setProgress(0, animated: true)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -349,14 +355,21 @@ class ShowOnlineDeck: UIViewController{
         //sleep(2)
         
         
+        
         for var index = 0; index < names.count; ++index{
             while Data().cardExists(cardId){
                 cardId++
             }
             var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
             
+            dispatch_async(dispatch_get_main_queue(), {
+                let bar = Float(index) / Float(self.cardSetSize)
+                self.downloadProgress.setProgress(bar, animated: true)
+                
+            })
+            
+            
             loadCardsAttributesFromOnlineStore(attLink)
-            //sleep(2)
             print(values)
             
             
@@ -373,10 +386,11 @@ class ShowOnlineDeck: UIViewController{
             let url = saveImageToDevice(images[index], id: cardSetId, name: String(cardId))
             Data().saveCard(cardId, cardset: cardSetId, name: names[index], info: "Keine info!", image: url, values: valueString)
             //values.removeAll()
-            let bar = Float(index) / Float(cardSetSize)
-            downloadProgress.setProgress(bar, animated: true)
+            
+            
             
         }
+
         
         
         

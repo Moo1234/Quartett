@@ -15,14 +15,46 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak var p2CardImage: UIImageView!
     @IBOutlet weak var p2CollectionView: UICollectionView!
     @IBOutlet weak var p2NameLabel: UILabel!
+    @IBOutlet weak var p2InfoButton: UIButton!
     
     
     @IBOutlet weak var p1CardImage: UIImageView!
     @IBOutlet weak var p1CardInfo: UITextView!
     @IBOutlet weak var p1CollectionView: UICollectionView!
     @IBOutlet weak var p1NameLabel: UILabel!
+    @IBOutlet weak var p1InfoButton: UIButton!
     
     @IBOutlet weak var progressView: UIProgressView!
+    
+    
+    @IBAction func p2InfoButtonPressed(sender: AnyObject) {
+        if p2CardInfo.hidden == true{
+            p2CardInfo.hidden = false
+            p2CardImage.hidden = true
+        }else{
+            p2CardInfo.hidden = true
+            p2CardImage.hidden = false
+        }
+        
+        
+        
+    }
+    
+    @IBAction func p1InfoButtonPressed(sender: AnyObject) {
+        if p1CardInfo.hidden == true{
+            p1CardInfo.hidden = false
+            p1CardImage.hidden = true
+        }else{
+            p1CardInfo.hidden = true
+            p1CardImage.hidden = false
+            
+        }
+        
+        
+        
+    }
+        
+    
     
     // vars
     var game = [NSManagedObject]()
@@ -51,11 +83,13 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().statusBarHidden = true
+        
         p2CardImage.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         p2CardInfo.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         p2CollectionView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         p2NameLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
-        
+        p2InfoButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "appMovedToBackground", name: UIApplicationWillResignActiveNotification, object: nil)
@@ -192,8 +226,10 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2CollectionView.hidden = false
         p1NameLabel.hidden = false
         p2NameLabel.hidden = false
-        p1CardInfo.hidden = false
-        p2CardInfo.hidden = false
+//        p1CardInfo.hidden = false
+//        p2CardInfo.hidden = false
+        p1InfoButton.hidden = false
+        p2InfoButton.hidden = false
         
         p1CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
         p2CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
@@ -343,14 +379,16 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2CardInfo.layer.cornerRadius = 10
         if(turn){
             p2CardImage.hidden = true
-            p2CardInfo.hidden = true
+            //p2CardInfo.hidden = true
             p2CollectionView.hidden = true
             p2NameLabel.hidden = true
+            p2InfoButton.hidden = true
         }else{
             p1CardImage.hidden = true
-            p1CardInfo.hidden = true
+            //p1CardInfo.hidden = true
             p1CollectionView.hidden = true
             p1NameLabel.hidden = true
+            p1InfoButton.hidden = true
         }
         
     }
