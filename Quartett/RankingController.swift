@@ -17,7 +17,7 @@ class RankingController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var navigationBarTitle: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scoreTypeLabel: UILabel!
-    var timeRanking = [NSManagedObject]()
+    var ranking = [NSManagedObject]()
     var rankingType = true
     
     override func viewDidLoad() {
@@ -30,8 +30,6 @@ class RankingController: UIViewController, UITableViewDataSource {
         leftSwipe.direction = .Left
         rightSwipe.direction = .Right
         
-//        tableView.addGestureRecognizer(leftSwipe)
-//        tableView.addGestureRecognizer(rightSwipe)
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         
@@ -42,29 +40,28 @@ class RankingController: UIViewController, UITableViewDataSource {
         tableView.tableFooterView!.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         
-        //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeRanking.count
+        return ranking.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RankingTableViewCell", forIndexPath: indexPath) as! RankingTableViewCell
-        let ranking = timeRanking[indexPath.row]
+        let rank = ranking[indexPath.row]
         if(rankingType){
             navigationBarTitle.title = "Runden Rangliste"
             scoreTypeLabel.text = "Runden"
-            cell.nameLabel.text = ranking.valueForKey("player") as? String
-            cell.scoreLabel.text =  String((ranking.valueForKey("scoreRounds") as? Int)!)
+            cell.nameLabel.text = rank.valueForKey("player") as? String
+            cell.scoreLabel.text =  String((rank.valueForKey("scoreRounds") as? Int)!)
             cell.rankingLabel.text = String(indexPath.row + 1) + "."
         }else{
             navigationBarTitle.title = "Zeit Rangliste"
             scoreTypeLabel.text = "Zeit"
-            cell.nameLabel.text = ranking.valueForKey("player") as? String
-            cell.scoreLabel.text =  String((ranking.valueForKey("scoreTime") as? Double)!)
+            cell.nameLabel.text = rank.valueForKey("player") as? String
+            cell.scoreLabel.text =  String((rank.valueForKey("scoreTime") as? Double)!)
             cell.rankingLabel.text = String(indexPath.row + 1) + "."
         }
         return cell
@@ -74,19 +71,8 @@ class RankingController: UIViewController, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.Cancel, handler: nil))
         let saveAction = UIAlertAction(title: "Zurücksetzen", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction) -> Void in
             
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let context = appDelegate.managedObjectContext
-            let coord = appDelegate.persistentStoreCoordinator
-            
-            let fetchRequest = NSFetchRequest(entityName: "Ranking")
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
-            do {
-                try coord.executeRequest(deleteRequest, withContext: context)
-            } catch let error as NSError {
-                debugPrint(error)
-            }
-            self.loadData()
+            self.resetRanking()
+            self.loadRanking()
             self.tableView.reloadData()
         })
         alert.addAction(saveAction)
@@ -96,7 +82,7 @@ class RankingController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+        ranking = loadRanking()
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,7 +90,7 @@ class RankingController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadData(){
+    func loadRanking() -> [NSManagedObject]{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Ranking")
@@ -123,9 +109,25 @@ class RankingController: UIViewController, UITableViewDataSource {
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            timeRanking = results as! [NSManagedObject]
+            return results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return [NSManagedObject]()
+    }
+    
+    func resetRanking(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "Ranking")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
     
@@ -147,14 +149,14 @@ class RankingController: UIViewController, UITableViewDataSource {
         leftButton.hidden=false
         rightButton.hidden=true
         rankingType = true
-        loadData()
+        ranking = loadRanking()
         self.tableView.reloadData()
     }
     func tableRight(){
         leftButton.hidden=true
         rightButton.hidden=false
         rankingType = false
-        loadData()
+        ranking = loadRanking()
         self.tableView.reloadData()
     }
     

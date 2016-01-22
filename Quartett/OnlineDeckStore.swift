@@ -61,10 +61,6 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
         return false
     }
     
-    func loadData(){
-        tableView.reloadData()
-    }
-    
     func loadFromOnlineStore(link: String){
         activityIndicator.hidden = false
         activityIndicator.startAnimating()

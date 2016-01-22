@@ -49,8 +49,8 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadCardArray()
-        loadAttributes()
+        cardArray = loadCardArray()
+        attributeArray = loadAttributes()
         
         if(cardSetImageString.containsString(".png")){
             let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
@@ -62,7 +62,7 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         setLabel.text = self.navigationBarTitle
     }
     
-    func loadCardArray(){
+    func loadCardArray() -> [NSManagedObject]{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
@@ -75,12 +75,13 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            cardArray = results as! [NSManagedObject]
+            return results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        return [NSManagedObject]()
     }
-    func loadAttributes(){
+    func loadAttributes() -> [NSManagedObject]{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
@@ -93,10 +94,11 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            attributeArray = results as! [NSManagedObject]
+            return results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        return [NSManagedObject]()
     }
     
     override func didReceiveMemoryWarning() {

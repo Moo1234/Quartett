@@ -44,8 +44,7 @@ class ShowGallery: UIViewController, UICollectionViewDelegate, UICollectionViewD
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            cardsetArray = results as! [NSManagedObject]
-            return cardsetArray
+            return results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
