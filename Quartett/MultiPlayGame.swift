@@ -238,11 +238,6 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.userInteractionEnabled = false
         
-        let p1values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
-        let p2Values = p2CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
-        
-        let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
-        
         p1CardImage.hidden = false
         p2CardImage.hidden = false
         p1CollectionView.hidden = false
@@ -261,7 +256,9 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             else {
                 viewsTop = (frontView: self.backTop, backView: self.frontTop)
             }
-            UIView.transitionFromView(viewsTop.frontView, toView: viewsTop.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+            UIView.transitionFromView(viewsTop.frontView, toView: viewsTop.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: { finish in
+                self.cardSelected(indexPath)
+            })
             p2Back.hidden = true
         }else{
             var viewsBottom : (frontView: UIView, backView: UIView)
@@ -271,11 +268,35 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             else {
                 viewsBottom = (frontView: self.backBottom, backView: self.frontBottom)
             }
-            UIView.transitionFromView(viewsBottom.frontView, toView: viewsBottom.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            UIView.transitionFromView(viewsBottom.frontView, toView: viewsBottom.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { finish in
+                self.cardSelected(indexPath)
+            })
             p1Back.hidden = true
         }
+
+    }
+    
+    @IBAction func backButton(sender: AnyObject) {
+        Data().deleteObjectsFromEntity("Game")
+        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: p2Name, p2CardsArray: p2CardsArray, currentTime: currentTime, turn: turn)
+    }
+    
+    func appMovedToBackground() {
+        print("App to the Background. Saving Game.")
+        Data().deleteObjectsFromEntity("Game")
+        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: p2Name, p2CardsArray: p2CardsArray, currentTime: currentTime, turn: turn)
+    }
+    
+    
+    // functions
+    
+    func cardSelected(indexPath: NSIndexPath){
         
-       
+        
+        let p1values = p1CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        let p2Values = p2CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
+        
+        let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
         
         p1CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
         p2CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
@@ -395,20 +416,6 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         }
         NSTimer.scheduledTimerWithTimeInterval(showAlertTime, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
     }
-    
-    @IBAction func backButton(sender: AnyObject) {
-        Data().deleteObjectsFromEntity("Game")
-        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: p2Name, p2CardsArray: p2CardsArray, currentTime: currentTime, turn: turn)
-    }
-    
-    func appMovedToBackground() {
-        print("App to the Background. Saving Game.")
-        Data().deleteObjectsFromEntity("Game")
-        Data().saveGame(cardsetID, difficulty: difficulty, currentLap: currentLap, maxLaps: maxLaps, maxTime: maxTime, p1Name: p1Name, p1CardsArray: p1CardsArray, p2Name: p2Name, p2CardsArray: p2CardsArray, currentTime: currentTime, turn: turn)
-    }
-    
-    
-    // functions
 
     
     func showCard(){

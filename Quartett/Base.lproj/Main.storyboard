@@ -1620,12 +1620,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="MyA-Hu-lT1" firstAttribute="leading" secondItem="YaU-hu-bc8" secondAttribute="leading" constant="16" id="TtO-IP-1Oz"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="leading" secondItem="MyA-Hu-lT1" secondAttribute="trailing" constant="8" symbolic="YES" id="Vuq-Ch-qvE"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerY" secondItem="MyA-Hu-lT1" secondAttribute="centerY" id="e9j-ME-JXE"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerX" secondItem="YaU-hu-bc8" secondAttribute="centerX" id="ffc-hc-Wc5"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="top" secondItem="YaU-hu-bc8" secondAttribute="top" constant="20" id="hTI-aJ-zgl"/>
-                                    <constraint firstAttribute="bottom" secondItem="MyA-Hu-lT1" secondAttribute="bottom" constant="20" id="trK-Mk-HJQ"/>
+                                    <constraint firstItem="MyA-Hu-lT1" firstAttribute="leading" secondItem="YaU-hu-bc8" secondAttribute="leading" constant="16" id="FF7-ZR-7W7"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerX" secondItem="YaU-hu-bc8" secondAttribute="centerX" id="G6W-3C-4pU"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="top" secondItem="YaU-hu-bc8" secondAttribute="top" constant="20" id="MYs-z1-B8r"/>
+                                    <constraint firstAttribute="bottom" secondItem="MyA-Hu-lT1" secondAttribute="bottom" constant="20" id="Mln-7U-uCH"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerY" secondItem="MyA-Hu-lT1" secondAttribute="centerY" id="OKg-5r-R8p"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="leading" secondItem="MyA-Hu-lT1" secondAttribute="trailing" constant="8" symbolic="YES" id="noM-ZF-kat"/>
                                 </constraints>
                             </view>
                         </subviews>
