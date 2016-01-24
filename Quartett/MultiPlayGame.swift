@@ -11,6 +11,7 @@ import CoreData
 
 class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet weak var p2View: UIView!
     @IBOutlet weak var p2CardInfo: UITextView!
     @IBOutlet weak var p2CardImage: UIImageView!
     @IBOutlet weak var p2CollectionView: UICollectionView!
@@ -19,6 +20,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak var p2Back: UIImageView!
     
     
+    @IBOutlet weak var p1View: UIView!
     @IBOutlet weak var p1Back: UIImageView!
     @IBOutlet weak var p1CardImage: UIImageView!
     @IBOutlet weak var p1CardInfo: UITextView!
@@ -81,6 +83,13 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     
     var attributes = [NSManagedObject]()
     
+    let containerTop = UIView()
+    var frontTop = UIView()
+    var backTop = UIView()
+    
+    let containerBottom = UIView()
+    var frontBottom = UIView()
+    var backBottom = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +107,17 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         notificationCenter.addObserver(self, selector: "appMovedToBackground", name: UIApplicationWillResignActiveNotification, object: nil)
         
         loadGame()
+        
+        self.containerTop.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height/2)
+        self.containerBottom.frame = CGRect(x: 0, y: view.frame.size.height/2, width: view.frame.size.width, height: view.frame.size.height/2)
+        self.view.addSubview(containerTop)
+        self.view.addSubview(containerBottom)
+        
+        self.containerTop.addSubview(self.p2View)
+        self.containerTop.addSubview(self.frontTop)
+        
+        self.containerBottom.addSubview(self.p1View)
+        self.containerBottom.addSubview(self.frontBottom)
         
         cardset = Data().loadCardset(cardsetID)
         attributes = Data().loadAttributes(cardsetID)
@@ -229,15 +249,29 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2CollectionView.hidden = false
         p1NameLabel.hidden = false
         p2NameLabel.hidden = false
-//        p1CardInfo.hidden = false
-//        p2CardInfo.hidden = false
         p1InfoButton.hidden = false
         p2InfoButton.hidden = false
-        
-        
+
+
         if (turn){
+            var viewsTop : (frontView: UIView, backView: UIView)
+            if(self.frontTop.superview != nil){
+                viewsTop = (frontView: self.frontTop, backView: self.backTop)
+            }
+            else {
+                viewsTop = (frontView: self.backTop, backView: self.frontTop)
+            }
+            UIView.transitionFromView(viewsTop.frontView, toView: viewsTop.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             p2Back.hidden = true
         }else{
+            var viewsBottom : (frontView: UIView, backView: UIView)
+            if(self.frontBottom.superview != nil){
+                viewsBottom = (frontView: self.frontBottom, backView: self.backBottom)
+            }
+            else {
+                viewsBottom = (frontView: self.backBottom, backView: self.frontBottom)
+            }
+            UIView.transitionFromView(viewsBottom.frontView, toView: viewsBottom.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             p1Back.hidden = true
         }
         
@@ -389,9 +423,25 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2NameLabel.text = p2CardsArray[0].valueForKey("name") as! String!
         p2CardImage.layer.cornerRadius = 10
         p2CardInfo.layer.cornerRadius = 10
+        var viewsTop : (frontView: UIView, backView: UIView)
+        if(self.frontTop.superview != nil){
+            viewsTop = (frontView: self.frontTop, backView: self.backTop)
+        }
+        else {
+            viewsTop = (frontView: self.backTop, backView: self.frontTop)
+        }
+        UIView.transitionFromView(viewsTop.frontView, toView: viewsTop.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+        
+        var viewsBottom : (frontView: UIView, backView: UIView)
+        if(self.frontBottom.superview != nil){
+            viewsBottom = (frontView: self.frontBottom, backView: self.backBottom)
+        }
+        else {
+            viewsBottom = (frontView: self.backBottom, backView: self.frontBottom)
+        }
+        UIView.transitionFromView(viewsBottom.frontView, toView: viewsBottom.backView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
         if(turn){
             p2CardImage.hidden = true
-            //p2CardInfo.hidden = true
             p2CollectionView.hidden = true
             p2NameLabel.hidden = true
             p2InfoButton.hidden = true
@@ -399,7 +449,6 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             p1Back.hidden = true
         }else{
             p1CardImage.hidden = true
-            //p1CardInfo.hidden = true
             p1CollectionView.hidden = true
             p1NameLabel.hidden = true
             p1InfoButton.hidden = true
