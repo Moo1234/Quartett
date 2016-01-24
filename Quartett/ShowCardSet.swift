@@ -84,7 +84,6 @@ class ShowCardSet: UIViewController, UICollectionViewDelegate, UICollectionViewD
             cardID = indexPath.row
             return cell
         }else{
-            // Attribute sind komischerweise bis zum ersten rechts-links scrollen noch vertauscht
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttributeCell", forIndexPath: indexPath) as! ShowAttributeCollectionViewCell
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 1

@@ -37,11 +37,11 @@ class Data{
         
         
         saveCard(6, cardset: 1, name: "Reus", info: "Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.", image: "reus", values: "90,88,60,42,97,31,71,22,44,66,44,87,1,22,44")
-        saveCard(7, cardset: 1, name: "Hummels", info: "info1", image: "reus", values: "11,12,13,14,15,16,31,65,88,23,57,23,88,32,23")
-        saveCard(8, cardset: 1, name: "Schmelzer", info: "info2", image: "reus", values: "1,2,3,4,5,6,21,77,44,22,1,55,77,44,99")
-        saveCard(9, cardset: 1, name: "Aubameyang", info: "info3", image: "reus", values: "70,90,70,90,70,90,1,65,88,33,55,33,56,33,44")
-        saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "reus", values: "66,77,88,99,88,77,2,44,77,88,99,88,33,66,44")
-        saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "reus", values: "66,77,88,99,88,77,5,44,55,66,77,55,77,66,22")
+        saveCard(7, cardset: 1, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16,31,65,88,23,57,23,88,32,23")
+        saveCard(8, cardset: 1, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6,21,77,44,22,1,55,77,44,99")
+        saveCard(9, cardset: 1, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90,1,65,88,33,55,33,56,33,44")
+        saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77,2,44,77,88,99,88,33,66,44")
+        saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77,5,44,55,66,77,55,77,66,22")
         
         saveCardset(1, name: "Dortmund",image: "CardSet1")
         
@@ -542,15 +542,20 @@ class Data{
     
     
     func stringToImage(imageString: String) -> UIImage {
-        var image = UIImage()
+        var image: UIImage?
         if(imageString.containsString(".png")){
             let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
             let data = NSData(contentsOfFile: documentsURL.path! + "/" + imageString)
-            image = UIImage(data: data!)!
+            image = UIImage(data: data!)
         }else{
-            image = UIImage(named: imageString)!
+            image = UIImage(named: imageString)
         }
-        return image
+        if image != nil {
+            return image!
+        }
+        else {
+            return UIImage(named: "ImageIcon")!
+        }
     }
     
     //Convert String to Array(String)

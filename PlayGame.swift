@@ -39,6 +39,13 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     @IBOutlet weak var cpuAttLabel: UILabel!
     @IBOutlet weak var p1AttLabel: UILabel!
     @IBOutlet weak var turnLabel: UILabel!
+    @IBOutlet weak var p1AttNameLabel: UILabel!
+    @IBOutlet weak var p1AttUnitLabel: UILabel!
+    @IBOutlet weak var p2AttNameLabel: UILabel!
+    @IBOutlet weak var p2AttUnitLabel: UILabel!
+    @IBOutlet weak var p1ImageCompareView: UIImageView!
+    @IBOutlet weak var p2ImageCompareView: UIImageView!
+    
     
     //Vars
     var game = [NSManagedObject]()
@@ -207,46 +214,33 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
  
         
-        if(!turn){
-            print("Indexpath" , indexPath.row)
-            collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
-            collectionView.layoutIfNeeded()
-        }else{
-            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
-        }
+//        if(!turn){
+//            print("Indexpath" , indexPath.row)
+//            collectionView.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+//            collectionView.layoutIfNeeded()
+//        }else{
+//            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+//        }
         compareView.hidden = false
         compareView.backgroundColor = UIColor.grayColor()
         compareView.layer.cornerRadius = 10
         
         p1AttLabel.text = values![indexPath.row]
+        p1AttNameLabel.text = attributes[indexPath.row].valueForKey("name") as? String
         cpuAttLabel.text = cpuValues![indexPath.row]
+        p2AttNameLabel.text = attributes[indexPath.row].valueForKey("name") as? String
+        p1AttUnitLabel.text = attributes[indexPath.row].valueForKey("unit") as? String
+        p2AttUnitLabel.text = attributes[indexPath.row].valueForKey("unit") as? String
+        p1ImageCompareView.image = Data().stringToImage((p1CardsArray[0].valueForKey("image") as? String)!)
+        p2ImageCompareView.image = Data().stringToImage((cpuCardsArray[0].valueForKey("image") as? String)!)
         
         //Draw
         if(Float(values![indexPath.row]) == Float(cpuValues![indexPath.row])){
-            
-            if(everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count < 7){
-                let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                cell.backgroundColor = UIColor.orangeColor()
-            }
             drawOperations()
             
         }else if(condition){
             //            print("P1: \(values![indexPath.row]) P2: \(cpuValues![indexPath.row])")
             if(Float(values![indexPath.row]) > Float(cpuValues![indexPath.row])){
-                
-                if(everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count < 7){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.greenColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
                 if(!turn){
                     winOperations()
                     turn = true
@@ -256,19 +250,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                if(everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count < 7){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.redColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
                 if(!turn){
                     looseOperations()
                 }else{
@@ -280,20 +261,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             }
         }else{
             if(Float(values![indexPath.row]) < Float(cpuValues![indexPath.row])){
-                
-                if(everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count < 7){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.greenColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
                 if(!turn){
                     winOperations()
                     turn = true
@@ -303,20 +270,6 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
                     winOperations()
                 }
             }else{
-                
-                if(everyCardArray[0].valueForKey("values")?.componentsSeparatedByString(",").count < 7){
-                    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GameAttributesCollectionViewCell
-                    cell.backgroundColor = UIColor.redColor()
-                    UIView.animateWithDuration(0.6 ,
-                        animations: {
-                            cell.transform = CGAffineTransformMakeScale(0.6, 0.6)
-                        },
-                        completion: { finish in
-                            UIView.animateWithDuration(0.6){
-                                cell.transform = CGAffineTransformIdentity
-                            }
-                    })
-                }
                 if(!turn){
                     looseOperations()
                 }else{
@@ -389,6 +342,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         p1AttLabel.layer.borderWidth = 3
         p1AttLabel.backgroundColor = UIColor.whiteColor()
         p1AttLabel.layer.borderColor = UIColor.greenColor().CGColor
+        UIView.animateWithDuration(0.6 ,
+            animations: {
+                self.p1AttLabel.transform = CGAffineTransformMakeScale(0.6, 0.6)
+            },
+            completion: { finish in
+                UIView.animateWithDuration(0.6){
+               self.p1AttLabel.transform = CGAffineTransformIdentity
+                }
+        })
         cpuAttLabel.textColor = UIColor.redColor()
         cpuAttLabel.layer.borderWidth = 3
         cpuAttLabel.backgroundColor = UIColor.whiteColor()
@@ -418,6 +380,15 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
         cpuAttLabel.layer.borderWidth = 3
         cpuAttLabel.backgroundColor = UIColor.whiteColor()
         cpuAttLabel.layer.borderColor = UIColor.greenColor().CGColor
+        UIView.animateWithDuration(0.6 ,
+            animations: {
+                self.cpuAttLabel.transform = CGAffineTransformMakeScale(0.6, 0.6)
+            },
+            completion: { finish in
+                UIView.animateWithDuration(0.6){
+                    self.cpuAttLabel.transform = CGAffineTransformIdentity
+                }
+        })
         
         while(drawStack.count > 0){
             cpuCardsArray.append(drawStack[0])
