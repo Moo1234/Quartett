@@ -171,7 +171,7 @@ class ShowOnlineDeck: UIViewController{
             for var index = 0; index < post.count; index++ {
                 self.names.append((post[index].valueForKey("name") as? String)!)
                 self.ids.append((post[index].valueForKey("id") as? Int)!)
-                var id: Int = (post[index].valueForKey("id") as? Int!)!
+                let id: Int = (post[index].valueForKey("id") as? Int!)!
                 self.loadCardsImagesFromOnlineStore(link+String(id)+"/images/")
                 
             }
@@ -348,7 +348,7 @@ class ShowOnlineDeck: UIViewController{
         deckImage = saveImageToDevice(deckImage, id: cardSetId, name: "SetImage")
         Data().saveCardset(cardSetId, name: deckName, image: deckImage)
         
-        var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
+        let attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(7)+"/attributes/"
         
         
         loadCardsAttributesFromOnlineStore(attLink)
@@ -360,7 +360,7 @@ class ShowOnlineDeck: UIViewController{
             while Data().cardExists(cardId){
                 cardId++
             }
-            var attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
+            let attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
             
             dispatch_async(dispatch_get_main_queue(), {
                 let bar = Float(index) / Float(self.cardSetSize)
