@@ -493,12 +493,13 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             
             let vc = segue.destinationViewController as! EndScreenViewController
             if (p1CardsArray.count > p2CardsArray.count){
-                vc.labelTxt = "Spieler 1 hat gewonnen!"
+                vc.labelTxt = p1Name + " hat gewonnen!"
                 Data().saveRanking(p1Name, rounds: currentLap, time: currentTime)
             }else if(p1CardsArray.count == p2CardsArray.count){
                 vc.labelTxt = "Unentschieden!"
             }else{
-                vc.labelTxt = "Spieler 2 hat gewonnen!"
+                vc.labelTxt = p2Name + " hat gewonnen!"
+                Data().saveRanking(p2Name, rounds: currentLap, time: currentTime)
             }
             Data().deleteObjectsFromEntity("Game")
         }

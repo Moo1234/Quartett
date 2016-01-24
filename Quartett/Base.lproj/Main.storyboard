@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="45Q-Ym-VG5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -924,7 +924,7 @@
                             <constraint firstItem="Jig-QB-zFE" firstAttribute="top" secondItem="c2i-fB-fdT" secondAttribute="bottom" constant="39" id="D4T-Bu-geJ"/>
                             <constraint firstItem="KpT-SS-EaI" firstAttribute="leading" secondItem="Jig-QB-zFE" secondAttribute="leading" id="GY0-vu-8nY"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="top" secondItem="Ru9-D7-7ey" secondAttribute="bottom" constant="32" id="H7B-pV-PsX"/>
-                            <constraint firstItem="OaW-sg-cLA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Ngm-6O-4yS"/>
+                            <constraint firstItem="OaW-sg-cLA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ngm-6O-4yS"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="trailing" secondItem="Ru9-D7-7ey" secondAttribute="trailing" id="O7x-bO-doR"/>
                             <constraint firstItem="c2i-fB-fdT" firstAttribute="trailing" secondItem="Jig-QB-zFE" secondAttribute="trailing" id="VT5-H1-Igw"/>
                             <constraint firstItem="Ru9-D7-7ey" firstAttribute="centerX" secondItem="OaW-sg-cLA" secondAttribute="centerX" id="bTO-CN-O2f"/>
@@ -1514,10 +1514,7 @@
                                 <rect key="frame" x="0.0" y="356" width="414" height="46"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-Sy-Xs2">
-                                        <rect key="frame" x="104" y="22" width="215" height="2"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="215" id="fBb-mC-4cF"/>
-                                        </constraints>
+                                        <rect key="frame" x="73" y="22" width="269" height="2"/>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-Hu-lT1">
                                         <rect key="frame" x="16" y="8" width="49" height="30"/>
@@ -1533,9 +1530,10 @@
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="MyA-Hu-lT1" firstAttribute="leading" secondItem="YaU-hu-bc8" secondAttribute="leading" constant="16" id="1z3-gq-4bl"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="leading" secondItem="YaU-hu-bc8" secondAttribute="leading" constant="104" id="OVG-fu-7sW"/>
-                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerX" secondItem="YaU-hu-bc8" secondAttribute="centerX" constant="4.5" id="dQT-Dn-EiX"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="leading" secondItem="YaU-hu-bc8" secondAttribute="leading" constant="73" id="OVG-fu-7sW"/>
+                                    <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerX" secondItem="YaU-hu-bc8" secondAttribute="centerX" constant="0.5" id="dQT-Dn-EiX"/>
                                     <constraint firstItem="hOf-Sy-Xs2" firstAttribute="centerY" secondItem="YaU-hu-bc8" secondAttribute="centerY" id="nlE-NU-BwD"/>
+                                    <constraint firstAttribute="height" constant="46" id="tXl-qF-Ftr"/>
                                     <constraint firstItem="MyA-Hu-lT1" firstAttribute="centerY" secondItem="hOf-Sy-Xs2" secondAttribute="centerY" id="u0p-8W-WKq"/>
                                     <constraint firstItem="hOf-Sy-Xs2" firstAttribute="top" secondItem="YaU-hu-bc8" secondAttribute="top" constant="22" id="xrn-GT-sdL"/>
                                 </constraints>
@@ -2103,15 +2101,15 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d70-wt-ogI"/>
-        <segue reference="EGa-qr-Zxe"/>
-        <segue reference="ZiO-9a-Ysl"/>
-        <segue reference="AUB-2S-sNB"/>
-        <segue reference="teC-wT-cBc"/>
-        <segue reference="6xy-R5-uj4"/>
-        <segue reference="PUa-f6-a5I"/>
-        <segue reference="LGP-s6-iKe"/>
         <segue reference="VX0-QP-nlY"/>
+        <segue reference="PUa-f6-a5I"/>
+        <segue reference="VcQ-lR-oH1"/>
+        <segue reference="d70-wt-ogI"/>
+        <segue reference="ZiO-9a-Ysl"/>
+        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="6xy-R5-uj4"/>
+        <segue reference="c19-ko-Gax"/>
+        <segue reference="LGP-s6-iKe"/>
         <segue reference="Zzy-zs-Hj3"/>
     </inferredMetricsTieBreakers>
 </document>
