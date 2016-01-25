@@ -371,12 +371,14 @@ class ShowOnlineDeck: UIViewController{
             }
             let attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
             
+            
             dispatch_async(dispatch_get_main_queue(), {
+            
                 let bar = Float(index) / Float(self.cardSetSize)
                 self.downloadProgress.setProgress(bar, animated: true)
+               
                 
             })
-            
             
             loadCardsAttributesFromOnlineStore(attLink)
             print(values)
@@ -411,9 +413,13 @@ class ShowOnlineDeck: UIViewController{
             Data().saveAttribute(attId, cardset: cardSetId, name: attName[index3], icon: "", unit: attUnit[index3], condition: condition[index3])
         }
         
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("dismissView"), userInfo: nil, repeats: false)
+        
     }
     
-    
+    func dismissView(){
+        downloadView.hidden = true
+    }
     
     
     func saveImageToDevice(imageURL: String, id: Int, name: String) -> String{
