@@ -35,6 +35,7 @@ class ShowOnlineDeck: UIViewController{
                 self.showButton.hidden = false
                 self.downloadButton.hidden = true
                 
+                
             })
             self.downloadView.hidden = false
             
@@ -64,19 +65,24 @@ class ShowOnlineDeck: UIViewController{
     var attUnit = [String]()
     var condition = [Bool]()
     var cardSetSize: Int = 0
+    var indexYO = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBar.topItem?.title = deckName
+        downloadView.layer.cornerRadius = 10
+        
         
         link = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"
         loadCardsFromOnlineStore(link)
         if checkDeckExists() {
             downloadButton.hidden = true
             showButton.hidden = false
+            
         }
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
+
         })
 
         downloadProgress.setProgress(0, animated: true)
@@ -253,6 +259,9 @@ class ShowOnlineDeck: UIViewController{
         condition.removeAll()
         
         let semaphore = dispatch_semaphore_create(0);
+        
+       
+    
         guard let url = NSURL(string: link) else {
             print("Error: cannot create URL")
             return
@@ -401,8 +410,6 @@ class ShowOnlineDeck: UIViewController{
             
             Data().saveAttribute(attId, cardset: cardSetId, name: attName[index3], icon: "", unit: attUnit[index3], condition: condition[index3])
         }
-        
-        
         
     }
     

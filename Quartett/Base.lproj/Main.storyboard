@@ -464,7 +464,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXX-fy-Zr8" id="EP3-P6-W3X">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-XG-PFl">
@@ -501,20 +501,42 @@
                                     <outlet property="delegate" destination="hgu-sB-vwu" id="Zgw-J7-dhc"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GN-Wu-Dr9">
+                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GN-Wu-Dr9">
                                 <rect key="frame" x="20" y="271" width="374" height="195"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wird heruntergeladen.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDr-1E-3t3">
-                                        <rect key="frame" x="8" y="8" width="358" height="51"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yfe-GB-UFe">
+                                        <rect key="frame" x="8" y="127" width="358" height="2"/>
+                                        <color key="tintColor" red="0.29752066729999999" green="0.81558614969999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="358" id="Rik-pW-YLp"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Rik-pW-YLp"/>
+                                            </mask>
+                                        </variation>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wird heruntergeladen.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDr-1E-3t3">
+                                        <rect key="frame" x="8" y="21" width="358" height="51"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.29752066729999999" green="0.81558614969999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yfe-GB-UFe">
-                                        <rect key="frame" x="8" y="127" width="358" height="2"/>
-                                    </progressView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yfe-GB-UFe" firstAttribute="centerX" secondItem="5GN-Wu-Dr9" secondAttribute="centerX" id="5ec-Pf-H04"/>
+                                    <constraint firstItem="xDr-1E-3t3" firstAttribute="top" secondItem="5GN-Wu-Dr9" secondAttribute="top" constant="21" id="BZx-EL-ff4"/>
+                                    <constraint firstItem="xDr-1E-3t3" firstAttribute="leading" secondItem="yfe-GB-UFe" secondAttribute="leading" id="Enn-ut-TnZ"/>
+                                    <constraint firstItem="yfe-GB-UFe" firstAttribute="top" secondItem="xDr-1E-3t3" secondAttribute="bottom" constant="55" id="aGS-9v-OqP"/>
+                                    <constraint firstItem="xDr-1E-3t3" firstAttribute="trailing" secondItem="yfe-GB-UFe" secondAttribute="trailing" id="eaL-Rr-SYo"/>
+                                    <constraint firstItem="yfe-GB-UFe" firstAttribute="centerY" secondItem="5GN-Wu-Dr9" secondAttribute="centerY" constant="30.5" id="gUw-sd-q8Q"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aGS-9v-OqP"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1qe-cR-83B">
                                 <rect key="frame" x="189" y="349" width="37" height="37"/>
@@ -2202,15 +2224,15 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="3AO-dB-gDT"/>
+        <segue reference="Bon-a4-yyM"/>
         <segue reference="Avo-jD-HBl"/>
-        <segue reference="VX0-QP-nlY"/>
-        <segue reference="PUa-f6-a5I"/>
+        <segue reference="c19-ko-Gax"/>
         <segue reference="VcQ-lR-oH1"/>
         <segue reference="d70-wt-ogI"/>
         <segue reference="ZiO-9a-Ysl"/>
         <segue reference="6xy-R5-uj4"/>
         <segue reference="yC0-Vk-LX7"/>
-        <segue reference="c19-ko-Gax"/>
-        <segue reference="LGP-s6-iKe"/>
+        <segue reference="PUa-f6-a5I"/>
     </inferredMetricsTieBreakers>
 </document>
