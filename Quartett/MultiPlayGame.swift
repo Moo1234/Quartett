@@ -246,6 +246,9 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         p2NameLabel.hidden = false
         p1InfoButton.hidden = false
         p2InfoButton.hidden = false
+        
+        p1CollectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredVertically)
+        p2CollectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredVertically)
 
 
         if (turn){
@@ -297,9 +300,6 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         let p2Values = p2CardsArray[0].valueForKey("values")?.componentsSeparatedByString(",")
         
         let condition: Bool = (attributes[indexPath.row].valueForKey("condition") as? Bool)!
-        
-        p1CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
-        p2CollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
         
         let p1Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
         let p2Cell = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
