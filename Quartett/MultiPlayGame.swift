@@ -108,8 +108,8 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         
         loadGame()
         
-        self.containerTop.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height/2)
-        self.containerBottom.frame = CGRect(x: 0, y: view.frame.size.height/2, width: view.frame.size.width, height: view.frame.size.height/2)
+        self.containerTop.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height/2-20)
+        self.containerBottom.frame = CGRect(x: 0, y: view.frame.size.height/2+20, width: view.frame.size.width, height: view.frame.size.height/2-20)
         self.view.addSubview(containerTop)
         self.view.addSubview(containerBottom)
         
@@ -249,6 +249,14 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         
         p1CollectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredVertically)
         p2CollectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredVertically)
+        
+        if collectionView == p1CollectionView {
+            let p1Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
+            p1Cell.backgroundColor = UIColor.lightGrayColor()
+        }else{
+            let p2Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
+            p2Cell.backgroundColor = UIColor.lightGrayColor()
+        }
 
 
         if (turn){
