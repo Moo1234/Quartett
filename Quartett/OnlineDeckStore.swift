@@ -8,11 +8,30 @@
 
 import UIKit
 import CoreData
+import SystemConfiguration
 
 class OnlineDeckStore: UIViewController, UITableViewDataSource {
     
+    
+    @IBOutlet weak var noConLabel: UILabel!
+    @IBOutlet weak var noConView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noConRetry: UIButton!
+    @IBOutlet weak var noConBack: UIButton!
+   
+    @IBAction func retryPressed(sender: AnyObject) {
+        noConView.hidden = true
+        viewDidLoad()
+
+    }
+    
+    
+    @IBAction func backPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("noConBack", sender:self)
+        
+        
+    }
     
     var descriptions = [String]()
     var images = [String]()
@@ -23,14 +42,32 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
-
+        var connection: Bool = isConnectedToNetwork()
         
-        cardSetArray = Data().loadCardSets()
+        if (connection){
+            loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
+            
+            
+            cardSetArray = Data().loadCardSets()
+        }else{
+            noConView.hidden = false
+        
+        }
+        
+        
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +88,21 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
     
     func checkDeckExists(name: String) -> Bool {
         for var index = 0; index < cardSetArray.count; index++ {
@@ -137,6 +189,9 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
                 showOnlineDeckViewController.deckImage = images[indexPath.row]
                 
             }
+        }
+        if segue.identifier == "noConBack"{
+            let vc = segue.destinationViewController as! ShowGallery
         }
     }
 }

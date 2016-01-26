@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SystemConfiguration
 
 class ShowOnlineDeck: UIViewController{
     
@@ -19,6 +20,19 @@ class ShowOnlineDeck: UIViewController{
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
+    
+    @IBOutlet weak var noConView: UIView!
+    @IBOutlet weak var noConLabel: UILabel!
+    @IBOutlet weak var noConRetry: UIButton!
+    @IBOutlet weak var noConBack: UIButton!
+    
+    
+    @IBAction func retryPressed(sender: AnyObject) {
+        viewDidLoad()
+    }
+    @IBAction func backPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("noConBack2", sender:self)
+    }
     
     
     @IBAction func downloadButtonPressed(sender: AnyObject) {
@@ -69,28 +83,55 @@ class ShowOnlineDeck: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navBar.topItem?.title = deckName
-        downloadView.layer.cornerRadius = 10
+        var connection: Bool = isConnectedToNetwork()
         
-        
-        link = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"
-        loadCardsFromOnlineStore(link)
-        if checkDeckExists() {
-            downloadButton.hidden = true
-            showButton.hidden = false
+        if(connection){
+            self.navBar.topItem?.title = deckName
+            downloadView.layer.cornerRadius = 10
             
+            
+            link = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"
+            loadCardsFromOnlineStore(link)
+            if checkDeckExists() {
+                downloadButton.hidden = true
+                showButton.hidden = false
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                
+            })
+            
+            downloadProgress.setProgress(0, animated: true)
+        }else{
+            noConView.hidden = false
         }
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-
-        })
-
-        downloadProgress.setProgress(0, animated: true)
+        
+        
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    
+    func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
+
+    
     
     func checkDeckExists() -> Bool {
         let cardSetArray = Data().loadCardSets()
@@ -175,6 +216,12 @@ class ShowOnlineDeck: UIViewController{
             // so check for a title and print it if we have one
             
             for var index = 0; index < post.count; index++ {
+                
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("badConnection"), userInfo: nil, repeats: false)
+                })
+                
                 self.names.append((post[index].valueForKey("name") as? String)!)
                 self.ids.append((post[index].valueForKey("id") as? Int)!)
                 let id: Int = (post[index].valueForKey("id") as? Int!)!
@@ -187,6 +234,10 @@ class ShowOnlineDeck: UIViewController{
         
     }
     
+    
+    func badConnection(){
+        print("YO")
+    }
     
     func loadCardsImagesFromOnlineStore(link: String){
         let semaphore = dispatch_semaphore_create(0);
@@ -447,6 +498,9 @@ class ShowOnlineDeck: UIViewController{
             
             showCardSetViewController.cardSetID = cardSetIdForSegue
             showCardSetViewController.cardSetImageString = deckImage
+        }
+        if segue.identifier == "noConBack2"{
+            let vc = segue.destinationViewController as! ShowGallery
         }
     }
     
