@@ -86,6 +86,7 @@ class ShowOnlineDeck: UIViewController{
         var connection: Bool = isConnectedToNetwork()
         
         if(connection){
+            noConView.hidden = true
             self.navBar.topItem?.title = deckName
             downloadView.layer.cornerRadius = 10
             

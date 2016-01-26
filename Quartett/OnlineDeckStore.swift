@@ -183,7 +183,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
             // Get the cell that generated this segue.
             if let selectedDeckCell = sender as? DeckTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedDeckCell)!
-                print(indexPath.row)
+//                print(indexPath.row)
                 showOnlineDeckViewController.deckID = ids[indexPath.row]
                 showOnlineDeckViewController.deckName = names[indexPath.row]
                 showOnlineDeckViewController.deckImage = images[indexPath.row]
