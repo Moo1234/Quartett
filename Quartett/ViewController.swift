@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().statusBarHidden = false
+        
         var game = Data().loadGame()
         if(game.count > 0){
             gameExists = true
