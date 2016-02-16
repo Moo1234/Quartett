@@ -2343,15 +2343,15 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bon-a4-yyM"/>
-        <segue reference="3AO-dB-gDT"/>
-        <segue reference="Avo-jD-HBl"/>
-        <segue reference="yC0-Vk-LX7"/>
-        <segue reference="fUU-fT-Ery"/>
+        <segue reference="VX0-QP-nlY"/>
         <segue reference="PUa-f6-a5I"/>
+        <segue reference="fUU-fT-Ery"/>
         <segue reference="d70-wt-ogI"/>
         <segue reference="6xy-R5-uj4"/>
         <segue reference="c19-ko-Gax"/>
+        <segue reference="yC0-Vk-LX7"/>
         <segue reference="ZiO-9a-Ysl"/>
+        <segue reference="LGP-s6-iKe"/>
+        <segue reference="Avo-jD-HBl"/>
     </inferredMetricsTieBreakers>
 </document>

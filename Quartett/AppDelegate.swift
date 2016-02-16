@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Reset Data
-        //Data().loadStandardData()
+        Data().loadStandardData()
         
         return true
     }
