@@ -79,7 +79,7 @@ class ShowOnlineDeck: UIViewController{
     var attUnit = [String]()
     var condition = [Bool]()
     var cardSetSize: Int = 0
-    var indexYO = 0
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,12 +217,6 @@ class ShowOnlineDeck: UIViewController{
             // so check for a title and print it if we have one
             
             for var index = 0; index < post.count; index++ {
-                
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("badConnection"), userInfo: nil, repeats: false)
-                })
-                
                 self.names.append((post[index].valueForKey("name") as? String)!)
                 self.ids.append((post[index].valueForKey("id") as? Int)!)
                 let id: Int = (post[index].valueForKey("id") as? Int!)!
@@ -234,12 +228,7 @@ class ShowOnlineDeck: UIViewController{
         task.resume()
         
     }
-    
-    
-    func badConnection(){
-        print("YO")
-    }
-    
+
     func loadCardsImagesFromOnlineStore(link: String){
         let semaphore = dispatch_semaphore_create(0);
         guard let url = NSURL(string: link) else {

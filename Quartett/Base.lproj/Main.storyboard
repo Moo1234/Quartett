@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -2343,15 +2343,15 @@
         <image name="test2" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yC0-Vk-LX7"/>
-        <segue reference="fUU-fT-Ery"/>
-        <segue reference="6Pw-Db-kJY"/>
         <segue reference="Bon-a4-yyM"/>
         <segue reference="3AO-dB-gDT"/>
         <segue reference="Avo-jD-HBl"/>
+        <segue reference="yC0-Vk-LX7"/>
+        <segue reference="fUU-fT-Ery"/>
+        <segue reference="PUa-f6-a5I"/>
         <segue reference="d70-wt-ogI"/>
-        <segue reference="c19-ko-Gax"/>
         <segue reference="6xy-R5-uj4"/>
+        <segue reference="c19-ko-Gax"/>
         <segue reference="ZiO-9a-Ysl"/>
     </inferredMetricsTieBreakers>
 </document>

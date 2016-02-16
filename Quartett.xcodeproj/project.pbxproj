@@ -101,10 +101,10 @@
 		58C49BE61BFE2A47005C8F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58C49BE91BFE2A47005C8F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58C49BEB1BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuartettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C49BF01BFE2A47005C8F1E /* Quartett.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Quartett.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BF41BFE2A47005C8F1E /* QuartettTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuartettTests.swift; sourceTree = "<group>"; };
 		58C49BF61BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuartettUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C49BFB1BFE2A47005C8F1E /* Quartett.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Quartett.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C49BFF1BFE2A47005C8F1E /* QuartettUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuartettUITests.swift; sourceTree = "<group>"; };
 		58C49C011BFE2A47005C8F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58CE5AF51C2832BE001FE34B /* ChooseGaleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseGaleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				58C49BD91BFE2A47005C8F1E /* Quartett.app */,
-				58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */,
-				58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */,
+				58C49BF01BFE2A47005C8F1E /* Quartett.xctest */,
+				58C49BFB1BFE2A47005C8F1E /* Quartett.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			);
 			name = QuartettTests;
 			productName = QuartettTests;
-			productReference = 58C49BF01BFE2A47005C8F1E /* QuartettTests.xctest */;
+			productReference = 58C49BF01BFE2A47005C8F1E /* Quartett.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		58C49BFA1BFE2A47005C8F1E /* QuartettUITests */ = {
@@ -266,7 +266,7 @@
 			);
 			name = QuartettUITests;
 			productName = QuartettUITests;
-			productReference = 58C49BFB1BFE2A47005C8F1E /* QuartettUITests.xctest */;
+			productReference = 58C49BFB1BFE2A47005C8F1E /* Quartett.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -517,7 +517,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -532,7 +532,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.Quartett;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -544,7 +544,7 @@
 				INFOPLIST_FILE = QuartettTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quartett.app/Quartett";
 			};
 			name = Debug;
@@ -556,7 +556,7 @@
 				INFOPLIST_FILE = QuartettTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quartett.app/Quartett";
 			};
 			name = Release;
@@ -567,7 +567,7 @@
 				INFOPLIST_FILE = QuartettUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				TEST_TARGET_NAME = Quartett;
 				USES_XCTRUNNER = YES;
 			};
@@ -579,7 +579,7 @@
 				INFOPLIST_FILE = QuartettUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mo.QuartettUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quartett;
 				TEST_TARGET_NAME = Quartett;
 				USES_XCTRUNNER = YES;
 			};

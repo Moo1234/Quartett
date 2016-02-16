@@ -254,7 +254,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
             let p1Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell1
             p1Cell.backgroundColor = UIColor.lightGrayColor()
         }else{
-            let p2Cell = p1CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
+            let p2Cell = p2CollectionView.cellForItemAtIndexPath(indexPath) as! MultiplayerAttributeCollectionViewCell2
             p2Cell.backgroundColor = UIColor.lightGrayColor()
         }
 
