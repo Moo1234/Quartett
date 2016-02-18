@@ -573,7 +573,7 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
     
     func timer(){
         currentTime += 0.1
-        if currentTime == maxTime{
+        if currentTime >= maxTime{
             self.performSegueWithIdentifier("gameOver", sender:self)
             
         }

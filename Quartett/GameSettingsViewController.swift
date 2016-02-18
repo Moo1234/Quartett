@@ -86,7 +86,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
         case 0:
             gameTime = 600.0
         case 1:
-            gameTime = 1200.0
+            gameTime = 5.0
         case 2:
             gameTime = 1000000.0
         default:

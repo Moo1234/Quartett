@@ -76,6 +76,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     var showAlertTime: Double = 4.0
     
     var index = NSIndexPath(forRow: 0, inSection: 0)
+  
+    
     
     // Views for animations
     let container = UIView()
@@ -322,9 +324,9 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
     
     func timer(){
         currentTime += 0.1
-        if currentTime == maxTime{
+        if currentTime >= maxTime{
             self.performSegueWithIdentifier("gameOver", sender:self)
-            
+    
         }
         
     }

@@ -74,10 +74,10 @@ class Data{
             
             
             saveAttribute(20, cardset: 2, name: "PAC", icon: "", unit: "", condition: true)
-            saveAttribute(21, cardset: 2, name: "PAS", icon: "", unit: "", condition: true)
+            saveAttribute(21, cardset: 2, name: "DRI", icon: "", unit: "", condition: true)
             saveAttribute(22, cardset: 2, name: "SHO", icon: "", unit: "", condition: true)
-            saveAttribute(23, cardset: 2, name: "DRI", icon: "", unit: "", condition: true)
-            saveAttribute(24, cardset: 2, name: "DEF", icon: "", unit: "", condition: true)
+            saveAttribute(23, cardset: 2, name: "DEF", icon: "", unit: "", condition: true)
+            saveAttribute(24, cardset: 2, name: "PAS", icon: "", unit: "", condition: true)
             saveAttribute(25, cardset: 2, name: "PHY", icon: "", unit: "", condition: true)
             
             
