@@ -82,7 +82,7 @@ class ShowOnlineDeck: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var connection: Bool = isConnectedToNetwork()
+        let connection: Bool = isConnectedToNetwork()
         
         downloadActionIndicator.startAnimating()
         

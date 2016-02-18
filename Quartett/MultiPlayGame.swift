@@ -528,6 +528,8 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         let bar = Float(p1CardsArray.count) / Float(p1CardsArray.count+p2CardsArray.count)
         progressView.setProgress(bar, animated: true)
         currentLap++
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "timer", userInfo: nil, repeats: true)
         //        progressView2.setProgress(bar, animated: true)
         //        progressView3.setProgress(bar, animated: true)
         //        progressView4.setProgress(bar, animated: true)
@@ -569,6 +571,14 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         }
     }
     
+    func timer(){
+        currentTime += 0.1
+        if currentTime == maxTime{
+            self.performSegueWithIdentifier("gameOver", sender:self)
+            
+        }
+        
+    }
     
     
     

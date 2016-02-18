@@ -42,7 +42,7 @@ class OnlineDeckStore: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var connection: Bool = isConnectedToNetwork()
+        let connection: Bool = isConnectedToNetwork()
         
         if (connection){
             loadFromOnlineStore("http://quartett.af-mba.dbis.info/decks/")
