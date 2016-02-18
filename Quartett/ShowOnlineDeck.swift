@@ -12,10 +12,9 @@ import SystemConfiguration
 
 class ShowOnlineDeck: UIViewController{
     
-    
     @IBOutlet weak var showButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
-    @IBOutlet weak var downloadProgress: UIProgressView!
+    @IBOutlet weak var downloadActionIndicator: UIActivityIndicatorView!
     @IBOutlet weak var downloadView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
@@ -85,6 +84,8 @@ class ShowOnlineDeck: UIViewController{
         super.viewDidLoad()
         var connection: Bool = isConnectedToNetwork()
         
+        downloadActionIndicator.startAnimating()
+        
         if(connection){
             noConView.hidden = true
             self.navBar.topItem?.title = deckName
@@ -103,7 +104,6 @@ class ShowOnlineDeck: UIViewController{
                 
             })
             
-            downloadProgress.setProgress(0, animated: true)
         }else{
             noConView.hidden = false
         }
@@ -412,14 +412,6 @@ class ShowOnlineDeck: UIViewController{
             }
             let attLink = "http://quartett.af-mba.dbis.info/decks/" + String(deckID) + "/cards/"+String(ids[index])+"/attributes/"
             
-            
-            dispatch_async(dispatch_get_main_queue(), {
-            
-                let bar = Float(index) / Float(self.cardSetSize)
-                self.downloadProgress.setProgress(bar, animated: true)
-               
-                
-            })
             
             loadCardsAttributesFromOnlineStore(attLink)
             print(values)

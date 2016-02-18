@@ -25,6 +25,7 @@ class EndScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarHidden = false
         
         gameOverText.text = labelTxt
         if(gameOverText.text!.containsString("gewonnen")){

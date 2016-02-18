@@ -649,6 +649,19 @@ class Data{
         } catch let error as NSError {
             debugPrint(error)
         }
+        
+        let fetchRequest3 = NSFetchRequest(entityName: "Attribute")
+        
+        let predicate3 = NSPredicate(format: "cardset == %d", cardSetID)
+        fetchRequest3.predicate = predicate3
+        
+        let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+        
+        do {
+            try coord.executeRequest(deleteRequest3, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     // -------------------------------------------------------------------------------------------------------------------------------
     // ----------------------------------------------------- End Delete Method -------------------------------------------------------
