@@ -29,21 +29,21 @@ class Data{
             saveRanking("Jörg", rounds: 35, time: 100.0)
             
             saveCard(0, cardset: 0, name: "Robben", info: "Arjen Robben ist ein niederländischer Fußballspieler. Er steht seit dem 28. August 2009 beim Bundesligisten FC Bayern München unter Vertrag und gehört zum Kader der niederländischen A-Nationalmannschaft.", image: "rob", values: "92,92,86,32,82,64")
-            saveCard(1, cardset: 0, name: "Ribery", info: "info1", image: "rib", values: "87,91,77,25,84,61")
-            saveCard(2, cardset: 0, name: "Boateng", info: "info2", image: "boateng", values: "79,68,50,87,69,84")
-            saveCard(3, cardset: 0, name: "Alaba", info: "info3", image: "alaba", values: "86,83,72,84,81,72")
-            saveCard(4, cardset: 0, name: "Lewandowski", info: "info4", image: "lewa", values: "80,84,85,38,74,80")
-            saveCard(5, cardset: 0, name: "Mueller", info: "info5", image: "mueller", values: "77,79,84,46,80,72")
+            saveCard(1, cardset: 0, name: "Ribery", info: "Keine Info", image: "rib", values: "87,91,77,25,84,61")
+            saveCard(2, cardset: 0, name: "Boateng", info: "Keine Info", image: "boateng", values: "79,68,50,87,69,84")
+            saveCard(3, cardset: 0, name: "Alaba", info: "Keine Info", image: "alaba", values: "86,83,72,84,81,72")
+            saveCard(4, cardset: 0, name: "Lewandowski", info: "Keine Info", image: "lewa", values: "80,84,85,38,74,80")
+            saveCard(5, cardset: 0, name: "Mueller", info: "Keine Info", image: "mueller", values: "77,79,84,46,80,72")
             
             saveCardset(0, name: "Bayern", image: "CardSet0")
             
             
             saveCard(6, cardset: 1, name: "Reus", info: "Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.Marco Reus (* 31. Mai 1989 in Dortmund) ist ein deutscher Fußballspieler. Er steht seit 2012 bei Borussia Dortmund unter Vertrag und spielt seit 2011 für die deutsche Fußballnationalmannschaft.", image: "reus", values: "90,88,60,42,97,31,71,22,44,66,44,87,1,22,44")
-            saveCard(7, cardset: 1, name: "Hummels", info: "info1", image: "pic1", values: "11,12,13,14,15,16,31,65,88,23,57,23,88,32,23")
-            saveCard(8, cardset: 1, name: "Schmelzer", info: "info2", image: "pic2", values: "1,2,3,4,5,6,21,77,44,22,1,55,77,44,99")
-            saveCard(9, cardset: 1, name: "Aubameyang", info: "info3", image: "pic3", values: "70,90,70,90,70,90,1,65,88,33,55,33,56,33,44")
-            saveCard(10, cardset: 1, name: "Kagawa", info: "info4", image: "pic4", values: "66,77,88,99,88,77,2,44,77,88,99,88,33,66,44")
-            saveCard(11, cardset: 1, name: "buerki", info: "info5", image: "pic5", values: "66,77,88,99,88,77,5,44,55,66,77,55,77,66,22")
+            saveCard(7, cardset: 1, name: "Hummels", info: "Keine Info", image: "ImageIcon", values: "11,12,13,14,15,16,31,65,88,23,57,23,88,32,23")
+            saveCard(8, cardset: 1, name: "Schmelzer", info: "Keine Info", image: "ImageIcon", values: "1,2,3,4,5,6,21,77,44,22,1,55,77,44,99")
+            saveCard(9, cardset: 1, name: "Aubameyang", info: "Keine Info", image: "ImageIcon", values: "70,90,70,90,70,90,1,65,88,33,55,33,56,33,44")
+            saveCard(10, cardset: 1, name: "Kagawa", info: "Keine Info", image: "ImageIcon", values: "66,77,88,99,88,77,2,44,77,88,99,88,33,66,44")
+            saveCard(11, cardset: 1, name: "buerki", info: "Keine Info", image: "ImageIcon", values: "66,77,88,99,88,77,5,44,55,66,77,55,77,66,22")
             
             saveCardset(1, name: "Dortmund",image: "CardSet1")
             

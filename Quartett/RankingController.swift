@@ -72,7 +72,7 @@ class RankingController: UIViewController, UITableViewDataSource {
         let saveAction = UIAlertAction(title: "Zurücksetzen", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction) -> Void in
             
             Data().resetRankings()
-            Data().loadRankings(self.rankingType)
+            self.ranking = Data().loadRankings(self.rankingType)
             self.tableView.reloadData()
         })
         alert.addAction(saveAction)
@@ -108,6 +108,7 @@ class RankingController: UIViewController, UITableViewDataSource {
         leftButton.hidden=false
         rightButton.hidden=true
         rankingType = true
+        navigationBarTitle.title = "Runden Rangliste"
         ranking = Data().loadRankings(rankingType)
         self.tableView.reloadData()
     }
@@ -115,6 +116,7 @@ class RankingController: UIViewController, UITableViewDataSource {
         leftButton.hidden=true
         rightButton.hidden=false
         rankingType = false
+        navigationBarTitle.title = "Zeit Rangliste"
         ranking = Data().loadRankings(rankingType)
         self.tableView.reloadData()
     }

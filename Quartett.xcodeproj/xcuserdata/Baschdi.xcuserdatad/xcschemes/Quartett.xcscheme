@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58C49BEF1BFE2A47005C8F1E"
-               BuildableName = "QuartettTests.xctest"
+               BuildableName = "Quartett.xctest"
                BlueprintName = "QuartettTests"
                ReferencedContainer = "container:Quartett.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58C49BFA1BFE2A47005C8F1E"
-               BuildableName = "QuartettUITests.xctest"
+               BuildableName = "Quartett.xctest"
                BlueprintName = "QuartettUITests"
                ReferencedContainer = "container:Quartett.xcodeproj">
             </BuildableReference>
