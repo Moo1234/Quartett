@@ -558,14 +558,15 @@ class MultiPlayGame: UIViewController, UICollectionViewDataSource, UICollectionV
         if (segue.identifier == "gameOver"){
             
             let vc = segue.destinationViewController as! EndScreenViewController
+            let time = round(1000 * currentTime) / 1000
             if (p1CardsArray.count > p2CardsArray.count){
                 vc.labelTxt = p1Name + " hat gewonnen!"
-                Data().saveRanking(p1Name, rounds: currentLap, time: currentTime)
+                Data().saveRanking(p1Name, rounds: currentLap, time: time)
             }else if(p1CardsArray.count == p2CardsArray.count){
                 vc.labelTxt = "Unentschieden!"
             }else{
                 vc.labelTxt = p2Name + " hat gewonnen!"
-                Data().saveRanking(p2Name, rounds: currentLap, time: currentTime)
+                Data().saveRanking(p2Name, rounds: currentLap, time: time)
             }
             Data().deleteObjectsFromEntity("Game")
         }

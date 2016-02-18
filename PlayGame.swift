@@ -586,7 +586,8 @@ class PlayGame: UIViewController, UICollectionViewDelegate,  UICollectionViewDat
             let vc = segue.destinationViewController as! EndScreenViewController
             if (p1CardsArray.count > cpuCardsArray.count){
                 vc.labelTxt = "Du hast gewonnen!"
-                Data().saveRanking(p1Name, rounds: currentLap, time: currentTime)
+                let time = round(1000 * currentTime) / 1000
+                Data().saveRanking(p1Name, rounds: currentLap, time: time)
             }else if(p1CardsArray.count == cpuCardsArray.count){
                 vc.labelTxt = "Unentschieden!"
             }else{
